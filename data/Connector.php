@@ -71,6 +71,19 @@ class Connector {
             return false;
         }
     }
+    
+     /**
+     * Execute a query to know the last id of a table
+     * @param type $query query to select data from db
+     * @return boolean indicates if the given values are registred on the db
+     */
+    public function getMaxIdTable($table) {
+        $query = "SELECT MAX(id" . $table . ") FROM `tb" . $table . "`";
+        $result = $this->exeQuery($query);
+        $array = mysqli_fetch_array($result);
+        $id = trim($array[0]) + 1;
+        return $id;
+    }
 
     /**
      * Show data in console
