@@ -1,6 +1,5 @@
 <?php
 
-header("Content-Type: text/html;charset=utf-8");
 require_once '../data/Connector.php';
 include '../domain/Curriculum.php';
 
@@ -37,7 +36,7 @@ class CurriculumData extends Connector{
     }
 
     public function getAll() {
-        $query = "";
+        $query = "SELECT * FROM `curriculum`";
         
         $allCurriculum = $this->exeQuery($query);
         $array = [];

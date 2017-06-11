@@ -1,6 +1,5 @@
 <?php
 
-header("Content-Type: text/html;charset=utf-8");
 require_once '../data/Connector.php';
 include '../domain/Person.php';
 
@@ -49,7 +48,7 @@ class PersonData extends Connector{
     }
 
     public function getAll() {
-        $query = "";
+        $query = "SELECT * FROM `person`";
         
         $allPersons = $this->exeQuery($query);
         $array = [];
@@ -71,7 +70,7 @@ class PersonData extends Connector{
         return $array;
     }
 
-    public function getCourseId($id) {
+    public function getPersonId($id) {
         $query = "";
         
         $allPerson = $this->exeQuery($query);

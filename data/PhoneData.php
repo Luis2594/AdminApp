@@ -1,6 +1,5 @@
 <?php
 
-header("Content-Type: text/html;charset=utf-8");
 require_once '../data/Connector.php';
 include '../domain/Phone.php';
 

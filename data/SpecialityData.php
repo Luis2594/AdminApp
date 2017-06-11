@@ -1,6 +1,5 @@
 <?php
 
-header("Content-Type: text/html;charset=utf-8");
 require_once '../data/Connector.php';
 include '../domain/Person.php';
 
@@ -35,7 +34,7 @@ class SpecialityData extends Connector{
     }
 
     public function getAll() {
-        $query = "";
+        $query = "SELECT * FROM `speciality`";
         
         $allSpecialities = $this->exeQuery($query);
         $array = [];

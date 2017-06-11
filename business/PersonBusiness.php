@@ -11,7 +11,7 @@ class PersonBusiness {
 
      private $personData;
 
-    public function CourseBusiness() {
+    public function PersonBusiness() {
         return $this->personData = new PersonData();
     }
     
@@ -31,8 +31,8 @@ class PersonBusiness {
       return $this->personData->getAll();
     }
     
-    public function getCourseId($id) {
-     return $this->personData->getCourseId($id);
+    public function getPersonId($id) {
+     return $this->personData->getPersonId($id);
     }
     
     public function getLastId() {
