@@ -11,7 +11,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowStudentDelete.php"><i class="fa fa-arrow-circle-right"></i> Eliminar Estudiante</a></li>
+        <li><a href="ShowCourseUpdate.php"><i class="fa fa-arrow-circle-right"></i> Actualizar cursos</a></li>
     </ol>
 </section>
 <br>
@@ -22,38 +22,38 @@ include './reusable/Header.php';
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Eliminar Estudiantes del Cindea</h3>
+                    <h3 class="box-title">Actualizar Cursos del Cindea</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Cédula</th>
+                                <th>Codigo</th>
                                 <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
-                                <th>Genero</th>
-                                <th>Grupo</th>
-                                <th>Eliminar</th>
+                                <th>Creditos</th>
+                                <th>Lecciones</th>
+                                <th>Periodo</th>
+                                <th>Especialidad</th>
+                                <th>Actualizar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            include '../business/StudentBusiness.php';
-                            $studentBusiness = new StudentBusiness();
+                            include '../business/CourseBusiness.php';
+                            $coursesBusiness = new CourseBusiness();
                             
-                            $students = $studentBusiness->getAll();
+                            $courses = $coursesBusiness->getAll();
                             
-                            foreach ($students as $student) {
+                            foreach ($courses as $course) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $student->getCourseCode(); ?></td>
-                                    <td><?php echo $student->getCourseName(); ?></td>
-                                    <td><?php echo $student->getCourseCredits(); ?></td>
-                                    <td><?php echo $student->getCourseLesson(); ?></td>
-                                    <td><?php echo $student->getCoursePeriod(); ?></td>
-                                    <td><?php echo $student->getCourseSpeciality(); ?></td>
-                                    <td><a href="">Eliminar</a></td>
+                                    <td><?php echo $course->getCourseCode(); ?></td>
+                                    <td><?php echo $course->getCourseName(); ?></td>
+                                    <td><?php echo $course->getCourseCredits(); ?></td>
+                                    <td><?php echo $course->getCourseLesson(); ?></td>
+                                    <td><?php echo $course->getCoursePeriod(); ?></td>
+                                    <td><?php echo $course->getCourseSpeciality(); ?></td>
+                                    <td><a href="" >Actualizar</a></td>
                                 </tr>
                                 <?php
                             }
@@ -61,13 +61,13 @@ include './reusable/Header.php';
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Cédula</th>
+                                <th>Codigo</th>
                                 <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
-                                <th>Genero</th>
-                                <th>Grupo</th>
-                                <th>Eliminar</th>
+                                <th>Creditos</th>
+                                <th>Lecciones</th>
+                                <th>Periodo</th>
+                                <th>Especialidad</th>
+                                <th>Actualizar</th>
                             </tr>
                         </tfoot>
                     </table>

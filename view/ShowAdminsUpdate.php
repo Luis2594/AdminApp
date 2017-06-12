@@ -46,7 +46,7 @@ include './reusable/Header.php';
                             ?>
                                 <tr>
                                     <td><?php echo $admin->getPersonDni(); ?></td>
-                                    <td><a href=""><?php echo $admin->getPersonFirstName(); ?></a></td>
+                                    <td><?php echo $admin->getPersonFirstName(); ?></td>
                                     <td><?php echo $admin->getPersonFirstlastname(); ?></td>
                                     <td><?php echo $admin->getPersonSecondlastname(); ?></td>
                                     <td><a href="">Actualizar</a></td>

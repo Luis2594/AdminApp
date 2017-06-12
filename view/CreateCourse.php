@@ -66,11 +66,10 @@ include './reusable/Header.php';
                             <p class="help-block">Subir archivo con extensión .pdf</p>
                         </div>
                     </div><!-- /.box-body -->
-
-                    <div class="box-footer">
-                        <button onclick="valueInputs();" class="btn btn-primary">Crear</button>
-                    </div>
                 </form>
+                <div class="box-footer">
+                    <button onclick="valueInputs();" class="btn btn-primary">Crear</button>
+                </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
     </div>   <!-- /.row -->

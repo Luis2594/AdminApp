@@ -11,7 +11,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowAdminsDelete.php"><i class="fa fa-arrow-circle-right"></i> Eliminar Administradores</a></li>
+        <li><a href="ShowCourseDelete.php"><i class="fa fa-arrow-circle-right"></i> Eliminar cursos</a></li>
     </ol>
 </section>
 <br>
@@ -22,34 +22,38 @@ include './reusable/Header.php';
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Eliminar Administradores del Cindea</h3>
+                    <h3 class="box-title">Eliminar Cursos del Cindea</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Cédula</th>
+                                <th>Codigo</th>
                                 <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
+                                <th>Creditos</th>
+                                <th>Lecciones</th>
+                                <th>Periodo</th>
+                                <th>Especialidad</th>
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            include '../business/PersonBusiness.php';
-                            $personBusiness = new PersonBusiness();
+                            include '../business/CourseBusiness.php';
+                            $coursesBusiness = new CourseBusiness();
                             
-                            $admins = $personBusiness->getAll();
+                            $courses = $coursesBusiness->getAll();
                             
-                            foreach ($admins as $admin) {
+                            foreach ($courses as $course) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $admin->getPersonDni(); ?></td>
-                                    <td><?php echo $admin->getPersonFirstName(); ?></td>
-                                    <td><?php echo $admin->getPersonFirstlastname(); ?></td>
-                                    <td><?php echo $admin->getPersonSecondlastname(); ?></td>
-                                    <td><a href="">Eliminar</a></td>
+                                    <td><?php echo $course->getCourseCode(); ?></td>
+                                    <td><?php echo $course->getCourseName(); ?></td>
+                                    <td><?php echo $course->getCourseCredits(); ?></td>
+                                    <td><?php echo $course->getCourseLesson(); ?></td>
+                                    <td><?php echo $course->getCoursePeriod(); ?></td>
+                                    <td><?php echo $course->getCourseSpeciality(); ?></td>
+                                    <td><a href="" >Eliminar</a></td>
                                 </tr>
                                 <?php
                             }
@@ -57,10 +61,12 @@ include './reusable/Header.php';
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Cédula</th>
+                                <th>Codigo</th>
                                 <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
+                                <th>Creditos</th>
+                                <th>Lecciones</th>
+                                <th>Periodo</th>
+                                <th>Especialidad</th>
                                 <th>Eliminar</th>
                             </tr>
                         </tfoot>
@@ -81,5 +87,4 @@ include './reusable/Footer.php';
         $("#example1").dataTable();
     });
 </script>
-
 

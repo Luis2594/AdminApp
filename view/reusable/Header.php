@@ -2,6 +2,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Administración Cindea Turrialba</title>
+        <link rel="icon" type="image/png" href="./../resource/images/cindeaTurrialba.ico" />
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="./../resource/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -35,14 +36,10 @@
         <link href="./../resource/css/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
         <!-- daterange picker -->
         <link href="./../resource/css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-        <!-- iCheck for checkboxes and radio inputs -->
-        <link href="./../resource/css/plugins/iCheck/all.css" rel="stylesheet" type="text/css" />
         <!-- Bootstrap Color Picker -->
         <link href="./../resource/css/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet"/>
         <!-- Bootstrap time Picker -->
         <link href="./../resource/css/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
-        <!-- Theme style -->
-        <link href="./../resource/css/plugins/iCheck/all.css" rel="stylesheet" type="text/css" />
 
         <!--ALERTIFY-->
         <link href="./../resource/css/alertify/themes/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -56,7 +53,7 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="./Home.php" class="logo"><b>Cindea</b></a>
+                <a href="./Home.php" class="logo"><b>Cindea Turrialba</b></a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
@@ -68,13 +65,13 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="./../resource/images/user1-128x128.jpg" class="user-image" alt="User Image"/>
+                                    <img id="imageProfile3" src="./../resource/images/user1-128x128.jpg" class="user-image" alt="User Image"/>
                                     <span class="hidden-xs">Alexander Pierce</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="./../resource/images/user1-128x128.jpg" class="img-circle" alt="User Image" />
+                                        <img id="imageProfile1"src="./../resource/images/user1-128x128.jpg" class="img-circle" alt="User Image" />
                                         <p>
                                             Alexander Pierce - Web Developer
                                             <small>Member since Nov. 2012</small>
@@ -83,7 +80,7 @@
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                                            <a href="./ShowProfile.php" class="btn btn-default btn-flat">Perfil</a>
                                         </div>
                                         <div class="pull-right">
                                             <a href="#" class="btn btn-default btn-flat">Cerrar Sesión</a>
@@ -102,7 +99,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="./../resource/images/user1-128x128.jpg" class="img-circle" alt="User Image" />
+                            <img id="imageProfile2" src="./../resource/images/user1-128x128.jpg" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p>Alexander Pierce</p>
@@ -116,11 +113,22 @@
                         <!--ENROLLMENT-->
                         <li class="treeview">
                             <a>
+                                <i class="fa"></i> <span>Perfil</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="./ShowProfile.php"><i class="fa"></i>Mi Perfil</a></li>
+                                <li><a href="./UpdatePassword.php"><i class="fa"></i>Cambiar Contraseña</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!--ENROLLMENT-->
+                        <li class="treeview">
+                            <a>
                                 <i class="fa"></i> <span>Matrícula</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active"><a href=""><i class="fa"></i>Matrícula Nueva</a></li>
-                                <li class="active"><a href=""><i class="fa"></i>Matricular Existente</a></li>
+                                <li><a href="./CreateEnrollment.php"><i class="fa"></i>Matrícula Nueva</a></li>
+                                <li><a href="./ExistingEnrollment.php"><i class="fa"></i>Matricular Existente</a></li>
                             </ul>
                         </li>
 
@@ -130,7 +138,7 @@
                                 <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active"><a href="./CreateNotify.php"><i class="fa"></i>Enviar Notificación</a></li>
+                                <li><a href="./CreateNotify.php"><i class="fa"></i>Enviar Notificación</a></li>
                             </ul>
                         </li>
 
@@ -176,13 +184,13 @@
                         <!--SPECIALITIES-->
                         <li class="treeview">
                             <a>
-                                <i class="fa"></i> <span>Especialidades</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa"></i> <span>Atinencia</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="./ShowSpecialities.php"><i class="fa"></i>Ver Especialidades</a></li>
-                                <li><a href="./CreateSpeciality.php"><i class="fa"></i>Crear Especialidad</a></li>
-                                <li><a href="./ShowSpecialityUpdate.php"><i class="fa"></i>Actualizar Especialidad</a></li>
-                                <li><a href="./ShowSpecialityDelete.php"><i class="fa"></i>Eliminar Especialidad</a></li>
+                                <li><a href="./ShowSpecialities.php"><i class="fa"></i>Ver Atinencia</a></li>
+                                <li><a href="./CreateSpeciality.php"><i class="fa"></i>Crear Atinencia</a></li>
+                                <li><a href="./ShowSpecialityUpdate.php"><i class="fa"></i>Actualizar Atinencia</a></li>
+                                <li><a href="./ShowSpecialityDelete.php"><i class="fa"></i>Eliminar Atinencia</a></li>
                             </ul>
                         </li>
 
@@ -192,10 +200,10 @@
                                 <i class="fa"></i> <span>Cursos</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active"><a href="./ShowCourses.php"><i class="fa"></i>Ver Cursos</a></li>
-                                <li class="active"><a href="./CreateCourse.php"><i class="fa"></i>Crear Curso</a></li>
-                                <li><a href=""><i class="fa"></i>Actualizar Curso</a></li>
-                                <li><a href=""><i class="fa"></i>Eliminar Curso</a></li>
+                                <li><a href="./ShowCourses.php"><i class="fa"></i>Ver Cursos</a></li>
+                                <li><a href="./CreateCourse.php"><i class="fa"></i>Crear Curso</a></li>
+                                <li><a href="./ShowCourseUpdate.php"><i class="fa"></i>Actualizar Curso</a></li>
+                                <li><a href="./ShowCourseDelete.php"><i class="fa"></i>Eliminar Curso</a></li>
                             </ul>
                         </li>
 
@@ -205,10 +213,10 @@
                                 <i class="fa"></i> <span>Maya curricular</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active"><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Maya Curricular</a></li>
-                                <li class="active"><a href="./CreateCurriculum.php"><i class="fa"></i>Crear Maya Curricular</a></li>
-                                <li><a href=""><i class="fa"></i>Actualizar Maya Curricular</a></li>
-                                <li><a href=""><i class="fa"></i>Eliminar Maya Curricular</a></li>
+                                <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Maya Curricular</a></li>
+                                <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear Maya Curricular</a></li>
+                                <li><a href="./ShowCurriculumUpdate.php"><i class="fa"></i>Actualizar Maya Curricular</a></li>
+                                <li><a href="./ShowCurriculumDelete.php"><i class="fa"></i>Eliminar Maya Curricular</a></li>
                             </ul>
                         </li>
 
@@ -219,7 +227,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li class="active"><a href=""><i class="fa"></i>Ver Horarios</a></li>
-                                <li class="active"><a href=""><i class="fa"></i>Crear Horarios</a></li>
+                                <li class="active"><a href="./CreateSchedule.php"><i class="fa"></i>Crear Horarios</a></li>
                                 <li><a href=""><i class="fa"></i>Actualizar Horario</a></li>
                                 <li><a href=""><i class="fa"></i>Eliminar Horario</a></li>
                             </ul>
@@ -242,7 +250,7 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
-
+            
             <!-- Right side column. Contains the navbar and content of the page -->
             <div class="content-wrapper">
                 <br>

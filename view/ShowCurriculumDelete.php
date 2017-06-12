@@ -11,7 +11,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowAdminsDelete.php"><i class="fa fa-arrow-circle-right"></i> Eliminar Administradores</a></li>
+        <li><a href="ShowCurriculumDelete.php"><i class="fa fa-arrow-circle-right"></i> Eliminar Maya curricular</a></li>
     </ol>
 </section>
 <br>
@@ -22,33 +22,29 @@ include './reusable/Header.php';
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Eliminar Administradores del Cindea</h3>
+                    <h3 class="box-title">Eliminar Maya Curricular del Cindea</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Cédula</th>
+                                <th>Año</th>
                                 <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            include '../business/PersonBusiness.php';
-                            $personBusiness = new PersonBusiness();
+                            include '../business/CurriculumBusiness.php';
+                            $curriculumBusiness = new CurriculumBusiness();
                             
-                            $admins = $personBusiness->getAll();
+                            $curriculums = $curriculumBusiness->getAll();
                             
-                            foreach ($admins as $admin) {
+                            foreach ($curriculums as $curriculum) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $admin->getPersonDni(); ?></td>
-                                    <td><?php echo $admin->getPersonFirstName(); ?></td>
-                                    <td><?php echo $admin->getPersonFirstlastname(); ?></td>
-                                    <td><?php echo $admin->getPersonSecondlastname(); ?></td>
+                                    <td><?php echo $curriculum->getCurriculumYear(); ?></td>
+                                    <td><?php echo $curriculum->getCurriculumName(); ?></td>
                                     <td><a href="">Eliminar</a></td>
                                 </tr>
                                 <?php
@@ -57,10 +53,8 @@ include './reusable/Header.php';
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Cédula</th>
+                                 <th>Año</th>
                                 <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
                                 <th>Eliminar</th>
                             </tr>
                         </tfoot>
@@ -81,5 +75,4 @@ include './reusable/Footer.php';
         $("#example1").dataTable();
     });
 </script>
-
 

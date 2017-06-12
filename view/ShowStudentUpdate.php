@@ -48,7 +48,7 @@ include './reusable/Header.php';
                                 ?>
                                 <tr>
                                     <td><?php echo $student->getCourseCode(); ?></td>
-                                    <td><a href=""><?php echo $student->getCourseName(); ?></a></td>
+                                    <td><?php echo $student->getCourseName(); ?></td>
                                     <td><?php echo $student->getCourseCredits(); ?></td>
                                     <td><?php echo $student->getCourseLesson(); ?></td>
                                     <td><?php echo $student->getCoursePeriod(); ?></td>

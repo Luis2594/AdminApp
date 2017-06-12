@@ -11,7 +11,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowSpecialityDelete.php"><i class="fa fa-arrow-circle-right"></i> Eliminar Especialidades</a></li>
+        <li><a href="ShowSpecialityDelete.php"><i class="fa fa-arrow-circle-right"></i> Eliminar Atinencia/Especialidade</a></li>
     </ol>
 </section>
 <br>
@@ -22,13 +22,13 @@ include './reusable/Header.php';
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Eliminar Especialidades del Cindea</h3>
+                    <h3 class="box-title">Eliminar Atinencia/Especialidad del Cindea</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Especialidad</th>
+                                <th>Atinencia/Especialidad</th>
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
@@ -42,7 +42,7 @@ include './reusable/Header.php';
                             foreach ($specialities as $speciality) {
                                 ?>
                                 <tr>
-                                    <td><a href=""><?php echo $speciality->getSpecialityName(); ?></a></td>
+                                    <td><?php echo $speciality->getSpecialityName(); ?></td>
                                     <td><a href="">Eliminar</a></td>
                                 </tr>
                                 <?php
@@ -51,7 +51,7 @@ include './reusable/Header.php';
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Especialidad</th>
+                                <th>Atinencia/Especialidad</th>
                                 <th>Eliminar</th>
                             </tr>
                         </tfoot>

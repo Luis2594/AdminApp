@@ -11,7 +11,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="CreateSpeciality.php"><i class="fa fa-arrow-circle-right"></i>Crear Especialidad</a></li>
+        <li><a href="CreateSpeciality.php"><i class="fa fa-arrow-circle-right"></i>Crear Atinencia/Especialidad</a></li>
     </ol>
 </section>
 <br>
@@ -24,7 +24,7 @@ include './reusable/Header.php';
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Crear Especialidad</h3>
+                    <h3 class="box-title">Crear Atinencia/Especialidad</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form role="form" id="form" action="../business/businessAction/CreateSpeciality.php" method="POST" enctype="multipart/form-data">

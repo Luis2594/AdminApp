@@ -113,10 +113,10 @@ include './reusable/Header.php';
                             <button id="AddPhone" onclick="addPhone();" type="button" class="btn btn-success">Agregar teléfono</button>
                         </div>
                     </div><!-- /.box-body -->
-                    <div class="box-footer">
-                        <button onclick="valueInputs();" class="btn btn-primary">Crear</button>
-                    </div>
                 </form>
+                <div class="box-footer">
+                    <button onclick="valueInputs();" class="btn btn-primary">Crear</button>
+                </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
     </div>   <!-- /.row -->
@@ -185,7 +185,7 @@ include './reusable/Footer.php';
             showInputs: false
         });
     });
-    
+
     function valueInputs() {
         var dni = $('#dni').val();
         var name = $('#name').val();

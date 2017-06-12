@@ -3,7 +3,9 @@
     <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2017 <a href="https://www.facebook.com/profile.php?id=100010678920391" target="_blank">Cindea Turrialba</a>.</strong> Todos los derechos reservados.
+    <strong><a href="https://www.facebook.com/profile.php?id=100010678920391" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>       Facebook Cindea Turrialba </strong>
+    <br>
+    <strong>Copyright &copy; 2017 <a href="https://www.facebook.com/LuisCastilloC7" target="_blank">Luis Castillo</a> & <a href="https://www.facebook.com/kevinesquivel21" target="_blank">Kevin Esquivel</a>.</strong> Todos los derechos reservados. 
 </footer>
 </div><!-- ./wrapper -->
 
@@ -33,8 +35,7 @@
 <script src="./../resource/css/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="./../resource/css/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
-<!-- iCheck -->
-<script src="./../resource/css/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+
 <!-- Slimscroll -->
 <script src="./../resource/css/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <!-- FastClick -->
@@ -61,11 +62,10 @@
 <script src="./../resource/css/plugins/colorpicker/bootstrap-colorpicker.min.js" type="text/javascript"></script>
 <!-- bootstrap time picker -->
 <script src="./../resource/css/resource/css/plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>
-<!-- iCheck 1.0.1 -->
-<script src="./../resource/css/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
 <!-- FastClick -->
 <script src='./../resource/css/plugins/fastclick/fastclick.min.js'></script>
-
+<!-- iCheck -->
+<script src="./../resource/css/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
  <!-- CK Editor -->
     <script src="//cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
 

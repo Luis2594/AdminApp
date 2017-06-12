@@ -11,7 +11,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowStudentDelete.php"><i class="fa fa-arrow-circle-right"></i> Eliminar Estudiante</a></li>
+        <li><a href="ExistingEnrollment.php"><i class="fa fa-arrow-circle-right"></i> Matrícula existente de Estudiantes</a></li>
     </ol>
 </section>
 <br>
@@ -22,7 +22,7 @@ include './reusable/Header.php';
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Eliminar Estudiantes del Cindea</h3>
+                    <h3 class="box-title">Estudiantes del Cindea</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -32,9 +32,9 @@ include './reusable/Header.php';
                                 <th>Nombre</th>
                                 <th>Primer Apellido</th>
                                 <th>Segundo Apellido</th>
-                                <th>Genero</th>
+                                <th>Adecuación</th>
                                 <th>Grupo</th>
-                                <th>Eliminar</th>
+                                <th>Actualizar matrícula</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,7 +53,7 @@ include './reusable/Header.php';
                                     <td><?php echo $student->getCourseLesson(); ?></td>
                                     <td><?php echo $student->getCoursePeriod(); ?></td>
                                     <td><?php echo $student->getCourseSpeciality(); ?></td>
-                                    <td><a href="">Eliminar</a></td>
+                                    <td><a href="">Actualizar matrícula</a></td>
                                 </tr>
                                 <?php
                             }
@@ -65,9 +65,9 @@ include './reusable/Header.php';
                                 <th>Nombre</th>
                                 <th>Primer Apellido</th>
                                 <th>Segundo Apellido</th>
-                                <th>Genero</th>
+                                <th>Adecuación</th>
                                 <th>Grupo</th>
-                                <th>Eliminar</th>
+                                <th>Actualizar matrícula</th>
                             </tr>
                         </tfoot>
                     </table>

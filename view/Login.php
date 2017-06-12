@@ -1,10 +1,8 @@
 <?php
-
 session_start();
 if (isset($_SESSION['id'])) {
     header("location: ./Home.php");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -54,11 +52,11 @@ if (isset($_SESSION['id'])) {
                                 </label>
                             </div>                        
                         </div><!-- /.col -->
-                        <div class="col-xs-4" >
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
-                        </div><!-- /.col -->
                     </div>
                 </form>
+                <div class="col-xs-4" >
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
+                </div><!-- /.col -->
             </div><!-- /.login-box-body -->
         </div><!-- /.login-box -->
 
