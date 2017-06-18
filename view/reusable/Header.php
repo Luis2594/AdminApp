@@ -128,7 +128,6 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="./CreateEnrollment.php"><i class="fa"></i>Matrícula Nueva</a></li>
-                                <li><a href="./ExistingEnrollment.php"><i class="fa"></i>Matricular Existente</a></li>
                             </ul>
                         </li>
 

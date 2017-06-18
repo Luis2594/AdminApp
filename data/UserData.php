@@ -8,19 +8,21 @@ include '../domain/User.php';
  *
  * @author luisd
  */
-class UserData extends Connector{
+class UserData extends Connector {
 
     public function insert($user) {
-        $query = "call insert('" . $user->getUserUsername() . "',"
+        $query = "call insertUser('" . $user->getUserUsername() . "',"
                 . "'" . $user->getUserPass() . "',"
-                . "'" . $user->getUserUserType() . "',"
-                . "'" . $user->getUserPerson() . "')";
+                . "" . $user->getUserUserType() . ","
+                . "" . $user->getUserPerson() . ")";
 
-        return $this->exeQuery($query);
+        $res = $this->exeQuery($query);
+
+        return mysqli_num_rows($res);
     }
 
     public function update($user) {
-       $query = "call update('" . $user->getUserId() . "',"
+        $query = "call update('" . $user->getUserId() . "',"
                 . "'" . $user->getUserUsername() . "',"
                 . "'" . $user->getUserPass() . "',"
                 . "'" . $user->getUserUserType() . "',"
@@ -41,17 +43,13 @@ class UserData extends Connector{
 
     public function getAll() {
         $query = "";
-        
+
         $allUsers = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allUsers) > 0) {
             while ($row = mysqli_fetch_array($allUsers)) {
                 $currentUser = new CourseSchedule(
-                        $row['userId'], 
-                        $row['userUsername'], 
-                        $row['userPass'], 
-                        $row['userUserType'], 
-                        $row['userPerson']);
+                        $row['userId'], $row['userUsername'], $row['userPass'], $row['userUserType'], $row['userPerson']);
                 array_push($array, $currentUser);
             }
         }
@@ -60,17 +58,13 @@ class UserData extends Connector{
 
     public function getCourseId($id) {
         $query = "";
-        
+
         $allUser = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allUser) > 0) {
             while ($row = mysqli_fetch_array($allUser)) {
                 $currentUser = new CourseSchedule(
-                        $row['userId'], 
-                        $row['userUsername'], 
-                        $row['userPass'], 
-                        $row['userUserType'], 
-                        $row['userPerson']);
+                        $row['userId'], $row['userUsername'], $row['userPass'], $row['userUserType'], $row['userPerson']);
                 array_push($array, $currentUser);
             }
         }
@@ -80,5 +74,5 @@ class UserData extends Connector{
     public function getLastId() {
         
     }
-    
+
 }

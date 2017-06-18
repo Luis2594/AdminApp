@@ -8,19 +8,23 @@ include '../domain/Person.php';
  *
  * @author luisd
  */
-class PersonData extends Connector{
+class PersonData extends Connector {
 
-     public function insert($person) {
-        $query = "call insert('" . $person->getPersonDni() . "',"
+    public function insert($person) {
+        $query = "call insertPerson('" . $person->getPersonDni() . "',"
                 . "'" . $person->getPersonFirstName() . "',"
                 . "'" . $person->getPersonFirstlastname() . "',"
                 . "'" . $person->getPersonSecondlastname() . "',"
+                . "'" . $person->getPersonEmail() . "',"
                 . "'" . $person->getPersonBirthday() . "',"
-                . "'" . $person->getPersonAge() . "',"
+                . "" . $person->getPersonAge() . ","
                 . "'" . $person->getPersonGender() . "',"
                 . "'" . $person->getPersonNacionality() . "')";
 
-        return $this->exeQuery($query);
+        $result = $result = $this->exeQuery($query);
+        $array = mysqli_fetch_array($result);
+        $id = trim($array[0]);
+        return $id;
     }
 
     public function update($person) {
@@ -49,21 +53,13 @@ class PersonData extends Connector{
 
     public function getAll() {
         $query = "SELECT * FROM `person`";
-        
+
         $allPersons = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allPersons) > 0) {
             while ($row = mysqli_fetch_array($allPersons)) {
                 $currentPerson = new CourseSchedule(
-                        $row['personId'], 
-                        $row['personDni'], 
-                        $row['personFirstName'], 
-                        $row['personFirstlastname'], 
-                        $row['personSecondlastname'], 
-                        $row['personBirthday'], 
-                        $row['personAge'], 
-                        $row['personGender'], 
-                        $row['personNacionality']);
+                        $row['personId'], $row['personDni'], $row['personFirstName'], $row['personFirstlastname'], $row['personSecondlastname'], $row['personBirthday'], $row['personAge'], $row['personGender'], $row['personNacionality']);
                 array_push($array, $currentPerson);
             }
         }
@@ -72,21 +68,13 @@ class PersonData extends Connector{
 
     public function getPersonId($id) {
         $query = "";
-        
+
         $allPerson = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allPerson) > 0) {
             while ($row = mysqli_fetch_array($allPerson)) {
                 $currentPerson = new CourseSchedule(
-                        $row['personId'], 
-                        $row['personDni'], 
-                        $row['personFirstName'], 
-                        $row['personFirstlastname'], 
-                        $row['personSecondlastname'], 
-                        $row['personBirthday'], 
-                        $row['personAge'], 
-                        $row['personGender'], 
-                        $row['personNacionality']);
+                        $row['personId'], $row['personDni'], $row['personFirstName'], $row['personFirstlastname'], $row['personSecondlastname'], $row['personBirthday'], $row['personAge'], $row['personGender'], $row['personNacionality']);
                 array_push($array, $currentPerson);
             }
         }
@@ -96,5 +84,5 @@ class PersonData extends Connector{
     public function getLastId() {
         
     }
-    
+
 }

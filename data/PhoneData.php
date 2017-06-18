@@ -11,8 +11,8 @@ include '../domain/Phone.php';
 class PhoneData extends Connector{
 
      public function insert($phone) {
-        $query = "call insert('" . $phone->getPhonePhone() . "',"
-                . "'" . $phone->getPhonePerson() . "')";
+        $query = "call insertPhone('" . $phone->getPhonePhone() . "',"
+                . "" . $phone->getPhonePerson() . ")";
 
         return $this->exeQuery($query);
     }

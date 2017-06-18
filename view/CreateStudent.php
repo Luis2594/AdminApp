@@ -27,7 +27,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Estudiante</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/businessAction/CreateStudent.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="form" action="../business/CreateStudentAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <!--DNI-->
                         <div class="form-group">
@@ -67,7 +67,7 @@ include './reusable/Header.php';
                         <!--AGE-->
                         <div class="form-group">
                             <label>Edad</label>
-                            <input id="age" name="age" type="text" class="form-control" placeholder="Edad" required=""/>
+                            <input id="age" name="age" type="number" class="form-control" placeholder="Edad" required=""/>
                         </div>
                         <!--GENDER-->
                         <div class="form-group">
@@ -89,7 +89,36 @@ include './reusable/Header.php';
                             <label>Nacionalidad</label>
                             <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required=""/>
                         </div>
-
+                        <!--YEARINCOME-->
+                        <div class="form-group">
+                            <label>Año de ingreso</label>
+                            <input id="yearIncome" name="yearIncome" type="number" class="form-control" placeholder="Año de ingreso" required=""/>
+                        </div>
+                        <!--MANAGER-->
+                        <div class="form-group">
+                            <label>Encargado</label>
+                            <input id="managerStudent" name="managerStudent" type="text" class="form-control" placeholder="Encargado" required=""/>
+                        </div>
+                        <!--LOCALITATION-->
+                        <div>
+                            <label>Localización</label>
+                            <textarea id="localitation" name="localitation" class="form-control" rows="3" placeholder="Localización ..." required="" ></textarea>
+                        </div>
+                        <!--ADECUACY-->
+                        <div class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="adecuacy" id="adecuacy1" name="adecuacy1" value="0" checked>
+                                    Sin adecuación
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="adecuacy" id="adecuacy2" name="adecuacy2" value="1">
+                                    Con adecuación
+                                </label>
+                            </div>
+                        </div>
                         <!--PHONES-->
                         <table id="phone">
                             <tr id="tr0">
@@ -128,6 +157,7 @@ include './reusable/Footer.php';
 
 <script type="text/javascript">
     var idPhone = 1;
+
     $(function () {
         //Datemask dd/mm/yyyy
         $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
@@ -187,14 +217,17 @@ include './reusable/Footer.php';
     });
 
     function valueInputs() {
+
         var dni = $('#dni').val();
         var name = $('#name').val();
         var firstlastname = $('#firstlastname').val();
         var secondlastname = $('#secondlastname').val();
-        var email = $('#exampleInputEmail1').val();
-//        var birthdate = $('#birthdate').val();
+        var birthdate = $('#birthdate').val();
         var age = $('#age').val();
         var nationality = $('#nationality').val();
+        var yearIncome = $('#yearIncome').val();
+        var managerStudent = $('#managerStudent').val();
+        var direction = $('#localitation').val();
 
         if (!isInteger(dni)) {
             alertify.error("Formato de cédula incorrecto");
@@ -226,12 +259,12 @@ include './reusable/Footer.php';
             return false;
         }
 
-        if (!valueEmail(email)) {
-            alertify.error("Verifique el correo electronico");
+        if (!isInteger(age)) {
+            alertify.error("Verifique la edad");
             return false;
         }
 
-        if (!isInteger(age)) {
+        if (age <= 0) {
             alertify.error("Verifique la edad");
             return false;
         }
@@ -241,8 +274,27 @@ include './reusable/Footer.php';
             return false;
         }
 
-        $("#form").submit(function () {
-        });
+        if (!isInteger(yearIncome)) {
+            alertify.error("Verifique el año de ingreso");
+            return false;
+        }
+
+//        if ((yearIncome <= 2015) || (yearIncome >= 10000)){
+//            alertify.error("Verifique el año de ingreso");
+//            return false;
+//        }
+
+        if (managerStudent.length === 0) {
+            alertify.error("Verifique el nombre del encargado");
+            return false;
+        }
+
+        if (direction.length === 0) {
+            alertify.error("Verifique la localización");
+            return false;
+        }
+        $('#phones').val(idPhone);
+        $("#form").submit();
     }
 
     function isInteger(number) {
@@ -263,19 +315,6 @@ include './reusable/Footer.php';
             return false;
         }
         return true;
-    }
-
-    function valueEmail(email) {
-        // Expresion regular para validar el correo
-        var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-
-        // Se utiliza la funcion test() nativa de JavaScript
-        if (regex.test(email)) {
-            return true;
-        } else {
-            return false;
-        }
-        return false;
     }
 
     $('#phones').hide();
@@ -303,7 +342,6 @@ include './reusable/Footer.php';
 
         $('#phone tr:last').after(scripHtml);
 
-        $('#phones').val(idPhone);
         idPhone++;
     }
 

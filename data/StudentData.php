@@ -8,19 +8,18 @@ include '../domain/Student.php';
  *
  * @author luisd
  */
-class StudentData extends Connector{
+class StudentData extends Connector {
 
-     public function insert($student) {
-        $query = "call insert('" . $student->getStudentAdecuacy() . "',"
+    public function insert($student) {
+        $query = "call insertStudent(" . $student->getStudentAdecuacy() . ","
                 . "'" . $student->getStudentYearIncome() . "',"
-                . "'" . $student->getStudentYearOut() . "',"
                 . "'" . $student->getStudentLocation() . "',"
-                . "'" . $student->getStudentGroup() . "',"
-                . "'" . $student->getStudentCourse() . "',"
                 . "'" . $student->getStudentManager() . "',"
-                . "'" . $student->getPersonNacionality() . "')";
+                . "" . $student->getStudentPerson() . ")";
 
-        return $this->exeQuery($query);
+        $res = $this->exeQuery($query);
+
+        return mysqli_num_rows($res);
     }
 
     public function update($person) {
@@ -49,21 +48,13 @@ class StudentData extends Connector{
 
     public function getAll() {
         $query = "";
-        
+
         $allStudents = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allStudents) > 0) {
             while ($row = mysqli_fetch_array($allStudents)) {
                 $currentStudent = new CourseSchedule(
-                        $row['studentId'], 
-                        $row['studentAdecuacy'], 
-                        $row['studentYearIncome'], 
-                        $row['studentYearOut'], 
-                        $row['studentLocation'], 
-                        $row['studentGroup'], 
-                        $row['studentCourse'], 
-                        $row['studentManager'], 
-                        $row['studentPerson']);
+                        $row['studentId'], $row['studentAdecuacy'], $row['studentYearIncome'], $row['studentYearOut'], $row['studentLocation'], $row['studentGroup'], $row['studentCourse'], $row['studentManager'], $row['studentPerson']);
                 array_push($array, $currentStudent);
             }
         }
@@ -72,21 +63,13 @@ class StudentData extends Connector{
 
     public function getCourseId($id) {
         $query = "";
-        
+
         $allStudent = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allStudent) > 0) {
             while ($row = mysqli_fetch_array($allStudent)) {
                 $currentStudent = new CourseSchedule(
-                        $row['studentId'], 
-                        $row['studentAdecuacy'], 
-                        $row['studentYearIncome'], 
-                        $row['studentYearOut'], 
-                        $row['studentLocation'], 
-                        $row['studentGroup'], 
-                        $row['studentCourse'], 
-                        $row['studentManager'], 
-                        $row['studentPerson']);
+                        $row['studentId'], $row['studentAdecuacy'], $row['studentYearIncome'], $row['studentYearOut'], $row['studentLocation'], $row['studentGroup'], $row['studentCourse'], $row['studentManager'], $row['studentPerson']);
                 array_push($array, $currentStudent);
             }
         }
@@ -96,5 +79,5 @@ class StudentData extends Connector{
     public function getLastId() {
         
     }
-    
+
 }

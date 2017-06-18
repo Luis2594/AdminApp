@@ -18,23 +18,20 @@ class Student {
     private $studentYearIncome;
     private $studentYearOut;
     private $studentLocation;
-    private $studentGroup;
-    private $studentCourse;
+    private $studentgroup;
     private $studentManager;
     private $studentPerson;
     
-    function Student($StudentId, $StudentAdecuacy, $StudentYearIncome, $StudentYearOut, $StudentLocation, $StudentGroup, $StudentCourse, $StudentManager, $StudentPerson) {
-        $this->studentId = $StudentId;
-        $this->studentAdecuacy = $StudentAdecuacy;
-        $this->studentYearIncome = $StudentYearIncome;
-        $this->studentYearOut = $StudentYearOut;
-        $this->studentLocation = $StudentLocation;
-        $this->studentGroup = $StudentGroup;
-        $this->studentCourse = $StudentCourse;
-        $this->studentManager = $StudentManager;
-        $this->studentPerson = $StudentPerson;
+    function Student($studentId, $studentAdecuacy, $studentYearIncome, $studentYearOut, $studentLocation, $studentgroup, $studentManager, $studentPerson) {
+        $this->studentId = $studentId;
+        $this->studentAdecuacy = $studentAdecuacy;
+        $this->studentYearIncome = $studentYearIncome;
+        $this->studentYearOut = $studentYearOut;
+        $this->studentLocation = $studentLocation;
+        $this->studentgroup = $studentgroup;
+        $this->studentManager = $studentManager;
+        $this->studentPerson = $studentPerson;
     }
-    
     function getStudentId() {
         return $this->studentId;
     }
@@ -55,12 +52,8 @@ class Student {
         return $this->studentLocation;
     }
 
-    function getStudentGroup() {
-        return $this->studentGroup;
-    }
-
-    function getStudentCourse() {
-        return $this->studentCourse;
+    function getStudentgroup() {
+        return $this->studentgroup;
     }
 
     function getStudentManager() {
@@ -71,41 +64,35 @@ class Student {
         return $this->studentPerson;
     }
 
-    function setStudentId($StudentId) {
-        $this->studentId = $StudentId;
+    function setStudentId($studentId) {
+        $this->studentId = $studentId;
     }
 
-    function setStudentAdecuacy($StudentAdecuacy) {
-        $this->studentAdecuacy = $StudentAdecuacy;
+    function setStudentAdecuacy($studentAdecuacy) {
+        $this->studentAdecuacy = $studentAdecuacy;
     }
 
-    function setStudentYearIncome($StudentYearIncome) {
-        $this->studentYearIncome = $StudentYearIncome;
+    function setStudentYearIncome($studentYearIncome) {
+        $this->studentYearIncome = $studentYearIncome;
     }
 
-    function setStudentYearOut($StudentYearOut) {
-        $this->studentYearOut = $StudentYearOut;
+    function setStudentYearOut($studentYearOut) {
+        $this->studentYearOut = $studentYearOut;
     }
 
-    function setStudentLocation($StudentLocation) {
-        $this->studentLocation = $StudentLocation;
+    function setStudentLocation($studentLocation) {
+        $this->studentLocation = $studentLocation;
     }
 
-    function setStudentGroup($StudentGroup) {
-        $this->studentGroup = $StudentGroup;
+    function setStudentgroup($studentgroup) {
+        $this->studentgroup = $studentgroup;
     }
 
-    function setStudentCourse($StudentCourse) {
-        $this->studentCourse = $StudentCourse;
+    function setStudentManager($studentManager) {
+        $this->studentManager = $studentManager;
     }
 
-    function setStudentManager($StudentManager) {
-        $this->studentManager = $StudentManager;
+    function setStudentPerson($studentPerson) {
+        $this->studentPerson = $studentPerson;
     }
-
-    function setStudentPerson($StudentPerson) {
-        $this->studentPerson = $StudentPerson;
-    }
-
-
 }

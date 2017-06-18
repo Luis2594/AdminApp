@@ -18,23 +18,25 @@ class Person {
     private $personFirstName;
     private $personFirstlastname;
     private $personSecondlastname;
+    private $personEmail;
     private $personBirthday;
     private $personAge;
     private $personGender;
     private $personNacionality;
-    
-    function Person($personId, $personDni, $personFirstName, $personFirstlastname, $personSecondlastname, $personBirthday, $personAge, $personGender, $personNacionality) {
+
+    function Person($personId, $personDni, $personFirstName, $personFirstlastname, $personSecondlastname, $personEmail, $personBirthday, $personAge, $personGender, $personNacionality) {
         $this->personId = $personId;
         $this->personDni = $personDni;
         $this->personFirstName = $personFirstName;
         $this->personFirstlastname = $personFirstlastname;
         $this->personSecondlastname = $personSecondlastname;
+        $this->personEmail = $personEmail;
         $this->personBirthday = $personBirthday;
         $this->personAge = $personAge;
         $this->personGender = $personGender;
         $this->personNacionality = $personNacionality;
     }
-    
+
     function getPersonId() {
         return $this->personId;
     }
@@ -53,6 +55,10 @@ class Person {
 
     function getPersonSecondlastname() {
         return $this->personSecondlastname;
+    }
+
+    function getPersonEmail() {
+        return $this->personEmail;
     }
 
     function getPersonBirthday() {
@@ -89,6 +95,10 @@ class Person {
 
     function setPersonSecondlastname($personSecondlastname) {
         $this->personSecondlastname = $personSecondlastname;
+    }
+
+    function setPersonEmail($personEmail) {
+        $this->personEmail = $personEmail;
     }
 
     function setPersonBirthday($personBirthday) {
