@@ -31,8 +31,12 @@ class SpecialityBusiness {
       return $this->specialityData->getAll();
     }
     
-    public function getCourseId($id) {
-     return $this->specialityData->getCourseId($id);
+    public function getAllSpecialitiesForCourse() {
+      return $this->specialityData->getAllSpecialitiesForCourse();
+    }
+    
+    public function getSpecialityId($id) {
+     return $this->specialityData->getSpecialityId($id);
     }
     
     public function getLastId() {

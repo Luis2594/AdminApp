@@ -27,7 +27,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Curso</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/businessAction/CreateCourse.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="form" action="../business/CreateCourseAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
                             <label>Código</label>
@@ -49,20 +49,20 @@ include './reusable/Header.php';
                         <div class="form-group">
                             <label>Período</label>
                             <select id="period" name="period" class="form-control">
-                                <option>I</option>
-                                <option>II</option>
-                                <option>III</option>
+                                <option value="1">I</option>
+                                <option value="2">II</option>
+                                <option value="3">III</option>
                             </select>
                         </div>
                         <!-- select -->
                         <div class="form-group">
-                            <label>Especialidad</label>
+                            <label>Atinencia/Especialidad</label>
                             <select id="speciality" name="speciality" class="form-control">
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Cronograma</label>
-                            <input id="schedule" name="schedule" type="file" id="exampleInputFile">
+                            <input id="schedule" name="schedule" type="file" >
                             <p class="help-block">Subir archivo con extensión .pdf</p>
                         </div>
                     </div><!-- /.box-body -->
@@ -84,7 +84,7 @@ include './reusable/Footer.php';
     $(function () {
         $.ajax({
             type: 'GET',
-            url: "../business/getAction/GetSpecialities.php",
+            url: "../business/GetSpecialities.php",
             success: function (data)
             {
                 var speciality = JSON.parse(data);
@@ -106,7 +106,7 @@ include './reusable/Footer.php';
                      * alertify.confirm(title, message, onok, oncancel);
                      *
                      */
-                    alertify.confirm('Confirmar', 'Tiene que existir al menos una especialidad', function () {
+                    alertify.confirm('Confirmar', 'Tiene que existir al menos una atinencia o especialidad', function () {
                         window.location = "CreateSpeciality.php";
                     }
                     , function () {
@@ -120,6 +120,32 @@ include './reusable/Footer.php';
             }
         });
     });
+
+    (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
 
     function valueInputs() {
         var code = $('#code').val();
@@ -147,8 +173,7 @@ include './reusable/Footer.php';
             return false;
         }
 
-        $("#form").submit(function () {
-        });
+        $("#form").submit();
     }
 
     function isInteger(number) {

@@ -19,15 +19,17 @@ class Course {
     private $courseCredits;
     private $courseLesson;
     private $coursePeriod;
+    private $coursePdf;
     private $courseSpeciality;
     
-    function Course($courseId, $courseCode, $courseName, $courseCredits, $courseLesson, $coursePeriod, $courseSpeciality) {
+    function Course($courseId, $courseCode, $courseName, $courseCredits, $courseLesson, $coursePeriod, $coursePdf, $courseSpeciality) {
         $this->courseId = $courseId;
         $this->courseCode = $courseCode;
         $this->courseName = $courseName;
         $this->courseCredits = $courseCredits;
         $this->courseLesson = $courseLesson;
         $this->coursePeriod = $coursePeriod;
+        $this->coursePdf = $coursePdf;
         $this->courseSpeciality = $courseSpeciality;
     }
     function getCourseId() {
@@ -52,6 +54,10 @@ class Course {
 
     function getCoursePeriod() {
         return $this->coursePeriod;
+    }
+
+    function getCoursePdf() {
+        return $this->coursePdf;
     }
 
     function getCourseSpeciality() {
@@ -80,6 +86,10 @@ class Course {
 
     function setCoursePeriod($coursePeriod) {
         $this->coursePeriod = $coursePeriod;
+    }
+
+    function setCoursePdf($coursePdf) {
+        $this->coursePdf = $coursePdf;
     }
 
     function setCourseSpeciality($courseSpeciality) {

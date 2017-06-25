@@ -27,8 +27,8 @@ class PhoneBusiness {
       return $this->phoneData->delete($id);
     }
     
-    public function getAll() {
-      return $this->phoneData->getAll();
+    public function getAllPerson($id) {
+      return $this->phoneData->getAllPerson($id);
     }
     
     public function getCourseId($id) {

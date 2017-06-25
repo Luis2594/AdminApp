@@ -25,7 +25,8 @@ include './reusable/Header.php';
                     <h3 class="box-title">Estudiantes del Cindea</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Cédula</th>
@@ -42,18 +43,41 @@ include './reusable/Header.php';
                             <?php
                             include '../business/StudentBusiness.php';
                             $studentBusiness = new StudentBusiness();
-                            
+
                             $students = $studentBusiness->getAll();
-                            
+
                             foreach ($students as $student) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $student->getCourseCode(); ?></td>
-                                    <td><a href=""><?php echo $student->getCourseName(); ?></a></td>
-                                    <td><?php echo $student->getCourseCredits(); ?></td>
-                                    <td><?php echo $student->getCourseLesson(); ?></td>
-                                    <td><?php echo $student->getCoursePeriod(); ?></td>
-                                    <td><?php echo $student->getCourseSpeciality(); ?></td>
+                                    <td><?php echo $student->getPersonDni(); ?></td>
+                                    <td><a href="InformationStudent.php?id=<?php echo $student->getPersonId();?>"><?php echo $student->getPersonFirstName(); ?></a></td>
+                                    <td><?php echo $student->getPersonFirstlastname(); ?></td>
+                                    <td><?php echo $student->getPersonSecondlastname(); ?></td>
+                                    <td><?php echo $student->getPersonAge(); ?></td>
+                                    <?php
+                                    if ($student->getPersonGender() == "1") {
+                                        ?> 
+                                        <td>Hombre</td>
+                                        <?php
+                                    } else {
+                                        ?> 
+                                        <td>Mujer</td>
+                                        <?php
+                                    }
+                                    ?> 
+
+                                    <?php
+                                    if ($student->getStudentAdecuacy() == "0") {
+                                        ?> 
+                                        <td>No</td>
+                                        <?php
+                                    } else {
+                                        ?> 
+                                        <td>Si</td>
+                                        <?php
+                                    }
+                                    ?> 
+                                    <td><?php echo $student->getStudentgroup(); ?></td>
                                 </tr>
                                 <?php
                             }
@@ -72,6 +96,7 @@ include './reusable/Header.php';
                             </tr>
                         </tfoot>
                     </table>
+                    </div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div><!-- /.col -->

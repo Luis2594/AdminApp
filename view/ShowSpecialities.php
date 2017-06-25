@@ -41,7 +41,7 @@ include './reusable/Header.php';
                             foreach ($specialities as $speciality) {
                                 ?>
                                 <tr>
-                                    <td><a href=""><?php echo $speciality->getSpecialityName(); ?></a></td>
+                                    <td><a href="InformationSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>"><?php echo $speciality->getSpecialityName(); ?></a></td>
                                 </tr>
                                 <?php
                             }

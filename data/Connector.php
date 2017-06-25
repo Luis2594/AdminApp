@@ -25,6 +25,12 @@ class Connector {
 //        $this->password = '12345678';
 //        $this->db = 'u738259693_sanke';
 //    }
+//    public function Connector() {
+//        $this->server = '163.178.107.130';
+//        $this->user = 'adm';
+//        $this->password = 'saucr.092';
+//        $this->db = 'cindea';
+//    }
     public function Connector() {
         $this->server = 'localhost';
         $this->user = 'root';

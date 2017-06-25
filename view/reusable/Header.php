@@ -127,7 +127,7 @@
                                 <i class="fa"></i> <span>Matrícula</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="./CreateEnrollment.php"><i class="fa"></i>Matrícula Nueva</a></li>
+                                <li><a href="./ShowStudentsEnrollment.php"><i class="fa"></i>Matrícula Nueva</a></li>
                             </ul>
                         </li>
 

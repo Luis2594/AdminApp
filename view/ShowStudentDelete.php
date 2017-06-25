@@ -11,7 +11,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowStudentDelete.php"><i class="fa fa-arrow-circle-right"></i> Eliminar Estudiante</a></li>
+        <li><a href="ShowStudentDelete.php"><i class="fa fa-arrow-circle-right"></i> Eliminar Estudiantes</a></li>
     </ol>
 </section>
 <br>
@@ -32,7 +32,9 @@ include './reusable/Header.php';
                                 <th>Nombre</th>
                                 <th>Primer Apellido</th>
                                 <th>Segundo Apellido</th>
-                                <th>Genero</th>
+                                <th>Edad</th>
+                                <th>Género</th>
+                                <th>Adecuación</th>
                                 <th>Grupo</th>
                                 <th>Eliminar</th>
                             </tr>
@@ -41,18 +43,41 @@ include './reusable/Header.php';
                             <?php
                             include '../business/StudentBusiness.php';
                             $studentBusiness = new StudentBusiness();
-                            
+
                             $students = $studentBusiness->getAll();
-                            
+
                             foreach ($students as $student) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $student->getCourseCode(); ?></td>
-                                    <td><?php echo $student->getCourseName(); ?></td>
-                                    <td><?php echo $student->getCourseCredits(); ?></td>
-                                    <td><?php echo $student->getCourseLesson(); ?></td>
-                                    <td><?php echo $student->getCoursePeriod(); ?></td>
-                                    <td><?php echo $student->getCourseSpeciality(); ?></td>
+                                    <td><?php echo $student->getPersonDni(); ?></td>
+                                    <td><?php echo $student->getPersonFirstName(); ?></td>
+                                    <td><?php echo $student->getPersonFirstlastname(); ?></td>
+                                    <td><?php echo $student->getPersonSecondlastname(); ?></td>
+                                    <td><?php echo $student->getPersonAge(); ?></td>
+                                    <?php
+                                    if ($student->getPersonGender() == "1") {
+                                        ?> 
+                                        <td>Hombre</td>
+                                        <?php
+                                    } else {
+                                        ?> 
+                                        <td>Mujer</td>
+                                        <?php
+                                    }
+                                    ?> 
+
+                                    <?php
+                                    if ($student->getStudentAdecuacy() == "0") {
+                                        ?> 
+                                        <td>Sin adecuación</td>
+                                        <?php
+                                    } else {
+                                        ?> 
+                                        <td>Con adecuación</td>
+                                        <?php
+                                    }
+                                    ?> 
+                                    <td><?php echo $student->getStudentgroup(); ?></td>
                                     <td><a href="">Eliminar</a></td>
                                 </tr>
                                 <?php
@@ -65,7 +90,9 @@ include './reusable/Header.php';
                                 <th>Nombre</th>
                                 <th>Primer Apellido</th>
                                 <th>Segundo Apellido</th>
-                                <th>Genero</th>
+                                <th>Edad</th>
+                                <th>Género</th>
+                                <th>Adecuación</th>
                                 <th>Grupo</th>
                                 <th>Eliminar</th>
                             </tr>

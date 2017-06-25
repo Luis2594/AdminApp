@@ -35,17 +35,17 @@ class PhoneData extends Connector{
         }
     }
 
-    public function getAll() {
-        $query = "";
+    public function getAllPerson($id) {
+        $query = 'call getAllPhonesPerson("' . $id . '");';
         
         $allPhones = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allPhones) > 0) {
             while ($row = mysqli_fetch_array($allPhones)) {
-                $currentPhone = new CourseSchedule(
-                        $row['phoneId'], 
-                        $row['phonePhone'], 
-                        $row['phonePerson']);
+                $currentPhone = new Phone(
+                        $row['phoneid'], 
+                        $row['phonephone'], 
+                        $row['phoneperson']);
                 array_push($array, $currentPhone);
             }
         }

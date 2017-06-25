@@ -32,6 +32,7 @@ class Student {
         $this->studentManager = $studentManager;
         $this->studentPerson = $studentPerson;
     }
+    
     function getStudentId() {
         return $this->studentId;
     }

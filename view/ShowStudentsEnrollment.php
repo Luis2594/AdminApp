@@ -22,53 +22,81 @@ include './reusable/Header.php';
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Estudiantes del Cindea</h3>
+                    <h3 class="box-title">Matrícula</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Cédula</th>
-                                <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
-                                <th>Edad</th>
-                                <th>Género</th>
-                                <th>Grupo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            include '../business/StudentBusiness.php';
-                            $studentBusiness = new StudentBusiness();
-                            
-                            $students = $studentBusiness->getAll();
-                            
-                            foreach ($students as $student) {
-                                ?>
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
                                 <tr>
-                                    <td><?php echo $student->getCourseCode(); ?></td>
-                                    <td><a href="CreateEnrollment.php?id=<?php echo $student->getId(); ?>"><?php echo $student->getCourseName(); ?></a></td>
-                                    <td><?php echo $student->getCourseCredits(); ?></td>
-                                    <td><?php echo $student->getCourseLesson(); ?></td>
-                                    <td><?php echo $student->getCoursePeriod(); ?></td>
-                                    <td><?php echo $student->getCourseSpeciality(); ?></td>
+                                    <th>Cédula</th>
+                                    <th>Nombre</th>
+                                    <th>Primer Apellido</th>
+                                    <th>Segundo Apellido</th>
+                                    <th>Edad</th>
+                                    <th>Género</th>
+                                    <th>Adecuación</th>
+                                    <th>Grupo</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                            }
-                            ?> 
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Cédula</th>
-                                <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
-                                <th>Edad</th>
-                                <th>Género</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                                include '../business/StudentBusiness.php';
+                                $studentBusiness = new StudentBusiness();
+
+                                $students = $studentBusiness->getAll();
+
+                                foreach ($students as $student) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $student->getPersonDni(); ?></td>
+                                        <td><a href="CreateEnrollment.php?id=<?php echo $student->getPersonId(); ?>&name=<?php echo $student->getPersonFirstName() . " " . $student->getPersonFirstlastname() . " " . $student->getPersonSecondlastname(); ?>"><?php echo $student->getPersonFirstName(); ?></a></td>
+                                        <td><?php echo $student->getPersonFirstlastname(); ?></td>
+                                        <td><?php echo $student->getPersonSecondlastname(); ?></td>
+                                        <td><?php echo $student->getPersonAge(); ?></td>
+                                        <?php
+                                        if ($student->getPersonGender() == "1") {
+                                            ?> 
+                                            <td>Hombre</td>
+                                            <?php
+                                        } else {
+                                            ?> 
+                                            <td>Mujer</td>
+                                            <?php
+                                        }
+                                        ?> 
+
+                                        <?php
+                                        if ($student->getStudentAdecuacy() == "0") {
+                                            ?> 
+                                            <td>No</td>
+                                            <?php
+                                        } else {
+                                            ?> 
+                                            <td>Si</td>
+                                            <?php
+                                        }
+                                        ?> 
+                                        <td><?php echo $student->getStudentgroup(); ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?> 
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Cédula</th>
+                                    <th>Nombre</th>
+                                    <th>Primer Apellido</th>
+                                    <th>Segundo Apellido</th>
+                                    <th>Edad</th>
+                                    <th>Género</th>
+                                    <th>Adecuación</th>
+                                    <th>Grupo</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div><!-- /.col -->

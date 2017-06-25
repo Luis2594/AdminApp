@@ -33,7 +33,7 @@ include './reusable/Header.php';
                                 <th>Creditos</th>
                                 <th>Lecciones</th>
                                 <th>Periodo</th>
-                                <th>Especialidad</th>
+                                <th>Atinencia/Especialidad</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,7 +64,7 @@ include './reusable/Header.php';
                                 <th>Creditos</th>
                                 <th>Lecciones</th>
                                 <th>Periodo</th>
-                                <th>Especialidad</th>
+                                <th>Atinencia/Especialidad</th>
                             </tr>
                         </tfoot>
                     </table>

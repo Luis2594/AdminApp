@@ -51,8 +51,11 @@ include './reusable/Header.php';
                         </div>
                         <!--EMAIL-->
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="Enter email">
+                            <label for="exampleInputEmail1">Correo electronico</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">@</div>
+                                <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="Enter email">
+                            </div>
                         </div>
                         <!-- BIRTHDATE -->
                         <div class="form-group">

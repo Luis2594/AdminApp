@@ -31,8 +31,8 @@ class StudentBusiness {
       return $this->studentData->getAll();
     }
     
-    public function getCourseId($id) {
-     return $this->studentData->getCourseId($id);
+    public function getStudentId($id) {
+     return $this->studentData->getStudentId($id);
     }
     
     public function getLastId() {

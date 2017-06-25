@@ -27,7 +27,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Atinencia/Especialidad</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/businessAction/CreateSpeciality.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="form" action="../business/CreateSpecialityAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
                             <label>Nombre</label>
@@ -49,15 +49,40 @@ include './reusable/Footer.php';
 
 <script type="text/javascript">
 
+    (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+
     function valueInputs() {
         var name = $('#name').val();
         if (name.length === 0) {
-            alertify.error("Verifique el nombre del curso");
+            alertify.error("Verifique el nombre de la atinencia o especialidad");
             return false;
         }
 
-        $("#form").submit(function () {
-        });
+        $("#form").submit();
     }
 
 </script>

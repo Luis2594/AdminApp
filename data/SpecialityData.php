@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Person.php';
+include '../domain/Speciality.php';
 
 /**
  * Description of SpecialityData
@@ -11,9 +11,12 @@ include '../domain/Person.php';
 class SpecialityData extends Connector{
 
     public function insert($speciality) {
-        $query = "call insert('" . $speciality->getSpecialityName() . "')";
+        $query = "call insertSpeciality('" . $speciality->getSpecialityName() . "')";
 
-        return $this->exeQuery($query);
+        $result = $result = $this->exeQuery($query);
+        $array = mysqli_fetch_array($result);
+        $id = trim($array[0]);
+        return $id;
     }
 
     public function update($speciality) {
@@ -34,31 +37,43 @@ class SpecialityData extends Connector{
     }
 
     public function getAll() {
-        $query = "SELECT * FROM `speciality`";
+        $query = "call getAllSpeciality();";
         
         $allSpecialities = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allSpecialities) > 0) {
             while ($row = mysqli_fetch_array($allSpecialities)) {
-                $currentSpeciality = new CourseSchedule(
-                        $row['specialityId'], 
-                        $row['specialityName']);
+                $currentSpeciality = new Speciality(
+                        $row['specialityid'], 
+                        $row['specialityname']);
                 array_push($array, $currentSpeciality);
             }
         }
         return $array;
     }
-
-    public function getCourseId($id) {
-        $query = "";
+    
+    public function getAllSpecialitiesForCourse() {
+        $query = "call getAllSpeciality();";
         
-        $allSpecialitie = $this->exeQuery($query);
+       $speciality = $this->exeQuery($query);
         $array = [];
-        if (mysqli_num_rows($allSpecialitie) > 0) {
-            while ($row = mysqli_fetch_array($allSpecialitie)) {
-                $currentSpeciality = new CourseSchedule(
-                        $row['specialityId'], 
-                        $row['specialityName']);
+        while ($row = mysqli_fetch_array($speciality)) {
+            $array[] = array("id" => $row['specialityid'],
+                "name" => $row['specialityname']);
+        }
+        return $array;
+    }
+
+    public function getSpecialityId($id) {
+        $query = 'call getSpecialityById("' . $id . '");';
+        
+        $allSpecialities = $this->exeQuery($query);
+        $array = [];
+        if (mysqli_num_rows($allSpecialities) > 0) {
+            while ($row = mysqli_fetch_array($allSpecialities)) {
+                $currentSpeciality = new Speciality(
+                        $row['specialityid'], 
+                        $row['specialityname']);
                 array_push($array, $currentSpeciality);
             }
         }
