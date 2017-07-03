@@ -20,13 +20,18 @@ class UserData extends Connector {
 
         return mysqli_num_rows($res);
     }
+    
+    public function insertProfessorWithCredentials($user) {
+        $query = "call insertProfessorWithCredentials('" . $user->getUserPerson() . "',"
+                . "" . $user->getUserPass() . ")";
+
+        return $this->exeQuery($query);
+    }
 
     public function update($user) {
-        $query = "call update('" . $user->getUserId() . "',"
+        $query = "call updateUser('" . $user->getUserId() . "',"
                 . "'" . $user->getUserUsername() . "',"
-                . "'" . $user->getUserPass() . "',"
-                . "'" . $user->getUserUserType() . "',"
-                . "'" . $user->getUserPerson() . "')";
+                . "'" . $user->getUserPass() . "')";
 
         return $this->exeQuery($query);
     }
@@ -56,19 +61,21 @@ class UserData extends Connector {
         return $array;
     }
 
-    public function getCourseId($id) {
-        $query = "";
+    public function getUserId($id) {
+        $query = "SELECT * FROM personuser WHERE userperson = ". $id;
 
         $allUser = $this->exeQuery($query);
-        $array = [];
         if (mysqli_num_rows($allUser) > 0) {
             while ($row = mysqli_fetch_array($allUser)) {
-                $currentUser = new CourseSchedule(
-                        $row['userId'], $row['userUsername'], $row['userPass'], $row['userUserType'], $row['userPerson']);
-                array_push($array, $currentUser);
+                $currentUser = new User(
+                        $row['userid'], 
+                        $row['userusername'], 
+                        $row['useruserpass'], 
+                        $row['userusertype'], 
+                        $row['userperson']);
             }
         }
-        return $array;
+        return $currentUser;
     }
 
     public function getLastId() {

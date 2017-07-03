@@ -19,6 +19,10 @@ class UserBusiness {
        return $this->userData->insert($user);
     }
     
+     public function insertProfessorWithCredentials($user) {
+       return $this->userData->insertProfessorWithCredentials($user);
+    }
+    
     public function update($user) {
        return $this->userData->update($user);
     }
@@ -31,8 +35,8 @@ class UserBusiness {
       return $this->userData->getAll();
     }
     
-    public function getCourseId($id) {
-     return $this->userData->getCourseId($id);
+    public function getUserId($id) {
+     return $this->userData->getUserId($id);
     }
     
     public function getLastId() {

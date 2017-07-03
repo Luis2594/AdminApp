@@ -35,6 +35,10 @@ class PersonBusiness {
      return $this->personData->getPersonId($id);
     }
     
+    public function confirmDni($dni){
+        return $this->personData->confirmDni($dni);
+    }
+    
     public function getLastId() {
         return $this->personData->getLastId();
     }

@@ -15,8 +15,8 @@ class StudentBusiness {
         return $this->studentData = new StudentData();
     }
     
-     public function insert($student) {
-       return $this->studentData->insert($student);
+     public function insertStudentWithCredentials($student, $pass) {
+       return $this->studentData->insertStudentWithCredentials($student,$pass);
     }
     
     public function update($student) {

@@ -13,7 +13,6 @@ class StudentCourseData extends Connector{
      public function insert($studentCourse) {
         $query = "call insert('" . $studentCourse->getStudentCourseStudent() . "',"
                 . "'" . $studentCourse->getStudentCourseCourse() . "',"
-                . "'" . $studentCourse->getStudentCoursePeriod() . "',"
                 . "'" . $studentCourse->getStudentCourseYear() . "')";
 
         return $this->exeQuery($query);
@@ -23,7 +22,6 @@ class StudentCourseData extends Connector{
         $query = "call insert('" . $studentCourse->getStudentCourseId() . "',"
                 . "'" . $studentCourse->getStudentCourseStudent() . "',"
                 . "'" . $studentCourse->getStudentCourseCourse() . "',"
-                . "'" . $studentCourse->getStudentCoursePeriod() . "',"
                 . "'" . $studentCourse->getStudentCourseYear() . "')";
 
         return $this->exeQuery($query);
@@ -50,7 +48,6 @@ class StudentCourseData extends Connector{
                         $row['studentCourseId'], 
                         $row['studentCourseStudent'], 
                         $row['studentCourseCourse'], 
-                        $row['studentCoursePeriod'], 
                         $row['studentCourseYear']);
                 array_push($array, $currentStudentCourse);
             }
@@ -69,7 +66,6 @@ class StudentCourseData extends Connector{
                         $row['studentCourseId'], 
                         $row['studentCourseStudent'], 
                         $row['studentCourseCourse'], 
-                        $row['studentCoursePeriod'], 
                         $row['studentCourseYear']);
                 array_push($array, $currentStudentCourse);
             }

@@ -64,11 +64,6 @@ include './reusable/Header.php';
                                 <input id="birthdate" name="birthdate" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
                             </div><!-- /.input group -->
                         </div><!-- /.form group -->
-                        <!--AGE-->
-                        <div class="form-group">
-                            <label>Edad</label>
-                            <input id="age" name="age" type="number" class="form-control" placeholder="Edad" required=""/>
-                        </div>
                         <!--GENDER-->
                         <div class="form-group">
                             <div class="radio">
@@ -157,7 +152,7 @@ include './reusable/Footer.php';
 
 <script type="text/javascript">
     var idPhone = 1;
-    
+
     (function ($) {
         $.get = function (key) {
             key = key.replace(/[\[]/, '\\[');
@@ -183,8 +178,8 @@ include './reusable/Footer.php';
         msg = msg.replace(/_/g, " ");
         alertify.error(msg);
     }
-    
-    
+
+
     $(function () {
         //Datemask dd/mm/yyyy
         $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
@@ -250,7 +245,6 @@ include './reusable/Footer.php';
         var firstlastname = $('#firstlastname').val();
         var secondlastname = $('#secondlastname').val();
         var birthdate = $('#birthdate').val();
-        var age = $('#age').val();
         var nationality = $('#nationality').val();
         var yearIncome = $('#yearIncome').val();
         var managerStudent = $('#managerStudent').val();
@@ -286,16 +280,6 @@ include './reusable/Footer.php';
             return false;
         }
 
-        if (!isInteger(age)) {
-            alertify.error("Verifique la edad");
-            return false;
-        }
-
-        if (age <= 0) {
-            alertify.error("Verifique la edad");
-            return false;
-        }
-
         if (nationality.length === 0) {
             alertify.error("Verifique la nacionalidad");
             return false;
@@ -320,8 +304,10 @@ include './reusable/Footer.php';
             alertify.error("Verifique la localización");
             return false;
         }
-        $('#phones').val(idPhone);
-        $("#form").submit();
+
+        confirmDni(dni);
+
+
     }
 
     function isInteger(number) {
@@ -374,6 +360,27 @@ include './reusable/Footer.php';
 
     function deletePhone(id) {
         $("#tr" + id).remove();
+    }
+
+    function confirmDni(dni) {
+        $.ajax({
+            type: 'GET',
+            url: "../business/ConfirmDni.php",
+            data: {"dni": dni},
+            success: function (data)
+            {
+                if (data == true) {
+                    $('#phones').val(idPhone);
+                    $("#form").submit();
+                } else {
+                    alertify.error("Ya existe un estudiante con ese número de cédula");
+                }
+            },
+            error: function ()
+            {
+                alertify.error("Error ...");
+            }
+        });
     }
 
 </script>

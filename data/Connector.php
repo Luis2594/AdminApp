@@ -34,8 +34,8 @@ class Connector {
     public function Connector() {
         $this->server = 'localhost';
         $this->user = 'root';
-        $this->password = '';
-        $this->db = 'cindea';
+        $this->password = '1234';
+        $this->db = 'institution';
     }
 
     /**

@@ -49,10 +49,10 @@ include './reusable/Header.php';
                             foreach ($students as $student) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $student->getPersonDni(); ?></td>
-                                    <td><?php echo $student->getPersonFirstName(); ?></td>
-                                    <td><?php echo $student->getPersonFirstlastname(); ?></td>
-                                    <td><?php echo $student->getPersonSecondlastname(); ?></td>
+                                    <td id="dni<?php echo $student->getPersonId() ?>"><?php echo $student->getPersonDni(); ?></td>
+                                    <td id="name<?php echo $student->getPersonId() ?>"><?php echo $student->getPersonFirstName(); ?></td>
+                                    <td id="firtsLastname<?php echo $student->getPersonId() ?>"><?php echo $student->getPersonFirstlastname(); ?></td>
+                                    <td id="secondlastname<?php echo $student->getPersonId() ?>"><?php echo $student->getPersonSecondlastname(); ?></td>
                                     <td><?php echo $student->getPersonAge(); ?></td>
                                     <?php
                                     if ($student->getPersonGender() == "1") {
@@ -78,7 +78,7 @@ include './reusable/Header.php';
                                     }
                                     ?> 
                                     <td><?php echo $student->getStudentgroup(); ?></td>
-                                    <td><a href="">Eliminar</a></td>
+                                    <td><a  href="javascript:deleteConfirmation(<?php echo $student->getPersonId() ?>)" >Eliminar</a></td>
                                 </tr>
                                 <?php
                             }
@@ -113,5 +113,46 @@ include './reusable/Footer.php';
     $(function () {
         $("#example1").dataTable();
     });
+
+    (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+
+    function deleteConfirmation(id) {
+        alertify.confirm('Eliminar estudiante', '¿Desea eliminar a ' +
+                $("#name" + id).html() + " " +
+                $("#firtsLastname" + id).html() + " " +
+                $("#secondlastname" + id).html() + 
+                " con cédula "+ $("#dni" + id).html()+ 
+                " de la lista de estudiantes?", function () {
+            window.location = "../business/DeleteStudentAction.php?id=" + id;
+        }
+        , function () {
+            alertify.error('Cancelado');
+        });
+    }
+
 </script>
 

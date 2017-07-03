@@ -32,10 +32,8 @@ include './reusable/Header.php';
                                 <th>Nombre</th>
                                 <th>Primer Apellido</th>
                                 <th>Segundo Apellido</th>
-                                <th>Edad</th>
-                                <th>Género</th>
-                                <th>Adecuación</th>
-                                <th>Grupo</th>
+                                <th>Télefonos</th>
+                                <th>Grupos</th>
                                 <th>Actualizar</th>
                             </tr>
                         </thead>
@@ -53,32 +51,9 @@ include './reusable/Header.php';
                                     <td><?php echo $student->getPersonFirstName(); ?></td>
                                     <td><?php echo $student->getPersonFirstlastname(); ?></td>
                                     <td><?php echo $student->getPersonSecondlastname(); ?></td>
-                                    <td><?php echo $student->getPersonAge(); ?></td>
-                                    <?php
-                                    if ($student->getPersonGender() == "1") {
-                                        ?> 
-                                        <td>Hombre</td>
-                                        <?php
-                                    } else {
-                                        ?> 
-                                        <td>Mujer</td>
-                                        <?php
-                                    }
-                                    ?> 
-
-                                    <?php
-                                    if ($student->getStudentAdecuacy() == "0") {
-                                        ?> 
-                                        <td>Sin adecuación</td>
-                                        <?php
-                                    } else {
-                                        ?> 
-                                        <td>Con adecuación</td>
-                                        <?php
-                                    }
-                                    ?> 
-                                    <td><?php echo $student->getStudentgroup(); ?></td>
-                                    <td><a href="">Actualizar</a></td>
+                                    <td><a href="">Télefonos</a></td>
+                                    <td><a href="">Grupos</a></td>
+                                    <td><a href="UpdateStudent.php?id=<?php echo $student->getPersonId(); ?>">Actualizar</a></td>
                                 </tr>
                                 <?php
                             }
@@ -90,10 +65,8 @@ include './reusable/Header.php';
                                 <th>Nombre</th>
                                 <th>Primer Apellido</th>
                                 <th>Segundo Apellido</th>
-                                <th>Edad</th>
-                                <th>Género</th>
-                                <th>Adecuación</th>
-                                <th>Grupo</th>
+                                <th>Télefonos</th>
+                                <th>Grupos</th>
                                 <th>Actualizar</th>
                             </tr>
                         </tfoot>

@@ -16,17 +16,15 @@ class StudentCourse {
     private $studentCourseId;
     private $studentCourseStudent;
     private $studentCourseCourse;
-    private $studentCoursePeriod;
     private $studentCourseYear;
     
-    function StudentCourse($studentCourseId, $studentCourseStudent, $studentCourseCourse, $studentCoursePeriod, $studentCourseYear) {
+    function StudentCourse($studentCourseId, $studentCourseStudent, $studentCourseCourse, $studentCourseYear) {
         $this->studentCourseId = $studentCourseId;
         $this->studentCourseStudent = $studentCourseStudent;
         $this->studentCourseCourse = $studentCourseCourse;
-        $this->studentCoursePeriod = $studentCoursePeriod;
         $this->studentCourseYear = $studentCourseYear;
     }
-   
+
     function getStudentCourseId() {
         return $this->studentCourseId;
     }
@@ -37,10 +35,6 @@ class StudentCourse {
 
     function getStudentCourseCourse() {
         return $this->studentCourseCourse;
-    }
-
-    function getStudentCoursePeriod() {
-        return $this->studentCoursePeriod;
     }
 
     function getStudentCourseYear() {
@@ -57,10 +51,6 @@ class StudentCourse {
 
     function setStudentCourseCourse($studentCourseCourse) {
         $this->studentCourseCourse = $studentCourseCourse;
-    }
-
-    function setStudentCoursePeriod($studentCoursePeriod) {
-        $this->studentCoursePeriod = $studentCoursePeriod;
     }
 
     function setStudentCourseYear($studentCourseYear) {

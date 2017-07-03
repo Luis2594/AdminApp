@@ -19,6 +19,10 @@ class CourseBusiness {
        return $this->courseData->insert($course);
     }
     
+     public function insertPeriod($course, $period) {
+       return $this->courseData->insertPeriod($course, $period);
+    }
+    
     public function update($course) {
        return $this->courseData->update($course);
     }
@@ -33,6 +37,10 @@ class CourseBusiness {
     
     public function getCourseId($id) {
      return $this->courseData->getCourseId($id);
+    }
+    
+    public function getType() {
+        return $this->courseData->getType();
     }
     
     public function getLastId() {

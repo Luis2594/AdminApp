@@ -15,14 +15,19 @@ class CourseData extends Connector {
                 . "'" . $course->getCourseName() . "',"
                 . "" . $course->getCourseCredits() . ","
                 . "" . $course->getCourseLesson() . ","
-                . "" . $course->getCoursePeriod() . ","
                 . "'" . $course->getCoursePdf() . "',"
-                . "" . $course->getCourseSpeciality() . ")";
+                . "'" . $course->getCourseSpeciality() . "',"
+                . "" . $course->getCourseType() . ")";
 
         $result = $result = $this->exeQuery($query);
         $array = mysqli_fetch_array($result);
         $id = trim($array[0]);
         return $id;
+    }
+    
+    public function insertPeriod($course, $period) {
+        $query = "call insertCoursePeriod(" . $course . ",". $period . ")";
+        return $this->exeQuery($query);
     }
 
     public function update($course) {
@@ -54,14 +59,7 @@ class CourseData extends Connector {
         $array = [];
         if (mysqli_num_rows($allCourses) > 0) {
             while ($row = mysqli_fetch_array($allCourses)) {
-                $currentCourse = new Course($row['courseid'], 
-                        $row['coursecode'], 
-                        $row['coursename'], 
-                        $row['coursecredits'], 
-                        $row['courselesson'], 
-                        $row['courseperiod'], 
-                        $row['coursepdf'], 
-                        $row['specialityname']);
+                $currentCourse = new Course($row['courseid'], $row['coursecode'], $row['coursename'], $row['coursecredits'], $row['courselesson'], $row['courseperiod'], $row['coursepdf'], $row['specialityname']);
                 array_push($array, $currentCourse);
             }
         }
@@ -82,6 +80,23 @@ class CourseData extends Connector {
         return $array;
     }
 
+    public function getType() {
+        $query = "SELECT * FROM coursetype";
+
+        $type = $this->exeQuery($query);
+        $array = [];
+        while ($row = mysqli_fetch_array($type)) {
+            $array[] = array("id" => $row['coursetypeid'],
+                "type" => $row['coursetype']);
+        }
+        return $array;
+    }
+
+    
+    
+    
+    
+    
     public function getLastId() {
         
     }

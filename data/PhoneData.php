@@ -35,8 +35,8 @@ class PhoneData extends Connector{
         }
     }
 
-    public function getAllPerson($id) {
-        $query = 'call getAllPhonesPerson("' . $id . '");';
+    public function getAllPhone($id) {
+        $query = 'call getAllPhonesByPerson("' . $id . '");';
         
         $allPhones = $this->exeQuery($query);
         $array = [];

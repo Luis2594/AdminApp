@@ -23,8 +23,9 @@ class Person {
     private $personAge;
     private $personGender;
     private $personNacionality;
+    private $personimage;
 
-    function Person($personId, $personDni, $personFirstName, $personFirstlastname, $personSecondlastname, $personEmail, $personBirthday, $personAge, $personGender, $personNacionality) {
+    function Person($personId, $personDni, $personFirstName, $personFirstlastname, $personSecondlastname, $personEmail, $personBirthday, $personAge, $personGender, $personNacionality, $personimage) {
         $this->personId = $personId;
         $this->personDni = $personDni;
         $this->personFirstName = $personFirstName;
@@ -35,9 +36,10 @@ class Person {
         $this->personAge = $personAge;
         $this->personGender = $personGender;
         $this->personNacionality = $personNacionality;
+        $this->personimage = $personimage;
     }
 
-    function getPersonId() {
+        function getPersonId() {
         return $this->personId;
     }
 
@@ -116,5 +118,13 @@ class Person {
     function setPersonNacionality($personNacionality) {
         $this->personNacionality = $personNacionality;
     }
+    function getPersonimage() {
+        return $this->personimage;
+    }
+
+    function setPersonimage($personimage) {
+        $this->personimage = $personimage;
+    }
+
 
 }

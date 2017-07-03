@@ -27,21 +27,21 @@ include './reusable/Header.php';
                 <div class="box-header">
                     <h3 class="box-title">Información Estudiante</h3>
                 </div><!-- /.box-header -->
-                <!-- form start -->
-                <form role="form">
-                    <?php
-                    include '../business/StudentBusiness.php';
 
-                    $studentBusiness = new StudentBusiness();
-                    $id = (int) $_GET['id'];
-                    $students = $studentBusiness->getStudentId($id);
-                    $bool = false;
-                    foreach ($students as $student) {
-                        include '../business/PhoneBusiness.php';
-                        $phoneBusiness = new PhoneBusiness();
-                        $phones = $phoneBusiness->getAllPerson($id);
-                        ?>
+                <?php
+                include '../business/StudentBusiness.php';
 
+                $studentBusiness = new StudentBusiness();
+                $id = (int) $_GET['id'];
+                $students = $studentBusiness->getStudentId($id);
+                $bool = false;
+                foreach ($students as $student) {
+                    include '../business/PhoneBusiness.php';
+                    $phoneBusiness = new PhoneBusiness();
+                    $phones = $phoneBusiness->getAllPhone($id);
+                    ?>
+                    <!-- form start -->
+                    <form role="form">
                         <div class="box-body">
                             <!--DNI-->
                             <div class="form-group">
@@ -139,15 +139,19 @@ include './reusable/Header.php';
                                 <input id="managerStudent" name="managerStudent" type="text" class="form-control" placeholder="Encargado" required="" value="<?php echo $student->getStudentManager() ?>" readonly />
                             </div>
                             <?php
-                                foreach ($phones as $phone) {
-                            ?>
+                            foreach ($phones as $phone) {
+                                ?>
                                 <!--PHONE-->
-                            <div class="form-group">
-                                <label>Télefono</label>
-                                <input id="phone" name="phone" type="text" class="form-control" placeholder="Télefono" required="" value="<?php echo $phone->getPhonePhone() ?>" readonly />
-                            </div>
-                            <?php
-                                }
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-phone"></i>
+                                        </div>
+                                        <input id="phone" name="phone" type="text" class="form-control" placeholder="Télefono" required="" value="<?php echo $phone->getPhonePhone() ?>" readonly />
+                                    </div>
+                                </div>
+                                <?php
+                            }
                             ?>
                             <!--USERNAME-->
                             <div class="form-group">
@@ -160,14 +164,26 @@ include './reusable/Header.php';
                                 <input id="pass" name="pass" type="text" class="form-control" placeholder="Contraseña" required="" value="<?php echo $student->getUserPass() ?>" readonly />
                             </div>
                         </div><!-- /.box-body -->
-                        <?php
-                    }//fin del for
-                    ?>
-                </form>
-                <div class="box-footer">
-                    <button onclick="updateStudent();" class="btn btn-primary">Actualizar</button>
-                    <button onclick="deleteStudent();" class="btn btn-primary" style="margin-left: 100px;">Eliminar</button>
-                </div>
+
+                    </form>
+                    <!--<div class="box-footer">-->
+                    <!--                    <div class="pull-left">
+                                            <button onclick="createStudent();" class="btn btn-primary">Crear</button>
+                                            <button onclick="updateStudent(<?php echo $id ?>);" class="btn btn-primary" style="margin-left: 150px;">Actualizar</button>
+                                        </div>
+                                        <div class="pull-right">
+                                            <button onclick="deleteStudent(<?php echo $id ?>);" class="btn btn-primary">Eliminar</button>
+                                        </div>-->
+                    <div class="btn-group btn-group-justified">
+                        <a type="button" class="btn btn-success" href="javascript:createStudent()">Crear</a>
+                        <a type="button" class="btn btn-primary" href="javascript:updateStudent(<?php echo $id ?>)">Actualizar</a>
+                        <a type="button" class="btn btn-danger" href="javascript:deleteStudent(<?php echo $id ?>)">Eliminar</a>
+                    </div>
+
+                    <!--</div>-->
+                    <?php
+                }//fin del for
+                ?>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
     </div>   <!-- /.row -->
@@ -178,5 +194,54 @@ include './reusable/Footer.php';
 ?>
 
 <script type="text/javascript">
-    $('#studentId').hide();
+
+    (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+
+    function createStudent() {
+        window.location = "CreateStudent.php?";
+    }
+
+    function updateStudent(id) {
+        window.location = "UpdateStudent.php?id=" + id;
+    }
+
+    function deleteStudent(id) {
+        alertify.confirm('Eliminar estudiante', '¿Desea eliminar a ' +
+                $("#name" + id).html() + " " +
+                $("#firtsLastname" + id).html() + " " +
+                $("#secondlastname" + id).html() +
+                " con cédula " + $("#dni" + id).html() +
+                " de la lista de estudiantes?", function () {
+                    window.location = "../business/DeleteStudentAction.php?id=" + id;
+                }
+        , function () {
+            alertify.error('Cancelado');
+        });
+    }
+
+
 </script>

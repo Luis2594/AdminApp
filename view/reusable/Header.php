@@ -196,13 +196,13 @@
                         <!--COURSES-->
                         <li class="treeview">
                             <a>
-                                <i class="fa"></i> <span>Cursos</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa"></i> <span>Módulos</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="./ShowCourses.php"><i class="fa"></i>Ver Cursos</a></li>
-                                <li><a href="./CreateCourse.php"><i class="fa"></i>Crear Curso</a></li>
-                                <li><a href="./ShowCourseUpdate.php"><i class="fa"></i>Actualizar Curso</a></li>
-                                <li><a href="./ShowCourseDelete.php"><i class="fa"></i>Eliminar Curso</a></li>
+                                <li><a href="./ShowCourses.php"><i class="fa"></i>Ver Módulos</a></li>
+                                <li><a href="./CreateCourse.php"><i class="fa"></i>Crear Módulo</a></li>
+                                <li><a href="./ShowCourseUpdate.php"><i class="fa"></i>Actualizar Módulo</a></li>
+                                <li><a href="./ShowCourseDelete.php"><i class="fa"></i>Eliminar Módulo</a></li>
                             </ul>
                         </li>
 

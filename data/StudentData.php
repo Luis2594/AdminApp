@@ -11,28 +11,23 @@ include '../domain/StudentAll.php';
  */
 class StudentData extends Connector {
 
-    public function insert($student) {
-        $query = "call insertStudent(" . $student->getStudentAdecuacy() . ","
+    public function insertStudentWithCredentials($student, $pass) {
+        $query = "call insertStudentWithCredentials(" . $student->getStudentAdecuacy() . ","
                 . "'" . $student->getStudentYearIncome() . "',"
                 . "'" . $student->getStudentLocation() . "',"
                 . "'" . $student->getStudentManager() . "',"
-                . "" . $student->getStudentPerson() . ")";
+                . "" . $student->getStudentPerson() . ","
+                . "'" . $pass . "')";
 
-        $res = $this->exeQuery($query);
-
-        return mysqli_num_rows($res);
+        return $this->exeQuery($query);
     }
 
-    public function update($person) {
-        $query = "call update('" . $person->getStudentId() . "',"
-                . "'" . $person->getStudentAdecuacy() . "',"
-                . "'" . $person->getStudentYearIncome() . "',"
-                . "'" . $person->getStudentYearOut() . "',"
-                . "'" . $person->getStudentLocation() . "',"
-                . "'" . $person->getStudentGroup() . "',"
-                . "'" . $person->getStudentCourse() . "',"
-                . "'" . $person->getStudentManager() . "',"
-                . "'" . $person->getStudentPerson() . "')";
+    public function update($student) {
+        $query = "call updateStudent('" . $student->getStudentPerson() . "',"
+                . "'" . $student->getStudentAdecuacy() . "',"
+                . "'" . $student->getStudentYearIncome() . "',"
+                . "'" . $student->getStudentLocation() . "',"
+                . "'" . $student->getStudentManager() . "')";
 
         return $this->exeQuery($query);
     }

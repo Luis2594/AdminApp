@@ -17,32 +17,36 @@ class PersonData extends Connector {
                 . "'" . $person->getPersonSecondlastname() . "',"
                 . "'" . $person->getPersonEmail() . "',"
                 . "'" . $person->getPersonBirthday() . "',"
-                . "" . $person->getPersonAge() . ","
                 . "'" . $person->getPersonGender() . "',"
-                . "'" . $person->getPersonNacionality() . "')";
-
-        $result = $result = $this->exeQuery($query);
+                . "'" . $person->getPersonNacionality() . "',"
+                . "'" . $person->getPersonimage() . "')";
+        
+        $result = $this->exeQuery($query);
         $array = mysqli_fetch_array($result);
         $id = trim($array[0]);
         return $id;
     }
 
     public function update($person) {
-        $query = "call insert('" . $person->getPersonId() . "',"
+        $query = "call updatePerson('" . $person->getPersonId() . "',"
                 . "'" . $person->getPersonDni() . "',"
                 . "'" . $person->getPersonFirstName() . "',"
                 . "'" . $person->getPersonFirstlastname() . "',"
                 . "'" . $person->getPersonSecondlastname() . "',"
+                . "'" . $person->getPersonEmail() . "',"
                 . "'" . $person->getPersonBirthday() . "',"
-                . "'" . $person->getPersonAge() . "',"
                 . "'" . $person->getPersonGender() . "',"
-                . "'" . $person->getPersonNacionality() . "')";
+                . "'" . $person->getPersonNacionality() . "',"
+                . "'" . $person->getPersonimage() . "')";
 
-        return $this->exeQuery($query);
+        $result = $this->exeQuery($query);
+        $array = mysqli_fetch_array($result);
+        $res = trim($array[0]);
+        return $res;
     }
 
     public function delete($id) {
-        $query = 'call delete("' . $id . '");';
+        $query = 'call deletePerson("' . $id . '");';
 
         if ($this->exeQuery($query)) {
             return TRUE;
@@ -81,6 +85,15 @@ class PersonData extends Connector {
         return $array;
     }
 
+    public function confirmDni($dni) {
+        $query = "call confirmDni('". $dni. "')";
+        
+        $result = $this->exeQuery($query);
+        $array = mysqli_fetch_array($result);
+        $res = trim($array[0]);
+        return $res;
+    }
+    
     public function getLastId() {
         
     }
