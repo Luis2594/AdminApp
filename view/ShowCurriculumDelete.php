@@ -43,9 +43,9 @@ include './reusable/Header.php';
                             foreach ($curriculums as $curriculum) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $curriculum->getCurriculumYear(); ?></td>
-                                    <td><?php echo $curriculum->getCurriculumName(); ?></td>
-                                    <td><a href="">Eliminar</a></td>
+                                    <td id="year<?php echo $curriculum->getCurriculumId() ?>"><?php echo $curriculum->getCurriculumYear(); ?></td>
+                                    <td id="name<?php echo $curriculum->getCurriculumId() ?>"><?php echo $curriculum->getCurriculumName(); ?></td>
+                                    <td><a href="javascript:deleteConfirmation(<?php echo $curriculum->getCurriculumId() ?>)">Eliminar</a></td>
                                 </tr>
                                 <?php
                             }
@@ -74,5 +74,42 @@ include './reusable/Footer.php';
     $(function () {
         $("#example1").dataTable();
     });
+    
+     (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+    
+    function deleteConfirmation(id) {
+        alertify.confirm('Eliminar maya curricular', '¿Desea eliminar la maya curricular "' +
+                $("#year" + id).html() + " " + $("#name" + id).html() + '" de la lista?',
+        function () {
+            window.location = "../business/DeleteCurriculumAction.php?id=" + id;
+        }
+        , function () {
+            alertify.error('Cancelado');
+        });
+    }
 </script>
 
