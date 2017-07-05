@@ -137,7 +137,7 @@
                                 <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="./CreateNotify.php"><i class="fa"></i>Enviar Notificación</a></li>
+                                <li><a href="./CreateNotification.php"><i class="fa"></i>Enviar Notificación</a></li>
                             </ul>
                         </li>
 
@@ -160,7 +160,7 @@
                                 <i class="fa"></i> <span>Profesores</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="./ShowProfessor.php"><i class="fa"></i>Ver Profesores</a></li>
+                                <li><a href="./ShowProfessors.php"><i class="fa"></i>Ver Profesores</a></li>
                                 <li><a href="./CreateProfessor.php"><i class="fa"></i>Crear Profesor</a></li>
                                 <li><a href="./ShowProfessorUpdate.php"><i class="fa"></i>Actualizar Profesor</a></li>
                                 <li><a href="./ShowProfessorDelete.php"><i class="fa"></i>Eliminar Profesor</a></li>
@@ -238,10 +238,8 @@
                                 <i class="fa"></i> <span>Información del Cindea</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active"><a href=""><i class="fa"></i>Ver Información</a></li>
-                                <li class="active"><a href=""><i class="fa"></i>Crear Información</a></li>
-                                <li><a href=""><i class="fa"></i>Actualizar Información</a></li>
-                                <li><a href=""><i class="fa"></i>Eliminar Información</a></li>
+                                <li><a href="./ShowInstitution.php"><i class="fa"></i>Ver Información</a></li>
+                                <li><a href="./ShowInstitutionUpdate.php"><i class="fa"></i>Editar Información</a></li>
                             </ul>
                         </li>
 

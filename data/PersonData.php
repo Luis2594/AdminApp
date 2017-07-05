@@ -38,7 +38,7 @@ class PersonData extends Connector {
                 . "'" . $person->getPersonGender() . "',"
                 . "'" . $person->getPersonNacionality() . "',"
                 . "'" . $person->getPersonimage() . "')";
-
+        
         $result = $this->exeQuery($query);
         $array = mysqli_fetch_array($result);
         $res = trim($array[0]);

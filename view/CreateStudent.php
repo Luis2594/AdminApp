@@ -56,7 +56,7 @@ include './reusable/Header.php';
                                                 </div>-->
                         <!-- BIRTHDATE -->
                         <div class="form-group">
-                            <label>Fecha de nacimiento:</label>
+                            <label>Fecha de nacimiento</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>

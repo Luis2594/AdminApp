@@ -37,19 +37,19 @@ include './reusable/Header.php';
                         </thead>
                         <tbody>
                             <?php
-                            include '../business/PersonBusiness.php';
-                            $personBusiness = new PersonBusiness();
-                            
-                            $admins = $personBusiness->getAll();
-                            
-                            foreach ($admins as $admin) {
+                            include '../business/ProfessorBusiness.php';
+                            $professorBusiness = new ProfessorBusiness();
+                            //capture all professor as instances of ProfessorAll
+                            $professors = $professorBusiness->getAll();
+
+                            foreach ($professors as $professor) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $admin->getPersonDni(); ?></td>
-                                    <td><?php echo $admin->getPersonFirstName(); ?></td>
-                                    <td><?php echo $admin->getPersonFirstlastname(); ?></td>
-                                    <td><?php echo $admin->getPersonSecondlastname(); ?></td>
-                                    <td><a href="">Eliminar</a></td>
+                                    <td id="dni<?php echo $professor->getPersonId(); ?>"><?php echo $professor->getPersonDni(); ?></td>
+                                    <td id="name<?php echo $professor->getPersonId() ?>"><a href="InformationProfessor.php?id=<?php echo $professor->getProfessorId(); ?>"><?php echo $professor->getPersonFirstName(); ?></a></td>
+                                    <td id="firtsLastname<?php echo $professor->getPersonId() ?>"><?php echo $professor->getPersonFirstlastname(); ?></td>
+                                    <td id="secondlastname<?php echo $professor->getPersonId() ?>"><?php echo $professor->getPersonSecondlastname(); ?></td>
+                                    <td><a  href="javascript:deleteConfirmation(<?php echo $professor->getPersonId() ?>)" >Eliminar</a></td>
                                 </tr>
                                 <?php
                             }
@@ -80,6 +80,46 @@ include './reusable/Footer.php';
     $(function () {
         $("#example1").dataTable();
     });
+
+    (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+
+    function deleteConfirmation(id) {
+        alertify.confirm('Eliminar profesor', '¿Desea eliminar a ' +
+                $("#name" + id).html() + " " +
+                $("#firtsLastname" + id).html() + " " +
+                $("#secondlastname" + id).html() +
+                " con cédula " + $("#dni" + id).html() +
+                " de la lista de profesores?", function () {
+                    window.location = "../business/DeleteProfessorAction.php?id=" + id;
+                }
+        , function () {
+            alertify.error('Cancelado');
+        });
+    }
 </script>
 
 
