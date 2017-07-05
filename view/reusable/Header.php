@@ -235,11 +235,10 @@
                         <!--INFO-->
                         <li class="treeview">
                             <a>
-                                <i class="fa"></i> <span>Información del Cindea</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa"></i> <span>Información CINDEA</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="./ShowInstitution.php"><i class="fa"></i>Ver Información</a></li>
-                                <li><a href="./ShowInstitutionUpdate.php"><i class="fa"></i>Editar Información</a></li>
+                                <li><a href="./InformationInstitution.php"><i class="fa"></i>Ver Información</a></li>
                             </ul>
                         </li>
 

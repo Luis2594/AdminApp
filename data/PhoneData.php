@@ -18,7 +18,7 @@ class PhoneData extends Connector{
     }
 
     public function update($phone) {
-        $query = "call update('" . $phone->getPhoneId() . "',"
+        $query = "call updatePhone('" . $phone->getPhoneId() . "',"
                 . "'" . $phone->getPhonePhone() . "',"
                 . "'" . $phone->getPhonePerson() . "')";
 
@@ -26,7 +26,7 @@ class PhoneData extends Connector{
     }
 
     public function delete($id) {
-        $query = 'call delete("' . $id . '");';
+        $query = 'call deletePhone("' . $id . '");';
 
         if ($this->exeQuery($query)) {
             return TRUE;
@@ -50,28 +50,6 @@ class PhoneData extends Connector{
             }
         }
         return $array;
-    }
-
-    public function getCourseId($id) {
-        $query = "";
-        
-        $allPhone = $this->exeQuery($query);
-        $array = [];
-        if (mysqli_num_rows($allPhone) > 0) {
-            while ($row = mysqli_fetch_array($allPhone)) {
-                $currentPhone = new CourseSchedule(
-                        $row['phoneId'], 
-                        $row['phonePhone'], 
-                        $row['phonePerson']);
-                array_push($array, $currentPhone);
-            }
-        }
-        return $array;
-    }
-
-    public function getLastId() {
-        
-    }
-    
+    }    
 }
 
