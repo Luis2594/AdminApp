@@ -20,7 +20,7 @@ class PersonData extends Connector {
                 . "'" . $person->getPersonGender() . "',"
                 . "'" . $person->getPersonNacionality() . "',"
                 . "'" . $person->getPersonimage() . "')";
-        
+
         $result = $this->exeQuery($query);
         $array = mysqli_fetch_array($result);
         $id = trim($array[0]);
@@ -38,7 +38,7 @@ class PersonData extends Connector {
                 . "'" . $person->getPersonGender() . "',"
                 . "'" . $person->getPersonNacionality() . "',"
                 . "'" . $person->getPersonimage() . "')";
-        
+
         $result = $this->exeQuery($query);
         $array = mysqli_fetch_array($result);
         $res = trim($array[0]);
@@ -62,8 +62,7 @@ class PersonData extends Connector {
         $array = [];
         if (mysqli_num_rows($allPersons) > 0) {
             while ($row = mysqli_fetch_array($allPersons)) {
-                $currentPerson = new CourseSchedule(
-                        $row['personId'], $row['personDni'], $row['personFirstName'], $row['personFirstlastname'], $row['personSecondlastname'], $row['personBirthday'], $row['personAge'], $row['personGender'], $row['personNacionality']);
+                $currentPerson = new Person($row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['personbirthday'], $row['personage'], $row['persongender'], $row['personnationality'], $row['personimage']);
                 array_push($array, $currentPerson);
             }
         }
@@ -71,14 +70,13 @@ class PersonData extends Connector {
     }
 
     public function getPersonId($id) {
-        $query = "";
+        $query = "call getPersonById('" . $id . "')";
 
         $allPerson = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allPerson) > 0) {
             while ($row = mysqli_fetch_array($allPerson)) {
-                $currentPerson = new CourseSchedule(
-                        $row['personId'], $row['personDni'], $row['personFirstName'], $row['personFirstlastname'], $row['personSecondlastname'], $row['personBirthday'], $row['personAge'], $row['personGender'], $row['personNacionality']);
+                $currentPerson = new Person($row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['personbirthday'], $row['personage'], $row['persongender'], $row['personnationality'], $row['personimage']);
                 array_push($array, $currentPerson);
             }
         }
@@ -86,14 +84,14 @@ class PersonData extends Connector {
     }
 
     public function confirmDni($dni) {
-        $query = "call confirmDni('". $dni. "')";
-        
+        $query = "call confirmDni('" . $dni . "')";
+
         $result = $this->exeQuery($query);
         $array = mysqli_fetch_array($result);
         $res = trim($array[0]);
         return $res;
     }
-    
+
     public function getLastId() {
         
     }

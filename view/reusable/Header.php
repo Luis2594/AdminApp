@@ -150,8 +150,6 @@
                             <ul class="treeview-menu">
                                 <li><a href="./ShowAdmins.php"><i class="fa"></i>Ver Administradores</a></li>
                                 <li><a href="./CreateAdmin.php"><i class="fa"></i>Crear Administrador</a></li>
-                                <li><a href="./ShowAdminsUpdate.php"><i class="fa"></i>Actualizar Administrador</a></li>
-                                <li><a href="./ShowAdminsDelete.php"><i class="fa"></i>Eliminar Administrador</a></li>
                             </ul>
                         </li>
 

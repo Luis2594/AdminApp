@@ -20,7 +20,7 @@ class UserData extends Connector {
 
         return mysqli_num_rows($res);
     }
-    
+
     public function insertProfessorWithCredentials($user) {
         $query = "call insertProfessorWithCredentials('" . $user->getUserPerson() . "',"
                 . "" . $user->getUserPass() . ")";
@@ -62,17 +62,13 @@ class UserData extends Connector {
     }
 
     public function getUserId($id) {
-        $query = "SELECT * FROM personuser WHERE userperson = ". $id;
+        $query = "SELECT * FROM personuser WHERE userperson = " . $id;
 
         $allUser = $this->exeQuery($query);
         if (mysqli_num_rows($allUser) > 0) {
             while ($row = mysqli_fetch_array($allUser)) {
                 $currentUser = new User(
-                        $row['userid'], 
-                        $row['userusername'], 
-                        $row['useruserpass'], 
-                        $row['userusertype'], 
-                        $row['userperson']);
+                        $row['userid'], $row['userusername'], $row['useruserpass'], $row['userusertype'], $row['userperson']);
             }
         }
         return $currentUser;
@@ -80,6 +76,31 @@ class UserData extends Connector {
 
     public function getLastId() {
         
+    }
+
+    public function login($user, $pass) {
+        $query = "call login('" . $user . "', '" . $pass . "')";
+
+        $result = $this->exeQuery($query);
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_array($result)) {
+                session_start();
+                $_SESSION["type"] = $row['userusertype'];
+                $_SESSION["id"] = $row['personid'];
+                $_SESSION["name"] = $row['personfirstname'] + " " + $row['personfirstlastname'];
+                break;
+            }
+        }
+        if (!isset($_SESSION['id']) || !isset($_SESSION['type']) || !isset($_SESSION['name'])) {
+            // remove all session variables
+            session_unset();
+
+            // destroy the session 
+            session_destroy();
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
 
 }

@@ -30,18 +30,6 @@ if (isset($dni) &&
     $secondlastname = ucwords(strtolower($secondlastname));
     $personBusiness = new PersonBusiness();
 
-    //            Person(
-    //            $personId, 
-    //            $personDni, 
-    //            $personFirstName, 
-    //            $personFirstlastname, 
-    //            $personSecondlastname, 
-    //            $personEmail, 
-    //            $personBirthday, 
-    //            $personAge, 
-    //            $personGender, 
-    //            $personNacionality, 
-    //            $personimage)
     $person = new Person(
             NULL, 
             $dni, 

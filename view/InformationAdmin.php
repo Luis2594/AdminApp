@@ -27,16 +27,16 @@ include './reusable/Header.php';
                 <?php
                 include '../business/ProfessorBusiness.php';
 
-                $professorBusiness = new ProfessorBusiness();
+                $PersonBusiness = new ProfessorBusiness();
                 $id = (int) $_GET['id'];
                 //getProfessor works with the person ID
                 //returns an array of ProfessorAll
-                $professors = $professorBusiness->getProfessor($id);
+                $admins = $PersonBusiness->getProfessor($id);
 
                 include '../business/PhoneBusiness.php';
                 $phoneBusiness = new PhoneBusiness();
 
-                foreach ($professors as $professor) {
+                foreach ($admins as $admin) {
 
                     $phones = $phoneBusiness->getAllPhone($id);
                     ?>
@@ -46,34 +46,34 @@ include './reusable/Header.php';
                             <!--DNI-->
                             <div class="form-group">
                                 <label>Cédula</label>
-                                <input id="dni" name="dni" type="number" class="form-control" placeholder="Cédula" required="" value="<?php echo $professor->getPersonDni() ?>" readonly />
+                                <input id="dni" name="dni" type="number" class="form-control" placeholder="Cédula" required="" value="<?php echo $admin->getPersonDni() ?>" readonly />
                             </div>
                             <!--NAME-->
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required="" value="<?php echo $professor->getPersonFirstName() ?>" readonly />
+                                <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required="" value="<?php echo $admin->getPersonFirstName() ?>" readonly />
                             </div>
                             <!--FIRSTLASTNAME-->
                             <div class="form-group">
                                 <label>Primer Apellido</label>
-                                <input id="firstlastname" name="firstlastname" type="text" class="form-control" placeholder="Primer apellido" required="" value="<?php echo $professor->getPersonFirstlastname() ?>" readonly />
+                                <input id="firstlastname" name="firstlastname" type="text" class="form-control" placeholder="Primer apellido" required="" value="<?php echo $admin->getPersonFirstlastname() ?>" readonly />
                             </div>
                             <!--SECONDLASTNAME-->
                             <div class="form-group">
                                 <label>Segundo Apellido</label>
-                                <input id="secondlastname" name="secondlastname" type="text" class="form-control" placeholder="Segundo apellido" required="" value="<?php echo $professor->getPersonSecondlastname() ?>" readonly />
+                                <input id="secondlastname" name="secondlastname" type="text" class="form-control" placeholder="Segundo apellido" required="" value="<?php echo $admin->getPersonSecondlastname() ?>" readonly />
                             </div>
                             <!--EMAIL-->
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Correo Electrónico</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="Correo Electrónico" value="<?php echo $professor->getPersonEmail() ?>" readonly>
+                                <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="Correo Electrónico" value="<?php echo $admin->getPersonEmail() ?>" readonly>
                             </div>
 
                             <!--GENDER-->
                             <div class="form-group">
                                 <label>Género</label>
                                 <?php
-                                if ($professor->getPersonGender() == "1") {
+                                if ($admin->getPersonGender() == "1") {
                                     ?>
                                     <input id="gender" name="gender" type="text" class="form-control" placeholder="Género" required="" value="Hombre" readonly/>
                                     <?php
@@ -87,7 +87,7 @@ include './reusable/Header.php';
                             <!--NATIONALITY-->
                             <div class="form-group">
                                 <label>Nacionalidad</label>
-                                <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required="" value="<?php echo $professor->getPersonNacionality() ?>" readonly/>
+                                <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required="" value="<?php echo $admin->getPersonNacionality() ?>" readonly/>
                             </div>
                             <div class="form-group">
                                 <label>Teléfono</label>
@@ -110,21 +110,21 @@ include './reusable/Header.php';
                             <!--USERNAME-->
                             <div class="form-group">
                                 <label>Nombre de usuario</label>
-                                <input id="username" name="username" type="text" class="form-control" placeholder="Nombre de usuario" required="" value="<?php echo $professor->getUserUsername() ?>" readonly />
+                                <input id="username" name="username" type="text" class="form-control" placeholder="Nombre de usuario" required="" value="<?php echo $admin->getUserUsername() ?>" readonly />
                             </div>
                             <!--PASSWORD-->
                             <div class="form-group">
                                 <label>Contraseña</label>
-                                <input id="pass" name="pass" type="text" class="form-control" placeholder="Contraseña" required="" value="<?php echo $professor->getUserPass() ?>" readonly />
+                                <input id="pass" name="pass" type="text" class="form-control" placeholder="Contraseña" required="" value="<?php echo $admin->getUserPass() ?>" readonly />
                             </div>
                         </div><!-- /.box-body -->
 
                     </form>
 
                     <div class="btn-group btn-group-justified">
-                        <a type="button" class="btn btn-success" href="javascript:createProfessor()">Crear</a>
-                        <a type="button" class="btn btn-primary" href="javascript:updateProfessor(<?php echo $professor->getPersonId() ?>)">Actualizar</a>
-                        <a type="button" class="btn btn-danger" href="javascript:deleteProfessor(<?php echo $professor->getPersonId() ?>)">Eliminar</a>
+                        <a type="button" class="btn btn-success" href="javascript:createAdmin()">Crear</a>
+                        <a type="button" class="btn btn-primary" href="javascript:updateAdmin(<?php echo $admin->getPersonId() ?>)">Actualizar</a>
+                        <a type="button" class="btn btn-danger" href="javascript:deleteAdmin(<?php echo $admin->getPersonId() ?>)">Eliminar</a>
                     </div>
 
                     <!--</div>-->

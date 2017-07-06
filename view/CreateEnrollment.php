@@ -1,16 +1,12 @@
 <?php
-//session_start();
-//if (!isset($_SESSION['id'])) {
-//    header("location: ./Login.php");
-//}
-
+include './reusable/Session.php';
 include './reusable/Header.php';
 
 //if(isset($_GET['id']) && isset($_GET['name'])){
 //    header("location: ShowStudentsEnrollment.php");
 //}else{
 //    header("location: ShowStudentsEnrollment.php");
-//}
+//} 
 
 ?>
 

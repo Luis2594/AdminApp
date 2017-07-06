@@ -2,12 +2,13 @@
 include './reusable/Session.php';
 include './reusable/Header.php';
 ?>
+
 <!-- Content Header (Page header) -->
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowStudentUpdate.php"><i class="fa fa-arrow-circle-right"></i>Actualizar Estudiantes</a></li>
-        <li><a href="UpdateStudent.php"><i class="fa fa-arrow-circle-right"></i>Actualizar Estudiante</a></li>
+        <li><a href="ShowAdmins.php"><i class="fa fa-arrow-circle-right"></i>Administradores</a></li>
+        <li><a href="UpdateAdmin.php"><i class="fa fa-arrow-circle-right"></i>Actualizar Administrador</a></li>
     </ol>
 </section>
 <br>
@@ -20,66 +21,52 @@ include './reusable/Header.php';
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Información Estudiante</h3>
+                    <h3 class="box-title">Información Administrador</h3>
                 </div><!-- /.box-header -->
 
                 <?php
-                include '../business/StudentBusiness.php';
+                include '../business/PersonBusiness.php';
 
-                $studentBusiness = new StudentBusiness();
+                $AdminBusiness = new PersonBusiness();
                 $id = (int) $_GET['id'];
-                $students = $studentBusiness->getStudentId($id);
+                $admins = $AdminBusiness->getPersonId($id);
                 $bool = false;
-                foreach ($students as $student) {
+                foreach ($admins as $admin) {
                     ?>
                     <!-- form start -->
-                    <form role="form" id="form" action="../business/UpdateStudentAction.php" method="POST" enctype="multipart/form-data">
+                    <form role="form" id="form" action="../business/UpdateAdminAction.php" method="POST" enctype="multipart/form-data">
                         <div class="box-body">
                             <!--DNI-->
                             <div class="form-group">
                                 <label>Cédula</label>
-                                <input id="dni" name="dni" type="number" class="form-control" placeholder="Cédula" required="" value="<?php echo $student->getPersonDni() ?>"  />
+                                <input id="dni" name="dni" type="number" class="form-control" placeholder="Cédula" required="" value="<?php echo $admin->getPersonDni() ?>"  />
                             </div>
                             <!--NAME-->
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required="" value="<?php echo $student->getPersonFirstName() ?>"  />
+                                <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required="" value="<?php echo $admin->getPersonFirstName() ?>"  />
                             </div>
                             <!--FIRSTLASTNAME-->
                             <div class="form-group">
                                 <label>Primer Apellido</label>
-                                <input id="firstlastname" name="firstlastname" type="text" class="form-control" placeholder="Primer apellido" required="" value="<?php echo $student->getPersonFirstlastname() ?>"  />
+                                <input id="firstlastname" name="firstlastname" type="text" class="form-control" placeholder="Primer apellido" required="" value="<?php echo $admin->getPersonFirstlastname() ?>"  />
                             </div>
                             <!--SECONDLASTNAME-->
                             <div class="form-group">
                                 <label>Segundo Apellido</label>
-                                <input id="secondlastname" name="secondlastname" type="text" class="form-control" placeholder="Segundo apellido" required="" value="<?php echo $student->getPersonSecondlastname() ?>"  />
+                                <input id="secondlastname" name="secondlastname" type="text" class="form-control" placeholder="Segundo apellido" required="" value="<?php echo $admin->getPersonSecondlastname() ?>"  />
                             </div>
                             <!--EMAIL-->
-                            <!--                        <div class="form-group">
-                                                        <label for="exampleInputEmail1">Email address</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="Enter email">
-                                                    </div>-->
-                            <!-- BIRTHDATE -->
                             <div class="form-group">
-                                <label>Fecha de nacimiento:</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input id="birthdate" name="birthdate" type="text" class="form-control" value="<?php echo date("d/m/Y", strtotime($student->getPersonBirthday())); ?>" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
-                                </div><!-- /.input group -->
-                            </div><!-- /.form group -->
-                            <!--AGE-->
-                            <div class="form-group">
-                                <label>Edad</label>
-                                <input id="age" name="age" type="number" class="form-control" placeholder="Edad" required="" value="<?php echo $student->getPersonAge() ?>" readonly />
+                                <label for="exampleInputEmail1">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico" value="<?php echo $admin->getPersonEmail() ?>">
                             </div>
+
                             <!--GENDER-->
                             <div class="form-group">
                                 <label>Género</label>
                                 <?php
-                                if ($student->getPersonGender() == "1") {
+                                if ($admin->getPersonGender() == 1) {
                                     ?>
                                     <div class="radio">
                                         <label>
@@ -115,84 +102,24 @@ include './reusable/Header.php';
                             <!--NATIONALITY-->
                             <div class="form-group">
                                 <label>Nacionalidad</label>
-                                <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required="" value="<?php echo $student->getPersonNacionality() ?>" />
+                                <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required="" value="<?php echo $admin->getPersonNacionality() ?>" />
                             </div>
-                            <!--ADECUACY-->
-                            <div class="form-group">
-                                <label>Adecuación</label>
-                                <?php
-                                if ($student->getStudentAdecuacy() == "0") {
-                                    ?>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy1" name="adecuacy1" value="0" checked>
-                                            Sin adecuación
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy2" name="adecuacy2" value="1">
-                                            Con adecuación
-                                        </label>
-                                    </div>
-                                    <?php
-                                } else {
-                                    ?>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy1" name="adecuacy1" value="0" >
-                                            Sin adecuación
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy2" name="adecuacy2" value="1" checked>
-                                            Con adecuación
-                                        </label>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                            <!--YEARINCOME-->
-                            <div class="form-group">
-                                <label>Año de ingreso</label>
-                                <input id="yearIncome" name="yearIncome" type="number" class="form-control" placeholder="Año de ingreso" required="" value="<?php echo $student->getStudentYearIncome() ?>"  />
-                            </div>
-                            <!--YEAROUT-->
-<!--                            <div class="form-group">
-                                <label>Año de salida</label>
-                                <input id="yearOut" name="yearOut" type="number" class="form-control" placeholder="Año de ingreso" required="" value="<?php echo $student->getStudentYearOut() ?>"  />
-                            </div>-->
-                            <!--LOCALITATION-->
-                            <div>
-                                <label>Localización</label>
-                                <input id="localitation" name="localitation" class="form-control" rows="3" placeholder="Localización ..." required="" value="<?php echo $student->getStudentLocation() ?>"  />
-                            </div>
-                            <!--Group-->
-                            <!--                            <div class="form-group">
-                                                            <label>Grupo</label>
-                                                            <input id="group" name="group" type="text" class="form-control" placeholder="Grupo" required="" value="<?php echo $student->getStudentgroup() ?>"  />
-                                                        </div>-->
-                            <!--MANAGER-->
-                            <div class="form-group">
-                                <label>Encargado</label>
-                                <input id="managerStudent" name="managerStudent" type="text" class="form-control" placeholder="Encargado" required="" value="<?php echo $student->getStudentManager() ?>"  />
-                            </div>
-                            <input id="dniTemp" value="<?php echo $student->getPersonDni() ?>">
+
+                            <input id="dniTemp" value="<?php echo $admin->getPersonDni() ?>">
                             <input id="id" name="id" value="<?php echo $id ?>">
                         </div><!-- /.box-body -->
                     </form>
-                    
+
                     <div class="pull-left">
                         <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
                     </div>
                     <div class="pull-right">
-                        <button onclick="backPage(<?php echo $id ?>);" class="btn btn-primary">Atrás</button>
+                        <button onclick="backPage();" class="btn btn-primary">Atrás</button>
                     </div>
-                    
+
                     <?php
-                }//fin del for
+                    break;
+                }// end of for
                 ?>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
@@ -291,18 +218,13 @@ include './reusable/Footer.php';
     });
 
     function valueInputs() {
-
-        var dniTemp = $('#dniTemp').val();
         var dni = $('#dni').val();
+        var dniTemp = $('#dniTemp').val();
+        var email = $('#email').val();
         var name = $('#name').val();
         var firstlastname = $('#firstlastname').val();
         var secondlastname = $('#secondlastname').val();
-        var birthdate = $('#birthdate').val();
         var nationality = $('#nationality').val();
-        var yearIncome = $('#yearIncome').val();
-//        var yearOut = $('#yearOut').val();
-        var managerStudent = $('#managerStudent').val();
-        var direction = $('#localitation').val();
 
         if (!isInteger(dni)) {
             alertify.error("Formato de cédula incorrecto");
@@ -319,6 +241,11 @@ include './reusable/Footer.php';
             return false;
         }
 
+        if (email.length === 0) {
+            alertify.error("Verifique el correo");
+            return false;
+        }
+
         if (firstlastname.length === 0) {
             alertify.error("Verifique el primer apellido");
             return false;
@@ -329,46 +256,17 @@ include './reusable/Footer.php';
             return false;
         }
 
-        if (!exitsDate(birthdate)) {
-            alertify.error("Verifique la fecha de nacimiento");
-            return false;
-        }
-
         if (nationality.length === 0) {
             alertify.error("Verifique la nacionalidad");
             return false;
         }
 
-        if (!isInteger(yearIncome)) {
-            alertify.error("Verifique el año de ingreso");
-            return false;
-        }
-
-//        if (!isInteger(yearOut)) {
-//            alertify.error("Verifique el año de salida");
-//            return false;
-//        }
-
-//        if ((yearIncome <= 2015) || (yearIncome >= 10000)){
-//            alertify.error("Verifique el año de ingreso");
-//            return false;
-//        }
-
-        if (managerStudent.length === 0) {
-            alertify.error("Verifique el nombre del encargado");
-            return false;
-        }
-
-        if (direction.length === 0) {
-            alertify.error("Verifique la localización");
-            return false;
-        }
-        
-        if(dni === dniTemp){
+        if (dni === dniTemp) {
             $("#form").submit();
-        }else{
+        } else {
             confirmDni(dni);
         }
+
     }
 
     function isInteger(number) {
@@ -379,17 +277,6 @@ include './reusable/Footer.php';
         }
     }
 
-    function exitsDate(dateInput) {
-        var dateTemp = dateInput.split("/");
-        var day = dateTemp[0];
-        var month = dateTemp[1];
-        var year = dateTemp[2];
-        var date = new Date(year, month, '0');
-        if ((day - 0) > (date.getDate() - 0)) {
-            return false;
-        }
-        return true;
-    }
 
     function confirmDni(dni) {
         $.ajax({
@@ -401,7 +288,7 @@ include './reusable/Footer.php';
                 if (data == true) {
                     $("#form").submit();
                 } else {
-                    alertify.error("Ya existe un estudiante con ese número de cédula");
+                    alertify.error("Ya existe un administrador con ese número de cédula");
                 }
             },
             error: function ()
@@ -410,8 +297,8 @@ include './reusable/Footer.php';
             }
         });
     }
-    
-    function backPage(id){
-        window.location = "InformationStudent.php?id=" + id;
+
+    function backPage() {
+        window.location = "ShowAdmins.php";
     }
 </script>

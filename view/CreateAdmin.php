@@ -1,9 +1,5 @@
 <?php
-//session_start();
-//if (!isset($_SESSION['id'])) {
-//    header("location: ./Login.php");
-//}
-
+include './reusable/Session.php';
 include './reusable/Header.php';
 ?>
 
@@ -27,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Administrador</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/businessAction/CreateAdmin.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="form" action="../business/CreateAdminAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <!--DNI-->
                         <div class="form-group">
@@ -51,26 +47,8 @@ include './reusable/Header.php';
                         </div>
                         <!--EMAIL-->
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Correo electronico</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">@</div>
-                                <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="Enter email">
-                            </div>
-                        </div>
-                        <!-- BIRTHDATE -->
-                        <div class="form-group">
-                            <label>Fecha de nacimiento:</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input id="birthdate" name="birthdate" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
-                            </div><!-- /.input group -->
-                        </div><!-- /.form group -->
-                        <!--AGE-->
-                        <div class="form-group">
-                            <label>Edad</label>
-                            <input id="age" name="age" type="text" class="form-control" placeholder="Edad" required=""/>
+                            <label for="exampleInputEmail1">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico">
                         </div>
                         <!--GENDER-->
                         <div class="form-group">
@@ -191,12 +169,10 @@ include './reusable/Footer.php';
 
     function valueInputs() {
         var dni = $('#dni').val();
+        var email = $('#email').val();
         var name = $('#name').val();
         var firstlastname = $('#firstlastname').val();
         var secondlastname = $('#secondlastname').val();
-        var email = $('#exampleInputEmail1').val();
-        var birthdate = $('#birthdate').val();
-        var age = $('#age').val();
         var nationality = $('#nationality').val();
 
         if (!isInteger(dni)) {
@@ -213,6 +189,11 @@ include './reusable/Footer.php';
             alertify.error("Verifique el nombre");
             return false;
         }
+        
+        if (email.length === 0) {
+            alertify.error("Verifique el correo");
+            return false;
+        }
 
         if (firstlastname.length === 0) {
             alertify.error("Verifique el primer apellido");
@@ -224,28 +205,13 @@ include './reusable/Footer.php';
             return false;
         }
 
-        if (!exitsDate(birthdate)) {
-            alertify.error("Verifique la fecha de nacimiento");
-            return false;
-        }
-
-        if (!valueEmail(email)) {
-            alertify.error("Verifique el correo electronico");
-            return false;
-        }
-
-        if (!isInteger(age)) {
-            alertify.error("Verifique la edad");
-            return false;
-        }
-
         if (nationality.length === 0) {
             alertify.error("Verifique la nacionalidad");
             return false;
         }
 
-        $("#form").submit(function () {
-        });
+        confirmDni(dni);
+
     }
 
     function isInteger(number) {
@@ -266,19 +232,6 @@ include './reusable/Footer.php';
             return false;
         }
         return true;
-    }
-
-    function valueEmail(email) {
-        // Expresion regular para validar el correo
-        var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-
-        // Se utiliza la funcion test() nativa de JavaScript
-        if (regex.test(email)) {
-            return true;
-        } else {
-            return false;
-        }
-        return false;
     }
 
     $('#phones').hide();
@@ -306,12 +259,33 @@ include './reusable/Footer.php';
 
         $('#phone tr:last').after(scripHtml);
 
-        $('#phones').val(idPhone);
         idPhone++;
     }
 
     function deletePhone(id) {
         $("#tr" + id).remove();
     }
+
+    function confirmDni(dni) {
+        $.ajax({
+            type: 'GET',
+            url: "../business/ConfirmDni.php",
+            data: {"dni": dni},
+            success: function (data)
+            {
+                if (data == true) {
+                    $('#phones').val(idPhone);
+                    $("#form").submit();
+                } else {
+                    alertify.error("Ya existe un administrador con ese número de cédula");
+                }
+            },
+            error: function ()
+            {
+                alertify.error("Error ...");
+            }
+        });
+    }
+
 
 </script>

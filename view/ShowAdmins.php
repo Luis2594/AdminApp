@@ -1,9 +1,5 @@
 <?php
-//session_start();
-//if (!isset($_SESSION['id'])) {
-//    header("location: ./Login.php");
-//}
-
+include './reusable/Session.php';
 include './reusable/Header.php';
 ?>
 
@@ -32,30 +28,34 @@ include './reusable/Header.php';
                                 <th>Nombre</th>
                                 <th>Primer Apellido</th>
                                 <th>Segundo Apellido</th>
-                                <th>Edad</th>
-                                <th>Genero</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            include '../business/PersonBusiness.php';
-                            $personBusiness = new PersonBusiness();
-                            
-                            $admins = $personBusiness->getAll();
-                            
+                            include '../business/AdminBusiness.php';
+                            $AdminBusiness = new AdminBusiness();
+
+                            $admins = $AdminBusiness->getAll();
+
                             foreach ($admins as $admin) {
                                 ?>
                                 <tr>
                                     <td><?php echo $admin->getPersonDni(); ?></td>
-                                    <td><a href=""><?php echo $admin->getPersonFirstName(); ?></a></td>
+                                    <td><a href="InformationAdmin.php?id=<?php echo $admin->getPersonId();?>"><?php echo $admin->getPersonFirstName(); ?></a></td>
                                     <td><?php echo $admin->getPersonFirstlastname(); ?></td>
                                     <td><?php echo $admin->getPersonSecondlastname(); ?></td>
-                                    <td><?php echo $admin->getPersonAge(); ?></td>
-                                    <td><?php echo $admin->getPersonGender(); ?></td>
-                                </tr>
-                                <?php
-                            }
-                            ?> 
+                            <div class="btn-group btn-group-justified">
+                                <td>
+                                    <a type="button" class="btn btn-primary" href="javascript:updateAdmin(<?php echo $admin->getPersonId() ?>)">Actualizar</a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn btn-danger" href="javascript:deleteAdmin(<?php echo $admin->getPersonId() ?>)">Eliminar</a>
+                                </td>
+                            </div>
+                            </tr>
+                            <?php
+                        }
+                        ?> 
                         </tbody>
                         <tfoot>
                             <tr>
@@ -63,8 +63,6 @@ include './reusable/Header.php';
                                 <th>Nombre</th>
                                 <th>Primer Apellido</th>
                                 <th>Segundo Apellido</th>
-                                <th>Edad</th>
-                                <th>Genero</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -83,5 +81,18 @@ include './reusable/Footer.php';
     $(function () {
         $("#example1").dataTable();
     });
+
+    function updateAdmin(id) {
+        window.location = "UpdateAdmin.php?id=" + id;
+    }
+
+    function deleteAdmin(id) {
+        alertify.confirm('Eliminar administrador', '¿Desea eliminar?', function () {
+            window.location = "../business/DeleteAdminAction.php?id=" + id;
+        }
+        , function () {
+            alertify.error('Cancelado');
+        });
+    }
 </script>
 

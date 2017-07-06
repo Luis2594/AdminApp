@@ -1,9 +1,5 @@
 <?php
-//session_start();
-//if (!isset($_SESSION['id'])) {
-//    header("location: ./Login.php");
-//}
-
+include './reusable/Session.php';
 include './reusable/Header.php';
 ?>
 
@@ -47,7 +43,7 @@ include './reusable/Header.php';
                                 ?>
                                 <tr>
                                     <td><?php echo $professor->getPersonDni(); ?></td>
-                                    <td><a href=""><?php echo $professor->getPersonFirstName(); ?></a></td>
+                                    <td><a href=InformationProfessor.php?id=<?php echo $professor->getPersonId();?>"><?php echo $professor->getPersonFirstName(); ?></a></td>
                                     <td><?php echo $professor->getPersonFirstlastname(); ?></td>
                                     <td><?php echo $professor->getPersonSecondlastname(); ?></td>
                                     <td><?php echo $professor->getPersonAge(); ?></td>

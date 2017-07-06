@@ -48,7 +48,7 @@ if (isset($id) && isset($dni) &&
         $user = new User($userTemp->getUserId(), $dni, $pass, NULL, NULL);
 
         if ($userBusiness->update($user)) {
-            header("location: ../view/InformationProfessor.php?id=" . $id . "&action=1&msg=Registro_actualizado_correctamente");
+            header("location: ../view/ShowAdmins.php?action=1&msg=Registro_actualizado_correctamente");
         } else {
             header("location: ../view/UpdateProfessor.php?id=" . $id . "&action=0&msg=Error_al_actualizar_registro");
         }

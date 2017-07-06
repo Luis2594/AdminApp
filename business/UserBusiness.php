@@ -43,4 +43,8 @@ class UserBusiness {
         return $this->userData->getLastId();
     }
     
+    public function login($user, $pass) {
+        return $this->userData->login($user, $pass);
+    }
+    
 }
