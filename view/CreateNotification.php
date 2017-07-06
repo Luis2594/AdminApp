@@ -27,10 +27,10 @@ include './reusable/Header.php';
                     <h3 class="box-title">Enviar Notificación</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/businessAction/CreateSpeciality.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="form" action="../business/CreateNotificationAction.php" method="POST" enctype="multipart/form-data">
                     <!-- textarea -->
                     <div class="form-group">
-                        <textarea id="notify" name="notify" class="form-control" rows="3" placeholder="Notificación"></textarea>
+                        <textarea id="text" name="text" class="form-control" rows="3" placeholder="Notificación"></textarea>
                     </div>
                 </form>
                 <div class="box-footer">
@@ -48,13 +48,13 @@ include './reusable/Footer.php';
 <script type="text/javascript">
 
     function valueInputs() {
-        var notify = $('#notify').val();
+        var notify = $('#text').val();
         if (notify.length === 0) {
-            alertify.error("Verifique el nombre del curso");
+            alertify.error("Verifique el texto de su notificación");
             return false;
         }
 
-//        $("#form").submit();
+        $("#form").submit();
     }
 
 </script>
