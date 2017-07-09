@@ -132,11 +132,19 @@ include './reusable/Header.php';
                                     <div class="radio">
                                         <label>
                                             <input type="radio" name="adecuacy" id="adecuacy2" name="adecuacy2" value="1">
-                                            Con adecuación
+                                            Adecuación NO significativa
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="adecuacy" id="adecuacy3" name="adecuacy3" value="2">
+                                            Adecuación significativa
                                         </label>
                                     </div>
                                     <?php
-                                } else {
+                                }
+
+                                if ($student->getStudentAdecuacy() == "1") {
                                     ?>
                                     <div class="radio">
                                         <label>
@@ -147,7 +155,36 @@ include './reusable/Header.php';
                                     <div class="radio">
                                         <label>
                                             <input type="radio" name="adecuacy" id="adecuacy2" name="adecuacy2" value="1" checked>
-                                            Con adecuación
+                                            Adecuación NO significativa
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="adecuacy" id="adecuacy3" name="adecuacy3" value="2">
+                                            Adecuación significativa
+                                        </label>
+                                    </div>
+                                    <?php
+                                }
+
+                                if ($student->getStudentAdecuacy() == "2") {
+                                    ?>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="adecuacy" id="adecuacy1" name="adecuacy1" value="0" >
+                                            Sin adecuación
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="adecuacy" id="adecuacy2" name="adecuacy2" value="1" >
+                                            Adecuación NO significativa
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="adecuacy" id="adecuacy3" name="adecuacy3" value="2" checked>
+                                            Adecuación significativa
                                         </label>
                                     </div>
                                     <?php
@@ -160,10 +197,10 @@ include './reusable/Header.php';
                                 <input id="yearIncome" name="yearIncome" type="number" class="form-control" placeholder="Año de ingreso" required="" value="<?php echo $student->getStudentYearIncome() ?>"  />
                             </div>
                             <!--YEAROUT-->
-<!--                            <div class="form-group">
-                                <label>Año de salida</label>
-                                <input id="yearOut" name="yearOut" type="number" class="form-control" placeholder="Año de ingreso" required="" value="<?php echo $student->getStudentYearOut() ?>"  />
-                            </div>-->
+                            <!--                            <div class="form-group">
+                                                            <label>Año de salida</label>
+                                                            <input id="yearOut" name="yearOut" type="number" class="form-control" placeholder="Año de ingreso" required="" value="<?php echo $student->getStudentYearOut() ?>"  />
+                                                        </div>-->
                             <!--LOCALITATION-->
                             <div>
                                 <label>Localización</label>
@@ -183,14 +220,14 @@ include './reusable/Header.php';
                             <input id="id" name="id" value="<?php echo $id ?>">
                         </div><!-- /.box-body -->
                     </form>
-                    
+
                     <div class="pull-left">
                         <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
                     </div>
                     <div class="pull-right">
                         <button onclick="backPage(<?php echo $id ?>);" class="btn btn-primary">Atrás</button>
                     </div>
-                    
+
                     <?php
                 }//fin del for
                 ?>
@@ -363,10 +400,10 @@ include './reusable/Footer.php';
             alertify.error("Verifique la localización");
             return false;
         }
-        
-        if(dni === dniTemp){
+
+        if (dni === dniTemp) {
             $("#form").submit();
-        }else{
+        } else {
             confirmDni(dni);
         }
     }
@@ -410,8 +447,8 @@ include './reusable/Footer.php';
             }
         });
     }
-    
-    function backPage(id){
+
+    function backPage(id) {
         window.location = "InformationStudent.php?id=" + id;
     }
 </script>

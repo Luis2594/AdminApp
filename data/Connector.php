@@ -18,25 +18,15 @@ class Connector {
 
     /**
      * Función constructora
-     */
-//    public function Connector() {
-//        $this->server = 'mysql.hostinger.es';
-//        $this->user = 'u738259693_root';
-//        $this->password = '12345678';
-//        $this->db = 'u738259693_sanke';
-//    }
-//    public function Connector() {
-//        $this->server = '163.178.107.130';
-//        $this->user = 'adm';
-//        $this->password = 'saucr.092';
-//        $this->db = 'cindea';
-//    }
+     */ 
+//    LOCAL
     public function Connector() {
         $this->server = 'localhost';
         $this->user = 'root';
         $this->password = '1234';
         $this->db = 'institution';
     }
+    
 
     /**
      * Open connection to the data base

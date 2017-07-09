@@ -106,9 +106,27 @@ include './reusable/Header.php';
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="adecuacy" id="adecuacy2" name="adecuacy2" value="1">
-                                    Con adecuación
+                                    Adecuación NO significativa
                                 </label>
                             </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="adecuacy" id="adecuacy3" name="adecuacy3" value="2">
+                                    Adecuación significativa
+                                </label>
+                            </div>
+                        </div>
+                         <!--MAIN GROUP-->
+                        <div class="form-group">
+                            <label>Grupo con mayor carga académica</label>
+                            <select id="mainGroup" name="mainGroup" class="form-control">
+                            </select>
+                        </div>
+                          <!--SECUNDARY GROUP-->
+                        <div class="form-group">
+                            <label>Grupo secundario</label>
+                            <select id="secundaryGroup" name="secundaryGroup" class="form-control">
+                            </select>
                         </div>
                         <!--PHONES-->
                         <table id="phone">
@@ -177,6 +195,7 @@ include './reusable/Footer.php';
 
 
     $(function () {
+        groups();
         //Datemask dd/mm/yyyy
         $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
         //Datemask2 mm/dd/yyyy
@@ -371,6 +390,31 @@ include './reusable/Footer.php';
                 } else {
                     alertify.error("Ya existe un estudiante con ese número de cédula");
                 }
+            },
+            error: function ()
+            {
+                alertify.error("Error ...");
+            }
+        });
+    }
+
+    function groups() {
+        $.ajax({
+            type: 'GET',
+            url: "../business/GetGroups.php",
+            success: function (data)
+            {
+                var group = JSON.parse(data);
+                var htmlCombo = '';
+                var htmlSecundaryGroup = '<OPTION VALUE="0">Seleccione un grupo secundario</OPTION>';
+                var bool = 0;
+                $.each(group, function (i, item) {
+                    bool = 1;
+                    htmlCombo += '<OPTION VALUE="' + item.id + '">' + item.number + '</OPTION>';
+                });
+                $("#mainGroup").html(htmlCombo);
+                htmlSecundaryGroup += htmlCombo;
+                $("#secundaryGroup").html(htmlSecundaryGroup);
             },
             error: function ()
             {

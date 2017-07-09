@@ -19,7 +19,10 @@ class StudentData extends Connector {
                 . "" . $student->getStudentPerson() . ","
                 . "'" . $pass . "')";
 
-        return $this->exeQuery($query);
+        $result = $this->exeQuery($query);
+        $array = mysqli_fetch_array($result);
+        $id = trim($array[0]);
+        return $id;
     }
 
     public function update($student) {

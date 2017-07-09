@@ -105,14 +105,23 @@ include './reusable/Header.php';
                                 <?php
                                 if ($student->getStudentAdecuacy() == "0") {
                                     ?>
-                                    <input id="adecuacy" name="adecuacy" type="text" class="form-control" placeholder="Adecuación" required="" value="No" readonly/>
+                                    <input id="adecuacy" name="adecuacy" type="text" class="form-control" placeholder="Adecuación" required="" value="Sin adecuación" readonly/>
                                     <?php
-                                } else {
+                                }
+
+                                if ($student->getStudentAdecuacy() == "1") {
                                     ?>
-                                    <input id="adecuacy" name="adecuacy" type="text" class="form-control" placeholder="Adecuación" required="" value="Si" readonly/>
+                                    <input id="adecuacy" name="adecuacy" type="text" class="form-control" placeholder="Adecuación" required="" value="Adecuación no significativa" readonly/>
+                                    <?php
+                                }
+
+                                if ($student->getStudentAdecuacy() == "2") {
+                                    ?>
+                                    <input id="adecuacy" name="adecuacy" type="text" class="form-control" placeholder="Adecuación" required="" value="Adecuación significativa" readonly/>
                                     <?php
                                 }
                                 ?>
+
                             </div>
                             <!--YEARINCOME-->
                             <div class="form-group">
@@ -125,10 +134,10 @@ include './reusable/Header.php';
                                 <input id="localitation" name="localitation" class="form-control" rows="3" placeholder="Localización ..." required="" value="<?php echo $student->getStudentLocation() ?>" readonly />
                             </div>
                             <!--Group-->
-                            <div class="form-group">
+<!--                            <div class="form-group">
                                 <label>Grupo</label>
                                 <input id="group" name="group" type="text" class="form-control" placeholder="Grupo" required="" value="<?php echo $student->getStudentgroup() ?>" readonly />
-                            </div>
+                            </div>-->
                             <!--MANAGER-->
                             <div class="form-group">
                                 <label>Encargado</label>

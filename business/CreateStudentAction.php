@@ -5,6 +5,7 @@ include './PersonBusiness.php';
 include './StudentBusiness.php';
 include './UserBusiness.php';
 include './PhoneBusiness.php';
+include './GroupBusiness.php';
 
 $dni = $_POST['dni'];
 $name = $_POST['name'];
@@ -18,6 +19,8 @@ $yearIncome = $_POST['yearIncome'];
 $managerStudent = $_POST['managerStudent'];
 $localitation = $_POST['localitation'];
 $adecuacyTemp = $_POST['adecuacy'];
+$mainGroup = $_POST['mainGroup'];
+$secundaryGroup = $_POST['secundaryGroup'];
 
 $quantityPhones = (int) $_POST['phones'];
 
@@ -27,6 +30,8 @@ if (isset($dni) &&
         isset($secondlastname) &&
         isset($birthdate) &&
         isset($genderTemp) &&
+        isset($mainGroup) &&
+        isset($secundaryGroup) &&
         isset($yearIncome) &&
         isset($managerStudent) &&
         isset($localitation)) {
@@ -55,14 +60,39 @@ if (isset($dni) &&
 
         //Verificamos la adecuación de la persona
         $adecuacy = 0;
-        if ($adecuacyTemp == 1) {
-            $adecuacy = 1;
+        switch ($adecuacyTemp) {
+            case 0:
+                $adecuacy = 0;
+                break;
+            case 1:
+                $adecuacy = 1;
+                break;
+            case 2:
+                $adecuacy = 2;
+                break;
+            default:
+                $adecuacy = 0;
+                break;
         }
 
         $student = new Student(NULL, $adecuacy, $yearIncome, NULL, $localitation, NULL, $managerStudent, $id_last);
         $pass = strtoupper(substr($firstlastname, 0, 2)) . strtoupper(substr($secondlastname, 0, 2)) . substr($dni, -3);
+        
         if ($studentBusiness->insertStudentWithCredentials($student, $pass)) {
-//            if ($userBusiness->insertProfessorWithCredentials($user)) {
+            
+            $groupBusiness = new GroupBusiness();
+            if($groupBusiness->insertStudentGroup($mainGroup, $id_last, 1)){
+                if($secundaryGroup != 0 && $secundaryGroup != $mainGroup){
+                    if($groupBusiness->insertStudentGroup($secundaryGroup, $id_last, 0)){
+                        
+                    }else{
+                        header("location: ../view/CreateStudent.php?action=0&msg=Error_al_ingresar_grupo_secundario");
+                    }
+                }
+            }else{
+                header("location: ../view/CreateStudent.php?action=0&msg=Error_al_ingresar_grupo_principal");
+            }
+           
             if (isset($quantityPhones)) {
                 $phoneBusiness = new PhoneBusiness();
                 for ($i = 0; $i <= $quantityPhones; $i++) {
@@ -74,11 +104,6 @@ if (isset($dni) &&
                 }
             }
             header("location: ../view/InformationStudent.php?id=" . $id_last . "&action=1&msg=Estudiante_creado_correctamente");
-//            } else {
-//                //ERROR
-//                $personBusiness->delete($id_last);
-//                header("location: ../view/CreateStudent.php?action=0&msg=Error_al_crear_usuario_a_estudiante");
-//            }
         } else {
             //error
             $personBusiness->delete($id_last);

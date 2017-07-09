@@ -60,8 +60,19 @@ if (isset($id) &&
 
         //Verificamos la adecuación de la persona
         $adecuacy = 0;
-        if ($adecuacyTemp == 1) {
-            $adecuacy = 1;
+        switch ($adecuacyTemp) {
+            case 0:
+                $adecuacy = 0;
+                break;
+            case 1:
+                $adecuacy = 1;
+                break;
+            case 2:
+                $adecuacy = 2;
+                break;
+            default:
+                $adecuacy = 0;
+                break;
         }
 
         $student = new Student(NULL, $adecuacy, $yearIncome, NULL, $localitation, NULL, $managerStudent, $id);
