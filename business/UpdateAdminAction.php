@@ -33,7 +33,7 @@ if (isset($id) && isset($dni) &&
 
 
     $person = new Person(
-            $id, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), NULL, $genderTemp, $nationality, "1.png");
+            $id, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), NULL, $genderTemp, $nationality, "profile_default.png");
 
     $res = $personBusiness->update($person);
 

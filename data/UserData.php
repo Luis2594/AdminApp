@@ -85,13 +85,14 @@ class UserData extends Connector {
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_array($result)) {
                 session_start();
+                $_SESSION["img"] = $row['personimage'];
                 $_SESSION["type"] = $row['userusertype'];
                 $_SESSION["id"] = $row['personid'];
                 $_SESSION["name"] = $row['personfirstname'] + " " + $row['personfirstlastname'];
                 break;
             }
         }
-        if (!isset($_SESSION['id']) || !isset($_SESSION['type']) || !isset($_SESSION['name'])) {
+        if (!isset($_SESSION['id']) || !isset($_SESSION['type']) || !isset($_SESSION['name']) || !isset($_SESSION['img'])) {
             // remove all session variables
             session_unset();
 

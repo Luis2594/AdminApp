@@ -205,30 +205,10 @@ include './reusable/Footer.php';
             {
                 var speciality = JSON.parse(data);
                 var htmlCombo = '';
-//                var bool = 0;
                 $.each(speciality, function (i, item) {
-//                    bool = 1;
                     htmlCombo += '<OPTION VALUE="' + item.id + '">' + item.period + '</OPTION>';
                 });
                 $("#period" + id).html(htmlCombo);
-
-//                if (bool === 0) {
-//                    /*
-//                     * @title {String or DOMElement} The dialog title.
-//                     * @message {String or DOMElement} The dialog contents.
-//                     * @onok {Function} Invoked when the user clicks OK button.
-//                     * @oncancel {Function} Invoked when the user clicks Cancel button or closes the dialog.
-//                     *
-//                     * alertify.confirm(title, message, onok, oncancel);
-//                     *
-//                     */
-//                    alertify.confirm('Confirmar', 'Tiene que existir al menos una atinencia o especialidad', function () {
-//                        //window.location = "CreateSpeciality.php";
-//                    }
-//                    , function () {
-//                        //window.location = "CreateSpeciality.php";
-//                    });
-//                }
             },
             error: function ()
             {
@@ -285,9 +265,7 @@ include './reusable/Footer.php';
             {
                 var type = JSON.parse(data);
                 var htmlCombo = '';
-//                var bool = 0;
                 $.each(type, function (i, item) {
-//                    bool = 1;
                     htmlCombo += '<OPTION VALUE="' + item.id + '">' + item.type + '</OPTION>';
                 });
                 $("#typeCourse").html(htmlCombo);

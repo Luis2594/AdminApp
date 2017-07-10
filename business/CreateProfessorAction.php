@@ -41,7 +41,7 @@ if (isset($dni) &&
             NULL, 
             $genderTemp, 
             $nationality, 
-            "1.png");
+            "profile_default.png");
 
     $id_last = $personBusiness->insert($person);
 

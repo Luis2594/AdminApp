@@ -31,7 +31,7 @@ if (isset($dni) &&
     $personBusiness = new PersonBusiness();
 
     $person = new Person(
-            NULL, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), NULL, $genderTemp, $nationality, "1.png");
+            NULL, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), NULL, $genderTemp, $nationality, "profile_default.png");
 
     $id_last = $personBusiness->insert($person);
 
@@ -50,7 +50,7 @@ if (isset($dni) &&
                     }
                 }
             }
-            header("location: ../view/ShowAdmins.phpaction=1&msg=Registro_creado_correctamente");
+            header("location: ../view/ShowAdmins.php?action=1&msg=Registro_creado_correctamente");
         } else {
             //error
             $personBusiness->delete($id_last);

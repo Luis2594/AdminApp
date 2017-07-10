@@ -50,7 +50,7 @@ if (isset($dni) &&
     }
 
     //Creamos instancia de persona
-    $person = new Person(NULL, $dni, $name, $firstlastname, $secondlastname, "", date('Y-m-d', strtotime(str_replace('/', '-', $birthdate))), NULL, $gender, $nationality, "1.png");
+    $person = new Person(NULL, $dni, $name, $firstlastname, $secondlastname, "", date('Y-m-d', strtotime(str_replace('/', '-', $birthdate))), NULL, $gender, $nationality, "profile_default.png");
 
     $id_last = $personBusiness->insert($person);
 
