@@ -36,14 +36,14 @@ include './reusable/Header.php';
                             <?php
                             include '../business/CourseBusiness.php';
                             $coursesBusiness = new CourseBusiness();
-                            
+
                             $courses = $coursesBusiness->getAll();
-                            
+
                             foreach ($courses as $course) {
                                 ?>
                                 <tr>
                                     <td><?php echo $course->getCourseCode(); ?></td>
-                                    <td><a href=""><?php echo $course->getCourseName(); ?></a></td>
+                                    <td><a href="InformationCourse.php?id=<?php echo $course->getCourseId() ?>"><?php echo $course->getCourseName(); ?></a></td>
                                     <td><?php echo $course->getCourseCredits(); ?></td>
                                     <td><?php echo $course->getCourseLesson(); ?></td>
                                     <td><?php echo $course->getPeriod(); ?></td>

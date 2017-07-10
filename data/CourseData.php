@@ -24,26 +24,27 @@ class CourseData extends Connector {
         $id = trim($array[0]);
         return $id;
     }
-    
+
     public function insertPeriod($course, $period) {
-        $query = "call insertCoursePeriod(" . $course . ",". $period . ")";
+        $query = "call insertCoursePeriod(" . $course . "," . $period . ")";
         return $this->exeQuery($query);
     }
 
     public function update($course) {
-        $query = "call update('" . $course->getCourseId() . "',"
+        $query = "call updateCourse('" . $course->getCourseId() . "',"
                 . "'" . $course->getCourseCode() . "',"
                 . "'" . $course->getCourseName() . "',"
                 . "'" . $course->getCourseCredits() . "',"
                 . "'" . $course->getCourseLesson() . "',"
-                . "'" . $course->getCoursePeriod() . "',"
-                . "'" . $course->getCourseSpeciality() . "')";
+                . "'" . $course->getCoursePdf() . "',"
+                . "'" . $course->getCourseSpeciality() . "',"
+                . "'" . $course->getCourseType() . "')";
 
         return $this->exeQuery($query);
     }
 
     public function delete($id) {
-        $query = 'call delete("' . $id . '");';
+        $query = 'call deleteCourse("' . $id . '");';
 
         if ($this->exeQuery($query)) {
             return TRUE;
@@ -60,14 +61,7 @@ class CourseData extends Connector {
         if (mysqli_num_rows($allCourses) > 0) {
             while ($row = mysqli_fetch_array($allCourses)) {
                 $currentCourse = new Course(
-                        $row['courseid'], 
-                        $row['coursecode'], 
-                        $row['coursename'], 
-                        $row['coursecredits'], 
-                        $row['courselesson'], 
-                        $row['coursepdf'], 
-                        $row['coursespeciality'], 
-                        $row['coursetype']);
+                        $row['courseid'], $row['coursecode'], $row['coursename'], $row['coursecredits'], $row['courselesson'], $row['coursepdf'], $row['coursespeciality'], $row['coursetype']);
                 $currentCourse->setSpecialityname($row['specialityname']);
                 $currentCourse->setPeriod($row['period']);
                 array_push($array, $currentCourse);
@@ -77,13 +71,44 @@ class CourseData extends Connector {
     }
 
     public function getCourseId($id) {
-        $query = "";
+        $query = 'call getCourseById("' . $id . '");';
 
         $allCourses = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allCourses) > 0) {
             while ($row = mysqli_fetch_array($allCourses)) {
-                $currentCourse = new Course($row['courseId'], $row['courseCode'], $row['courseName'], $row['courseCredits'], $row['courseLesson'], $row['coursePeriod'], $row['specialityname']);
+                $currentCourse = new Course(
+                        $row['courseid'], 
+                        $row['coursecode'], 
+                        $row['coursename'], 
+                        $row['coursecredits'], 
+                        $row['courselesson'], 
+                        $row['coursepdf'], 
+                        $row['coursespeciality'], 
+                        $row['coursetype']);
+                $currentCourse->setSpecialityname($row['specialityname']);
+                array_push($array, $currentCourse);
+            }
+        }
+        return $array;
+    }
+    
+    public function getCourseIdUpdate($id) {
+        $query = 'call getCourseByIdUpdate("' . $id . '");';
+
+        $allCourses = $this->exeQuery($query);
+        $array = [];
+        if (mysqli_num_rows($allCourses) > 0) {
+            while ($row = mysqli_fetch_array($allCourses)) {
+                $currentCourse = new Course(
+                        $row['courseid'], 
+                        $row['coursecode'], 
+                        $row['coursename'], 
+                        $row['coursecredits'], 
+                        $row['courselesson'], 
+                        $row['coursepdf'], 
+                        $row['coursespeciality'], 
+                        $row['coursetype']);
                 array_push($array, $currentCourse);
             }
         }
@@ -102,13 +127,12 @@ class CourseData extends Connector {
         return $array;
     }
 
-    
-    
-    
-    
-    
-    public function getLastId() {
-        
-    }
+    public function confirmCode($code) {
+        $query = "call confirmCode('" . $code . "')";
 
+        $result = $this->exeQuery($query);
+        $array = mysqli_fetch_array($result);
+        $res = trim($array[0]);
+        return $res;
+    }
 }

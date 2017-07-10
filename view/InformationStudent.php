@@ -171,14 +171,7 @@ include './reusable/Header.php';
                         </div><!-- /.box-body -->
 
                     </form>
-                    <!--<div class="box-footer">-->
-                    <!--                    <div class="pull-left">
-                                            <button onclick="createStudent();" class="btn btn-primary">Crear</button>
-                                            <button onclick="updateStudent(<?php echo $id ?>);" class="btn btn-primary" style="margin-left: 150px;">Actualizar</button>
-                                        </div>
-                                        <div class="pull-right">
-                                            <button onclick="deleteStudent(<?php echo $id ?>);" class="btn btn-primary">Eliminar</button>
-                                        </div>-->
+                
                     <div class="btn-group btn-group-justified">
                         <a type="button" class="btn btn-success" href="javascript:createStudent()">Crear</a>
                         <a type="button" class="btn btn-primary" href="javascript:updateStudent(<?php echo $id ?>)">Actualizar</a>

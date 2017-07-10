@@ -39,12 +39,16 @@ class CourseBusiness {
      return $this->courseData->getCourseId($id);
     }
     
+    public function getCourseIdUpdate($id) {
+     return $this->courseData->getCourseIdUpdate($id);
+    }
+    
     public function getType() {
         return $this->courseData->getType();
     }
     
-    public function getLastId() {
-        return $this->courseData->getLastId();
+    public function confirmCode($code) {
+        return $this->courseData->confirmCode($code);
     }
     
 }

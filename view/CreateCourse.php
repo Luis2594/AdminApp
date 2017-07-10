@@ -46,20 +46,22 @@ include './reusable/Header.php';
                             <input id="lessons" name="lessons" type="number" class="form-control" placeholder="Lecciones" required=""/>
                         </div>
                         <!--PERIODS-->
-                        <table id="period">
-                            <tr id="tr0">
-                                <td>
-                                    <input id="periods" name="periods" type="text">
-                                    <div class="form-group">
-                                        <label>Período</label>
-                                        <select id="period0" name="period0" class="form-control">
-                                        </select>
-                                    </div><!-- /.form group -->
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="btn-group-vertical">
-                            <button id="AddPeriod" onclick="addPeriod();" type="button" class="btn btn-success">Agregar período</button>
+                        <div class="form-group">
+                            <table id="period">
+                                <tr id="tr0">
+                                    <td>
+                                        <input id="periods" name="periods" type="text">
+                                        <div class="form-group">
+                                            <label>Período</label>
+                                            <select id="period0" name="period0" class="form-control">
+                                            </select>
+                                        </div><!-- /.form group -->
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="btn-group-vertical">
+                                <button id="AddPeriod" onclick="addPeriod();" type="button" class="btn btn-success">Agregar período</button>
+                            </div>
                         </div>
                         <!--SPECIALITIES-->
                         <div class="form-group">
