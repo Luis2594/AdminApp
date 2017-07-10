@@ -23,15 +23,14 @@ if (isset($code) &&
     if (!empty($_FILES) && $_FILES["schedule"]["name"]) {
         $path_parts = pathinfo($_FILES["schedule"]["name"]);
         $ext = $path_parts['extension'];
-        $pdf_tmp = tempnam("../resource/pdf/", $code);
+        $pdf_tmp = tempnam("../../pdf/", $code);
 
         $path_parts_tmp = pathinfo($pdf_tmp);
         $name_tmp_pdf = $path_parts_tmp['basename'];
 
         $pdf = $pdf_tmp . "." . $ext;
 
-
-        $folder = '../resource/pdf/'; //folder path
+        $folder = '../../pdf/'; //folder path
         opendir($folder); //open path server side
         copy($_FILES["schedule"]["tmp_name"], $pdf); //copy file to server side storage folder
 

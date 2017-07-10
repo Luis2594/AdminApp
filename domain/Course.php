@@ -21,6 +21,8 @@ class Course {
     private $coursePdf;
     private $courseSpeciality;
     private $courseType;
+    private $specialityname;
+    private $period;
 
     function Course($courseId, $courseCode, $courseName, $courseCredits, $courseLesson, $coursePdf, $courseSpeciality, $courseType) {
         $this->courseId = $courseId;
@@ -95,6 +97,22 @@ class Course {
 
     function setCourseType($courseType) {
         $this->courseType = $courseType;
+    }
+
+    function getSpecialityname() {
+        return $this->specialityname;
+    }
+
+    function getPeriod() {
+        return $this->period;
+    }
+
+    function setSpecialityname($specialityname) {
+        $this->specialityname = $specialityname;
+    }
+
+    function setPeriod($period) {
+        $this->period = $period;
     }
 
 }

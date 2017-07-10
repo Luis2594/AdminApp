@@ -29,7 +29,7 @@ include './reusable/Header.php';
                                 <th>Creditos</th>
                                 <th>Lecciones</th>
                                 <th>Periodo</th>
-                                <th>Especialidad</th>
+                                <th>Atinencia/Especialidad</th>
                                 <th>Actualizar</th>
                             </tr>
                         </thead>
@@ -47,8 +47,8 @@ include './reusable/Header.php';
                                     <td><?php echo $course->getCourseName(); ?></td>
                                     <td><?php echo $course->getCourseCredits(); ?></td>
                                     <td><?php echo $course->getCourseLesson(); ?></td>
-                                    <td><?php echo $course->getCoursePeriod(); ?></td>
-                                    <td><?php echo $course->getCourseSpeciality(); ?></td>
+                                    <td><?php echo $course->getPeriod(); ?></td>
+                                    <td><?php echo $course->getSpecialityname(); ?></td>
                                     <td><a href="" >Actualizar</a></td>
                                 </tr>
                                 <?php
@@ -62,7 +62,7 @@ include './reusable/Header.php';
                                 <th>Creditos</th>
                                 <th>Lecciones</th>
                                 <th>Periodo</th>
-                                <th>Especialidad</th>
+                                <th>Atinencia/Especialidad</th>
                                 <th>Actualizar</th>
                             </tr>
                         </tfoot>

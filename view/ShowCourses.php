@@ -46,8 +46,8 @@ include './reusable/Header.php';
                                     <td><a href=""><?php echo $course->getCourseName(); ?></a></td>
                                     <td><?php echo $course->getCourseCredits(); ?></td>
                                     <td><?php echo $course->getCourseLesson(); ?></td>
-                                    <td><?php echo $course->getCoursePeriod(); ?></td>
-                                    <td><?php echo $course->getCourseSpeciality(); ?></td>
+                                    <td><?php echo $course->getPeriod(); ?></td>
+                                    <td><?php echo $course->getSpecialityname(); ?></td>
                                 </tr>
                                 <?php
                             }
