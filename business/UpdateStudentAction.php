@@ -50,7 +50,7 @@ if (isset($id) &&
     //Esto es por si ocupo algo de la persona
     //$personTemp = $personBusiness->getPersonId($id);
     //Creamos instancia de persona
-    $person = new Person($id, $dni, $name, $firstlastname, $secondlastname, "email", date('Y-m-d', strtotime(str_replace('/', '-', $birthdate))), NULL, $gender, $nationality, "1.png");
+    $person = new Person($id, $dni, $name, $firstlastname, $secondlastname, "email", date('Y-m-d', strtotime(str_replace('/', '-', $birthdate))), NULL, $gender, $nationality, "profile_default.png");
 
     $res = $personBusiness->update($person);
 

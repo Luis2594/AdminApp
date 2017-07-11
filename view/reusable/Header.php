@@ -99,10 +99,36 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img id="imageProfile2" src="./../resource/images/user1-128x128.jpg" class="img-circle" alt="User Image" />
+                            <?php
+                            if (isset($_SESSION['id'])) {
+                                include '../../business/PersonBusiness.php';
+                                $personBusiness = new PersonBusiness();
+                                $person = $personBusiness->getPersonId((int) $_SESSION['id']);
+                                ?>
+                                <img id="imageProfile2" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="img-circle" alt="User Image" />
+                                <?php
+                                echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname();
+                            } else {
+                                ?>
+                                <img id="imageProfile2" src="./../resource/images/profile_default.png" class="img-circle" alt="User Image" />
+                                <?php
+                                //header("location: Login.php");
+                            }
+                            ?>
                         </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <p>
+                                <?php
+                                if (isset($_SESSION['id'])) {
+                                    echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname();
+                                } else {
+                                    ?>
+                                        Usuario
+                                    <?php
+                                    //header("location: Login.php");
+                                }
+                                ?>
+                            </p>
                         </div>
                     </div>
 
@@ -120,7 +146,7 @@
                                 <li><a href="./UpdatePassword.php"><i class="fa"></i>Cambiar Contraseña</a></li>
                             </ul>
                         </li>
-                        
+
                         <!--ENROLLMENT-->
                         <li class="treeview">
                             <a>
@@ -246,7 +272,7 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
-            
+
             <!-- Right side column. Contains the navbar and content of the page -->
             <div class="content-wrapper">
                 <br>

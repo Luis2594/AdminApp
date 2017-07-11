@@ -9,7 +9,14 @@ if (isset($_SESSION['id'])) {
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Cindea Turrialab | Iniciar sesión</title>
+        <title>
+            <?php
+            include '../business/InstitutionBusiness.php';
+            $institutionBusiness = new InstitutionBusiness();
+            $institution = $institutionBusiness->getInstitution();
+            echo $institution[0]->getInstitutionName();
+            ?>
+            | Iniciar sesión</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="./../resource/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -21,42 +28,42 @@ if (isset($_SESSION['id'])) {
         <!-- iCheck -->
         <link href="./../resource/css/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
     </head>
     <body class="login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href=""><b>Administración </b>Cindea Turrialba</a>
+                <b>Administración </b>
+                <br />
+                <?php
+                echo $institution[0]->getInstitutionName();
+                ?>
             </div><!-- /.login-logo -->
             <div class="login-box-body">
-                <p class="login-box-msg">Iniciar sesión</p>
-                <form action="../../index2.html" method="post">
+                <p class="login-box-msg">Iniciar Sesión</p>
+                <form action="../business/LoginAction.php" method="post" >
                     <div class="form-group has-feedback">
-                        <input type="text" class="form-control" placeholder="Usuario"/>
+                        <input id="user" name="user" type="text" class="form-control" placeholder="Usuario" required="true"/>
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Contraseña"/>
+                        <input id="pass" name="pass" type="password" class="form-control" placeholder="Contraseña" required="true"/>
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row" >
-                        <div class="col-xs-8">    
-                            <div class="checkbox icheck">
+                        <div class="login-box-msg" >    
+
+                            <div class="center-block" >
+                                <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
+                            </div><!-- /.col -->
+                            <div class="checkbox icheck" style="display: none">
                                 <label>
-                                    <a href="#">Olvide mi contraseña</a><br>
+                                    <a href="#">Olvidé mi contraseña</a><br>
                                 </label>
-                            </div>                        
+                            </div>
                         </div><!-- /.col -->
                     </div>
                 </form>
-                <div class="col-xs-4" >
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
-                </div><!-- /.col -->
+
             </div><!-- /.login-box-body -->
         </div><!-- /.login-box -->
 

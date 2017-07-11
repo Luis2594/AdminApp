@@ -10,5 +10,8 @@
 //if (!isset($_SESSION['name'])) {
 //    header("location: ./Login.php");
 //}
+//if (!isset($_SESSION['img'])) {
+//    header("location: ./Login.php");
+//}
 ?>
 
