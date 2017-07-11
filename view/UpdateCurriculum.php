@@ -9,7 +9,7 @@ $id = (int) $_GET['id'];
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="CreateCurriculum.php"><i class="fa fa-arrow-circle-right"></i>Crear Malla Curricular</a></li>
-        <li><a href="InformationCurriculum.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Información de Malla Curricular</a></li>
+        <li><a href="UpdateCurriculum.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Información de Malla Curricular</a></li>
     </ol>
 </section>
 <br>
@@ -17,7 +17,6 @@ $id = (int) $_GET['id'];
 <?php
 if (isset($id) && $id != '' && is_int($id)) {
     ?>
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -38,24 +37,20 @@ if (isset($id) && $id != '' && is_int($id)) {
                     foreach ($curriculums as $curriculum) {
                         ?>
                         <!-- form start -->
-                        <form role="form">
+                        <form id="form" role="form" action="../business/UpdateCurriculumAction.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>Nombre</label>
-                                    <input readonly="" value="<?php echo $curriculum->getCurriculumName(); ?>" type="text" class="form-control" placeholder="Nombre" required=""/>
+                                    <input id="name" name="name" value="<?php echo $curriculum->getCurriculumName(); ?>" type="text" class="form-control" placeholder="Nombre" required=""/>
                                 </div>
                                 <div class="form-group">
                                     <label>Año</label>
-                                    <input readonly="" value="<?php echo $curriculum->getCurriculumYear(); ?>" type="text" class="form-control" placeholder="Año" required=""/>
+                                    <input id="year" name="year" value="<?php echo $curriculum->getCurriculumYear(); ?>" type="number" class="form-control" placeholder="Año" required=""/>
                                 </div>
                             </div><!-- /.box-body -->
                         </form>
-
-                        <div class="btn-group btn-group-justified">
-                            <a type="button" class="btn btn-success" href="javascript:createCurriculum()">Crear</a>
-                            <a type="button" class="btn btn-primary" href="javascript:updateCurriculum(<?php echo $id ?>)">Actualizar</a>
-                            <a type="button" class="btn btn-danger" href="javascript:deleteCurriculum(<?php echo $id ?>)">Eliminar</a>
-                            <a type="button" class="btn btn-primary" href="javascript:showCourses(<?php echo $id ?>)">Ver módulos</a>
+                        <div class="box-footer">
+                            <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
                         </div>
 
                     <?php } ?>
@@ -97,21 +92,44 @@ include './reusable/Footer.php';
         alertify.error(msg);
     }
 
-    function createCurriculum() {
-        window.location = "CreateCurriculum.php?";
+    function valueInputs() {
+
+        var year = $('#year').val();
+        var name = $('#name').val();
+
+        if (!isInteger(year)) {
+            alertify.error("Formato de año incorrecto");
+            return false;
+        }
+
+        if (year.length < 4) {
+            alertify.error("Año no existente");
+            return false;
+        }
+        
+        if (year < 2010) {
+            alertify.error("Año muy antiguo");
+            return false;
+        }
+        
+        if (year > 2100) {
+            alertify.error("Año muy lejano");
+            return false;
+        }
+
+        if (name.length === 0) {
+            alertify.error("Verifique el nombre de la maya curricular");
+            return false;
+        }
+
+        $("#form").submit();
     }
 
-    function updateCurriculum(id) {
-        window.location = "UpdateCurriculum.php?id=" + id;
+    function isInteger(number) {
+        if (number % 1 === 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
-
-    function deleteCurriculum(id) {
-        alertify.confirm('Eliminar malla curricular', "¿Desea eliminar la malla curricular?", function () {
-                    window.location = "../business/DeleteCurriculumAction.php?id=" + id;
-                }
-        , function () {
-            alertify.error('Cancelado');
-        });
-    }
-
 </script>

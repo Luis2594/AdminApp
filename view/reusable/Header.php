@@ -208,13 +208,14 @@
                         <!--CURRICULUM-->
                         <li class="treeview">
                             <a>
-                                <i class="fa"></i> <span>Maya curricular</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa"></i> <span>Malla curricular</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Maya Curricular</a></li>
-                                <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear Maya Curricular</a></li>
-                                <li><a href="./ShowCurriculumUpdate.php"><i class="fa"></i>Actualizar Maya Curricular</a></li>
-                                <li><a href="./ShowCurriculumDelete.php"><i class="fa"></i>Eliminar Maya Curricular</a></li>
+                                <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver malla Curricular</a></li>
+                                <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear malla Curricular</a></li>
+                                <li><a href="./ShowCurriculum.php?assign=assign"><i class="fa"></i>Asignar módulos a malla</a></li>
+                                <li><a href="./ShowCurriculumUpdate.php"><i class="fa"></i>Actualizar malla Curricular</a></li>
+                                <li><a href="./ShowCurriculumDelete.php"><i class="fa"></i>Eliminar malla curricular</a></li>
                             </ul>
                         </li>
 

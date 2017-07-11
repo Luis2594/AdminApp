@@ -1,6 +1,8 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
+
+$assign = $_GET['assign'];
 ?>
 
 <!-- Content Header (Page header) -->
@@ -26,20 +28,34 @@ include './reusable/Header.php';
                             <tr>
                                 <th>Año</th>
                                 <th>Nombre</th>
+                                <?php
+                                if (isset($assign) && $assign == 'assign') {
+                                    ?>
+                                    <th>Asignar módulos</th>
+                                    <?php
+                                }
+                                ?>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             include '../business/CurriculumBusiness.php';
                             $curriculumBusiness = new CurriculumBusiness();
-                            
+
                             $curriculums = $curriculumBusiness->getAll();
-                            
+
                             foreach ($curriculums as $curriculum) {
                                 ?>
                                 <tr>
                                     <td><?php echo $curriculum->getCurriculumYear(); ?></td>
-                                    <td><a href=""><?php echo $curriculum->getCurriculumName(); ?></a></td>
+                                    <td><a href="InformationCurriculum.php?id=<?php echo $curriculum->getCurriculumId(); ?>"><?php echo $curriculum->getCurriculumName(); ?></a></td>
+                                    <?php
+                                    if (isset($assign) && $assign == 'assign') {
+                                        ?>
+                                    <td><a href="AssignCourseToCurriculum.php?id=<?php echo $curriculum->getCurriculumId() ?>">Asignar módulos</a></td>
+                                        <?php
+                                    }
+                                    ?>
                                 </tr>
                                 <?php
                             }
@@ -47,8 +63,15 @@ include './reusable/Header.php';
                         </tbody>
                         <tfoot>
                             <tr>
-                                 <th>Año</th>
+                                <th>Año</th>
                                 <th>Nombre</th>
+                                <?php
+                                if (isset($assign) && $assign == 'assign') {
+                                    ?>
+                                    <th>Asignar módulos</th>
+                                    <?php
+                                }
+                                ?>
                             </tr>
                         </tfoot>
                     </table>

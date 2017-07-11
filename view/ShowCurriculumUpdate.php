@@ -41,7 +41,7 @@ include './reusable/Header.php';
                                 <tr>
                                     <td><?php echo $curriculum->getCurriculumYear(); ?></td>
                                     <td><?php echo $curriculum->getCurriculumName(); ?></td>
-                                    <td><a href="">Actualizar</a></td>
+                                    <td><a href="UpdateCurriculum.php?id=<?php echo $curriculum->getCurriculumId() ?>">Actualizar</a></td>
                                 </tr>
                                 <?php
                             }

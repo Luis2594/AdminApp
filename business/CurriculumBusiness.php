@@ -31,12 +31,8 @@ class CurriculumBusiness {
       return $this->curriculumData->getAll();
     }
     
-    public function getCourseId($id) {
-     return $this->curriculumData->getCourseId($id);
+    public function getCurriculumId($id) {
+     return $this->curriculumData->getCurriculumId($id);
     }
-    
-    public function getLastId() {
-        return $this->curriculumData->getLastId();
-    }
-    
+  
 }

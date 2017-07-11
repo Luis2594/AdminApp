@@ -19,7 +19,7 @@ class CourseData extends Connector {
                 . "'" . $course->getCourseSpeciality() . "',"
                 . "" . $course->getCourseType() . ")";
 
-        $result = $result = $this->exeQuery($query);
+        $result = $this->exeQuery($query);
         $array = mysqli_fetch_array($result);
         $id = trim($array[0]);
         return $id;

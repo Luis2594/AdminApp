@@ -26,12 +26,12 @@ include './reusable/Header.php';
                 <form role="form" id="form" action="../business/CreateCurriculumAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
-                            <label>Año</label>
-                            <input id="year" name="year" type="number" class="form-control" placeholder="Año" required=""/>
-                        </div>
-                        <div class="form-group">
                             <label>Nombre</label>
                             <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required=""/>
+                        </div>
+                        <div class="form-group">
+                            <label>Año</label>
+                            <input id="year" name="year" type="number" class="form-control" placeholder="Año" required=""/>
                         </div>
                     </div><!-- /.box-body -->
                 </form>
@@ -48,7 +48,7 @@ include './reusable/Footer.php';
 ?>
 
 <script type="text/javascript">
-    
+
     (function ($) {
         $.get = function (key) {
             key = key.replace(/[\[]/, '\\[');
@@ -74,7 +74,7 @@ include './reusable/Footer.php';
         msg = msg.replace(/_/g, " ");
         alertify.error(msg);
     }
-    
+
     function valueInputs() {
         var year = $('#year').val();
         var name = $('#name').val();
@@ -88,8 +88,18 @@ include './reusable/Footer.php';
             alertify.error("Año no existente");
             return false;
         }
+        
+        if (year < 2010) {
+            alertify.error("Año muy antiguo");
+            return false;
+        }
+        
+        if (year > 2100) {
+            alertify.error("Año muy lejano");
+            return false;
+        }
 
-        if (name.length == 0) {
+        if (name.length === 0) {
             alertify.error("Verifique el nombre de la maya curricular");
             return false;
         }

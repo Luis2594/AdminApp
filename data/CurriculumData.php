@@ -8,19 +8,22 @@ include '../domain/Curriculum.php';
  *
  * @author luisd
  */
-class CurriculumData extends Connector{
-   
+class CurriculumData extends Connector {
+
     public function insert($curriculum) {
         $query = "call insertCurriculum('" . $curriculum->getCurriculumName() . "',"
                 . "'" . $curriculum->getCurriculumYear() . "')";
 
-        return $this->exeQuery($query);
+        $result = $this->exeQuery($query);
+        $array = mysqli_fetch_array($result);
+        $id = trim($array[0]);
+        return $id;
     }
 
     public function update($curriculum) {
-        $query = "call update('" . $curriculum->getCurriculumId() . "',"
+        $query = "call updateCurriculum(" . $curriculum->getCurriculumId() . ","
                 . "'" . $curriculum->getCurriculumName() . "',"
-                . "'" . $curriculum->getCurriculumYear() . "')";
+                . "" . $curriculum->getCurriculumYear() . ")";
 
         return $this->exeQuery($query);
     }
@@ -37,40 +40,32 @@ class CurriculumData extends Connector{
 
     public function getAll() {
         $query = "call getAllCurriculum()";
-        
+
         $allCurriculum = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allCurriculum) > 0) {
             while ($row = mysqli_fetch_array($allCurriculum)) {
                 $currentCurriculum = new Curriculum(
-                        $row['curriculumid'], 
-                        $row['curriculumname'], 
-                        $row['curriculumyear']);
+                        $row['curriculumid'], $row['curriculumname'], $row['curriculumyear']);
                 array_push($array, $currentCurriculum);
             }
         }
         return $array;
     }
 
-    public function getCourseId($id) {
-        $query = "";
-        
+    public function getCurriculumId($id) {
+        $query = 'call getCurriculumById(' . $id . ');';
+
         $allCurriculum = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allCurriculum) > 0) {
             while ($row = mysqli_fetch_array($allCurriculum)) {
-                $currentCurriculum = new CourseSchedule(
-                        $row['curriculumId'], 
-                        $row['curriculumName'], 
-                        $row['curriculumYear']);
+                $currentCurriculum = new Curriculum(
+                        $row['curriculumid'], $row['curriculumname'], $row['curriculumyear']);
                 array_push($array, $currentCurriculum);
             }
         }
         return $array;
     }
 
-    public function getLastId() {
-        
-    }
-    
 }
