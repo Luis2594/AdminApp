@@ -3,11 +3,6 @@
 require_once '../data/Connector.php';
 include '../domain/Course.php';
 
-/**
- * Description of CourseData
- *
- * @author luisd
- */
 class CourseData extends Connector {
 
     public function insert($course) {

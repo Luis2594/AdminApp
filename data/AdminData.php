@@ -4,11 +4,6 @@ require_once '../data/Connector.php';
 include '../domain/Admin.php';
 include '../domain/Person.php';
 
-/**
- * Description of AdminData
- *
- * @author luisd
- */
 class AdminData extends Connector {
 
     public function insert($person, $pass) {

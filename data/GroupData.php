@@ -2,11 +2,6 @@
 
 require_once '../data/Connector.php';
 
-/**
- * Description of GroupData
- *
- * @author luis
- */
 class GroupData extends Connector {
 
     public function insert($number) {

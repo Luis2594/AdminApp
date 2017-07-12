@@ -2,11 +2,6 @@
 
 include '../data/StudentData.php';
 
-/**
- * Description of StudentBusiness
- *
- * @author luisd
- */
 class StudentBusiness {
 
     private $studentData;

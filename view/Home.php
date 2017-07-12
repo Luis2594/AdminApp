@@ -2,6 +2,11 @@
 include './reusable/Header.php';
 ?>
 
+
+<div class="row special v-m" style="height:100vh; display:table; width:100%; margin-right:auto; vertical-align:middle">
+    <img src="../resource/images/cindeaTurrialba.ico" class="img-responsive img-circle center-block "/>
+</div>
+
 <?php
 include './reusable/Footer.php';
 ?>

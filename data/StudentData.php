@@ -4,11 +4,6 @@ require_once '../data/Connector.php';
 include '../domain/Student.php';
 include '../domain/StudentAll.php';
 
-/**
- * Description of StudentData
- *
- * @author luisd
- */
 class StudentData extends Connector {
 
     public function insertStudentWithCredentials($student, $pass) {

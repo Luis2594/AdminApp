@@ -2,11 +2,6 @@
 
 include '../data/CurriculumData.php';
 
-/**
- * Description of CurriculumBusiness
- *
- * @author luisd
- */
 class CurriculumBusiness {
 
      private $curriculumData;

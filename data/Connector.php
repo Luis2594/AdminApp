@@ -1,9 +1,5 @@
 <?php
 
-
-/**
- * Description of Connector
- */
 class Connector {
 
     private $server;

@@ -2,11 +2,6 @@
 
 include '../data/AdminData.php';
 
-/**
- * Description of AdminBusiness
- *
- * @author luisd
- */
 class AdminBusiness {
 
     private $adminData;

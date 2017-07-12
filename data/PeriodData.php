@@ -3,11 +3,6 @@
 require_once '../data/Connector.php';
 include '../domain/Period.php';
 
-/**
- * Description of PeriodData
- *
- * @author luis
- */
 class PeriodData extends Connector {
 
     public function getAllPeriods() {

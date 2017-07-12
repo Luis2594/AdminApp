@@ -33,29 +33,32 @@ include './reusable/Header.php';
                 <div class="box-header">
                     <h3 class="box-title">Mi Perfil</h3>
                 </div><!-- /.box-header -->
-                <!--<img id="image" src="../resource/images/user1-128x128.jpg" class="imgCircle">-->
+                <?php
+                if (isset($_SESSION['id'])) {
+                    include '../../business/PersonBusiness.php';
+                    $personBusiness = new PersonBusiness();
+                    $person = $personBusiness->getPersonId((int) $_SESSION['id']);
+                    ?>
+                    <img id="imageProfile2" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="img-circle center-block" alt="User Image" />
+                    <?php
+                    echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname();
+                } else {
+                    echo '<script type="text/javascript">window.location = "./Login.php"</script>';
+                }
+                ?>
                 <!-- form start -->
                 <form role="form" id="form" action="" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <!--PHOTO-->
-                        <!--                        <div class="form-group">
+                        <!--                       <div class="form-group">
                                                     <label for="exampleInputFile">Cambiar foto de perfil</label>
                                                     <input id="newImage" name="newImage" type="file" id="exampleInputFile">
                                                     <a class="help-block" onclick="preview();">Vista previa</a>
                                                 </div>-->
                         <div class="form-group">
+                            <img id="imageProfile2" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="img-circle" alt="User Image" />
                             <?php
-                            if (isset($_SESSION['id'])) {
-                                include '../../business/PersonBusiness.php';
-                                $personBusiness = new PersonBusiness();
-                                $person = $personBusiness->getPersonId((int) $_SESSION['id']);
-                                ?>
-                                <img id="imageProfile2" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="img-circle" alt="User Image" />
-                                <?php
-                                echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname();
-                            } else {
-                                header("location: Login.php");
-                            }
+                            echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname();
                             ?>
                         </div>
                         <!--NAME-->

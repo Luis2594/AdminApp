@@ -3,11 +3,6 @@
 require_once '../data/Connector.php';
 include '../domain/CourseSchedule.php';
 
-/**
- * Description of CourseScheduleData
- *
- * @author luisd
- */
 class CourseScheduleData extends Connector {
 
     public function insert($courseSchedule) {

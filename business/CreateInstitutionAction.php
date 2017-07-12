@@ -9,14 +9,6 @@ $institutionPhone = $_POST['phone'];
 $institutionMission = $_POST['mission'];
 $institutionView = $_POST['view'];
 
-//echo '<script type="text/javascript">alert("' . $institutionAddress  . '")</script>';
-//echo '<script type="text/javascript">alert("' . $institutionFax  . '")</script>';
-//echo '<script type="text/javascript">alert("' . $institutionPhone  . '")</script>';
-//echo '<script type="text/javascript">alert("' . $institutionMission  . '")</script>';
-//echo '<script type="text/javascript">alert("' . $institutionView  . '")</script>';
-//
-//die();
-
 if (
         isset($institutionAddress) && $institutionAddress != "" &&
         isset($institutionFax) && $institutionFax != "" &&

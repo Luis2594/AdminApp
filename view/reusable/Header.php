@@ -1,7 +1,10 @@
+<?php
+include './reusable/Session.php';
+?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Administración Cindea Turrialba</title>
+        <title>Administración</title>
         <link rel="icon" type="image/png" href="./../resource/images/cindeaTurrialba.ico" />
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
@@ -53,7 +56,26 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="./Home.php" class="logo"><b>Cindea Turrialba</b></a>
+                <a href="./Home.php" class="logo"><b>
+                        <?php
+                        include '../business/InstitutionBusiness.php';
+                        $institutionBusiness = new InstitutionBusiness();
+                        $id = 1;
+                        $institutions = $institutionBusiness->getInstitution($id);
+                        $found = false;
+
+                        foreach ($institutions as $institution) {
+                            echo $institution->getInstitutionName();
+                            $found = true;
+                            break;
+                        }
+
+                        if (!$found) {
+                            echo 'Institución';
+                        }
+                        ?>
+
+                    </b></a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
@@ -65,16 +87,61 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img id="imageProfile3" src="./../resource/images/user1-128x128.jpg" class="user-image" alt="User Image"/>
-                                    <span class="hidden-xs">Alexander Pierce</span>
+                                    <?php
+                                    if (isset($_SESSION['id'])) {
+                                        include '../../business/PersonBusiness.php';
+                                        $personBusiness = new PersonBusiness();
+                                        $person = $personBusiness->getPersonId((int) $_SESSION['id']);
+                                        ?>
+                                        <img id="imageProfile3" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="user-image" alt="User Image" />
+                                        <span class="hidden-xs"><?php echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname(); ?></span>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <img id="imageProfile3" src="./../resource/images/profile_default.png" width="24" height="24" class="user-image" alt="User Image" />
+                                        <span class="hidden-xs">Usuario</span>
+                                        <?php
+                                    }
+                                    ?>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img id="imageProfile1"src="./../resource/images/user1-128x128.jpg" class="img-circle" alt="User Image" />
-                                        <p>
-                                            Alexander Pierce - Web Developer
-                                            <small>Member since Nov. 2012</small>
+                                        <?php
+                                        if (isset($_SESSION['type']) && $person != NULL) {
+                                            ?>
+                                            <img id="imageProfile1"src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="img-circle" alt="User Image" />
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <img id="imageProfile1"src="./../resource/images/profile_default.png" class="img-circle" alt="User Image" />
+                                            <?php
+                                        }
+                                        ?>
+
+                                        <p>                                            
+                                            <?php
+                                            if (isset($_SESSION['type'])) {
+                                                echo $person->getPersonFirstName();
+                                                switch ((int) $_SESSION['type']) {
+                                                    case 0:
+                                                        echo '<small>Estudiante</small>';
+                                                        break;
+                                                    case 1:
+                                                        echo '<small>Profesor</small>';
+                                                        break;
+                                                    case 2:
+                                                        echo '<small>Administrador</small>';
+                                                        break;
+                                                    default:
+                                                        echo '<small>Usuario</small>';
+                                                        break;
+                                                }
+                                            } else {
+                                                echo 'Usuario';
+                                            }
+                                            ?>
+
                                         </p>
                                     </li>
                                     <!-- Menu Footer-->
@@ -83,7 +150,9 @@
                                             <a href="./ShowProfile.php" class="btn btn-default btn-flat">Perfil</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                                            <form role="form" id="form" action="../business/LogoutAction.php" method="POST" enctype="multipart/form-data">
+                                                <input type="submit" class="btn btn-default btn-flat" value="Cerrar Sessión" />
+                                            </form>
                                         </div>
                                     </li>
                                 </ul>
@@ -112,7 +181,6 @@
                                 ?>
                                 <img id="imageProfile2" src="./../resource/images/profile_default.png" class="img-circle" alt="User Image" />
                                 <?php
-                                //header("location: Login.php");
                             }
                             ?>
                         </div>
@@ -123,9 +191,8 @@
                                     echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname();
                                 } else {
                                     ?>
-                                        Usuario
+                                    Usuario
                                     <?php
-                                    //header("location: Login.php");
                                 }
                                 ?>
                             </p>
@@ -234,14 +301,13 @@
                         <!--CURRICULUM-->
                         <li class="treeview">
                             <a>
-                                <i class="fa"></i> <span>Malla curricular</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa"></i> <span>Maya curricular</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver malla Curricular</a></li>
-                                <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear malla Curricular</a></li>
-                                <li><a href="./ShowCurriculum.php?assign=assign"><i class="fa"></i>Asignar módulos a malla</a></li>
-                                <li><a href="./ShowCurriculumUpdate.php"><i class="fa"></i>Actualizar malla Curricular</a></li>
-                                <li><a href="./ShowCurriculumDelete.php"><i class="fa"></i>Eliminar malla curricular</a></li>
+                                <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Maya Curricular</a></li>
+                                <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear Maya Curricular</a></li>
+                                <li><a href="./ShowCurriculumUpdate.php"><i class="fa"></i>Actualizar Maya Curricular</a></li>
+                                <li><a href="./ShowCurriculumDelete.php"><i class="fa"></i>Eliminar Maya Curricular</a></li>
                             </ul>
                         </li>
 
