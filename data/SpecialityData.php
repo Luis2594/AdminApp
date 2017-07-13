@@ -3,11 +3,6 @@
 require_once '../data/Connector.php';
 include '../domain/Speciality.php';
 
-/**
- * Description of SpecialityData
- *
- * @author luisd
- */
 class SpecialityData extends Connector{
 
     public function insert($speciality) {

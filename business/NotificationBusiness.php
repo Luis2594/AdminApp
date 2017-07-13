@@ -2,11 +2,6 @@
 
 include '../data/NotificationData.php';
 
-/**
- * Description of NotificationBusiness
- *
- * @author luisd
- */
 class NotificationBusiness {
 
     private $notificationData;

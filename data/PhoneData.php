@@ -3,11 +3,6 @@
 require_once '../data/Connector.php';
 include '../domain/Phone.php';
 
-/**
- * Description of PhoneData
- *
- * @author luisd
- */
 class PhoneData extends Connector{
 
      public function insert($phone) {

@@ -2,11 +2,6 @@
 
 include '../data/PeriodData.php';
 
-/**
- * Description of PeriodBusiness
- *
- * @author luis
- */
 class PeriodBusiness {
 
     private $periodData;

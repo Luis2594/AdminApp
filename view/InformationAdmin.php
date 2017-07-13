@@ -8,7 +8,7 @@ include './reusable/Header.php';
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowProfessors.php"><i class="fa fa-arrow-circle-right"></i>Ver Profesores</a></li>
-        <li><a href="InformationProfessor.php"><i class="fa fa-arrow-circle-right"></i>Información del Profesor</a></li>
+        <li><a href="InformationProfessor.php"><i class="fa fa-arrow-circle-right"></i>Información del Administrador</a></li>
     </ol>
 </section>
 <br>
@@ -21,7 +21,7 @@ include './reusable/Header.php';
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Información Profesor</h3>
+                    <h3 class="box-title">Información Administrador</h3>
                 </div><!-- /.box-header -->
 
                 <?php

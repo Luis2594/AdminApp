@@ -3,11 +3,6 @@
 require_once '../data/Connector.php';
 include '../domain/Institution.php';
 
-/**
- * Description of InstitutionData
- *
- * @author luisd
- */
 class InstitutionData extends Connector {
 
     public function insert($institution) {

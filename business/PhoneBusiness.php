@@ -2,11 +2,6 @@
 
 include '../data/PhoneData.php';
 
-/**
- * Description of PhoneBusiness
- *
- * @author luisd
- */
 class PhoneBusiness {
     
     private $phoneData;

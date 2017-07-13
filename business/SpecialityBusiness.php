@@ -2,11 +2,6 @@
 
 include '../data/SpecialityData.php';
 
-/**
- * Description of SpecialityBusiness
- *
- * @author luisd
- */
 class SpecialityBusiness {
 
     private $specialityData;

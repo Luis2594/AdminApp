@@ -2,11 +2,6 @@
 
 include '../data/UserData.php';
 
-/**
- * Description of UserBusiness
- *
- * @author luisd
- */
 class UserBusiness {
     
     private $userData;

@@ -2,11 +2,6 @@
 
 include '../data/InstitutionData.php';
 
-/**
- * Description of InstitutionBusiness
- *
- * @author luisd
- */
 class InstitutionBusiness {
     
     private $institutionData;

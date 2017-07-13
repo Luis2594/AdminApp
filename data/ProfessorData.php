@@ -4,11 +4,6 @@ require_once '../data/Connector.php';
 include '../domain/Professor.php';
 include '../domain/ProfessorAll.php';
 
-/**
- * Description of ProfessorData
- *
- * @author Kevin Esquivel
- */
 class ProfessorData extends Connector {
 
     public function insertProfessorWithCredentials($professor, $pass) {

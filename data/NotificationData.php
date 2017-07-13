@@ -3,11 +3,6 @@
 require_once '../data/Connector.php';
 include '../domain/Notification.php';
 
-/**
- * Description of NotificationData
- *
- * @author luisd
- */
 class NotificationData extends Connector{
 
      public function insertGeneralNotification($notification) {
