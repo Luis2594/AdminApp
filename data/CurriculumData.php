@@ -2,6 +2,7 @@
 
 require_once '../data/Connector.php';
 include '../domain/Curriculum.php';
+include '../domain/Course.php';
 
 /**
  * Description of CurriculumData
@@ -18,6 +19,13 @@ class CurriculumData extends Connector {
         $array = mysqli_fetch_array($result);
         $id = trim($array[0]);
         return $id;
+    }
+
+    public function insertCurriculumCourse($idCurriculum, $idCourse) {
+        $query = "call insertCurriculumCourse('" . $idCurriculum . "',"
+                . "'" . $idCourse . "')";
+
+        return $this->exeQuery($query);
     }
 
     public function update($curriculum) {
@@ -48,6 +56,36 @@ class CurriculumData extends Connector {
                 $currentCurriculum = new Curriculum(
                         $row['curriculumid'], $row['curriculumname'], $row['curriculumyear']);
                 array_push($array, $currentCurriculum);
+            }
+        }
+        return $array;
+    }
+
+    public function getCurriculumCourseOutCurriculum($id) {
+        $query = 'call getCurriculumCourseOutCurriculum("' . $id . '");';
+
+        $allCourses = $this->exeQuery($query);
+        $array = [];
+        if (mysqli_num_rows($allCourses) > 0) {
+            while ($row = mysqli_fetch_array($allCourses)) {
+                $currentCourse = new Course(
+                        $row['courseid'], $row['coursecode'], $row['coursename'], $row['coursecredits'], $row['courselesson'], $row['coursepdf'], $row['coursespeciality'], $row['coursetype']);
+                array_push($array, $currentCourse);
+            }
+        }
+        return $array;
+    }
+    
+    public function getCurriculumCourseByCurriculum($id) {
+        $query = 'call getCurriculumCourseByCurriculum("' . $id . '");';
+
+        $allCourses = $this->exeQuery($query);
+        $array = [];
+        if (mysqli_num_rows($allCourses) > 0) {
+            while ($row = mysqli_fetch_array($allCourses)) {
+                $currentCourse = new Course(
+                        $row['courseid'], $row['coursecode'], $row['coursename'], $row['coursecredits'], $row['courselesson'], $row['coursepdf'], $row['coursespeciality'], $row['coursetype']);
+                array_push($array, $currentCourse);
             }
         }
         return $array;
