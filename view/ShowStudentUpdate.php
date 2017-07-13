@@ -47,7 +47,7 @@ include './reusable/Header.php';
                                     <td><?php echo $student->getPersonFirstName(); ?></td>
                                     <td><?php echo $student->getPersonFirstlastname(); ?></td>
                                     <td><?php echo $student->getPersonSecondlastname(); ?></td>
-                                    <td><a href="">Télefonos</a></td>
+                                    <td><a href="UpdatePhones.php?id=<?php echo $student->getPersonId(); ?>">Télefonos</a></td>
                                     <td><a href="">Grupos</a></td>
                                     <td><a href="UpdateStudent.php?id=<?php echo $student->getPersonId(); ?>">Actualizar</a></td>
                                 </tr>

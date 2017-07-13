@@ -3,9 +3,9 @@
 require_once '../data/Connector.php';
 include '../domain/Phone.php';
 
-class PhoneData extends Connector{
+class PhoneData extends Connector {
 
-     public function insert($phone) {
+    public function insert($phone) {
         $query = "call insertPhone('" . $phone->getPhonePhone() . "',"
                 . "" . $phone->getPhonePerson() . ")";
 
@@ -21,7 +21,7 @@ class PhoneData extends Connector{
     }
 
     public function delete($id) {
-        $query = 'call deletePhone("' . $id . '");';
+        $query = 'call deletePhone(' . $id . ');';
 
         if ($this->exeQuery($query)) {
             return TRUE;
@@ -32,19 +32,17 @@ class PhoneData extends Connector{
 
     public function getAllPhone($id) {
         $query = 'call getAllPhonesByPerson("' . $id . '");';
-        
+
         $allPhones = $this->exeQuery($query);
         $array = [];
         if (mysqli_num_rows($allPhones) > 0) {
             while ($row = mysqli_fetch_array($allPhones)) {
                 $currentPhone = new Phone(
-                        $row['phoneid'], 
-                        $row['phonephone'], 
-                        $row['phoneperson']);
+                        $row['phoneid'], $row['phonephone'], $row['phoneperson']);
                 array_push($array, $currentPhone);
             }
         }
         return $array;
-    }    
-}
+    }
 
+}
