@@ -11,8 +11,8 @@ if (isset($id) && is_int($id)) {
     <section class="content-header" style="text-align: left">
         <ol class="breadcrumb">
             <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-            <li><a href="UpdateStudent.php"><i class="fa fa-arrow-circle-right"></i>Actualizar Estudiante</a></li>
-            <li><a href="UpdatePhones.php?id"><i class="fa fa-arrow-circle-right"></i>Crear Estudiante</a></li>
+            <li><a href="ShowStudentUpdate.php"><i class="fa fa-arrow-circle-right"></i>Actualizar Estudiante</a></li>
+            <li><a href="UpdatePhones.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Actualizar teléfonos</a></li>
         </ol>
     </section>
     <br>
@@ -45,7 +45,7 @@ if (isset($id) && is_int($id)) {
                     </div><!-- /.box-header -->
 
                     <!-- form start -->
-                    <form id="form"role="form" action="../business/CreatePhoneAction.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
+                    <form role="form" id="f"  method="POST" action="../business/CreatePhoneAction.php?id=<?php echo $id; ?>">
                         <div class="box-body">
 
                             <?php
@@ -107,8 +107,9 @@ if (isset($id) && is_int($id)) {
 
                     </form>
 
+
                     <div class="box-footer">
-                        <button onclick="addPhonePerson();" class="btn btn-primary">Agregar</button>
+                        <button onclick="addPhonePerson();" class="btn btn-primary">Crear</button>
                     </div>
                 </div><!-- /.box -->
             </div><!--/.col (left) -->
@@ -151,16 +152,14 @@ include './reusable/Footer.php';
     }
 
     function addPhonePerson() {
-
         for (var i = 0; i < idPhone; i++) {
-            alert($("#phone" + i).val());
             if ($("#phone" + i).val() === "" || !isInteger($("#phone" + i).val())) {
                 alertify.error("Revise los números de teléfonos que quiere registrar!");
                 return false;
             }
         }
         $('#phones').val(idPhone);
-        $("#form").submit();
+        $("#f").submit();
     }
 
     function isInteger(number) {

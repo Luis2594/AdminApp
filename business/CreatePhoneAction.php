@@ -1,11 +1,9 @@
 <?php
+
 include './PhoneBusiness.php';
 
 $id = (int) $_GET['id'];
 $phones = (int) $_POST['phones'];
-
-echo $id;
-exit();
 
 if (isset($id) && isset($phones) && is_int($id) && is_int($phones)) {
 
