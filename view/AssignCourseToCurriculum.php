@@ -1,6 +1,7 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
+$id = (int) $_GET['id'];
 ?>
 
 
@@ -8,13 +9,13 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowCourses.php"><i class="fa fa-arrow-circle-right"></i> Cursos</a></li>
+        <li><a href="ShowCurriculum.php?assign=assign"><i class="fa fa-arrow-circle-right"></i>Asignar módulos a malla</a></li>
+        <li><a href="AssignCourseToCurriculum.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Asigar módulos</a></li>
     </ol>
 </section>
 <br>
 
 <?php
-$id = (int) $_GET['id'];
 if (isset($id) && $id != '' && is_int($id)) {
     ?>
     <!-- Main content -->

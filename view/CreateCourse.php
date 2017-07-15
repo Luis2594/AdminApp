@@ -23,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Módulo</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/CreateCourseAction.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formCourse" action="../business/CreateCourseAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <!--CODE-->
                         <div class="form-group">
@@ -156,8 +156,7 @@ include './reusable/Footer.php';
             return false;
         }
 
-        $('#periods').val(idPeriod);
-        $("#form").submit();
+        confirmCode(code);
     }
 
     function isInteger(number) {
@@ -269,6 +268,27 @@ include './reusable/Footer.php';
                     htmlCombo += '<OPTION VALUE="' + item.id + '">' + item.type + '</OPTION>';
                 });
                 $("#typeCourse").html(htmlCombo);
+            },
+            error: function ()
+            {
+                alertify.error("Error ...");
+            }
+        });
+    }
+
+    function confirmCode(code) {
+        $.ajax({
+            type: 'GET',
+            url: "../business/ConfirmCode.php",
+            data: {"code": code},
+            success: function (data)
+            {
+                if (data == true) {
+                    $('#periods').val(idPeriod);
+                    $("#formCourse").submit();
+                } else {
+                    alertify.error("Ya existe un módulo con ese número de código");
+                }
             },
             error: function ()
             {

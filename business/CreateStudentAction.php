@@ -103,11 +103,11 @@ if (isset($dni) &&
                     }
                 }
             }
-            header("location: ../view/InformationStudent.php?id=" . $id_last . "&action=1&msg=Estudiante_creado_correctamente");
+            header("location: ../view/InformationStudent.php?id=" . $id_last . "&action=1&msg=Registro_creado_correctamente");
         } else {
             //error
             $personBusiness->delete($id_last);
-            header("location: ../view/CreateStudent.php?action=0&msg=Error_al_crear_estudiante");
+            header("location: ../view/CreateStudent.php?action=0&msg=Error_al_crear_registro");
         }
     } else {
         //error

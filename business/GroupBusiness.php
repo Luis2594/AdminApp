@@ -23,12 +23,16 @@ class GroupBusiness {
         return $this->groupData->insertStudentGroup($idGroup, $idStudent, $priority);
     }
 
-    public function delete($id) {
-      return $this->groupData->delete($id);
+    public function delete($idPerson, $group) {
+      return $this->groupData->delete($idPerson, $group);
     }
 
     public function getAll() {
      return $this->groupData->getAll();
+    }
+    
+    public function getGroupByPerson($id) {
+        return $this->groupData->getGroupByPerson($id);
     }
     
 }

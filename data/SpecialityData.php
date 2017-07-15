@@ -15,15 +15,16 @@ class SpecialityData extends Connector{
     }
 
     public function update($speciality) {
-        $query = "call update('" . $speciality->getSpecialityId() . "',"
+        $query = "call updateSpeciality(" . $speciality->getSpecialityId() . ","
                 . "'" . $speciality->getSpecialityName() . "')";
+       
 
         return $this->exeQuery($query);
     }
 
     public function delete($id) {
-        $query = 'call delete("' . $id . '");';
-
+        $query = 'call deleteSpeciality(' . $id . ');';
+        
         if ($this->exeQuery($query)) {
             return TRUE;
         } else {
@@ -75,8 +76,4 @@ class SpecialityData extends Connector{
         return $array;
     }
 
-    public function getLastId() {
-        
-    }
-    
 }

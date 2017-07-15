@@ -23,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Curso</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/CreateCurriculumAction.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formCurriculum" action="../business/CreateCurriculumAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
                             <label>Nombre</label>
@@ -104,7 +104,7 @@ include './reusable/Footer.php';
             return false;
         }
 
-        $("#form").submit();
+        $("#formCurriculum").submit();
     }
 
     function isInteger(number) {

@@ -34,8 +34,4 @@ class SpecialityBusiness {
         return $this->specialityData->getSpecialityId($id);
     }
 
-    public function getLastId() {
-        return $this->specialityData->getLastId();
-    }
-
 }

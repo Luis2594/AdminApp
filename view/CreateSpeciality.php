@@ -23,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Atinencia/Especialidad</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/CreateSpecialityAction.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formSpeciality" action="../business/CreateSpecialityAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
                             <label>Nombre</label>
@@ -78,7 +78,7 @@ include './reusable/Footer.php';
             return false;
         }
 
-        $("#form").submit();
+        $("#formSpeciality").submit();
     }
 
 </script>

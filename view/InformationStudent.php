@@ -134,10 +134,10 @@ include './reusable/Header.php';
                                 <input id="localitation" name="localitation" class="form-control" rows="3" placeholder="Localización ..." required="" value="<?php echo $student->getStudentLocation() ?>" readonly />
                             </div>
                             <!--Group-->
-<!--                            <div class="form-group">
-                                <label>Grupo</label>
-                                <input id="group" name="group" type="text" class="form-control" placeholder="Grupo" required="" value="<?php echo $student->getStudentgroup() ?>" readonly />
-                            </div>-->
+                            <!--                            <div class="form-group">
+                                                            <label>Grupo</label>
+                                                            <input id="group" name="group" type="text" class="form-control" placeholder="Grupo" required="" value="<?php echo $student->getStudentgroup() ?>" readonly />
+                                                        </div>-->
                             <!--MANAGER-->
                             <div class="form-group">
                                 <label>Encargado</label>
@@ -169,13 +169,13 @@ include './reusable/Header.php';
                                 <input id="pass" name="pass" type="text" class="form-control" placeholder="Contraseña" required="" value="<?php echo $student->getUserPass() ?>" readonly />
                             </div>
                         </div><!-- /.box-body -->
-
                     </form>
-                
+
                     <div class="btn-group btn-group-justified">
                         <a type="button" class="btn btn-success" href="javascript:createStudent()">Crear</a>
                         <a type="button" class="btn btn-primary" href="javascript:updateStudent(<?php echo $id ?>)">Actualizar</a>
                         <a type="button" class="btn btn-danger" href="javascript:deleteStudent(<?php echo $id ?>)">Eliminar</a>
+                        <a type="button" class="btn btn-primary" href="javascript:showStudents()">Ver todo</a>
                     </div>
 
                     <!--</div>-->
@@ -226,13 +226,17 @@ include './reusable/Footer.php';
     function updateStudent(id) {
         window.location = "UpdateStudent.php?id=" + id;
     }
+    
+    function showStudents() {
+        window.location = "ShowStudents.php";
+    }
 
     function deleteStudent(id) {
         alertify.confirm('Eliminar estudiante', '¿Desea eliminar a ' +
-                $("#name" + id).html() + " " +
-                $("#firtsLastname" + id).html() + " " +
-                $("#secondlastname" + id).html() +
-                " con cédula " + $("#dni" + id).html() +
+                $("#name").val() + " " +
+                $("#firstlastname").val() + " " +
+                $("#secondlastname").val() +
+                " con cédula " + $("#dni").val() +
                 " de la lista de estudiantes?", function () {
                     window.location = "../business/DeleteStudentAction.php?id=" + id;
                 }

@@ -301,13 +301,14 @@ include './reusable/Session.php';
                         <!--CURRICULUM-->
                         <li class="treeview">
                             <a>
-                                <i class="fa"></i> <span>Maya curricular</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa"></i> <span>Mala curricular</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Maya Curricular</a></li>
-                                <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear Maya Curricular</a></li>
-                                <li><a href="./ShowCurriculumUpdate.php"><i class="fa"></i>Actualizar Maya Curricular</a></li>
-                                <li><a href="./ShowCurriculumDelete.php"><i class="fa"></i>Eliminar Maya Curricular</a></li>
+                                <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Malla Curricular</a></li>
+                                <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear Malla Curricular</a></li>
+                                <li><a href="./ShowCurriculum.php?assign=assign"><i class="fa"></i>Asignar Módulos a Malla</a></li>
+                                <li><a href="./ShowCurriculumUpdate.php"><i class="fa"></i>Actualizar Malla Curricular</a></li>
+                                <li><a href="./ShowCurriculumDelete.php"><i class="fa"></i>Eliminar Malla Curricular</a></li>
                             </ul>
                         </li>
 

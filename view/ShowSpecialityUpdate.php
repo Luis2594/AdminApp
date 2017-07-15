@@ -39,7 +39,7 @@ include './reusable/Header.php';
                                 ?>
                                 <tr>
                                     <td><?php echo $speciality->getSpecialityName(); ?></td>
-                                    <td><a href="">Actualizar</a></td>
+                                    <td><a href="UpdateSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>">Actualizar</a></td>
                                 </tr>
                                 <?php
                             }

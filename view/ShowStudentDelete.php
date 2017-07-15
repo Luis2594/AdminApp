@@ -31,7 +31,6 @@ include './reusable/Header.php';
                                 <th>Edad</th>
                                 <th>Género</th>
                                 <th>Adecuación</th>
-                                <th>Grupo</th>
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
@@ -73,7 +72,6 @@ include './reusable/Header.php';
                                         <?php
                                     }
                                     ?> 
-                                    <td><?php echo $student->getStudentgroup(); ?></td>
                                     <td><a  href="javascript:deleteConfirmation(<?php echo $student->getPersonId() ?>)" >Eliminar</a></td>
                                 </tr>
                                 <?php
@@ -89,7 +87,6 @@ include './reusable/Header.php';
                                 <th>Edad</th>
                                 <th>Género</th>
                                 <th>Adecuación</th>
-                                <th>Grupo</th>
                                 <th>Eliminar</th>
                             </tr>
                         </tfoot>

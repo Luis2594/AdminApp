@@ -33,7 +33,7 @@ include './reusable/Header.php';
                 foreach ($students as $student) {
                     ?>
                     <!-- form start -->
-                    <form role="form" id="form" action="../business/UpdateStudentAction.php" method="POST" enctype="multipart/form-data">
+                    <form role="form" id="formStudent" action="../business/UpdateStudentAction.php" method="POST" enctype="multipart/form-data">
                         <div class="box-body">
                             <!--DNI-->
                             <div class="form-group">
@@ -369,7 +369,7 @@ include './reusable/Footer.php';
         }
 
         if (dni === dniTemp) {
-            $("#form").submit();
+            $("#formStudent").submit();
         } else {
             confirmDni(dni);
         }
@@ -402,8 +402,8 @@ include './reusable/Footer.php';
             data: {"dni": dni},
             success: function (data)
             {
-                if (data == true) {
-                    $("#form").submit();
+                if (data === true) {
+                    $("#formStudent").submit();
                 } else {
                     alertify.error("Ya existe un estudiante con ese número de cédula");
                 }

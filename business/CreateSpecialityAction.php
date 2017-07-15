@@ -11,7 +11,7 @@ if(isset($name) && $name != ""){
     $id_last = $specialityBusiness->insert($speciality);
     
     if($id_last != 0){
-        header("location: ../view/CreateSpeciality.php?action=1&msg=Especialidad/Atinencia_creado_correctamente");
+        header("location: ../view/ShowSpecialities.php?action=1&msg=Registro_creado_correctamente");
     }else{
         header("location: ../view/CreateSpeciality.php?action=0&msg=Ya_existe_una_atinencia_o_especialidad_con_ese_nombre");
     }

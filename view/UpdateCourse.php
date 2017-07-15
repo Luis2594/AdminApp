@@ -35,7 +35,7 @@ include './reusable/Header.php';
                 foreach ($courses as $course) {
                     ?>
                     <!-- form start -->
-                    <form role="form" id="form" action="../business/UpdateCourseAction.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
+                    <form role="form" id="formCourse" action="../business/UpdateCourseAction.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
                         <div class="box-body">
                             <!--CODE-->
                             <div class="form-group">
@@ -89,7 +89,7 @@ include './reusable/Header.php';
                 } // end of FOR
                 ?>
                 <div class="btn-group btn-group-justified">
-                    <a type="button" class="btn btn-primary" href="javascript:updateCourse(<?php echo $id ?>)">Actualizar</a>
+                    <a type="button" class="btn btn-primary" href="javascript:updateCourse()">Actualizar</a>
                 </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
@@ -155,7 +155,7 @@ include './reusable/Footer.php';
         });
     }
 
-    function updateCourse(id) {
+    function updateCourse() {
         valueInputs();
     }
 
@@ -187,7 +187,7 @@ include './reusable/Footer.php';
         }
 
         if (code === codeTemp) {
-            $("#form").submit();
+            $("#formCourse").submit();
         } else {
             confirmCode(code);
         }
@@ -209,7 +209,7 @@ include './reusable/Footer.php';
             success: function (data)
             {
                 if (data == true) {
-                    $("#form").submit();
+                    $("#formCourse").submit();
                 } else {
                     alertify.error("Ya existe un módulo con ese número de código");
                 }

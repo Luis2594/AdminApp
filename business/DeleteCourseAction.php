@@ -2,9 +2,9 @@
 
 include './CourseBusiness.php';
 
-$id = $_GET['id'];
+$id = (int) $_GET['id'];
 
-if(isset($id)){
+if(isset($id) && is_int($id)){
     $courseBusiness = new CourseBusiness();
     if($courseBusiness->delete($id)){
         header("location: ../view/ShowCourseDelete.php?action=1&msg=Registro_eliminado_correctamente");

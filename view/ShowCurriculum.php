@@ -20,7 +20,7 @@ $assign = $_GET['assign'];
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Maya Curricular del Cindea</h3>
+                    <h3 class="box-title">Malla Curricular del Cindea</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -28,6 +28,7 @@ $assign = $_GET['assign'];
                             <tr>
                                 <th>Año</th>
                                 <th>Nombre</th>
+                                <th>Módulos</th>
                                 <?php
                                 if (isset($assign) && $assign == 'assign') {
                                     ?>
@@ -49,6 +50,7 @@ $assign = $_GET['assign'];
                                 <tr>
                                     <td><?php echo $curriculum->getCurriculumYear(); ?></td>
                                     <td><a href="InformationCurriculum.php?id=<?php echo $curriculum->getCurriculumId(); ?>"><?php echo $curriculum->getCurriculumName(); ?></a></td>
+                                    <td><a href="?id=<?php echo $curriculum->getCurriculumId(); ?>">Módulos</a></td>
                                     <?php
                                     if (isset($assign) && $assign == 'assign') {
                                         ?>
@@ -65,6 +67,7 @@ $assign = $_GET['assign'];
                             <tr>
                                 <th>Año</th>
                                 <th>Nombre</th>
+                                <th>Módulos</th>
                                 <?php
                                 if (isset($assign) && $assign == 'assign') {
                                     ?>

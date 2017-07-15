@@ -56,9 +56,15 @@ class CourseData extends Connector {
         if (mysqli_num_rows($allCourses) > 0) {
             while ($row = mysqli_fetch_array($allCourses)) {
                 $currentCourse = new Course(
-                        $row['courseid'], $row['coursecode'], $row['coursename'], $row['coursecredits'], $row['courselesson'], $row['coursepdf'], $row['coursespeciality'], $row['coursetype']);
+                        $row['courseid'], 
+                        $row['coursecode'], 
+                        $row['coursename'], 
+                        $row['coursecredits'], 
+                        $row['courselesson'], 
+                        $row['coursepdf'], 
+                        $row['coursespeciality'], 
+                        $row['coursetype']);
                 $currentCourse->setSpecialityname($row['specialityname']);
-                $currentCourse->setPeriod($row['period']);
                 array_push($array, $currentCourse);
             }
         }

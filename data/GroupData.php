@@ -1,6 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
+include '../domain/Group.php';
 
 class GroupData extends Connector {
 
@@ -17,13 +18,13 @@ class GroupData extends Connector {
         $query = "call insertStudentGroup(" . $idGroup . ","
                 . "" . $idStudent . ","
                 . "" . $priority . ")";
-        
+
         return $this->exeQuery($query);
     }
 
-    public function delete($id) {
-        $query = 'call delete("' . $id . '");';
-
+    public function delete($idPerson, $group) {
+        $query = 'call deleteStudentGroup(' . $idPerson . ', ' . $group . ');';
+        echo $query;
         if ($this->exeQuery($query)) {
             return TRUE;
         } else {
@@ -39,6 +40,20 @@ class GroupData extends Connector {
         while ($row = mysqli_fetch_array($group)) {
             $array[] = array("id" => $row['groupid'],
                 "number" => $row['groupnumber']);
+        }
+        return $array;
+    }
+
+    public function getGroupByPerson($id) {
+        $query = 'call getGroupsByPersonId(' . $id . ');';
+
+        $allGroups = $this->exeQuery($query);
+        $array = [];
+        if (mysqli_num_rows($allGroups) > 0) {
+            while ($row = mysqli_fetch_array($allGroups)) {
+                $currentGroup = new Group($row['studentgroupgroup'], $row['groupnumber'], $row['studentsgrouppriority']);
+                array_push($array, $currentGroup);
+            }
         }
         return $array;
     }

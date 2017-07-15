@@ -88,7 +88,7 @@ include './reusable/Header.php';
                             </div>
                             <!--PDF-->
                             <div class="form-group">
-                                <a href=" http://www.cindeaturrialba.com/pdf/<?php echo $course->getCoursePdf() ?>" target="_blank" >Plan de estudios</a>
+                                <a href="../../pdf/<?php echo $course->getCoursePdf() ?>" target="_blank" >Plan de estudios</a>
                             </div>
                         </div><!-- /.box-body -->
                     </form>

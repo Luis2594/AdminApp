@@ -8,8 +8,8 @@ $id = (int) $_GET['id'];
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="CreateCurriculum.php"><i class="fa fa-arrow-circle-right"></i>Crear Malla Curricular</a></li>
-        <li><a href="UpdateCurriculum.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Información de Malla Curricular</a></li>
+        <li><a href="CreateSpeciality.php"><i class="fa fa-arrow-circle-right"></i>Crear Atinencia/Especialidad</a></li>
+        <li><a href="UpdateSpeciality.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Información de Atinencia/Especialidad</a></li>
     </ol>
 </section>
 <br>
@@ -25,27 +25,23 @@ if (isset($id) && $id != '' && is_int($id)) {
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Información de Malla Curricular</h3>
+                        <h3 class="box-title">Información de Atinencia/Especialidad</h3>
                     </div><!-- /.box-header -->
                     <?php
-                    include '../business/CurriculumBusiness.php';
+                    include '../business/SpecialityBusiness.php';
 
-                    $curriculumBusiness = new CurriculumBusiness();
+                    $specialityBusiness = new SpecialityBusiness();
 
-                    $curriculums = $curriculumBusiness->getCurriculumId($id);
+                    $specialities = $specialityBusiness->getSpecialityId($id);
 
-                    foreach ($curriculums as $curriculum) {
+                    foreach ($specialities as $speciality) {
                         ?>
                         <!-- form start -->
-                        <form id="formCurriculum" role="form" action="../business/UpdateCurriculumAction.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
+                        <form id="formSpeciality" role="form" action="../business/UpdateSpecialityAction.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>Nombre</label>
-                                    <input id="name" name="name" value="<?php echo $curriculum->getCurriculumName(); ?>" type="text" class="form-control" placeholder="Nombre" required=""/>
-                                </div>
-                                <div class="form-group">
-                                    <label>Año</label>
-                                    <input id="year" name="year" value="<?php echo $curriculum->getCurriculumYear(); ?>" type="number" class="form-control" placeholder="Año" required=""/>
+                                    <input id="name" name="name" value="<?php echo $speciality->getSpecialityName(); ?>" type="text" class="form-control" placeholder="Nombre" required=""/>
                                 </div>
                             </div><!-- /.box-body -->
                         </form>
@@ -94,42 +90,14 @@ include './reusable/Footer.php';
 
     function valueInputs() {
 
-        var year = $('#year').val();
         var name = $('#name').val();
 
-        if (!isInteger(year)) {
-            alertify.error("Formato de año incorrecto");
-            return false;
-        }
-
-        if (year.length < 4) {
-            alertify.error("Año no existente");
-            return false;
-        }
-        
-        if (year < 2010) {
-            alertify.error("Año muy antiguo");
-            return false;
-        }
-        
-        if (year > 2100) {
-            alertify.error("Año muy lejano");
-            return false;
-        }
-
         if (name.length === 0) {
-            alertify.error("Verifique el nombre de la maya curricular");
+            alertify.error("Verifique el nombre de la Atinencia/Especialidad");
             return false;
         }
 
-        $("#formCurriculum").submit();
+        $("#formSpeciality").submit();
     }
 
-    function isInteger(number) {
-        if (number % 1 === 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 </script>

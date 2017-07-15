@@ -23,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Estudiante</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/CreateStudentAction.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formStudent" action="../business/CreateStudentAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <!--DNI-->
                         <div class="form-group">
@@ -386,7 +386,7 @@ include './reusable/Footer.php';
             {
                 if (data == true) {
                     $('#phones').val(idPhone);
-                    $("#form").submit();
+                    $("#formStudent").submit();
                 } else {
                     alertify.error("Ya existe un estudiante con ese número de cédula");
                 }

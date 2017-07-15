@@ -6,11 +6,6 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of Course
- *
- * @author luisd
- */
 class Course {
 
     private $courseId;

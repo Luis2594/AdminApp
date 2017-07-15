@@ -7,7 +7,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowCourseUpdate.php"><i class="fa fa-arrow-circle-right"></i> Actualizar cursos</a></li>
+        <li><a href="ShowCourseUpdate.php"><i class="fa fa-arrow-circle-right"></i> Actualizar módulos</a></li>
     </ol>
 </section>
 <br>
@@ -18,7 +18,7 @@ include './reusable/Header.php';
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Actualizar Cursos del Cindea</h3>
+                    <h3 class="box-title">Actualizar módulos del Cindea</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -28,8 +28,9 @@ include './reusable/Header.php';
                                 <th>Nombre</th>
                                 <th>Creditos</th>
                                 <th>Lecciones</th>
-                                <th>Periodo</th>
+                                <th>tipo</th>
                                 <th>Atinencia/Especialidad</th>
+                                <th>Períodos</th>
                                 <th>Actualizar</th>
                             </tr>
                         </thead>
@@ -47,8 +48,9 @@ include './reusable/Header.php';
                                     <td><?php echo $course->getCourseName(); ?></td>
                                     <td><?php echo $course->getCourseCredits(); ?></td>
                                     <td><?php echo $course->getCourseLesson(); ?></td>
-                                    <td><?php echo $course->getPeriod(); ?></td>
+                                    <td><?php echo $course->getCourseType(); ?></td>
                                     <td><?php echo $course->getSpecialityname(); ?></td>
+                                    <td><a href="?id=<?php echo $course->getCourseId(); ?>" >Períodos</a></td>
                                     <td><a href="UpdateCourse.php?id=<?php echo $course->getCourseId(); ?>" >Actualizar</a></td>
                                 </tr>
                                 <?php
@@ -61,8 +63,9 @@ include './reusable/Header.php';
                                 <th>Nombre</th>
                                 <th>Creditos</th>
                                 <th>Lecciones</th>
-                                <th>Periodo</th>
+                                <th>Tipo</th>
                                 <th>Atinencia/Especialidad</th>
+                                <th>Períodos</th>
                                 <th>Actualizar</th>
                             </tr>
                         </tfoot>
