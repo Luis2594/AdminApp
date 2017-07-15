@@ -14,4 +14,12 @@ class PeriodBusiness {
         return $this->periodData->getAllPeriods();
     }
     
+    public function getAllPeriodsByCourse($id) {
+        return $this->periodData->getAllPeriodsByCourse($id);
+    }
+    
+    public function deletePeridoCourse($idCourse, $idPeriod) {
+        return $this->periodData->deletePeridoCourse($idCourse, $idPeriod);
+    }
+    
 }

@@ -50,7 +50,7 @@ include './reusable/Header.php';
                                     <td><?php echo $course->getCourseLesson(); ?></td>
                                     <td><?php echo $course->getCourseType(); ?></td>
                                     <td><?php echo $course->getSpecialityname(); ?></td>
-                                    <td><a href="?id=<?php echo $course->getCourseId(); ?>" >Períodos</a></td>
+                                    <td><a href="UpdatePeriods.php?id=<?php echo $course->getCourseId(); ?>" >Períodos</a></td>
                                     <td><a href="UpdateCourse.php?id=<?php echo $course->getCourseId(); ?>" >Actualizar</a></td>
                                 </tr>
                                 <?php
