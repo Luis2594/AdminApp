@@ -42,4 +42,8 @@ class UserBusiness {
         return $this->userData->login($user, $pass);
     }
     
+    public function isUser($user, $pass) {
+        return $this->userData->isUser($user, $pass);
+    }
+    
 }
