@@ -15,7 +15,7 @@ $id = (int) $_GET['id'];
 <br>
 
 <?php
-if (isset($id) && $id != '' && is_int($id)) {
+if (isset($id) && is_int($id)) {
     ?>
     <!-- Main content -->
     <section class="content">
@@ -43,7 +43,7 @@ if (isset($id) && $id != '' && is_int($id)) {
                         <?php } ?>
                     </div><!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" id="formAssignModules" action="../business/CreateCourseAction.php" method="POST" enctype="multipart/form-data">
+                    <form role="form">
                         <div class="box-body">
                             <!--SPECIALITIES-->
                             <div class="form-group">
@@ -366,7 +366,7 @@ include './reusable/Footer.php';
     function coursesToProfessor() {
         $.ajax({
             type: 'POST',
-            url: "../business/GetCourses.php",
+            url: "../business/GetCoursesProfessor.php",
             data: {"id": id},
             success: function (data)
             {

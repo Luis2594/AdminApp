@@ -17,6 +17,10 @@ class CurriculumBusiness {
     public function insertCurriculumCourse($idCurriculum, $idCourse) {
         return $this->curriculumData->insertCurriculumCourse($idCurriculum, $idCourse);
     }
+    
+    public function insertCourseToCurriculum($id, $period, $idCourse) {
+        return $this->curriculumData->insertCourseToCurriculum($id, $period, $idCourse);
+    }
 
     public function update($curriculum) {
         return $this->curriculumData->update($curriculum);
@@ -29,6 +33,10 @@ class CurriculumBusiness {
     public function getAll() {
         return $this->curriculumData->getAll();
     }
+    
+    public function getAllCourses() {
+        return $this->curriculumData->getAllCourses();
+    }
 
     public function getCurriculumCourseOutCurriculum($id) {
         return $this->curriculumData->getCurriculumCourseOutCurriculum($id);
@@ -40,6 +48,10 @@ class CurriculumBusiness {
 
     public function getCurriculumId($id) {
         return $this->curriculumData->getCurriculumId($id);
+    }
+    
+    public function deleteCurriculumCourse($id) {
+        return $this->curriculumData->deleteCurriculumCourse($id);
     }
 
 }

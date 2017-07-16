@@ -23,6 +23,14 @@ class CurriculumData extends Connector {
         return $this->exeQuery($query);
     }
 
+    public function insertCourseToCurriculum($id, $period, $idCourse) {
+        $query = "call insertCurriculumCourse(" . $id . ","
+                . "" . $period . ","
+                . $idCourse . ")";
+
+        return $this->exeQuery($query);
+    }
+
     public function update($curriculum) {
         $query = "call updateCurriculum(" . $curriculum->getCurriculumId() . ","
                 . "'" . $curriculum->getCurriculumName() . "',"
@@ -56,6 +64,22 @@ class CurriculumData extends Connector {
         return $array;
     }
 
+    public function getAllCourses() {
+        $query = "call getAllCourse()";
+
+        $allCourses = $this->exeQuery($query);
+        $array = [];
+        if (mysqli_num_rows($allCourses) > 0) {
+            while ($row = mysqli_fetch_array($allCourses)) {
+                $currentCourse = new Course(
+                        $row['courseid'], $row['coursecode'], $row['coursename'], $row['coursecredits'], $row['courselesson'], $row['coursepdf'], $row['coursespeciality'], $row['coursetype']);
+                $currentCourse->setSpecialityname($row['specialityname']);
+                array_push($array, $currentCourse);
+            }
+        }
+        return $array;
+    }
+
     public function getCurriculumCourseOutCurriculum($id) {
         $query = 'call getCurriculumCourseOutCurriculum("' . $id . '");';
 
@@ -64,19 +88,13 @@ class CurriculumData extends Connector {
         if (mysqli_num_rows($allCourses) > 0) {
             while ($row = mysqli_fetch_array($allCourses)) {
                 $currentCourse = new Course(
-                        $row['courseid'], $row['coursecode'], 
-                        $row['coursename'], 
-                        $row['coursecredits'], 
-                        $row['courselesson'], 
-                        $row['coursepdf'], 
-                        $row['coursespeciality'], 
-                        $row['coursetype']);
+                        $row['courseid'], $row['coursecode'], $row['coursename'], $row['coursecredits'], $row['courselesson'], $row['coursepdf'], $row['coursespeciality'], $row['coursetype']);
                 array_push($array, $currentCourse);
             }
         }
         return $array;
     }
-    
+
     public function getCurriculumCourseByCurriculum($id) {
         $query = 'call getCurriculumCourseByCurriculum("' . $id . '");';
 
@@ -105,6 +123,16 @@ class CurriculumData extends Connector {
             }
         }
         return $array;
+    }
+
+    public function deleteCurriculumCourse($id) {
+        $query = 'call deleteCurriculumCourse(' . $id . ');';
+
+        if ($this->exeQuery($query)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }

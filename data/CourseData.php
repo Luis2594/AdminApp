@@ -56,7 +56,14 @@ class CourseData extends Connector {
         if (mysqli_num_rows($allCourses) > 0) {
             while ($row = mysqli_fetch_array($allCourses)) {
                 $currentCourse = new Course(
-                        $row['courseid'], $row['coursecode'], $row['coursename'], $row['coursecredits'], $row['courselesson'], $row['coursepdf'], $row['coursespeciality'], $row['coursetype']);
+                        $row['courseid'], 
+                        $row['coursecode'], 
+                        $row['coursename'], 
+                        $row['coursecredits'], 
+                        $row['courselesson'], 
+                        $row['coursepdf'], 
+                        $row['coursespeciality'], 
+                        $row['coursetype']);
                 $currentCourse->setSpecialityname($row['specialityname']);
                 array_push($array, $currentCourse);
             }
@@ -101,6 +108,30 @@ class CourseData extends Connector {
                     "groupnumber" => $row['groupnumber'],
                     "period" => $row['period'],
                     "professorcourseyear" => $row['professorcourseyear']);
+            }
+        }
+        return $array;
+    }
+    
+    public function getCourseToAssignCurriculum($id) {
+        $query = 'call getCurriculumCourseByCurriculum(' . $id . ');';
+
+        $allCourses = $this->exeQuery($query);
+        $array = [];
+        if (mysqli_num_rows($allCourses) > 0) {
+            while ($row = mysqli_fetch_array($allCourses)) {
+
+                $array[] = array(
+                    "curriculumcourseid" => $row['curriculumcourseid'],
+                    "courseid" => $row['courseid'],
+                    "coursecode" => $row['coursecode'],
+                    "coursename" => $row['coursename'],
+                    "coursecredits" => $row['coursecredits'],
+                    "courselesson" => $row['courselesson'],
+                    "coursepdf" => $row['coursepdf'],
+                    "specialityname" => $row['specialityname'],
+                    "coursetype" => $row['coursetype'],
+                    "period" => $row['period']);
             }
         }
         return $array;
