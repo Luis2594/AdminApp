@@ -45,7 +45,7 @@ include './reusable/Header.php';
                                     <td id="name<?php echo $professor->getPersonId() ?>"><a href="InformationProfessor.php?id=<?php echo $professor->getProfessorId(); ?>"><?php echo $professor->getPersonFirstName(); ?></a></td>
                                     <td id="firtsLastname<?php echo $professor->getPersonId() ?>"><?php echo $professor->getPersonFirstlastname(); ?></td>
                                     <td id="secondlastname<?php echo $professor->getPersonId() ?>"><?php echo $professor->getPersonSecondlastname(); ?></td>
-                                    <td><td><a  href="UpdateProfessor.php?id=<?php echo $professor->getPersonId() ?>" >Actualizar</a></td></td>
+                                    <td><a  href="UpdateProfessor.php?id=<?php echo $professor->getPersonId() ?>" >Actualizar</a></td>
                                 </tr>
                                 <?php
                             }

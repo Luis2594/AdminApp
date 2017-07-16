@@ -1,6 +1,7 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
+$assign = $_GET['assign'];
 ?>
 
 <!-- Content Header (Page header) -->
@@ -23,58 +24,71 @@ include './reusable/Header.php';
                 <div class="box-body">
                     <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Cédula</th>
-                                <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
-                                <th>Correo</th>
-                                <th>Género</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            include '../business/ProfessorBusiness.php';
-                            $professorBusiness = new ProfessorBusiness();
-                            //capture all professor as instances of ProfessorAll
-                            $professors = $professorBusiness->getAll();
-
-                            foreach ($professors as $professor) {
-                                ?>
+                            <thead>
                                 <tr>
-                                    <td><?php echo $professor->getPersonDni(); ?></td>
-                                    <td><a href="InformationProfessor.php?id=<?php echo $professor->getPersonId();?>"><?php echo $professor->getPersonFirstName(); ?></a></td>
-                                    <td><?php echo $professor->getPersonFirstlastname(); ?></td>
-                                    <td><?php echo $professor->getPersonSecondlastname(); ?></td>
-                                    <td><?php echo $professor->getPersonEmail(); ?></td>
+                                    <th>Cédula</th>
+                                    <th>Nombre</th>
+                                    <th>Primer Apellido</th>
+                                    <th>Segundo Apellido</th>
+                                    <th>Correo</th>
+                                    <th>Género</th>
                                     <?php
-                                    if ($professor->getPersonGender() == "1") {
-                                        ?> 
-                                        <td>Hombre</td>
-                                        <?php
-                                    } else {
-                                        ?> 
-                                        <td>Mujer</td>
-                                        <?php
-                                    }
-                                    ?> 
+                                    if (isset($assign) && $assign == "assign") {
+                                        ?>
+                                        <th>Asignar módulos</th>
+                                    <?php } ?>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                            }
-                            ?> 
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Cédula</th>
-                                <th>Nombre</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
-                                <th>Correo</th>
-                                <th>Género</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                                include '../business/ProfessorBusiness.php';
+                                $professorBusiness = new ProfessorBusiness();
+                                //capture all professor as instances of ProfessorAll
+                                $professors = $professorBusiness->getAll();
+
+                                foreach ($professors as $professor) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $professor->getPersonDni(); ?></td>
+                                        <td><a href="InformationProfessor.php?id=<?php echo $professor->getPersonId(); ?>"><?php echo $professor->getPersonFirstName(); ?></a></td>
+                                        <td><?php echo $professor->getPersonFirstlastname(); ?></td>
+                                        <td><?php echo $professor->getPersonSecondlastname(); ?></td>
+                                        <td><?php echo $professor->getPersonEmail(); ?></td>
+                                        <?php
+                                        if ($professor->getPersonGender() == "1") {
+                                            ?> 
+                                            <td>Hombre</td>
+                                            <?php
+                                        } else {
+                                            ?> 
+                                            <td>Mujer</td>
+                                            <?php
+                                        }
+                                        if (isset($assign) && $assign == "assign") {
+                                            ?>
+                                            <td><a href="AssignCourseToProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Asignar módulos</a></td>
+                                        <?php } ?>
+                                    </tr>
+                                    <?php
+                                }
+                                ?> 
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Cédula</th>
+                                    <th>Nombre</th>
+                                    <th>Primer Apellido</th>
+                                    <th>Segundo Apellido</th>
+                                    <th>Correo</th>
+                                    <th>Género</th>
+                                    <?php
+                                    if (isset($assign) && $assign == "assign") {
+                                        ?>
+                                        <th>Asignar módulos</th>
+                                    <?php } ?>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->

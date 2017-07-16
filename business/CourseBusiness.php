@@ -34,6 +34,10 @@ class CourseBusiness {
      return $this->courseData->getCourseId($id);
     }
     
+    public function getCourseToAssignProfessor($id){
+        return $this->courseData->getCourseToAssignProfessor($id);
+    }
+    
     public function getCourseIdUpdate($id) {
      return $this->courseData->getCourseIdUpdate($id);
     }

@@ -38,12 +38,7 @@ class ProfessorData extends Connector {
         $array = [];
         if (mysqli_num_rows($allProfessors) > 0) {
             while ($row = mysqli_fetch_array($allProfessors)) {
-                $currentProfessor = new ProfessorAll($row['professorid'],
-                        $row['personid'], $row['persondni'], 
-                        $row['personfirstname'], $row['personfirstlastname'], 
-                        $row['personsecondlastname'], $row['personemail'], 
-                        $row['persongender'], $row['personnationality'],
-                        $row['userusername'], $row['useruserpass']);
+                $currentProfessor = new ProfessorAll($row['professorid'], $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['persongender'], $row['personnationality'], $row['userusername'], $row['useruserpass']);
                 array_push($array, $currentProfessor);
             }
         }
@@ -57,13 +52,8 @@ class ProfessorData extends Connector {
         $array = [];
         if (mysqli_num_rows($allProfessor) > 0) {
             while ($row = mysqli_fetch_array($allProfessor)) {
-                $currentProfessor = new ProfessorAll($row['professorid'],
-                        $row['personid'], $row['persondni'], 
-                        $row['personfirstname'], $row['personfirstlastname'], 
-                        $row['personsecondlastname'], $row['personemail'], 
-                        $row['persongender'], $row['personnationality'],
-                        $row['userusername'], $row['useruserpass']);
-                array_push($array, $currentProfessor);
+                $currentProfessor = new ProfessorAll($row['professorid'], $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['persongender'], $row['personnationality'], $row['userusername'], $row['useruserpass']);
+//                array_push($array, $currentProfessor);
                 array_push($array, $currentProfessor);
             }
         }
@@ -75,9 +65,29 @@ class ProfessorData extends Connector {
         $value = $this->exeQuery($query);
         if (mysqli_num_rows($value) > 0) {
             $row = mysqli_fetch_array($value);
-            return $row['id'];            
+            return $row['id'];
         }
         return -1;
+    }
+
+    public function insertCourseToProfessor($id, $group, $period, $course) {
+        $query = "call insertProfessorCourse('" . $id . "',"
+                . "'" . $group . "',"
+                . "" . $period . ","
+                . "" . $course . ","
+                . "" . date("Y") . ")";
+
+        return $this->exeQuery($query);
+    }
+
+    public function deleteProfessorCourse($id) {
+        $query = 'call deleteProfessorCourse(' . $id . ');';
+
+        if ($this->exeQuery($query)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }

@@ -34,4 +34,11 @@ class ProfessorBusiness {
         return $this->professorData->getLastId();
     }
     
+    public function insertCourseToProfessor($id, $group, $period, $course){
+        return $this->professorData->insertCourseToProfessor($id, $group, $period, $course);
+    }
+    
+    public function deleteProfessorCourse($id) {
+        return $this->professorData->deleteProfessorCourse($id);
+    }
 }

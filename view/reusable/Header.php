@@ -254,6 +254,7 @@ include './reusable/Session.php';
                             <ul class="treeview-menu">
                                 <li><a href="./ShowProfessors.php"><i class="fa"></i>Ver Profesores</a></li>
                                 <li><a href="./CreateProfessor.php"><i class="fa"></i>Crear Profesor</a></li>
+                                <li><a href="./ShowProfessors.php?assign=assign"><i class="fa"></i>Asignar módulos</a></li>
                                 <li><a href="./ShowProfessorUpdate.php"><i class="fa"></i>Actualizar Profesor</a></li>
                                 <li><a href="./ShowProfessorDelete.php"><i class="fa"></i>Eliminar Profesor</a></li>
                             </ul>

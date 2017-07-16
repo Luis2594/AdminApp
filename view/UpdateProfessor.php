@@ -34,7 +34,7 @@ include './reusable/Header.php';
                 foreach ($professors as $professor) {
                     ?>
                     <!-- form start -->
-                    <form role="form" id="form" action="../business/UpdateProfessorAction.php" method="POST" enctype="multipart/form-data">
+                    <form role="form" id="formTheacher" action="../business/UpdateProfessorAction.php" method="POST" enctype="multipart/form-data">
                         <div class="box-body">
                             <!--DNI-->
                             <div class="form-group">
@@ -224,7 +224,7 @@ include './reusable/Footer.php';
         }
 
         if (dni === dniTemp) {
-            $("#form").submit();
+            $("#formTheacher").submit();
         } else {
             confirmDni(dni);
         }
@@ -248,7 +248,7 @@ include './reusable/Footer.php';
             success: function (data)
             {
                 if (data == true) {
-                    $("#form").submit();
+                    $("#formTheacher").submit();
                 } else {
                     alertify.error("Ya existe un profesor con ese número de cédula");
                 }

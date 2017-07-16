@@ -23,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Administrador</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/CreateAdminAction.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formAdmin" action="../business/CreateAdminAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <!--DNI-->
                         <div class="form-group">
@@ -223,7 +223,7 @@ include './reusable/Footer.php';
             {
                 if (data === true) {
                     $('#phones').val(idPhone);
-                    $("#form").submit();
+                    $("#formAdmin").submit();
                 } else {
                     alertify.error("Ya existe un administrador con ese número de cédula");
                 }
