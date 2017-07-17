@@ -9,7 +9,7 @@ $id = (int) $_GET['id'];
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowProfessor.php?assign=assign"><i class="fa fa-arrow-circle-right"></i>Asignar módulos a profesor</a></li>
-        <li><a href="AssignCourseToProfessor.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Asigar módulos</a></li>
+        <li><a href="AssignCourseToProfessor.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Asignar módulos</a></li>
     </ol>
 </section>
 <br>

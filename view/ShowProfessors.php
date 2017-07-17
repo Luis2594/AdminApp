@@ -8,7 +8,7 @@ $assign = $_GET['assign'];
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowProfessor.php"><i class="fa fa-arrow-circle-right"></i> Profesores</a></li>
+        <li><a href="ShowProfessors.php"><i class="fa fa-arrow-circle-right"></i> Profesores</a></li>
     </ol>
 </section>
 <br>
@@ -32,6 +32,7 @@ $assign = $_GET['assign'];
                                     <th>Segundo Apellido</th>
                                     <th>Correo</th>
                                     <th>Género</th>
+                                    <th>Módulos</th>
                                     <?php
                                     if (isset($assign) && $assign == "assign") {
                                         ?>
@@ -62,12 +63,15 @@ $assign = $_GET['assign'];
                                         } else {
                                             ?> 
                                             <td>Mujer</td>
-                                            <?php
-                                        }
+                                            <?php }
+                                        ?>
+                                        <td><a href="ShowCoursesProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Módulos</a></td>
+                                        <?php
                                         if (isset($assign) && $assign == "assign") {
                                             ?>
                                             <td><a href="AssignCourseToProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Asignar módulos</a></td>
                                         <?php } ?>
+
                                     </tr>
                                     <?php
                                 }
@@ -81,11 +85,13 @@ $assign = $_GET['assign'];
                                     <th>Segundo Apellido</th>
                                     <th>Correo</th>
                                     <th>Género</th>
+                                    <th>Módulos</th>
                                     <?php
                                     if (isset($assign) && $assign == "assign") {
                                         ?>
                                         <th>Asignar módulos</th>
                                     <?php } ?>
+
                                 </tr>
                             </tfoot>
                         </table>

@@ -104,6 +104,10 @@ include './reusable/Footer.php';
     function updateCurriculum(id) {
         window.location = "UpdateCurriculum.php?id=" + id;
     }
+    
+    function showCourses(id) {
+        window.location = "ShowCoursesCurriculum.php?id=" + id;
+    }
 
     function deleteCurriculum(id) {
         alertify.confirm('Eliminar malla curricular', "¿Desea eliminar la malla curricular?", function () {

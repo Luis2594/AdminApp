@@ -94,7 +94,6 @@ class CourseData extends Connector {
         $array = [];
         if (mysqli_num_rows($allCourses) > 0) {
             while ($row = mysqli_fetch_array($allCourses)) {
-
                 $array[] = array(
                     "professorcourseid" => $row['professorcourseid'],
                     "courseid" => $row['courseid'],

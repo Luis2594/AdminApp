@@ -57,7 +57,7 @@ if (isset($_SESSION['id'])) {
                             </div><!-- /.col -->
                             <div class="checkbox icheck" style="display: none">
                                 <label>
-                                    <a href="#">Olvidé mi contraseña</a><br>
+                                    <!--<a href="#">Olvidé mi contraseña</a><br>-->
                                 </label>
                             </div>
                         </div><!-- /.col -->

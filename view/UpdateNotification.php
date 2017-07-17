@@ -33,7 +33,7 @@ include './reusable/Header.php';
                 foreach ($notifications as $notification) {
                     ?>
                     <!-- form start -->
-                    <form role="form" id="form" action="../business/UpdateNotificationAction.php" method="POST" enctype="multipart/form-data">
+                    <form role="form" id="formNotification" action="../business/UpdateNotificationAction.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id" value="<?php echo $notification->getNotificationId() ?>"/>
                         <div class="form-group">
                             <textarea id="text" name="text" class="form-control" rows="3" placeholder="Notificación"><?php echo $notification->getNotificationText() ?></textarea>
@@ -115,10 +115,10 @@ include './reusable/Footer.php';
             return false;
         }
 
-        $("#form").submit();
+        $("#formNotification").submit();
     }
 
     function backPage(id) {
-        window.location = "ShowNotifications.php?";
+        window.location = "ShowNotifications.php";
     }
 </script>

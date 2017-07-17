@@ -50,7 +50,7 @@ $assign = $_GET['assign'];
                                 <tr>
                                     <td><?php echo $curriculum->getCurriculumYear(); ?></td>
                                     <td><a href="InformationCurriculum.php?id=<?php echo $curriculum->getCurriculumId(); ?>"><?php echo $curriculum->getCurriculumName(); ?></a></td>
-                                    <td><a href="?id=<?php echo $curriculum->getCurriculumId(); ?>">Módulos</a></td>
+                                    <td><a href="ShowCoursesCurriculum.php?id=<?php echo $curriculum->getCurriculumId(); ?>">Módulos</a></td>
                                     <?php
                                     if (isset($assign) && $assign == 'assign') {
                                         ?>

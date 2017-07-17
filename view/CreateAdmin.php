@@ -221,7 +221,7 @@ include './reusable/Footer.php';
             data: {"dni": dni},
             success: function (data)
             {
-                if (data === true) {
+                if (data == true) {
                     $('#phones').val(idPhone);
                     $("#formAdmin").submit();
                 } else {
@@ -234,6 +234,5 @@ include './reusable/Footer.php';
             }
         });
     }
-
 
 </script>

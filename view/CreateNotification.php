@@ -23,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Enviar Notificación</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/CreateNotificationAction.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formNotification" action="../business/CreateNotificationAction.php" method="POST" enctype="multipart/form-data">
                     <!-- textarea -->
                     <div class="form-group">
                         <textarea id="text" name="text" class="form-control" rows="3" placeholder="Notificación"></textarea>
@@ -50,7 +50,7 @@ include './reusable/Footer.php';
             return false;
         }
 
-        $("#form").submit();
+        $("#formNotification").submit();
     }
 
 </script>

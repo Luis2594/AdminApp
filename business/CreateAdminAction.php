@@ -1,5 +1,4 @@
 <?php
-
 //includes
 include './PersonBusiness.php';
 include './AdminBusiness.php';
