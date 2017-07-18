@@ -25,8 +25,7 @@ include './reusable/Header.php';
                 </div><!-- /.box-header -->
 
                 <?php
-                include '../business/InstitutionBusiness.php';
-
+                include './business/InstitutionBusiness.php';
                 $institutionBusiness = new InstitutionBusiness();
                 $id = 1;
                 $institutions = $institutionBusiness->getInstitution();
@@ -34,7 +33,7 @@ include './reusable/Header.php';
                 foreach ($institutions as $institution) {
                     ?>
                     <!-- form start -->
-                    <form role="form" id="form" action="../business/UpdateInstitutionAction.php" method="POST" enctype="multipart/form-data">
+                    <form role="formUpdateInstitution" id="formUpdateInstitution" action="../business/UpdateInstitutionAction.php" method="POST" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="box-body">
                         <div class="form-group">
@@ -172,7 +171,7 @@ include './reusable/Footer.php';
             return false;
         }
         
-        $("#form").submit();
+        $("#formUpdateInstitution").submit();
     }
 
     function backPage(id) {

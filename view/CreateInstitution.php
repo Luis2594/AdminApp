@@ -23,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Institución</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/CreateInstitutionAction.php" method="POST" enctype="multipart/form-data">
+                <form role="formCreateInstitution" id="formCreateInstitution" action="../business/CreateInstitutionAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
                             <label>Nombre</label>
@@ -128,8 +128,7 @@ include './reusable/Footer.php';
             alertify.error("Verifique el fax de la institución");
             return false;
         }
-        
-        $("#form").submit();
+        $("#formCreateInstitution").submit();
     }
 
 </script>

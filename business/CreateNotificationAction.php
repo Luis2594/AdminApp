@@ -14,6 +14,5 @@ if(isset($text) && $text != ""){
         header("location: ../view/ShowNotifications.php?action=0&msg=Registro_fallido");
     }
 }else{
-    //error
     header("location: ../view/ShowNotifications.php?action=0&msg=Error_en_los_datos");
 }
