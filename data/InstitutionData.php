@@ -42,10 +42,7 @@ class InstitutionData extends Connector {
         if (mysqli_num_rows($allInstitutions) > 0) {
             while ($row = mysqli_fetch_array($allInstitutions)) {
                 $currentInstitution = new Institution(
-                        $row['institutionid'], $row['institutionname'], 
-                        $row['institutionaddress'], $row['institutionfax'], 
-                        $row['institutionphone'], $row['institutionmission'], 
-                        $row['institutionview']
+                        $row['institutionid'], $row['institutionname'], $row['institutionaddress'], $row['institutionfax'], $row['institutionphone'], $row['institutionmission'], $row['institutionview']
                 );
                 array_push($array, $currentInstitution);
             }

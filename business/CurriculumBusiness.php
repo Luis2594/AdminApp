@@ -34,6 +34,10 @@ class CurriculumBusiness {
         return $this->curriculumData->getAll();
     }
     
+    public function getAllEnrollment() {
+        return $this->curriculumData->getAllEnrollment();
+    }
+    
     public function getAllCourses() {
         return $this->curriculumData->getAllCourses();
     }
@@ -44,6 +48,10 @@ class CurriculumBusiness {
    
     public function getCurriculumCourseByCurriculum($id) {
         return $this->curriculumData->getCurriculumCourseByCurriculum($id);
+    }
+    
+    public function getCurriculumCourseEnrollment($id) {
+        return $this->curriculumData->getCurriculumCourseEnrollment($id);
     }
 
     public function getCurriculumId($id) {

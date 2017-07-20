@@ -56,7 +56,8 @@ if (isset($id) && is_int($id)) {
                             ?>
                             <h3 id="h3Info" class="box-title">Asignar módulos a la malla: 
                                 <?php echo $curriculum->getCurriculumName();
-                            } ?> </h3>
+                            }
+                            ?> </h3>
                     </div>
                     <div class="box-body">
                         <div class="box-footer" style="text-align: center">
@@ -119,8 +120,9 @@ if (isset($id) && is_int($id)) {
                         foreach ($curriculums as $curriculum) {
                             ?>
                             <h3 id="h3Info" class="box-title">Módulos asignados a la malla: 
-        <?php echo $curriculum->getCurriculumName();
-    } ?> </h3>
+                                <?php echo $curriculum->getCurriculumName();
+                            }
+                            ?> </h3>
                     </div>
                     <div class="box-body">
                         <table id="example2" class="table table-bordered table-striped">
@@ -255,7 +257,7 @@ include './reusable/Footer.php';
             "period": $("#period").val(),
             "modules": modules
         };
-        
+
         $.ajax({
             type: 'POST',
             url: "../business/AssignCoursesToCurriculum.php",
@@ -328,24 +330,33 @@ include './reusable/Footer.php';
     }
 
     function deleteCourseToCurrciulum(id) {
-        $.ajax({
-            type: 'POST',
-            url: "../business/DeleteCourseToCurriculum.php",
-            data: {"id": id},
-            success: function (data)
-            {
-                if (data == true) {
-                    alertify.success("Módulo eliminado de la malla curricular");
-                    coursesToCurriculum();
-                } else {
-                    alertify.error("Upps! Ha ocurrido un error al eliminar el módulo!");
+
+        alertify.confirm('Eliminar módulo de malla curricular', '¿Desea eliminar módulo de la malla curricular?', function () {
+            $.ajax({
+                type: 'POST',
+                url: "../business/DeleteCourseToCurriculum.php",
+                data: {"id": id},
+                success: function (data)
+                {
+                    if (data == true) {
+                        alertify.success("Módulo eliminado de la malla curricular");
+                        coursesToCurriculum();
+                    } else {
+                        alertify.error("Upps! Ha ocurrido un error al eliminar el módulo!");
+                    }
+                },
+                error: function ()
+                {
+                    alertify.error("Error ...");
                 }
-            },
-            error: function ()
-            {
-                alertify.error("Error ...");
-            }
+            });
+        }
+        , function () {
+            alertify.success("Cancelado");
+            return;
         });
+
+
     }
 
 </script>

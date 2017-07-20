@@ -31,6 +31,10 @@ class GroupBusiness {
      return $this->groupData->getAll();
     }
     
+    public function getStudentGroupByStudent($id) {
+     return $this->groupData->getStudentGroupByStudent($id);
+    }
+    
     public function getGroupByPerson($id) {
         return $this->groupData->getGroupByPerson($id);
     }

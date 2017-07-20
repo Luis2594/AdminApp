@@ -2,7 +2,6 @@
 
 require_once '../data/Connector.php';
 include '../domain/User.php';
-include '../business/PersonBusiness.php';
 
 class UserData extends Connector {
 
@@ -98,18 +97,6 @@ class UserData extends Connector {
         } else {
             return TRUE;
         }
-    }
-    
-    public function isUser($user, $pass) {
-        $query = "call isUser('" . $user . "', '" . $pass . "')";
-
-        $result = $this->exeQuery($query);
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_array($result)) {
-                return new Person($row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['personbirthday'], $row['personage'], $row['persongender'], $row['personnationality'], $row['personimage']);
-            }
-        }
-        return NULL;
     }
 
 }

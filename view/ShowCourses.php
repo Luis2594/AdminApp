@@ -7,7 +7,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowCourses.php"><i class="fa fa-arrow-circle-right"></i> Cursos</a></li>
+        <li><a href="ShowCourses.php"><i class="fa fa-arrow-circle-right"></i> Módulos</a></li>
     </ol>
 </section>
 <br>
@@ -18,18 +18,19 @@ include './reusable/Header.php';
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Cursos del Cindea</h3>
+                    <h3 class="box-title">Módulos del Cindea</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Codigo</th>
+                                <th>Código</th>
                                 <th>Nombre</th>
-                                <th>Creditos</th>
+                                <th>Créditos</th>
                                 <th>Lecciones</th>
                                 <th>Tipo</th>
                                 <th>Atinencia/Especialidad</th>
+                                <th>Plan de estudios</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +49,7 @@ include './reusable/Header.php';
                                     <td><?php echo $course->getCourseLesson(); ?></td>
                                     <td><?php echo $course->getCourseType(); ?></td>
                                     <td><?php echo $course->getSpecialityname(); ?></td>
+                                    <td><a href="../../pdf/<?php echo $course->getCoursePdf() ?>" target="_blank" >Plan de estudio</a></td>
                                 </tr>
                                 <?php
                             }
@@ -55,12 +57,13 @@ include './reusable/Header.php';
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Codigo</th>
+                                <th>Código</th>
                                 <th>Nombre</th>
-                                <th>Creditos</th>
+                                <th>Créditos</th>
                                 <th>Lecciones</th>
                                 <th>Tipo</th>
                                 <th>Atinencia/Especialidad</th>
+                                <th>Plan de estudios</th>
                             </tr>
                         </tfoot>
                     </table>

@@ -1,5 +1,6 @@
 <?php
-include './InstitutionBusiness.php';
+
+include '../business/InstitutionBusiness.php';
 
 $institutionName = $_POST['name'];
 $institutionAddress = $_POST['address'];

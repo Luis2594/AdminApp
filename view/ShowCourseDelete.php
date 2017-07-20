@@ -24,9 +24,9 @@ include './reusable/Header.php';
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Codigo</th>
+                                <th>Código</th>
                                 <th>Nombre</th>
-                                <th>Creditos</th>
+                                <th>Créditos</th>
                                 <th>Lecciones</th>
                                 <th>Tipo</th>
                                 <th>Atinencia/Especialidad</th>
@@ -57,9 +57,9 @@ include './reusable/Header.php';
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Codigo</th>
+                                <th>Código</th>
                                 <th>Nombre</th>
-                                <th>Creditos</th>
+                                <th>Créditos</th>
                                 <th>Lecciones</th>
                                 <th>Tipo</th>
                                 <th>Atinencia/Especialidad</th>

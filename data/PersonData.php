@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-require_once '../domain/Person.php';
+include '../domain/Person.php';
 
 class PersonData extends Connector {
 

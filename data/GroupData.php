@@ -44,6 +44,18 @@ class GroupData extends Connector {
         return $array;
     }
 
+    public function getStudentGroupByStudent($id) {
+        $query = "call getStudentGroupByStudent(" . $id . ");";
+
+        $group = $this->exeQuery($query);
+        $array = [];
+        while ($row = mysqli_fetch_array($group)) {
+            $array[] = array("id" => $row['groupid'],
+                "number" => $row['groupnumber']);
+        }
+        return $array;
+    }
+
     public function getGroupByPerson($id) {
         $query = 'call getGroupsByPersonId(' . $id . ');';
 

@@ -8,7 +8,7 @@ $id = (int) $_GET['id'];
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowProfessor.php?assign=assign"><i class="fa fa-arrow-circle-right"></i>Asignar módulos a profesor</a></li>
+        <li><a href="ShowProfessors.php?assign=assign"><i class="fa fa-arrow-circle-right"></i>Asignar módulos a profesor</a></li>
         <li><a href="AssignCourseToProfessor.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Asignar módulos</a></li>
     </ol>
 </section>
@@ -396,24 +396,32 @@ include './reusable/Footer.php';
     }
 
     function deleteCourseToProfessor(id) {
-        $.ajax({
-            type: 'POST',
-            url: "../business/DeleteCourseToProfessor.php",
-            data: {"id": id},
-            success: function (data)
-            {
-                if (data == true) {
-                    alertify.success("Módulo eliminado de la lista del profesor");
-                    coursesToProfessor();
-                } else {
-                    alertify.error("Upps! Ha ocurrido un error al eliminar el módulo!");
+
+        alertify.confirm('Eliminar módulo de profesor', '¿Desea eliminar el módulo de la lista del profesor?', function () {
+            $.ajax({
+                type: 'POST',
+                url: "../business/DeleteCourseToProfessor.php",
+                data: {"id": id},
+                success: function (data)
+                {
+                    if (data == true) {
+                        alertify.success("Módulo eliminado de la lista del profesor");
+                        coursesToProfessor();
+                    } else {
+                        alertify.error("Upps! Ha ocurrido un error al eliminar el módulo!");
+                    }
+                },
+                error: function ()
+                {
+                    alertify.error("Error ...");
                 }
-            },
-            error: function ()
-            {
-                alertify.error("Error ...");
-            }
+            });
+        }
+        , function () {
+            alertify.success("Cancelado");
         });
+
+
     }
 
 </script>

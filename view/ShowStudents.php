@@ -1,6 +1,7 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
+$enrollment = $_GET['enrollment'];
 ?>
 
 <!-- Content Header (Page header) -->
@@ -32,7 +33,12 @@ include './reusable/Header.php';
                                     <th>Edad</th>
                                     <th>Género</th>
                                     <th>Adecuación</th>
-                                    <!--<th>Grupo</th>-->
+                                    <th>Historial Académico</th>
+                                    <?php
+                                    if (isset($enrollment) && $enrollment == "enrollment") {
+                                        ?>
+                                        <th>Matrícular</th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,9 +83,15 @@ include './reusable/Header.php';
                                             ?>
                                             <td>Significativa</td>
                                             <?php
+                                        }?>
+                                            <td><a href="AcademicHistorial.php?id=<?php echo $student->getPersonId(); ?>">Historial Académico</a></td>
+                                        <?php    
+                                        if (isset($enrollment) && $enrollment == "enrollment") {
+                                            ?>
+                                            <td><a href="Enrollment.php?id=<?php echo $student->getPersonId(); ?>">Matrícular</a></td>
+                                            <?php
                                         }
                                         ?>
-                                        <!--<td><?php //echo $student->getStudentgroup(); ?></td>-->
                                     </tr>
                                     <?php
                                 }
@@ -94,7 +106,12 @@ include './reusable/Header.php';
                                     <th>Edad</th>
                                     <th>Género</th>
                                     <th>Adecuación</th>
-                                    <!--<th>Grupo</th>-->
+                                    <th>Historial Académico</th>
+                                    <?php
+                                    if (isset($enrollment) && $enrollment == "enrollment") {
+                                        ?>
+                                        <th>Matrícular</th>
+                                    <?php } ?>
                                 </tr>
                             </tfoot>
                         </table>

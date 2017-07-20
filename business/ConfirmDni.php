@@ -1,6 +1,6 @@
 <?php
 
-require_once './PersonBusiness.php';
+include './PersonBusiness.php';
 
 $dni = $_GET['dni'];
 

@@ -44,9 +44,9 @@ if (isset($id) && is_int($id)) {
                         <table id="example2" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Codigo</th>
+                                    <th>Código</th>
                                     <th>Nombre</th>
-                                    <th>Creditos</th>
+                                    <th>Créditos</th>
                                     <th>Lecciones</th>
                                     <th>Tipo</th>
                                     <th>Grupo</th>
@@ -60,9 +60,9 @@ if (isset($id) && is_int($id)) {
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Codigo</th>
+                                    <th>Código</th>
                                     <th>Nombre</th>
-                                    <th>Creditos</th>
+                                    <th>Créditos</th>
                                     <th>Lecciones</th>
                                     <th>Tipo</th>
                                     <th>Grupo</th>

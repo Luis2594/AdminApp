@@ -28,12 +28,13 @@ include './reusable/Header.php';
                     <div class="box-body">
                         <div class="form-group">
                             <?php
-                            include './business/InstitutionBusiness.php';
+                            include '../business/InstitutionBusiness.php';
                             $institutionBusiness = new InstitutionBusiness();
-                            $institutions = $institutionBusiness->getInstitution();
+                            $id = 1;
+                            $specialities = $institutionBusiness->getInstitution($id);
                             $found = false;
-                            
-                            foreach ($institutions as $institution) {
+
+                            foreach ($specialities as $institution) {
                                 ?>
                                 <input id="id" name="id" type="hidden"  value="<?php echo $institution->getInstitutionId() ?>" class="form-control" required readonly/>
                                 <div class="form-group">
@@ -120,7 +121,7 @@ include './reusable/Footer.php';
     }
 
     function createInstitution() {
-        window.location = "CreateInstitution.php";
+        window.location = "CreateInstitution.php?";
     }
 
     function updateInstitution(id) {
