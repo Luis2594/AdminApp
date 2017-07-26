@@ -102,7 +102,7 @@ include './reusable/Header.php';
                         <!--EMAIL-->
                         <div class="form-group">
                             <label for="exampleInputEmail1">Correo</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" value="<?php echo $person->getPersonEmail() ?>" >
+                            <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" disabled value="<?php echo $person->getPersonEmail() ?>" >
                         </div>
                         <!--GENDER-->
                         <div class="form-group">
@@ -155,7 +155,9 @@ include './reusable/Header.php';
                         </table>
                     </div><!-- /.box-body -->
                 </form>
-                <a type="button" class="btn btn-primary" href="javascript:updateAdmin(<?php echo $person->getPersonId() ?>)">Actualizar</a>
+                <div class="box-footer">
+                    <a type="button" class="btn btn-primary" href="javascript:updateAdmin(<?php echo $person->getPersonId() ?>)">Actualizar</a>
+                </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
     </div>   <!-- /.row -->

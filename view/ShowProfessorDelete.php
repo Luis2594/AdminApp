@@ -42,7 +42,7 @@ include './reusable/Header.php';
                                 ?>
                                 <tr>
                                     <td id="dni<?php echo $professor->getPersonId(); ?>"><?php echo $professor->getPersonDni(); ?></td>
-                                    <td id="name<?php echo $professor->getPersonId() ?>"><a href="InformationProfessor.php?id=<?php echo $professor->getProfessorId(); ?>"><?php echo $professor->getPersonFirstName(); ?></a></td>
+                                    <td id="name<?php echo $professor->getPersonId(); ?>"><a href="InformationProfessor.php?id=<?php echo $professor->getPersonId(); ?>"><?php echo $professor->getPersonFirstName(); ?></a></td>
                                     <td id="firtsLastname<?php echo $professor->getPersonId() ?>"><?php echo $professor->getPersonFirstlastname(); ?></td>
                                     <td id="secondlastname<?php echo $professor->getPersonId() ?>"><?php echo $professor->getPersonSecondlastname(); ?></td>
                                     <td><a  href="javascript:deleteConfirmation(<?php echo $professor->getPersonId() ?>)" >Eliminar</a></td>

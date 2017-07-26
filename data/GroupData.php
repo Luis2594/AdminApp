@@ -57,8 +57,8 @@ class GroupData extends Connector {
         }
     }
 
-    public function getStudentGroupByStudent($id) {
-        $query = "call getStudentGroupByStudent(" . $id . ");";
+    public function getGroupByStudent($id) {
+        $query = "call getGroupByStudent(" . $id . ");";
         try {
             $group = $this->exeQuery($query);
             $array = [];
@@ -73,7 +73,7 @@ class GroupData extends Connector {
     }
 
     public function getGroupByPerson($id) {
-        $query = 'call getGroupsByPersonId(' . $id . ');';
+        $query = 'call getGroupByStudent(' . $id . ');';
         try {
             $allGroups = $this->exeQuery($query);
             $array = [];

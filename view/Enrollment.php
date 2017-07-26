@@ -27,18 +27,16 @@ if (isset($id) && is_int($id)) {
                 <div class="box box-primary">
                     <div class="box-header">
                         <?php
-                        include '../business/PersonBusiness.php';
+                        include '../business/StudentBusiness.php';
 
-                        $personBusiness = new PersonBusiness();
-
-                        $persons = $personBusiness->getPersonId($id);
-
-                        foreach ($persons as $person) {
+                        $studentBusiness = new StudentBusiness();
+                        $students = $studentBusiness->getStudentId($id);
+                        foreach ($students as $student) {
                             ?>
                             <h3 class="box-title">Matrícula para : <?php
-                                echo $person->getPersonFirstName()
-                                . " " . $person->getPersonFirstlastname()
-                                . " " . $person->getPersonSecondlastname();
+                                echo $student->getPersonFirstName()
+                                . " " . $student->getPersonFirstlastname()
+                                . " " . $student->getPersonSecondlastname();
                                 ?> </h3>
                         <?php } ?>
                     </div><!-- /.box-header -->
@@ -558,7 +556,7 @@ include './reusable/Footer.php';
             },
             error: function ()
             {
-                alertify.error("Error ...");
+                alertify.error("Error Grupo...");
             }
         });
     }

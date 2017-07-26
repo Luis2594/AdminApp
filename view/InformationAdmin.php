@@ -66,7 +66,6 @@ include './reusable/Header.php';
                             <label for="exampleInputEmail1">Correo Electrónico</label>
                             <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="Correo Electrónico" value="<?php echo $admin->getPersonEmail() ?>" readonly>
                         </div>
-
                         <!--GENDER-->
                         <div class="form-group">
                             <label>Género</label>
@@ -87,6 +86,7 @@ include './reusable/Header.php';
                             <label>Nacionalidad</label>
                             <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required="" value="<?php echo $admin->getPersonNacionality() ?>" readonly/>
                         </div>
+                        <!--PHONES-->
                         <div class="form-group">
                             <label>Teléfono</label>
                             <?php
@@ -106,15 +106,15 @@ include './reusable/Header.php';
                             ?>
                         </div>
                         <!--USERNAME-->
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <label>Nombre de usuario</label>
                             <input id="username" name="username" type="text" class="form-control" placeholder="Nombre de usuario" required="" value="<?php echo $admin->getUserUsername() ?>" readonly />
-                        </div>
+                        </div>-->
                         <!--PASSWORD-->
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <label>Contraseña</label>
                             <input id="pass" name="pass" type="text" class="form-control" placeholder="Contraseña" required="" value="<?php echo $admin->getUserPass() ?>" readonly />
-                        </div>
+                        </div>-->
                     </div><!-- /.box-body -->
 
                 </form>
