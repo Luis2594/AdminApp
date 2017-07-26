@@ -1,6 +1,6 @@
 <?php
 
-include '../business/InstitutionBusiness.php';
+include_once '../business/InstitutionBusiness.php';
 
 $institutionName = $_POST['name'];
 $institutionAddress = $_POST['address'];
@@ -17,7 +17,7 @@ if (
         isset($institutionPhone) && $institutionPhone != "" &&
         isset($institutionView) && $institutionView != ""
 ) {
-    $institutionName = ucwords(strtolower($institutionName));
+    //$institutionName = ucwords(strtolower($institutionName));
     
     $institutionBusiness = new InstitutionBusiness();
     

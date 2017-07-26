@@ -35,19 +35,15 @@ include './reusable/Header.php';
                 </div><!-- /.box-header -->
                 <?php
                 if (isset($_SESSION['id'])) {
-                    include '../../business/PersonBusiness.php';
+                    include_once '../business/PersonBusiness.php';
                     $personBusiness = new PersonBusiness();
-                    $person = $personBusiness->getPersonId((int) $_SESSION['id']);
-                    ?>
-                    <img id="imageProfile2" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="img-circle center-block" alt="User Image" />
-                    <?php
-                    echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname();
+                    $person = $personBusiness->getPersonId((int) $_SESSION['id'])[0];
                 } else {
                     echo '<script type="text/javascript">window.location = "./Login.php"</script>';
                 }
                 ?>
                 <!-- form start -->
-                <form role="form" id="form" action="" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formProfile" action="" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <!--PHOTO-->
                         <!--                       <div class="form-group">
@@ -57,14 +53,31 @@ include './reusable/Header.php';
                                                 </div>-->
                         <div class="form-group">
                             <img id="imageProfile2" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="img-circle" alt="User Image" />
-                            <?php
-                            echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname();
-                            ?>
                         </div>
                         <!--NAME-->
                         <div class="form-group">
-                            <label>Puesto</label>
-                            <input id="name" name="name" type="text" class="form-control" disabled value="Administrador"/>
+                            <label>Perfil</label>
+                            <input id="name" name="name" type="text" class="form-control" disabled value="<?php
+                            if (isset($_SESSION['type'])) {
+                                //echo $person->getPersonFirstName();
+                                switch ((int) $_SESSION['type']) {
+                                    case 0:
+                                        echo 'Estudiante';
+                                        break;
+                                    case 1:
+                                        echo 'Profesor';
+                                        break;
+                                    case 2:
+                                        echo 'Administrador';
+                                        break;
+                                    default:
+                                        echo 'Usuario';
+                                        break;
+                                }
+                            } else {
+                                echo 'Usuario';
+                            }
+                            ?>"/>
                         </div>
                         <!--DNI-->
                         <div class="form-group">

@@ -1,6 +1,6 @@
 <?php
 
-include './CurriculumBusiness.php';
+include_once './CurriculumBusiness.php';
 
 $year = $_POST['year'];
 $name = $_POST['name'];

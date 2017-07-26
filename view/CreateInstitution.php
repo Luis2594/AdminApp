@@ -7,7 +7,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="CreateSpeciality.php"><i class="fa fa-arrow-circle-right"></i>Crear Institución</a></li>
+        <li><a href="CreateInstitution.php"><i class="fa fa-arrow-circle-right"></i>Crear Institución</a></li>
     </ol>
 </section>
 <br>
@@ -23,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Institución</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/CreateInstitutionAction.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formCeateInstitution" action="../business/CreateInstitutionAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
                             <label>Nombre</label>
@@ -129,7 +129,7 @@ include './reusable/Footer.php';
             return false;
         }
         
-        $("#form").submit();
+        $("#formCeateInstitution").submit();
     }
 
 </script>

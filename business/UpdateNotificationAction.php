@@ -1,6 +1,6 @@
 <?php
 
-include '../business/NotificationBusiness.php';
+include_once '../business/NotificationBusiness.php';
 
 $id = $_POST['id'];
 $text = $_POST['text'];

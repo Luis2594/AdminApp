@@ -1,6 +1,6 @@
 <?php
 
-include '../data/ForumData.php';
+include_once '../data/ForumData.php';
 
 class ForumBusiness {
 

@@ -1,6 +1,6 @@
 <?php
 
-include './UserBusiness.php';
+include_once './UserBusiness.php';
 
 $user = $_POST['user'];
 $pass = $_POST['pass'];

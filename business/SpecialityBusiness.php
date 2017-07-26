@@ -1,6 +1,6 @@
 <?php
 
-include '../data/SpecialityData.php';
+include_once '../data/SpecialityData.php';
 
 class SpecialityBusiness {
 

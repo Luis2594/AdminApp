@@ -8,7 +8,7 @@ include './reusable/Header.php';
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowAdmins.php"><i class="fa fa-arrow-circle-right"></i>Administradores</a></li>
-        <li><a href="UpdateAdmin.php"><i class="fa fa-arrow-circle-right"></i>Actualizar Administrador</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Actualizar Administrador</a></li>
     </ol>
 </section>
 <br>
@@ -25,101 +25,102 @@ include './reusable/Header.php';
                 </div><!-- /.box-header -->
 
                 <?php
-                include '../business/PersonBusiness.php';
+                include './business/PersonBusiness.php';
+                include_once '../domain/Person.php';
 
                 $AdminBusiness = new PersonBusiness();
+
                 $id = (int) $_GET['id'];
-                $admins = $AdminBusiness->getPersonId($id);
-                foreach ($admins as $admin) {
-                    ?>
-                    <!-- form start -->
-                    <form role="form" id="form" action="../business/UpdateAdminAction.php" method="POST" enctype="multipart/form-data">
-                        <div class="box-body">
-                            <!--DNI-->
-                            <div class="form-group">
-                                <label>Cédula</label>
-                                <input id="dni" name="dni" type="number" class="form-control" placeholder="Cédula" required="" value="<?php echo $admin->getPersonDni() ?>"  />
-                            </div>
-                            <!--NAME-->
-                            <div class="form-group">
-                                <label>Nombre</label>
-                                <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required="" value="<?php echo $admin->getPersonFirstName() ?>"  />
-                            </div>
-                            <!--FIRSTLASTNAME-->
-                            <div class="form-group">
-                                <label>Primer Apellido</label>
-                                <input id="firstlastname" name="firstlastname" type="text" class="form-control" placeholder="Primer apellido" required="" value="<?php echo $admin->getPersonFirstlastname() ?>"  />
-                            </div>
-                            <!--SECONDLASTNAME-->
-                            <div class="form-group">
-                                <label>Segundo Apellido</label>
-                                <input id="secondlastname" name="secondlastname" type="text" class="form-control" placeholder="Segundo apellido" required="" value="<?php echo $admin->getPersonSecondlastname() ?>"  />
-                            </div>
-                            <!--EMAIL-->
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Correo Electrónico</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico" value="<?php echo $admin->getPersonEmail() ?>">
-                            </div>
 
-                            <!--GENDER-->
-                            <div class="form-group">
-                                <label>Género</label>
-                                <?php
-                                if ($admin->getPersonGender() == 1) {
-                                    ?>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" name="optionsRadios1" value="1" checked>
-                                            Hombre
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios2" name="optionsRadios2" value="2">
-                                            Mujer
-                                        </label>
-                                    </div>
-                                    <?php
-                                } else {
-                                    ?>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" name="optionsRadios1" value="1" >
-                                            Hombre
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios2" name="optionsRadios2" value="2" checked>
-                                            Mujer
-                                        </label>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                            <!--NATIONALITY-->
-                            <div class="form-group">
-                                <label>Nacionalidad</label>
-                                <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required="" value="<?php echo $admin->getPersonNacionality() ?>" />
-                            </div>
+                $admin = $AdminBusiness->getPersonId($id)[0];
 
-                            <input id="dniTemp" value="<?php echo $admin->getPersonDni() ?>">
-                            <input id="id" name="id" value="<?php echo $id ?>">
-                        </div><!-- /.box-body -->
-                    </form>
-
-                    <div class="pull-left">
-                        <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
-                    </div>
-                    <div class="pull-right">
-                        <button onclick="backPage();" class="btn btn-primary">Atrás</button>
-                    </div>
-
-                    <?php
-                    break;
-                }// end of for
+                if ($admin == NULL) {
+                    header("location: ./Login.php");
+                }
                 ?>
+                <!-- form start -->
+                <form role="form" id="formUpdateAdmin" action="../business/UpdateAdminAction.php" method="POST" enctype="multipart/form-data">
+                    <div class="box-body">
+                        <!--DNI-->
+                        <div class="form-group">
+                            <label>Cédula</label>
+                            <input id="dni" name="dni" type="number" class="form-control" placeholder="Cédula" required="" value="<?php echo $admin->getPersonDni() ?>"  />
+                        </div>
+                        <!--NAME-->
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required="" value="<?php echo $admin->getPersonFirstName() ?>"  />
+                        </div>
+                        <!--FIRSTLASTNAME-->
+                        <div class="form-group">
+                            <label>Primer Apellido</label>
+                            <input id="firstlastname" name="firstlastname" type="text" class="form-control" placeholder="Primer apellido" required="" value="<?php echo $admin->getPersonFirstlastname() ?>"  />
+                        </div>
+                        <!--SECONDLASTNAME-->
+                        <div class="form-group">
+                            <label>Segundo Apellido</label>
+                            <input id="secondlastname" name="secondlastname" type="text" class="form-control" placeholder="Segundo apellido" required="" value="<?php echo $admin->getPersonSecondlastname() ?>"  />
+                        </div>
+                        <!--EMAIL-->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico" value="<?php echo $admin->getPersonEmail() ?>">
+                        </div>
+
+                        <!--GENDER-->
+                        <div class="form-group">
+                            <label>Género</label>
+                            <?php
+                            if ($admin->getPersonGender() == 1) {
+                                ?>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" name="optionsRadios1" value="1" checked>
+                                        Hombre
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" name="optionsRadios2" value="2">
+                                        Mujer
+                                    </label>
+                                </div>
+                                <?php
+                            } else {
+                                ?>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" name="optionsRadios1" value="1" >
+                                        Hombre
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" name="optionsRadios2" value="2" checked>
+                                        Mujer
+                                    </label>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <!--NATIONALITY-->
+                        <div class="form-group">
+                            <label>Nacionalidad</label>
+                            <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required="" value="<?php echo $admin->getPersonNacionality() ?>" />
+                        </div>
+
+                        <input id="dniTemp" value="<?php echo $admin->getPersonDni() ?>">
+                        <input id="id" name="id" value="<?php echo $id ?>">
+                    </div><!-- /.box-body -->
+                </form>
+
+                <div class="pull-left">
+                    <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
+                </div>
+                <div class="pull-right">
+                    <button onclick="backPage();" class="btn btn-primary">Atrás</button>
+                </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
     </div>   <!-- /.row -->
@@ -159,7 +160,7 @@ include './reusable/Footer.php';
     }
 
     $(function () {
-        
+
         //iCheck for checkbox and radio inputs
         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
             checkboxClass: 'icheckbox_minimal-blue',
@@ -222,7 +223,7 @@ include './reusable/Footer.php';
         }
 
         if (dni === dniTemp) {
-            $("#form").submit();
+            $("#formUpdateAdmin").submit();
         } else {
             confirmDni(dni);
         }

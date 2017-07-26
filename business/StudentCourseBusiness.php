@@ -1,6 +1,6 @@
 <?php
 
-include '../data/StudentCourseData.php';
+include_once '../data/StudentCourseData.php';
 
 class StudentCourseBusiness {
     

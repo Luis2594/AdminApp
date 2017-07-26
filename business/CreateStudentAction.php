@@ -1,6 +1,5 @@
 <?php
 
-//includes
 include './PersonBusiness.php';
 include './StudentBusiness.php';
 include './UserBusiness.php';
@@ -117,4 +116,3 @@ if (isset($dni) &&
 } else {
     header("location: ../view/CreateStudent.php?action=0&msg=Datos_erroneos");
 }
-?>

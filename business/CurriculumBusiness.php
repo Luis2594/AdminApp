@@ -1,6 +1,6 @@
 <?php
 
-include '../data/CurriculumData.php';
+include_once '../data/CurriculumData.php';
 
 class CurriculumBusiness {
 
@@ -33,6 +33,9 @@ class CurriculumBusiness {
     public function getAll() {
         return $this->curriculumData->getAll();
     }
+    public function getAllCurriculumCourseParsed() {
+        return $this->curriculumData->getAllCurriculumCourseParsed();
+    }
     
     public function getAllEnrollment() {
         return $this->curriculumData->getAllEnrollment();
@@ -49,11 +52,11 @@ class CurriculumBusiness {
     public function getCurriculumCourseByCurriculum($id) {
         return $this->curriculumData->getCurriculumCourseByCurriculum($id);
     }
-    
+
     public function getCurriculumCourseEnrollment($id) {
         return $this->curriculumData->getCurriculumCourseEnrollment($id);
     }
-
+    
     public function getCurriculumId($id) {
         return $this->curriculumData->getCurriculumId($id);
     }

@@ -7,7 +7,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowInstitutionUpdate.php"><i class="fa fa-arrow-circle-right"></i>Actualizar Institucións</a></li>
+        <li><a href="ShowInstitutionUpdate.php"><i class="fa fa-arrow-circle-right"></i>Ver Institución</a></li>
         <li><a href="UpdateInstitution.php"><i class="fa fa-arrow-circle-right"></i>Actualizar Institución</a></li>
     </ol>
 </section>
@@ -25,16 +25,15 @@ include './reusable/Header.php';
                 </div><!-- /.box-header -->
 
                 <?php
-                include '../business/InstitutionBusiness.php';
+                include './business/InstitutionBusiness.php';
 
                 $institutionBusiness = new InstitutionBusiness();
-                $id = 1;
                 $institutions = $institutionBusiness->getInstitution();
                 $bool = false;
                 foreach ($institutions as $institution) {
                     ?>
                     <!-- form start -->
-                    <form role="form" id="form" action="../business/UpdateInstitutionAction.php" method="POST" enctype="multipart/form-data">
+                    <form role="form" id="formUpdateInstitution" action="../business/UpdateInstitutionAction.php" method="POST" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="box-body">
                         <div class="form-group">
@@ -71,7 +70,7 @@ include './reusable/Header.php';
                         <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
                     </div>
                     <div class="pull-right">
-                        <button onclick="backPage(<?php echo $id ?>);" class="btn btn-primary">Atrás</button>
+                        <button onclick="backPage();" class="btn btn-primary">Atrás</button>
                     </div>
 
                     <?php
@@ -87,27 +86,6 @@ include './reusable/Footer.php';
 ?>
 
 <script type="text/javascript">
-
-    $(function () {
-
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            checkboxClass: 'icheckbox_minimal-blue',
-            radioClass: 'iradio_minimal-blue'
-        });
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-            checkboxClass: 'icheckbox_minimal-red',
-            radioClass: 'iradio_minimal-red'
-        });
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-            checkboxClass: 'icheckbox_flat-green',
-            radioClass: 'iradio_flat-green'
-        });
-
-    });
-
     (function ($) {
         $.get = function (key) {
             key = key.replace(/[\[]/, '\\[');
@@ -172,10 +150,10 @@ include './reusable/Footer.php';
             return false;
         }
         
-        $("#form").submit();
+        $("#formUpdateInstitution").submit();
     }
 
-    function backPage(id) {
-        window.location = "InformationInstitution.php?id=" + id;
+    function backPage() {
+        window.location = "InformationInstitution.php";
     }
 </script>

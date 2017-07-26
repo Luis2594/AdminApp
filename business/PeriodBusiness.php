@@ -1,6 +1,6 @@
 <?php
 
-include '../data/PeriodData.php';
+include_once '../data/PeriodData.php';
 
 class PeriodBusiness {
 

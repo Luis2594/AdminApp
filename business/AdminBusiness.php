@@ -1,6 +1,6 @@
 <?php
 
-include '../data/AdminData.php';
+require_once '../data/AdminData.php';
 
 class AdminBusiness {
 

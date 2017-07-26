@@ -23,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Profesor</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="formTheacher" action="../business/CreateProfessorAction.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formProfessor" action="../business/CreateProfessorAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <!--DNI-->
                         <div class="form-group">
@@ -137,35 +137,6 @@ include './reusable/Footer.php';
     }
 
     $(function () {
-        //Datemask dd/mm/yyyy
-        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-        //Datemask2 mm/dd/yyyy
-        $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-        //Money Euro
-        $("[data-mask]").inputmask();
-
-        //Date range picker
-        $('#reservation').daterangepicker();
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-        //Date range as a button
-        $('#daterange-btn').daterangepicker(
-                {
-                    ranges: {
-                        'Today': [moment(), moment()],
-                        'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
-                        'Last 7 Days': [moment().subtract('days', 6), moment()],
-                        'Last 30 Days': [moment().subtract('days', 29), moment()],
-                        'This Month': [moment().startOf('month'), moment().endOf('month')],
-                        'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
-                    },
-                    startDate: moment().subtract('days', 29),
-                    endDate: moment()
-                },
-                function (start, end) {
-                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                }
-        );
 
         //iCheck for checkbox and radio inputs
         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
@@ -181,16 +152,6 @@ include './reusable/Footer.php';
         $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
             checkboxClass: 'icheckbox_flat-green',
             radioClass: 'iradio_flat-green'
-        });
-
-        //Colorpicker
-        $(".my-colorpicker1").colorpicker();
-        //color picker with addon
-        $(".my-colorpicker2").colorpicker();
-
-        //Timepicker
-        $(".timepicker").timepicker({
-            showInputs: false
         });
     });
 
@@ -302,7 +263,7 @@ include './reusable/Footer.php';
             {
                 if (data == true) {
                     $('#phones').val(idPhone);
-                    $("#formTheacher").submit();
+                    $("#formProfessor").submit();
                 } else {
                     alertify.error("Ya existe un profesor con ese número de cédula");
                 }

@@ -1,12 +1,7 @@
 <?php
 
-include '../data/GroupData.php';
+include_once '../data/GroupData.php';
 
-/**
- * Description of GroupBusiness
- *
- * @author luis
- */
 class GroupBusiness {
     
     private $groupData;
@@ -29,10 +24,6 @@ class GroupBusiness {
 
     public function getAll() {
      return $this->groupData->getAll();
-    }
-    
-    public function getStudentGroupByStudent($id) {
-     return $this->groupData->getStudentGroupByStudent($id);
     }
     
     public function getGroupByPerson($id) {

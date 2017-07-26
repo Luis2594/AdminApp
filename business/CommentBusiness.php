@@ -1,6 +1,6 @@
 <?php
 
-include '../data/CommentData.php';
+include_once '../data/CommentData.php';
 
 class CommentBusiness {
 

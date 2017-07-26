@@ -5,12 +5,12 @@
     </div>
     <strong><a href="https://www.facebook.com/profile.php?id=100010678920391" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>       Facebook Cindea Turrialba </strong>
     <br>
-    <strong>Copyright &copy; 2017 <a href="https://www.facebook.com/LuisCastilloC7" target="_blank">Luis Castillo</a> & <a href="https://www.facebook.com/kevinesquivel21" target="_blank">Kevin Esquivel</a>.</strong> Todos los derechos reservados. 
+    <strong>Copyright &copy; 2017 <a href="Developers.php" target="_blank">Desarrolladores</a>.</strong> Todos los derechos reservados. 
 </footer>
 </div><!-- ./wrapper -->
 
 <!-- jQuery 2.1.3 -->
-<script src="./../resource/css/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+<script src="./../resource/css/plugins/jQuery/jquery-3.2.1.min.js"></script>
 <!-- jQuery UI 1.11.2 -->
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -61,7 +61,7 @@
 <!-- bootstrap color picker -->
 <script src="./../resource/css/plugins/colorpicker/bootstrap-colorpicker.min.js" type="text/javascript"></script>
 <!-- bootstrap time picker -->
-<script src="./../resource/css/resource/css/plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>
+<!--<script src="./../resource/css/resource/css/plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>-->
 <!-- FastClick -->
 <script src='./../resource/css/plugins/fastclick/fastclick.min.js'></script>
 <!-- iCheck -->

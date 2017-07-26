@@ -1,6 +1,6 @@
 <?php
 
-include '../data/ConversationData.php';
+include_once '../data/ConversationData.php';
 
 class ConversationBusiness {
 
@@ -33,7 +33,5 @@ class ConversationBusiness {
     public function getConversationsByUser($id) {
      return $this->conversationData->getConversationsByUser($id);
     }
-    
-    
     
 }

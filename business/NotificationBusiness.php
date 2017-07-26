@@ -1,6 +1,6 @@
 <?php
 
-include '../data/NotificationData.php';
+include_once '../data/NotificationData.php';
 
 class NotificationBusiness {
 
@@ -12,6 +12,10 @@ class NotificationBusiness {
 
     public function insertGeneralNotification($notification) {
         return $this->notificationData->insertGeneralNotification($notification);
+    }
+    
+    public function insertNotificationFromProfessor($notification) {
+        return $this->notificationData->insertNotificationFromProfessor($notification);
     }
 
     public function updateGeneralNotification($notification) {
@@ -25,6 +29,11 @@ class NotificationBusiness {
     public function getAllGeneralNotification() {
         return $this->notificationData->getAllGeneralNotification();
     }
+    
+    public function getAllNotificationByStudent($id) {
+        return $this->notificationData->getAllNotificationByStudent($id);
+    }
+    
     public function getNotification($id) {
         return $this->notificationData->getNotification($id);
     }

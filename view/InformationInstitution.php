@@ -8,7 +8,7 @@ include './reusable/Header.php';
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowSpecialities.php"><i class="fa fa-arrow-circle-right"></i> Institución</a></li>
-        <li><a href="InformationInstitution.php"><i class="fa fa-arrow-circle-right"></i>Información Institución</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Información Institución</a></li>
     </ol>
 </section>
 <br>
@@ -28,13 +28,12 @@ include './reusable/Header.php';
                     <div class="box-body">
                         <div class="form-group">
                             <?php
-                            include '../business/InstitutionBusiness.php';
+                            include './business/InstitutionBusiness.php';
                             $institutionBusiness = new InstitutionBusiness();
-                            $id = 1;
-                            $specialities = $institutionBusiness->getInstitution($id);
+                            $institutions = $institutionBusiness->getInstitution();
                             $found = false;
 
-                            foreach ($specialities as $institution) {
+                            foreach ($institutions as $institution) {
                                 ?>
                                 <input id="id" name="id" type="hidden"  value="<?php echo $institution->getInstitutionId() ?>" class="form-control" required readonly/>
                                 <div class="form-group">
@@ -62,7 +61,7 @@ include './reusable/Header.php';
                                     <input id="name" name="name" type="text" value="<?php echo $institution->getInstitutionFax() ?>" class="form-control" placeholder="Nombre" required readonly/>
                                 </div>
                                 <div class="btn-group btn-group-justified">
-                                    <a type="button" class="btn btn-primary" href="javascript:updateInstitution(<?php echo $id ?>)">Actualizar</a>
+                                    <a type="button" class="btn btn-primary" href="javascript:updateInstitution()">Actualizar</a>
                                 </div>
                                 <?php
                                 $found = true;
@@ -124,7 +123,7 @@ include './reusable/Footer.php';
         window.location = "CreateInstitution.php?";
     }
 
-    function updateInstitution(id) {
+    function updateInstitution() {
         window.location = "UpdateInstitution.php";
     }
 

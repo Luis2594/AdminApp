@@ -1,6 +1,6 @@
 <?php
 
-include './CurriculumBusiness.php';
+include_once './CurriculumBusiness.php';
 
 $id = (int) $_POST['id'];
 $period = (int) $_POST['period'];

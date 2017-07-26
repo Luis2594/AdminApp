@@ -1,6 +1,6 @@
 <?php
 
-include './PeriodBusiness.php';
+include_once './PeriodBusiness.php';
 
 $idCourse = (int) $_GET['idCourse'];
 $idPerid = (int) $_GET['idPeriod'];

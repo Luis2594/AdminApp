@@ -10,7 +10,7 @@ if (isset($id) && is_int($id)) {
         <ol class="breadcrumb">
             <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
             <li><a href="ShowStudentUpdate.php"><i class="fa fa-arrow-circle-right"></i>Actualizar Estudiante</a></li>
-            <li><a href="UpdateGroup.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Actualizar Grupos</a></li>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Actualizar Grupos</a></li>
         </ol>
     </section>
     <br>

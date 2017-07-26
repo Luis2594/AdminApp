@@ -1,10 +1,9 @@
 <?php
 
-//includes
-include './PersonBusiness.php';
-include './ProfessorBusiness.php';
-include './UserBusiness.php';
-include './PhoneBusiness.php';
+include_once './PersonBusiness.php';
+include_once './ProfessorBusiness.php';
+include_once './UserBusiness.php';
+include_once './PhoneBusiness.php';
 
 //Capture data from POST method
 //First the generic data for person model
@@ -31,17 +30,7 @@ if (isset($dni) &&
     $personBusiness = new PersonBusiness();
 
     $person = new Person(
-            NULL, 
-            $dni, 
-            $name, 
-            $firstlastname, 
-            $secondlastname, 
-            $email, 
-            date("Y-m-d"), 
-            NULL, 
-            $genderTemp, 
-            $nationality, 
-            "profile_default.png");
+            NULL, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), NULL, $genderTemp, $nationality, "profile_default.png");
 
     $id_last = $personBusiness->insert($person);
 
@@ -69,12 +58,10 @@ if (isset($dni) &&
             }
             header("location: ../view/InformationProfessor.php?id=" . $professorBusiness->getLastId() . "&action=1&msg=Registro_creado_correctamente");
         } else {
-            //error
             $personBusiness->delete($id_last);
             header("location: ../view/CreateProfessor.php?action=0&msg=Error_al_crear_registro");
         }
     } else {
-        //error
         $personBusiness->delete($id_last);
         header("location: ../view/CreateProfessor.php?action=0&msg=Error_al_crear_registro");
     }

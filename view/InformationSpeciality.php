@@ -12,7 +12,7 @@ if (isset($id) && is_int($id)) {
         <ol class="breadcrumb">
             <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
             <li><a href="ShowSpecialities.php"><i class="fa fa-arrow-circle-right"></i> Atinencia/Especialidad</a></li>
-            <li><a href="InformationSpeciality.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Información Atinencia/Especialidad</a></li>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Información Atinencia/Especialidad</a></li>
         </ol>
     </section>
     <br>

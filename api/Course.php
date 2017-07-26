@@ -7,4 +7,4 @@
 
 include '../business/CourseBusiness.php';
 $business = new CourseBusiness();
-echo json_encode($business->getAll());
+echo json_encode($business->getAllParsed());

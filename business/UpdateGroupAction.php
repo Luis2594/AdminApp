@@ -14,14 +14,6 @@ if (isset($idPerson) && is_int($idPerson)) {
 
     $groupBusiness = new GroupBusiness();
 
-//    echo "Nuevo groupMain: ".$mainGroup;
-//    echo '/';
-//    echo "Actual groupMain: ".$mainGroupTemp;
-//    echo '/';
-//    echo "Nuevo secuandaryGroup: ".$secundaryGroup;
-//    echo '/';
-//    echo "Actual secunadaryGroup: ".$secundaryGroupTemp;
-
     if (isset($mainGroup) && is_int($mainGroup) && $mainGroup != -1) {
         if (isset($mainGroupTemp) && $mainGroupTemp != 0) {
             if ($groupBusiness->delete($idPerson, $mainGroupTemp)) {

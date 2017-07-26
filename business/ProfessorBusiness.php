@@ -1,6 +1,6 @@
 <?php
 
-include '../data/ProfessorData.php';
+include_once '../data/ProfessorData.php';
 
 class ProfessorBusiness {
 

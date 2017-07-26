@@ -1,5 +1,6 @@
 <?php
 include './reusable/Session.php';
+include_once '../resource/Constants.php';
 ?>
 <html>
     <head>
@@ -60,8 +61,7 @@ include './reusable/Session.php';
                         <?php
                         include '../business/InstitutionBusiness.php';
                         $institutionBusiness = new InstitutionBusiness();
-                        $id = 1;
-                        $institutions = $institutionBusiness->getInstitution($id);
+                        $institutions = $institutionBusiness->getInstitution();
                         $found = false;
 
                         foreach ($institutions as $institution) {
@@ -69,7 +69,6 @@ include './reusable/Session.php';
                             $found = true;
                             break;
                         }
-
                         if (!$found) {
                             echo 'Institución';
                         }
@@ -89,12 +88,14 @@ include './reusable/Session.php';
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <?php
                                     if (isset($_SESSION['id'])) {
-                                        include '../../business/PersonBusiness.php';
+                                        include '../business/PersonBusiness.php';
+                                        include_once '../domain/Person.php';
+
                                         $personBusiness = new PersonBusiness();
-                                        $person = $personBusiness->getPersonId((int) $_SESSION['id']);
+                                        $person = $personBusiness->getPersonId((int) $_SESSION['id'])[0];
                                         ?>
                                         <img id="imageProfile3" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="user-image" alt="User Image" />
-                                        <span class="hidden-xs"><?php echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname(); ?></span>
+                                        <span class="hidden-xs"><?php echo $person->getPersonFirstName() . " " . $person->getPersonFirstlastname(); ?></span>
                                         <?php
                                     } else {
                                         ?>
@@ -124,17 +125,14 @@ include './reusable/Session.php';
                                             if (isset($_SESSION['type'])) {
                                                 echo $person->getPersonFirstName();
                                                 switch ((int) $_SESSION['type']) {
-                                                    case 0:
-                                                        echo '<small>Estudiante</small>';
-                                                        break;
-                                                    case 1:
-                                                        echo '<small>Profesor</small>';
-                                                        break;
-                                                    case 2:
+                                                    case Constants::USER_ADMIN:
                                                         echo '<small>Administrador</small>';
                                                         break;
                                                     default:
-                                                        echo '<small>Usuario</small>';
+                                                        session_start(); //to ensure you are using same session
+                                                        session_unset(); // remove all session variables
+                                                        session_destroy(); //destroy the session
+                                                        header("location: ./Login.php");
                                                         break;
                                                 }
                                             } else {
@@ -170,13 +168,10 @@ include './reusable/Session.php';
                         <div class="pull-left image">
                             <?php
                             if (isset($_SESSION['id'])) {
-                                include '../../business/PersonBusiness.php';
-                                $personBusiness = new PersonBusiness();
-                                $person = $personBusiness->getPersonId((int) $_SESSION['id']);
                                 ?>
                                 <img id="imageProfile2" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="img-circle" alt="User Image" />
                                 <?php
-                                echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname();
+                                //echo $person->getPersonFirstName() . " " . $person->getPersonFirstlastname();
                             } else {
                                 ?>
                                 <img id="imageProfile2" src="./../resource/images/profile_default.png" class="img-circle" alt="User Image" />
@@ -188,7 +183,7 @@ include './reusable/Session.php';
                             <p>
                                 <?php
                                 if (isset($_SESSION['id'])) {
-                                    echo $person->getPersonFirstName() + " " + $person->getPersonFirstlastname();
+                                    echo "<br/>".$person->getPersonFirstName() . " " . $person->getPersonFirstlastname();
                                 } else {
                                     ?>
                                     Usuario
@@ -302,7 +297,7 @@ include './reusable/Session.php';
                         <!--CURRICULUM-->
                         <li class="treeview">
                             <a>
-                                <i class="fa"></i> <span>Mala curricular</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa"></i> <span>Malla curricular</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Malla Curricular</a></li>

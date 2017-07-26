@@ -2,15 +2,19 @@
 
 require_once '../data/Connector.php';
 include '../domain/StudentCourse.php';
+//require_once './resource/log/ErrorHandler.php';
 
-class StudentCourseData extends Connector{
-    
-     public function insert($studentCourse) {
+class StudentCourseData extends Connector {
+
+    public function insert($studentCourse) {
         $query = "call insert('" . $studentCourse->getStudentCourseStudent() . "',"
                 . "'" . $studentCourse->getStudentCourseCourse() . "',"
                 . "'" . $studentCourse->getStudentCourseYear() . "')";
-
-        return $this->exeQuery($query);
+        try {
+            return $this->exeQuery($query);
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
     }
 
     public function update($studentCourse) {
@@ -18,57 +22,64 @@ class StudentCourseData extends Connector{
                 . "'" . $studentCourse->getStudentCourseStudent() . "',"
                 . "'" . $studentCourse->getStudentCourseCourse() . "',"
                 . "'" . $studentCourse->getStudentCourseYear() . "')";
-
-        return $this->exeQuery($query);
+        try {
+            return $this->exeQuery($query);
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
     }
 
     public function delete($id) {
         $query = 'call delete("' . $id . '");';
-
-        if ($this->exeQuery($query)) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
-    }
-
-    public function getAll() {
-        $query = "";
-        
-        $allStudentCourses = $this->exeQuery($query);
-        $array = [];
-        if (mysqli_num_rows($allStudentCourses) > 0) {
-            while ($row = mysqli_fetch_array($allStudentCourses)) {
-                $currentStudentCourse = new CourseSchedule(
-                        $row['studentCourseId'], 
-                        $row['studentCourseStudent'], 
-                        $row['studentCourseCourse'], 
-                        $row['studentCourseYear']);
-                array_push($array, $currentStudentCourse);
+        try {
+            if ($this->exeQuery($query)) {
+                return TRUE;
+            } else {
+                return FALSE;
             }
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
-        return $array;
     }
 
-    public function getCourseId($id) {
-         $query = "";
-        
-        $allStudentCourse = $this->exeQuery($query);
-        $array = [];
-        if (mysqli_num_rows($allStudentCourse) > 0) {
-            while ($row = mysqli_fetch_array($allStudentCourse)) {
-                $currentStudentCourse = new CourseSchedule(
-                        $row['studentCourseId'], 
-                        $row['studentCourseStudent'], 
-                        $row['studentCourseCourse'], 
-                        $row['studentCourseYear']);
-                array_push($array, $currentStudentCourse);
-            }
-        }
-        return $array;
-    }
+//    public function getAll() {
+//        $query = "";
+//        try {
+//            $allStudentCourses = $this->exeQuery($query);
+//            $array = [];
+//            if (mysqli_num_rows($allStudentCourses) > 0) {
+//                while ($row = mysqli_fetch_array($allStudentCourses)) {
+//                    $currentStudentCourse = new CourseSchedule(
+//                            $row['studentCourseId'], $row['studentCourseStudent'], $row['studentCourseCourse'], $row['studentCourseYear']);
+//                    array_push($array, $currentStudentCourse);
+//                }
+//            }
+//            return $array;
+//        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+//        }
+//    }
 
-    public function getLastId() {
-        
-    }
+//    public function getCourseId($id) {
+//        $query = "";
+//        try {
+//            $allStudentCourse = $this->exeQuery($query);
+//            $array = [];
+//            if (mysqli_num_rows($allStudentCourse) > 0) {
+//                while ($row = mysqli_fetch_array($allStudentCourse)) {
+//                    $currentStudentCourse = new CourseSchedule(
+//                            $row['studentCourseId'], $row['studentCourseStudent'], $row['studentCourseCourse'], $row['studentCourseYear']);
+//                    array_push($array, $currentStudentCourse);
+//                }
+//            }
+//            return $array;
+//        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+//        }
+//    }
+
+//    public function getLastId() {
+//        
+//    }
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-include '../data/UserData.php';
+require_once '../data/UserData.php';
 
 class UserBusiness {
     
@@ -40,6 +40,10 @@ class UserBusiness {
     
     public function login($user, $pass) {
         return $this->userData->login($user, $pass);
+    }
+    
+    public function isUser($user, $pass) {
+        return $this->userData->isUser($user, $pass);
     }
     
 }

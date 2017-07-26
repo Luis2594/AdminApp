@@ -1,10 +1,9 @@
 <?php
 
-//includes
-include './PersonBusiness.php';
-include './ProfessorBusiness.php';
-include './UserBusiness.php';
-include './PhoneBusiness.php';
+include_once './PersonBusiness.php';
+include_once './ProfessorBusiness.php';
+include_once './UserBusiness.php';
+include_once './PhoneBusiness.php';
 
 //Capture data from POST method
 //First the generic data for person model
@@ -31,7 +30,6 @@ if (isset($id) && isset($dni) &&
     $secondlastname = ucwords(strtolower($secondlastname));
     $personBusiness = new PersonBusiness();
 
-
     $person = new Person(
             $id, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), NULL, $genderTemp, $nationality, "profile_default.png");
 
@@ -53,7 +51,6 @@ if (isset($id) && isset($dni) &&
             header("location: ../view/UpdateProfessor.php?id=" . $id . "&action=0&msg=Error_al_actualizar_registro");
         }
     } else {
-        //error
         header("location: ../view/UpdateProfessor.php?id=" . $id . "&action=0&msg=Error_al_actualizar_registro");
     }
 } else {

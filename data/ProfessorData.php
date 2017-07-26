@@ -1,8 +1,10 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Professor.php';
-include '../domain/ProfessorAll.php';
+include_once '../domain/Professor.php';
+include_once '../domain/ProfessorAll.php';
+
+//require_once './resource/log/ErrorHandler.php';
 
 class ProfessorData extends Connector {
 
@@ -10,64 +12,83 @@ class ProfessorData extends Connector {
         $query = "call insertProfessorWithCredentials("
                 . "" . $professor->getProfessorPerson() . ","
                 . "'" . $pass . "')";
-
-        return $this->exeQuery($query);
+        try {
+            return $this->exeQuery($query);
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
     }
 
     public function update($professor) {
         $query = "call updateProfessor(" . $professor->getProfessorId() . ","
                 . "" . $professor->getProfessorPerson() . ")";
-
-        return $this->exeQuery($query);
+        try {
+            return $this->exeQuery($query);
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
     }
 
     public function delete($id) {
         $query = 'call delete("' . $id . '");';
-
-        if ($this->exeQuery($query)) {
-            return TRUE;
-        } else {
-            return FALSE;
+        try {
+            if ($this->exeQuery($query)) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
     public function getAll() {
         $query = "call getAllProfessor()";
-
-        $allProfessors = $this->exeQuery($query);
-        $array = [];
-        if (mysqli_num_rows($allProfessors) > 0) {
-            while ($row = mysqli_fetch_array($allProfessors)) {
-                $currentProfessor = new ProfessorAll($row['professorid'], $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['persongender'], $row['personnationality'], $row['userusername'], $row['useruserpass']);
-                array_push($array, $currentProfessor);
+        try {
+            $allProfessors = $this->exeQuery($query);
+            $array = [];
+            if (mysqli_num_rows($allProfessors) > 0) {
+                while ($row = mysqli_fetch_array($allProfessors)) {
+                    $currentProfessor = new ProfessorAll($row['professorid'], $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['persongender'], $row['personnationality'], $row['userusername'], $row['useruserpass']);
+                    array_push($array, $currentProfessor);
+                }
             }
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
-        return $array;
     }
 
     public function getProfessor($id) {
         $query = 'call getProfessor("' . $id . '");';
-
-        $allProfessor = $this->exeQuery($query);
-        $array = [];
-        if (mysqli_num_rows($allProfessor) > 0) {
-            while ($row = mysqli_fetch_array($allProfessor)) {
-                $currentProfessor = new ProfessorAll($row['professorid'], $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['persongender'], $row['personnationality'], $row['userusername'], $row['useruserpass']);
-//                array_push($array, $currentProfessor);
-                array_push($array, $currentProfessor);
+        try {
+            $allProfessor = $this->exeQuery($query);
+            $array = [];
+            if (mysqli_num_rows($allProfessor) > 0) {
+                while ($row = mysqli_fetch_array($allProfessor)) {
+                    $currentProfessor = new ProfessorAll(
+                            $row['professorid'], $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['persongender'], $row['personnationality'], $row['userusername'], $row['useruserpass']);
+                    array_push($array, $currentProfessor);
+                }
             }
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
-        return $array;
     }
 
     public function getLastId() {
         $query = 'call getProfessorLastId();';
-        $value = $this->exeQuery($query);
-        if (mysqli_num_rows($value) > 0) {
-            $row = mysqli_fetch_array($value);
-            return $row['id'];
+        try {
+            $value = $this->exeQuery($query);
+            if (mysqli_num_rows($value) > 0) {
+                $row = mysqli_fetch_array($value);
+                return $row['id'];
+            }
+            return -1;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
-        return -1;
     }
 
     public function insertCourseToProfessor($id, $group, $period, $course) {
@@ -76,17 +97,23 @@ class ProfessorData extends Connector {
                 . "" . $period . ","
                 . "" . $course . ","
                 . "" . date("Y") . ")";
-
-        return $this->exeQuery($query);
+        try {
+            return $this->exeQuery($query);
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
     }
 
     public function deleteProfessorCourse($id) {
         $query = 'call deleteProfessorCourse(' . $id . ');';
-
-        if ($this->exeQuery($query)) {
-            return TRUE;
-        } else {
-            return FALSE;
+        try {
+            if ($this->exeQuery($query)) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 

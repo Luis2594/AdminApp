@@ -1,10 +1,10 @@
 <?php
 
 //includes
-include './PersonBusiness.php';
-include './ProfessorBusiness.php';
-include './UserBusiness.php';
-include './PhoneBusiness.php';
+include_once './PersonBusiness.php';
+include_once './ProfessorBusiness.php';
+include_once './UserBusiness.php';
+include_once './PhoneBusiness.php';
 
 //Capture data from POST method
 //First the generic data for person model

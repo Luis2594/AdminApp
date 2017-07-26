@@ -1,6 +1,6 @@
 <?php
 
-include '../data/CourseScheduleData.php';
+include_once '../data/CourseScheduleData.php';
 
 class CourseScheduleBusiness {
     

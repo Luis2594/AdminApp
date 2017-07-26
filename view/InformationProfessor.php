@@ -8,7 +8,7 @@ include './reusable/Header.php';
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowProfessors.php"><i class="fa fa-arrow-circle-right"></i>Ver Profesores</a></li>
-        <li><a href="InformationProfessor.php"><i class="fa fa-arrow-circle-right"></i>Información del Profesor</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Información del Profesor</a></li>
     </ol>
 </section>
 <br>
@@ -26,16 +26,14 @@ include './reusable/Header.php';
 
                 <?php
                 include '../business/ProfessorBusiness.php';
-
-                $professorBusiness = new ProfessorBusiness();
                 $id = (int) $_GET['id'];
+                $professorBusiness = new ProfessorBusiness();
+                
                 //getProfessor works with the person ID
                 //returns an array of ProfessorAll
                 $professors = $professorBusiness->getProfessor($id);
-
                 include '../business/PhoneBusiness.php';
                 $phoneBusiness = new PhoneBusiness();
-
                 foreach ($professors as $professor) {
 
                     $phones = $phoneBusiness->getAllPhone($id);
@@ -170,7 +168,7 @@ include './reusable/Footer.php';
     }
 
     function createProfessor() {
-        window.location = "CreateProfessor.php?";
+        window.location = "CreateProfessor.php";
     }
 
     function updateProfessor(id) {

@@ -3,6 +3,13 @@ session_start();
 if (isset($_SESSION['id'])) {
     header("location: ./Home.php");
 }
+
+include_once '../business/InstitutionBusiness.php';
+$institutionBusiness = new InstitutionBusiness();
+$institution = $institutionBusiness->getInstitutionObject();
+if ($institution == NULL){
+    $institution = new Institution(1, "INSTITUCION", "", "", "", "", "");
+} 
 ?>
 
 <!DOCTYPE html>
@@ -11,10 +18,7 @@ if (isset($_SESSION['id'])) {
         <meta charset="UTF-8">
         <title>
             <?php
-            include '../business/InstitutionBusiness.php';
-            $institutionBusiness = new InstitutionBusiness();
-            $institution = $institutionBusiness->getInstitution();
-            echo $institution[0]->getInstitutionName();
+            echo $institution->getInstitutionName();
             ?>
             | Iniciar sesión</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -35,12 +39,12 @@ if (isset($_SESSION['id'])) {
                 <b>Administración </b>
                 <br />
                 <?php
-                echo $institution[0]->getInstitutionName();
+                echo $institution->getInstitutionName();
                 ?>
             </div><!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Iniciar Sesión</p>
-                <form action="../business/LoginAction.php" method="post" >
+                <form id="formLogin" name="formLogin" role="form" action="../business/LoginAction.php" method="post" >
                     <div class="form-group has-feedback">
                         <input id="user" name="user" type="text" class="form-control" placeholder="Usuario" required="true"/>
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -57,7 +61,7 @@ if (isset($_SESSION['id'])) {
                             </div><!-- /.col -->
                             <div class="checkbox icheck" style="display: none">
                                 <label>
-                                    <!--<a href="#">Olvidé mi contraseña</a><br>-->
+                                    <!--<a href="">Olvidé mi contraseña</a><br>-->
                                 </label>
                             </div>
                         </div><!-- /.col -->

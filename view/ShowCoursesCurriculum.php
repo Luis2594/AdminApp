@@ -9,7 +9,7 @@ $id = (int) $_GET['id'];
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowCurriculum.php"><i class="fa fa-arrow-circle-right"></i>Ver mallas</a></li>
-        <li><a href="ShowCoursesCurriculum.php?id=<?php echo $id; ?>"><i class="fa fa-arrow-circle-right"></i>Módulos de malla</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Módulos de malla</a></li>
     </ol>
 </section>
 <br>

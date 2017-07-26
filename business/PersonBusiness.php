@@ -1,6 +1,6 @@
 <?php
 
-include '../data/PersonData.php';
+include_once '../data/PersonData.php';
 
 class PersonBusiness {
 

@@ -1,7 +1,6 @@
 <?php
 
 class Connector {
-
     private $server;
     private $user;
     private $password;
@@ -11,11 +10,6 @@ class Connector {
     /**
      * Constructor of the connection manager
      */
-
-    /**
-     * Función constructora
-     */ 
-//    LOCAL
     public function Connector() {
         $this->server = 'localhost';
         $this->user = 'root';
@@ -82,10 +76,11 @@ class Connector {
      * @param type $data data to show in console
      */
     public function debug_to_console($data) {
-        if (is_array($data))
+        if (is_array($data)) {
             $output = "<script>console.log( 'Debug Objects: " . implode(',', $data) . "' );</script>";
-        else
+        } else {
             $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+        }
 
         echo $output;
     }

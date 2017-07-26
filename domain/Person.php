@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Person
- *
- * @author luisd
- */
 class Person {
 
     private $personId;
@@ -38,93 +27,105 @@ class Person {
         $this->personNacionality = $personNacionality;
         $this->personimage = $personimage;
     }
-
-        function getPersonId() {
+    public function getPersonId() {
         return $this->personId;
     }
 
-    function getPersonDni() {
+    public function getPersonDni() {
         return $this->personDni;
     }
 
-    function getPersonFirstName() {
+    public function getPersonFirstName() {
         return $this->personFirstName;
     }
 
-    function getPersonFirstlastname() {
+    public function getPersonFirstlastname() {
         return $this->personFirstlastname;
     }
 
-    function getPersonSecondlastname() {
+    public function getPersonSecondlastname() {
         return $this->personSecondlastname;
     }
 
-    function getPersonEmail() {
+    public function getPersonEmail() {
         return $this->personEmail;
     }
 
-    function getPersonBirthday() {
+    public function getPersonBirthday() {
         return $this->personBirthday;
     }
 
-    function getPersonAge() {
+    public function getPersonAge() {
         return $this->personAge;
     }
 
-    function getPersonGender() {
+    public function getPersonGender() {
         return $this->personGender;
     }
 
-    function getPersonNacionality() {
+    public function getPersonNacionality() {
         return $this->personNacionality;
     }
 
-    function setPersonId($personId) {
-        $this->personId = $personId;
-    }
-
-    function setPersonDni($personDni) {
-        $this->personDni = $personDni;
-    }
-
-    function setPersonFirstName($personFirstName) {
-        $this->personFirstName = $personFirstName;
-    }
-
-    function setPersonFirstlastname($personFirstlastname) {
-        $this->personFirstlastname = $personFirstlastname;
-    }
-
-    function setPersonSecondlastname($personSecondlastname) {
-        $this->personSecondlastname = $personSecondlastname;
-    }
-
-    function setPersonEmail($personEmail) {
-        $this->personEmail = $personEmail;
-    }
-
-    function setPersonBirthday($personBirthday) {
-        $this->personBirthday = $personBirthday;
-    }
-
-    function setPersonAge($personAge) {
-        $this->personAge = $personAge;
-    }
-
-    function setPersonGender($personGender) {
-        $this->personGender = $personGender;
-    }
-
-    function setPersonNacionality($personNacionality) {
-        $this->personNacionality = $personNacionality;
-    }
-    function getPersonimage() {
+    public function getPersonimage() {
         return $this->personimage;
     }
 
-    function setPersonimage($personimage) {
-        $this->personimage = $personimage;
+    public function setPersonId($personId) {
+        $this->personId = $personId;
+        return $this;
     }
+
+    public function setPersonDni($personDni) {
+        $this->personDni = $personDni;
+        return $this;
+    }
+
+    public function setPersonFirstName($personFirstName) {
+        $this->personFirstName = $personFirstName;
+        return $this;
+    }
+
+    public function setPersonFirstlastname($personFirstlastname) {
+        $this->personFirstlastname = $personFirstlastname;
+        return $this;
+    }
+
+    public function setPersonSecondlastname($personSecondlastname) {
+        $this->personSecondlastname = $personSecondlastname;
+        return $this;
+    }
+
+    public function setPersonEmail($personEmail) {
+        $this->personEmail = $personEmail;
+        return $this;
+    }
+
+    public function setPersonBirthday($personBirthday) {
+        $this->personBirthday = $personBirthday;
+        return $this;
+    }
+
+    public function setPersonAge($personAge) {
+        $this->personAge = $personAge;
+        return $this;
+    }
+
+    public function setPersonGender($personGender) {
+        $this->personGender = $personGender;
+        return $this;
+    }
+
+    public function setPersonNacionality($personNacionality) {
+        $this->personNacionality = $personNacionality;
+        return $this;
+    }
+
+    public function setPersonimage($personimage) {
+        $this->personimage = $personimage;
+        return $this;
+    }
+
 
 
 }

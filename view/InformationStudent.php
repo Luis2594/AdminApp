@@ -8,7 +8,7 @@ include './reusable/Header.php';
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowStudents.php"><i class="fa fa-arrow-circle-right"></i>Ver Estudiantes</a></li>
-        <li><a href="InformationStudent.php"><i class="fa fa-arrow-circle-right"></i>Información del Estudiante</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Información del Estudiante</a></li>
     </ol>
 </section>
 <br>

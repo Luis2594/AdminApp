@@ -4,7 +4,6 @@
 //Sin Parametros
 //Retorna todas las realciones de cursos y malla
 
-
-include '../business/CurriculumCourseBusiness';
-$business = new CurriculumCourseBusiness();
-echo json_encode($business->getAll());
+include '../business/CurriculumBusiness';
+$business = new CurriculumBusiness();
+echo json_encode($business->getAllCurriculumCourseParsed());

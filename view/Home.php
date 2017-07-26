@@ -1,5 +1,7 @@
 <?php
 include './reusable/Header.php';
+require '../resource/log/ErrorHandler.php';
+//ErrorHandler::Log(__METHOD__, "algo", $_SESSION["id"]);
 ?>
 
 
