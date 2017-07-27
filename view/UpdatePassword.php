@@ -23,7 +23,7 @@ include './reusable/Header.php';
                     <h3 class="box-title">Actualizar Contraseña</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form" action="../business/businessAction/" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formPass" action="../business/UpdatePassword.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <!--NAME-->
                         <div class="form-group">
@@ -56,15 +56,41 @@ include './reusable/Footer.php';
 
 <script type="text/javascript">
 
+    (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+
     function valueInputs() {
         var pass = $('#pass').val();
         var passUpdate = $('#passUpdate').val();
         var passConfirm = $('#passConfirm').val();
 
-        if (pass !== "prueba") {
-            alertify.error("La contraseña indicada no coincide con la del usuario");
-            return false;
-        }
+//        if (pass !== "prueba") {
+//            alertify.error("La contraseña indicada no coincide con la del usuario");
+//            return false;
+//        }
 
         if (passUpdate.length < 8) {
             alertify.error("La nueva contraseña debe de tener minimo 8 caracteres");
@@ -80,8 +106,7 @@ include './reusable/Footer.php';
             alertify.error("Verifique la confirmación de la contraseña");
             return false;
         }
-        $("#form").submit(function () {
-        });
+        $("#formPass").submit();
     }
 
 

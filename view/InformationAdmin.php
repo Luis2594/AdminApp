@@ -66,6 +66,7 @@ include './reusable/Header.php';
                             <label for="exampleInputEmail1">Correo Electrónico</label>
                             <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="Correo Electrónico" value="<?php echo $admin->getPersonEmail() ?>" readonly>
                         </div>
+
                         <!--GENDER-->
                         <div class="form-group">
                             <label>Género</label>
@@ -86,7 +87,6 @@ include './reusable/Header.php';
                             <label>Nacionalidad</label>
                             <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required="" value="<?php echo $admin->getPersonNacionality() ?>" readonly/>
                         </div>
-                        <!--PHONES-->
                         <div class="form-group">
                             <label>Teléfono</label>
                             <?php
@@ -108,12 +108,12 @@ include './reusable/Header.php';
                         <!--USERNAME-->
 <!--                        <div class="form-group">
                             <label>Nombre de usuario</label>
-                            <input id="username" name="username" type="text" class="form-control" placeholder="Nombre de usuario" required="" value="<?php echo $admin->getUserUsername() ?>" readonly />
+                            <input id="username" name="username" type="text" class="form-control" placeholder="Nombre de usuario" required="" value="<?php echo $admin->getPersonUser() ?>" readonly />
                         </div>-->
                         <!--PASSWORD-->
 <!--                        <div class="form-group">
                             <label>Contraseña</label>
-                            <input id="pass" name="pass" type="text" class="form-control" placeholder="Contraseña" required="" value="<?php echo $admin->getUserPass() ?>" readonly />
+                            <input id="pass" name="pass" type="text" class="form-control" placeholder="Contraseña" required="" value="<?php echo $admin->getPersonPass() ?>" readonly />
                         </div>-->
                     </div><!-- /.box-body -->
 
@@ -161,22 +161,22 @@ include './reusable/Footer.php';
         alertify.error(msg);
     }
 
-    function createProfessor() {
-        window.location = "CreateProfessor.php?";
+    function createAdmin() {
+        window.location = "CreateAdmin.php";
     }
 
-    function updateProfessor(id) {
-        window.location = "UpdateProfessor.php?id=" + id;
+    function updateAdmin(id) {
+        window.location = "UpdateAdmin.php?id=" + id;
     }
 
-    function deleteProfessor(id) {
-        alertify.confirm('Eliminar profesor', '¿Desea eliminar a ' +
+    function deleteAdmin(id) {
+        alertify.confirm('Eliminar Administrador', '¿Desea eliminar a ' +
                 $("input[name=name]").val() + " " +
                 $("input[name=firstlastname]").val() + " " +
                 $("input[name=secondlastname]").val() +
                 " con cédula " + $("input[name=dni]").val() +
-                " de la lista de profesores?", function () {
-                    window.location = "../business/DeleteProfessorAction.php?id=" + id;
+                " de la lista de administradores?", function () {
+                    window.location = "../business/DeleteAdminAction.php?id=" + id;
                 }
         , function () {
             alertify.error('Cancelado');
