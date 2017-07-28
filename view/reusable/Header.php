@@ -314,10 +314,8 @@ include_once '../resource/Constants.php';
                                 <i class="fa"></i> <span>Horarios</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active"><a href=""><i class="fa"></i>Ver Horarios</a></li>
+                                <li class="active"><a href="./ShowSchedule.php"><i class="fa"></i>Ver Horarios</a></li>
                                 <li class="active"><a href="./CreateSchedule.php"><i class="fa"></i>Crear Horarios</a></li>
-                                <li><a href=""><i class="fa"></i>Actualizar Horario</a></li>
-                                <li><a href=""><i class="fa"></i>Eliminar Horario</a></li>
                             </ul>
                         </li>
 
