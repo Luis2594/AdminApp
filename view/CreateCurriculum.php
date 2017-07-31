@@ -20,7 +20,7 @@ include './reusable/Header.php';
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Crear Curso</h3>
+                    <h3 class="box-title">Crear malla curricular</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form role="form" id="formCurriculum" action="../business/CreateCurriculumAction.php" method="POST" enctype="multipart/form-data">

@@ -902,6 +902,7 @@ include './reusable/Footer.php';
 //------------------------------------------------------------------------------
     //Logica del select de grupo
     $('#group').on('change', function () {
+        open("../reporter/Enrollment.php");
         if ($(this).val() !== "0") {
             $("#divCurriculum").show();
             $("#curriculum").html(temHtmlCurriculum);

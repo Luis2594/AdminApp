@@ -44,8 +44,11 @@ class UserData extends Connector {
     
     public function updatePassword($id, $passOld, $passNew) {
         $query = 'call updatePassword(' . $id . ', "'.$passOld.'", "'.$passNew.'");';
+        
         try {
-            return $this->exeQuery($query);
+            $result = $this->exeQuery($query);
+            $array = mysqli_fetch_array($result);
+            return trim($array[0]);
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }

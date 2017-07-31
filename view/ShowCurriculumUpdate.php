@@ -7,7 +7,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowCurriculumUpdate.php"><i class="fa fa-arrow-circle-right"></i> Actualizar Maya curricular</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Actualizar Malla curricular</a></li>
     </ol>
 </section>
 <br>
@@ -18,7 +18,7 @@ include './reusable/Header.php';
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Actualizar Maya Curricular del Cindea</h3>
+                    <h3 class="box-title">Actualizar Malla Curricular del Cindea</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">

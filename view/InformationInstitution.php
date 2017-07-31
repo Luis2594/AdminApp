@@ -7,7 +7,6 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowSpecialities.php"><i class="fa fa-arrow-circle-right"></i> Institución</a></li>
         <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Información Institución</a></li>
     </ol>
 </section>

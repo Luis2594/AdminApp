@@ -210,17 +210,17 @@ include_once '../resource/Constants.php';
                         </li>
 
                         <!--ENROLLMENT-->
-                        <li class="treeview">
+<!--                        <li class="treeview">
                             <a>
                                 <i class="fa"></i> <span>Matrícula</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="./ShowStudents.php?enrollment=enrollment"><i class="fa"></i>Matrícular</a></li>
                             </ul>
-                        </li>
+                        </li>-->
 
                         <!--NOTIFY-->
-                        <li class="treeview">
+<!--                        <li class="treeview">
                             <a>
                                 <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
@@ -228,7 +228,7 @@ include_once '../resource/Constants.php';
                                 <li><a href="./ShowNotifications.php"><i class="fa"></i>Ver Notificaciones</a></li>
                                 <li><a href="./CreateNotification.php"><i class="fa"></i>Crear Notificaciones</a></li>
                             </ul>
-                        </li>
+                        </li>-->
 
                         <!--ADMIN-->
                         <li class="treeview">
@@ -309,7 +309,7 @@ include_once '../resource/Constants.php';
                         </li>
 
                         <!--SCHEDULE-->
-                        <li class="treeview">
+<!--                        <li class="treeview">
                             <a>
                                 <i class="fa"></i> <span>Horarios</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
@@ -317,7 +317,7 @@ include_once '../resource/Constants.php';
                                 <li class="active"><a href="./ShowSchedule.php"><i class="fa"></i>Ver Horarios</a></li>
                                 <li class="active"><a href="./CreateSchedule.php"><i class="fa"></i>Crear Horarios</a></li>
                             </ul>
-                        </li>
+                        </li>-->
 
                         <!--INFO-->
                         <li class="treeview">
