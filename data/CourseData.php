@@ -148,7 +148,7 @@ class CourseData extends Connector {
     }
 
     public function getCourseToAssignProfessor($id) {
-        $query = 'call getProfessorCourseByPersontId("' . $id . '");';
+        $query = 'call getProfessorCourseByPersonId("' . $id . '");';
         try {
             $allCourses = $this->exeQuery($query);
             $array = [];

@@ -47,9 +47,10 @@ if (isset($id) && is_int($id)) {
                         <div class="box-body">
                             <!--SPECIALITIES-->
                             <div class="form-group">
-                                <label>Grupo</label>
-                                <select id="group" name="group" class="form-control">
-                                </select>
+                                <div class="table-responsive">
+                                    <table id="group" border="4" style="border-collapse: separate; border-spacing:  5px 15px;">
+                                    </table>
+                                </div> 
                             </div>
                             <div class="form-group" id="divPeriod">
                                 <label>Periodo</label>
@@ -208,7 +209,6 @@ include './reusable/Footer.php';
         }
     })(jQuery);
     var id = $.get("id");
-
     $(function () {
         $("#example1").dataTable();
         hideDiv();
@@ -216,25 +216,10 @@ include './reusable/Footer.php';
         coursesToProfessor();
         period();
     });
-
     function hideDiv() {
         $("#showModules").hide();
-        $("#divPeriod").hide();
+//        $("#divPeriod").hide();
     }
-
-    $('#group').on('change', function () {
-        if ($(this).val() !== "0") {
-            $("#divPeriod").show();
-            $("#h3Info").html(h3Info + " en el grupo: " + $("#group option:selected").html() + " en el " + $('#period option:selected').html() + " período");
-        } else {
-            clearCheck();
-            $("#h3Info").html(h3Info);
-            $("#period").html(temHtmlPerido);
-            $("#showModules").hide();
-            $("#divPeriod").hide();
-        }
-    }
-    );
 
     var h3Info = $("#h3Info").html();
     $('#period').on('change', function () {
@@ -247,7 +232,6 @@ include './reusable/Footer.php';
         }
     }
     );
-
     function clearCheck() {
         $("input[name=check]").each(function (index) {
             if ($(this).is(':checked')) {
@@ -257,51 +241,59 @@ include './reusable/Footer.php';
     }
 
     function Assign(id) {
-        var bool = false;
+        var group = ""
         var modules = "";
+
+        $("input[name=groupcheck]").each(function (index) {
+            if ($(this).is(':checked')) {
+                group += $(this).val() + ",";
+            }
+        });
 
         $("input[name=check]").each(function (index) {
             if ($(this).is(':checked')) {
-                bool = true;
                 modules += $(this).val() + ",";
             }
         });
 
-        if (bool) {
-            modules = modules.substr(0, modules.length - 1);
 
-            clearCheck();
-            assignCourseToProfessor(modules);
+        if (group != "") {
+            if (modules != "") {
+                group = group.substr(0, group.length - 1);
+                modules = modules.substr(0, modules.length - 1);
+                clearCheck();
+                assignCourseToProfessor(group, modules);
+            } else {
+                alertify.confirm('Ups!', 'Tiene que seleccionar al menos un módulo', function () {
+                    alertify.success("Selecciona un módulo");
+                    return;
+                }
+                , function () {
+                    alertify.success("Selecciona un módulo");
+                    return;
+                });
+            }
         } else {
-            /*
-             * @title {String or DOMElement} The dialog title.
-             * @message {String or DOMElement} The dialog contents.
-             * @onok {Function} Invoked when the user clicks OK button.
-             * @oncancel {Function} Invoked when the user clicks Cancel button or closes the dialog.
-             *
-             * alertify.confirm(title, message, onok, oncancel);
-             *
-             */
-            alertify.confirm('Ups!', 'Tiene que seleccionar al menos un módulo', function () {
-                alertify.success("Selecciona un módulo");
+            alertify.confirm('Ups!', 'Tiene que seleccionar al menos un grupo', function () {
+                alertify.success("Selecciona un grupo");
                 return;
             }
             , function () {
-                alertify.success("Selecciona un módulo");
+                alertify.success("Selecciona un grupo");
                 return;
             });
         }
 
+
     }
 
-    function assignCourseToProfessor(modules) {
+    function assignCourseToProfessor(groups, modules) {
         var parameters = {
             "id": id,
-            "group": $("#group").val(),
+            "groups": groups,
             "period": $("#period").val(),
             "modules": modules
         };
-
         $.ajax({
             type: 'POST',
             url: "../business/AssignCoursesToProfessor.php",
@@ -328,11 +320,24 @@ include './reusable/Footer.php';
             success: function (data)
             {
                 var group = JSON.parse(data);
-                var htmlCombo = '<OPTION VALUE="0">Seleccione un grupo</OPTION>';
+                var cont = 0;
+                var startTr = '<tr>';
+                var endTr = '</tr>';
+                var htmTable = startTr;
                 $.each(group, function (i, item) {
-                    htmlCombo += '<OPTION VALUE="' + item.id + '">' + item.number + '</OPTION>';
+                    if (cont > 5) {
+                        cont = 0;
+                        htmTable += endTr;
+                        htmTable += startTr;
+                    }
+                    htmTable += '<td>';
+                    htmTable += '<input value="' + item.id + '" type="checkbox" name="groupcheck" style="width: 20px; height: 20px; text-align: center" />';
+                    htmTable += '<label>' + item.number + '</label>';
+                    htmTable += '</td>';
+                    cont++;
                 });
-                $("#group").html(htmlCombo);
+                htmTable += endTr;
+                $("#group").html(htmTable);
             },
             error: function ()
             {
@@ -372,7 +377,6 @@ include './reusable/Footer.php';
             {
                 var courses = JSON.parse(data);
                 var htmlCourse = '';
-
                 $.each(courses, function (i, item) {
                     htmlCourse += "<tr>";
                     htmlCourse += "<td>" + item.coursecode + "</td>";
@@ -420,8 +424,6 @@ include './reusable/Footer.php';
         , function () {
             alertify.success("Cancelado");
         });
-
-
     }
 
 </script>

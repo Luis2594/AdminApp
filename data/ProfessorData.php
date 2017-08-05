@@ -66,17 +66,18 @@ class ProfessorData extends Connector {
             $array = [];
             if (mysqli_num_rows($allProfessors) > 0) {
                 while ($row = mysqli_fetch_array($allProfessors)) {
-                    $array[] = array("professorid" => $row['professorid'],
+                    $array[] = array(
+//                        "professorid" => $row['professorid'],
                         "personid" => $row['personid'],
-                        "persondni" => $row['persondni'],
+//                        "persondni" => $row['persondni'],
                         "personfirstname" => $row['personfirstname'],
                         "personfirstlastname" => $row['personfirstlastname'],
-                        "personsecondlastname" => $row['personsecondlastname'],
-                        "personemail" => $row['personemail'],
-                        "persongender" => $row['persongender'],
-                        "personnationality" => $row['personnationality'],
-                        "userusername" => $row['userusername'],
-                        "useruserpass" => $row['useruserpass']);
+                        "personsecondlastname" => $row['personsecondlastname']);
+//                        "personemail" => $row['personemail'],
+//                        "persongender" => $row['persongender'],
+//                        "personnationality" => $row['personnationality'],
+//                        "userusername" => $row['userusername'],
+//                        "useruserpass" => $row['useruserpass']);
                 }
             }
             return $array;

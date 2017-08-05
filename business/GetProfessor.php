@@ -1,5 +1,5 @@
 <?php
-include_once './ProfessorBusiness.php';
+include './ProfessorBusiness.php';
 
 $professorBusiness = new ProfessorBusiness();
 $result = $professorBusiness->getAllSchedule();
