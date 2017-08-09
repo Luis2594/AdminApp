@@ -77,7 +77,24 @@ class StudentData extends Connector {
                 while ($row = mysqli_fetch_array($allStudent)) {
 
                     $currentStudent = new StudentAll(
-                            $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['personbirthdate'], $row['personage'], $row['persongender'], $row['personnationality'], $row['studentadecuacy'], $row['studentyearincome'], $row['studentyearout'], $row['studentlocation'], $row['studentgroup'], $row['studentmanager'], $row['userusername'], $row['useruserpass']);
+                            $row['personid'], 
+                            $row['persondni'], 
+                            $row['personfirstname'], 
+                            $row['personfirstlastname'], 
+                            $row['personsecondlastname'], 
+                            $row['personemail'], 
+                            $row['personbirthdate'], 
+                            $row['personage'], 
+                            $row['persongender'], 
+                            $row['personnationality'], 
+                            $row['studentadecuacy'], 
+                            $row['studentyearincome'], 
+                            $row['studentyearout'], 
+                            $row['studentlocation'], 
+                            $row['studentgroup'], 
+                            $row['studentmanager'], 
+                            $row['userusername'], 
+                            $row['useruserpass']);
 
                     array_push($array, $currentStudent);
                 }

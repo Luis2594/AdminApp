@@ -49,8 +49,8 @@ if (isset($id) && is_int($id)) {
                                 <select id="academicHistorial" name="academicHistorial" class="form-control">
                                     <option value="3">Todo el historial</option>
                                     <option value="2">Módulos matriculados</option>
-                                    <option value="1">Módulos aprovados</option>
-                                    <option value="0">Módulos reprovados</option>
+                                    <option value="1">Módulos aprobados</option>
+                                    <option value="0">Módulos reprobados</option>
                                 </select>
                             </div>
                         </div><!-- /.box-body -->
@@ -174,7 +174,7 @@ include './reusable/Footer.php';
                             htmlCourse += '<td style="color: red;">Reprobado</td>';
                             break;
                         case "1":
-                            htmlCourse += '<td style="color: green;">Aprovado</td>';
+                            htmlCourse += '<td style="color: green;">Aprobado</td>';
                             break;
                         case "2":
                             htmlCourse += '<td style="color: blue;">Matriculado</td>';

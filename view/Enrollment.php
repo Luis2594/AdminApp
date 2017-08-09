@@ -444,7 +444,7 @@ include './reusable/Footer.php';
                             htmlCourse += '<td style="color: red;">Reprobado</td>';
                             break;
                         case "1":
-                            htmlCourse += '<td style="color: green;">Aprovado</td>';
+                            htmlCourse += '<td style="color: green;">Aprobado</td>';
                             break;
                         case "2":
                             htmlCourse += '<td style="color: blue;">Matriculado</td>';
