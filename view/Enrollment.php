@@ -251,18 +251,24 @@ if (isset($id) && is_int($id)) {
                 <div class="box">
                     <div class="box-header">
                         <?php
-                        foreach ($persons as $person) {
+                        foreach ($students as $student) {
                             ?>
                             <h3 class="box-title">Nueva Matrícula de : <?php
-                                echo $person->getPersonFirstName()
-                                . " " . $person->getPersonFirstlastname()
-                                . " " . $person->getPersonSecondlastname();
+                                echo $student->getPersonFirstName()
+                                . " " . $student->getPersonFirstlastname()
+                                . " " . $student->getPersonSecondlastname();
                                 ?> </h3>
                         <?php } ?>
                     </div>
                     <div class="box-body">
                         <div class="box-footer" style="text-align: center">
-                            <button onclick="infoEnrollment(<?php echo $id; ?>);" class="btn btn-primary">Informe de matrícula</button>
+                            <select id="reportEnrrollment" style="width: 300px;" name="reportEnrrollment" class="form-control">
+                                <option value="0">Seleccionar el informe de matrícula</option>
+                                <option value="1">I Semestre - II Nivel</option>
+                                <option value="2">II Semestre - II Nivel</option>
+                                <option value="3">I Semestre - III Nivel</option>
+                                <option value="4">II Semestre - III Nivel</option>
+                            </select>
                         </div>
                         <div class="table-responsive">
                             <table id="example2" class="table table-bordered table-striped">
@@ -307,12 +313,12 @@ if (isset($id) && is_int($id)) {
                 <div class="box">
                     <div class="box-header">
                         <?php
-                        foreach ($persons as $person) {
+                        foreach ($students as $student) {
                             ?>
                             <h3 class="box-title">Historial académico de : <?php
-                                echo $person->getPersonFirstName()
-                                . " " . $person->getPersonFirstlastname()
-                                . " " . $person->getPersonSecondlastname();
+                                echo $student->getPersonFirstName()
+                                . " " . $student->getPersonFirstlastname()
+                                . " " . $student->getPersonSecondlastname();
                                 ?> </h3>
                         <?php } ?>
                     </div>
@@ -902,7 +908,6 @@ include './reusable/Footer.php';
 //------------------------------------------------------------------------------
     //Logica del select de grupo
     $('#group').on('change', function () {
-//        open("../reporter/Enrollment.php");
         if ($(this).val() !== "0") {
             $("#divCurriculum").show();
             $("#curriculum").html(temHtmlCurriculum);
@@ -945,6 +950,15 @@ include './reusable/Footer.php';
 
         coursesToCurriculum($("#curriculum").val(), $(this).val());
         $("#enrollmentAction").show();
+    }
+    );
+
+    //Logica del select de período
+    $('#reportEnrrollment').on('change', function () {
+//        clearCheck();
+        if ($(this).val() != 0) {
+            open("../reporter/Enrollment.php?id=" + id + "&period=" + $(this).val());
+        }
     }
     );
 

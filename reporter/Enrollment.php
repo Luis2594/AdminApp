@@ -26,9 +26,15 @@ class PDF extends FPDF {
     }
 
     // Tabla coloreada
-    function HeaderTable() {
+    function HeaderTable($period, $groupA, $groupB) {
 
-        $header = array(utf8_decode('II PERIODO - GRUPO ______ '), utf8_decode('IV PERIODO - GRUPO ______ '));
+        if ($period == 1 || $period == 3) {
+            $header = array(utf8_decode('I PERIODO - GRUPO: ' . $groupA), utf8_decode('III PERIODO - GRUPO: ' . $groupB));
+        } else {
+            $header = array(utf8_decode('II PERIODO - GRUPO: ' . $groupA), utf8_decode('VI PERIODO - GRUPO: ' . $groupB));
+        }
+
+
         // Colores, ancho de línea y fuente en negrita
         $this->SetFillColor(168, 168, 168);
         $this->SetTextColor(0);
@@ -43,7 +49,7 @@ class PDF extends FPDF {
         $this->Cell(array_sum($w), 0, '', 'T');
     }
 
-    function Period($data) {
+    function Period($arrayI, $arrayII, $period) {
         $header = array(utf8_decode('Cod'), utf8_decode('Módulo'), utf8_decode('SI/NO'));
         // Colores, ancho de línea y fuente en negrita
         $this->SetFillColor(168, 168, 168);
@@ -68,38 +74,13 @@ class PDF extends FPDF {
         $this->SetTextColor(0);
         $this->SetFont('');
 
-//        // Datos
-//        $data = array(
-//            array("32", "1- Propiedades de la materia y sus aplicaciones en la industria y la vida cotidiana ", 1),
-//            array("33", "1- Módulo basico de español", 1),
-//            array("33", "2- Módulo basico de español", 2),
-//            array("33", "2- Módulo basico de español", 2),
-//            array("32", "1- Propiedades de la materia y sus aplicaciones en la industria y la vida cotidiana ", 1),
-//            array("34", "2- Ingles para todos", 2),
-//            array("34", "2- Ingles para todos", 2),
-//            array("34", "2- Ingles para todos", 2),
-//            array("35", "2- Cotidianidad del ser humano: desde sus orígenes hasta el siglo XVIII", 2)
-//        );
-
-        $arrayI = array();
-        $arrayII = array();
-
-        foreach ($data as $row) {
-            //SEPARAR POR PERIODOS
-            if ($row['period'] == "I") {
-                array_push($arrayI, $row);
-            } else {
-                array_push($arrayII, $row);
-            }
-        }
-        
         $cont = 0;
         $countArrayI = count($arrayI);
         $countArrayII = count($arrayII);
         $bool = false; //Indica si el otro curso tiene el nombre largo
         //Si los cursos que son del periodo de la columna izquierda
-//        son más en cantidad que los de la columna derecha
-//        entonces se recorren los arreglos con el arrayI como punto de referencia por tener mas elementos
+        //son más en cantidad que los de la columna derecha
+        //entonces se recorren los arreglos con el arrayI como punto de referencia por tener mas elementos
         if ($countArrayI >= $countArrayII) {
             $fill = false; //Ultimo parametro de la funcion cell
             //Se recorren los dos arreglos, pero el for llega hasta el arreglo que tenga mas elementos
@@ -114,7 +95,7 @@ class PDF extends FPDF {
                     $this->Cell($w[2], 6, "", 'LR', 0, 'C', $fill);
 
 //                    Se pregunta si hay elementos en el otro arreglo
-                    if ($cont < $countArrayII) {
+                    if ($cont < $countArrayII && $countArrayII > 0) {
                         //Se verifica el nombre del módulo para que no exceda los 55 caracteres 
                         if (strlen($arrayII[$index]["coursename"]) > 55) {
                             $bool = true; // Nos indica que el nombre del modulo excede los 55 caracteres
@@ -178,7 +159,7 @@ class PDF extends FPDF {
                     $this->Cell($w[2], 0, "", 1, 0, 'L', $fill);
                 } else {//Si el nombre del módulo no arrebasa los 55 caracteres entonces
 //                    Se pregunta si en el otro aray hay elementos
-                    if ($cont < $countArrayII) {
+                    if ($cont < $countArrayII && $countArrayII > 0) {
                         //Se verifica el nombre del módulo para que no exceda los 55 caracteres 
                         if (strlen($arrayII[$index]["coursename"]) > 55) {
 
@@ -249,17 +230,17 @@ class PDF extends FPDF {
 
                 $this->Ln();
 
-                $fill = !$fill;
+                $fill = true;
                 $cont++; //Contador para el segundo array
                 $bool = false; //Boleano dpara saber si el nombre del segundo arreglo se corto
             }
         } else {
 //            --------------------------------------------------------------------
-            $fill = false; //Ultimo parametro de la funcion cell
+            $fill = true; //Ultimo parametro de la funcion cell
             //Se recorren los dos arreglos, pero el for llega hasta el arreglo que tenga mas elementos
             for ($index = 0; $index < $countArrayII; $index++) {
-                //                    Se pregunta si hay elementos en el otro arreglo
-                if ($cont < $countArrayI) {
+                //Se pregunta si hay elementos en el otro arreglo
+                if ($cont < $countArrayI && $countArrayI > 0) {
                     //Se verifica el nombre del módulo para que no exceda los 55 caracteres 
                     if (strlen($arrayI[$index]["coursename"]) > 55) {
 //                    Primera columna, es la del codigo del módulo
@@ -371,15 +352,15 @@ class PDF extends FPDF {
                                 $this->Ln();
 
 //                           Estas lineas es para que dibuje la linea divisora inferior
-                                $this->Cell($w[0], 0, "", 1, 0, 'L', $fill);
-                                $this->Cell($w[1], 0, "", 1, 0, 'L', $fill);
-                                $this->Cell($w[2], 0, "", 1, 0, 'L', $fill);
+                                $this->Cell($w[0], 0, "", 1, 0, 'L', true);
+                                $this->Cell($w[1], 0, "", 1, 0, 'L', true);
+                                $this->Cell($w[2], 0, "", 1, 0, 'L', true);
 
                                 //PINTAR LA OTRA EN BLANCO
 //                          Estas lineas es para que dibuje la linea divisora inferior
-                                $this->Cell($w[0], 0, "", 1, 0, 'L', $fill);
-                                $this->Cell($w[1], 0, "", 1, 0, 'L', $fill);
-                                $this->Cell($w[2], 0, "", 1, 0, 'L', $fill);
+                                $this->Cell($w[0], 0, "", 1, 0, 'L', true);
+                                $this->Cell($w[1], 0, "", 1, 0, 'L', true);
+                                $this->Cell($w[2], 0, "", 1, 0, 'L', true);
                             } else {//Si los dos nombres de los modulos tienen menos de 55 caracteres entonces se escriben de manera continua
                                 $this->Cell($w[0], 9, utf8_decode($arrayI[$index]["coursecode"]), 1, 0, 'C', $fill);
                                 $this->Cell($w[1], 9, utf8_decode($arrayI[$index]["coursename"]), 1, 0, 'C', $fill);
@@ -403,10 +384,10 @@ class PDF extends FPDF {
                         }
                     }
                 } else {
-//                          //                PINTAR LA OTRA EN BLANCO
-                    $this->Cell($w[0], 6, "", 'LR', 0, 'C', $fill);
-                    $this->Cell($w[1], 6, "", 'LR', 0, 'C', $fill);
-                    $this->Cell($w[2], 6, "", 'LR', 0, 'C', $fill);
+//                  //PINTAR LA OTRA EN BLANCO
+                    $this->Cell($w[0], 9, "", 'LR', 0, 'C', true);
+                    $this->Cell($w[1], 9, "", 'LR', 0, 'C', true);
+                    $this->Cell($w[2], 9, "", 'LR', 0, 'C', true);
 //                   
                     //Se verifica el nombre del módulo para que no exceda los 55 caracteres 
                     if (strlen($arrayII[$index]["coursename"]) > 55) {
@@ -432,46 +413,33 @@ class PDF extends FPDF {
                         $this->Cell($w[1], 3, utf8_decode(substr($arrayII[$index]["coursename"], 55, strlen($arrayII[$index]["coursename"]))), 'LR', 0, 'C', $fill);
 //                        Se deja en blanco por motivos del corte del nombre
                         $this->Cell($w[2], 3, "", 'LR', 0, 'C', $fill);
-
-
 //                    Salto de linea
-                        $this->Ln();
-
-//                Estas lineas es para que dibuje la linea divisora inferior de los módulos de la derecha
-                        $this->Cell($w[0], 0, "", 1, 0, 'L', $fill);
-                        $this->Cell($w[1], 0, "", 1, 0, 'L', $fill);
-                        $this->Cell($w[2], 0, "", 1, 0, 'L', $fill);
-
-//                Estas lineas es para que dibuje la linea divisora inferior de los módulos de la izquierda
-                        $this->Cell($w[0], 0, "", 1, 0, 'L', $fill);
-                        $this->Cell($w[1], 0, "", 1, 0, 'L', $fill);
-                        $this->Cell($w[2], 0, "", 1, 0, 'L', $fill);
+                        
                     } else { //En caso de que el nombre del módulo no exceda los 55 caracteres, se pinta de manera natural
 //                            Cuarta columna del los módulos de la derecha (CODIGO)
-                        $this->Cell($w[0], 6, utf8_decode($arrayII[$index]["coursecode"]), 'LR', 0, 'C', $fill);
+                        $this->Cell($w[0], 9, utf8_decode($arrayII[$index]["coursecode"]), 'LR', 0, 'C', true);
 //                            Quinta columna de los módulos de la derecha (NOMBRE)
-                        $this->Cell($w[1], 6, utf8_decode($arrayII[$index]["coursename"]), 'LR', 0, 'C', $fill);
+                        $this->Cell($w[1], 9, utf8_decode($arrayII[$index]["coursename"]), 'LR', 0, 'C', true);
 //                            Sexta columna de los módulos de la derecha (SI/NO)
-                        $this->Cell($w[2], 6, "", 'LR', 0, 'C', $fill);
-
-                        //                    Salto de linea
-                        $this->Ln();
-
-//                Estas lineas es para que dibuje la linea divisora inferior de los módulos de la derecha
-                        $this->Cell($w[0], 0, "", 1, 0, 'L', $fill);
-                        $this->Cell($w[1], 0, "", 1, 0, 'L', $fill);
-                        $this->Cell($w[2], 0, "", 1, 0, 'L', $fill);
-
-//                Estas lineas es para que dibuje la linea divisora inferior de los módulos de la izquierda
-                        $this->Cell($w[0], 0, "", 1, 0, 'L', $fill);
-                        $this->Cell($w[1], 0, "", 1, 0, 'L', $fill);
-                        $this->Cell($w[2], 0, "", 1, 0, 'L', $fill);
+                        $this->Cell($w[2], 9, "", 'LR', 0, 'C', true);
                     }
+
+                    $this->Ln();
+                    
+                    //Estas lineas es para que dibuje la linea divisora inferior de los módulos de la derecha
+                    $this->Cell($w[0], 0, "", 1, 0, 'L', true);
+                    $this->Cell($w[1], 0, "", 1, 0, 'L', true);
+                    $this->Cell($w[2], 0, "", 1, 0, 'L', true);
+
+                    //Estas lineas es para que dibuje la linea divisora inferior de los módulos de la izquierda
+                    $this->Cell($w[0], 0, "", 1, 0, 'L', true);
+                    $this->Cell($w[1], 0, "", 1, 0, 'L', true);
+                    $this->Cell($w[2], 0, "", 1, 0, 'L', true);
                 }
 
                 $this->Ln();
 
-                $fill = !$fill;
+                $fill = true;
                 $cont++; //Contador para el segundo array
                 $bool = false; //Boleano dpara saber si el nombre del segundo arreglo se corto
             }
@@ -483,17 +451,22 @@ class PDF extends FPDF {
 
     // Pie de p�gina
     function Footer() {
+
         // Posici�n: a 1,5 cm del final
         $this->SetY(-15);
         // Arial italic 8
         $this->SetFont('Arial', 'I', 8);
         // N�mero de p�gina
-        $this->Cell(0, 10, 'Page ' . $this->PageNo() . '/{nb}', 0, 0, 'C');
+        $this->Cell(0, 10, utf8_decode('"El conocimiento es la mejor inversión que se puede hacer”'), 0, 0, 'C');
+        $this->Cell(0, 10, utf8_decode('SELLO'), 0, 0, 'R');
+        $this->Ln();
+        $this->Cell(0, 1, 'Abraham Lincoln', 0, 0, 'C');
     }
 
 }
 
 $id = $_GET["id"];
+$period = (int) $_GET["period"];
 
 $studentBusiness = new StudentBusiness();
 $phoneBusiness = new PhoneBusiness();
@@ -507,10 +480,27 @@ foreach ($students as $student) {
     $pdf->AliasNbPages();
     $pdf->AddPage();
     $pdf->SetFont('Arial', 'B', 12);
-    $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - II NIVEL  " . date("Y")));
+
+    switch ($period) {
+        case 1:
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - II NIVEL  " . date("Y")));
+            break;
+        case 2:
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  " . date("Y")));
+            break;
+        case 3:
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - III NIVEL  " . date("Y")));
+            break;
+        case 4:
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - III NIVEL  " . date("Y")));
+            break;
+        default:
+            break;
+    }
+
     $pdf->Ln();
     $pdf->SetFont('Arial', 'B', 10);
-    $pdf->Cell(0, 10, utf8_decode("TIPO DE MATRÍCULA: ( ) Ordinaria ( ) Extraordinaria          FECHA DE MATRÍCULA: 22/02/2017"), 0, 1);
+    $pdf->Cell(0, 10, utf8_decode("TIPO DE MATRÍCULA: ( ) Ordinaria ( ) Extraordinaria          FECHA DE MATRÍCULA: " . date("d") . "-" . date("m"). "-". date("Y")), 0, 1);
     $pdf->Cell(0, 5, utf8_decode("DATOS PERSONALES DEL ESTUDIANTE"), 0, 1);
     $pdf->SetFont('Arial', '', 10);
     $pdf->Cell(0, 5, utf8_decode("Nombre Completo: " . $student->getPersonFirstName() . " " . $student->getPersonFirstlastname() . " " . $student->getPersonSecondlastname() . "                            Fecha nacimiento: " . $date->format("d-m-Y")), 0, 1);
@@ -550,15 +540,69 @@ foreach ($students as $student) {
             break;
     }
 
-
     $pdf->Cell(0, 0, utf8_decode("Beca: No ( ) Sí ( ) Entidad: _______________________________________"), 0, 1);
     $pdf->Ln(8);
 
 //MODULES
     $pdf->SetFont('Arial', '', 8);
-    $pdf->HeaderTable();
+
+    $groupA = "";
+    $groupB = "";
+
+    $data = $enrollmentBusiness->getCoursesEnrollmentByStudent($id);
+
+    $arrayI = array();
+    $arrayII = array();
+    $groupA = "";
+    $groupB = "";
+
+    //SEPARAR POR PERIODOS
+    foreach ($data as $row) {
+        if ($period == 1 || $period == 3) {
+            if ($row['period'] == "I") {
+                array_push($arrayI, $row);
+                $groupA = $row["groupnumber"];
+            }
+
+            if ($row['period'] == "III") {
+                array_push($arrayII, $row);
+                $groupB = $row["groupnumber"];
+            }
+        } else {
+            if ($row['period'] == "II") {
+                array_push($arrayI, $row);
+                $groupA = $row["groupnumber"];
+            }
+
+            if ($row['period'] == "VI") {
+                array_push($arrayII, $row);
+                $groupB = $row["groupnumber"];
+            }
+        }
+    }
+
+    $pdf->HeaderTable($period, $groupA, $groupB);
+
     $pdf->Ln();
-    $pdf->Period($enrollmentBusiness->getCoursesEnrollmentByStudent($id));
+
+    $pdf->Period($arrayI, $arrayII, $period);
+
+    $pdf->Ln();
+
+    $pdf->Cell(0, 10, utf8_decode("¿Matriculó algún curso libre?: No ( ) Si ( ) ¿Cuál?:_________________________________________________"), 0, 1);
+
+    $pdf->SetFont('Arial', 'B', 9);
+    $pdf->Cell(0, 5, utf8_decode("Funcionario que realiza la matrícula: __________________________________________                          Sello "), 0, 1);
+    $pdf->Cell(0, 5, utf8_decode("Firma: ___________________________"), 0, 1);
+    $pdf->Cell(0, 5, utf8_decode("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"), 0, 1);
+    $pdf->Cell(0, 5, utf8_decode("DECLARACION JURADA: En mi calidad de estudiante y/o padre o encargado, manifiesto que todos los documentos aportados"), 0, 1);
+    $pdf->Cell(0, 5, utf8_decode("a la Institución en proceso de matrícula  y  ratificación de matrícula son veraces, bajo el entendido de que cualquier falsedad o"), 0, 1);
+    $pdf->Cell(0, 5, utf8_decode("inexactitud en los documentos anula el proceso de matrícula. Además declaro conocer y aceptar el REA-Decreto ejecutivo NO. "), 0, 1);
+    $pdf->Cell(0, 5, utf8_decode("35355-MEP"), 0, 1);
+    $pdf->Cell(0, 3, utf8_decode(""), 0, 1);
+    $pdf->Cell(0, 8, utf8_decode("Nombre del padre o encargado de matrícula______________________________"), 0, 1);
+    $pdf->Cell(0, 8, utf8_decode("Firma del padre o encargado de matrícula______________________________"), 0, 1);
+    $pdf->Cell(0, 8, utf8_decode("Firma del estudiante: ______________________________________________________"), 0, 1);
 
     $pdf->Output();
 }
