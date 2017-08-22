@@ -60,6 +60,30 @@ class InstitutionData extends Connector {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
+    
+    public function getInstitutionAPI() {
+        $query = 'call getInstitution();';
+        try {
+            $allInstitutions = $this->exeQuery($query);
+            $array = [];
+            if (mysqli_num_rows($allInstitutions) > 0) {
+                while ($row = mysqli_fetch_array($allInstitutions)) {
+                    
+                    $array[] = array("institutionid" => $row["institutionid"],
+                        "institutionname" => $row["institutionname"],
+                        "institutionaddress" => $row["institutionaddress"],
+                        "institutionfax" => $row["institutionfax"],
+                        "institutionphone" => $row["institutionphone"],
+                        "institutionmission" => $row["institutionmission"],
+                        "institutionview" => $row["institutionview"]
+                        );
+                }
+            }
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
 
     public function getInstitutionObject() {
         $query = 'call getInstitution();';

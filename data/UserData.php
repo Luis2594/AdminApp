@@ -144,7 +144,44 @@ class UserData extends Connector {
             $result = $this->exeQuery($query);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result)) {
-                    return new Person($row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['personbirthday'], $row['personage'], $row['persongender'], $row['personnationality'], $row['personimage']);
+//                    return new Person($row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['personbirthday'], $row['personage'], $row['persongender'], $row['personnationality'], $row['personimage']);
+                    return array("personid" => $row['personid']
+                            ,"persondni" => $row['persondni']
+                            ,"personfirstname" => $row['personfirstname']
+                            ,"personfirstlastname" => $row['personfirstlastname']
+                            ,"personsecondlastname" => $row['personsecondlastname']
+                            ,"personemail" => $row['personemail']
+                            ,"personbirthday" => $row['personbirthday']
+                            ,"personage" => $row['personage']
+                            ,"persongender" => $row['persongender']
+                            ,"personnationality" => $row['personnationality']
+                            ,"personimage" => $row['personimage']);
+                }
+            }
+            return NULL;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, -1);
+        }
+    }
+    
+    public function isStudent($user, $pass) {
+        $query = "call isStudent('" . $user . "', '" . $pass . "')";
+        try {
+            $result = $this->exeQuery($query);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_array($result)) {
+//                    return new Person($row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['personbirthday'], $row['personage'], $row['persongender'], $row['personnationality'], $row['personimage']);
+                    return array("personid" => $row['personid']
+                            ,"persondni" => $row['persondni']
+                            ,"personfirstname" => $row['personfirstname']
+                            ,"personfirstlastname" => $row['personfirstlastname']
+                            ,"personsecondlastname" => $row['personsecondlastname']
+                            ,"personemail" => $row['personemail']
+                            ,"personbirthday" => $row['personbirthday']
+                            ,"personage" => $row['personage']
+                            ,"persongender" => $row['persongender']
+                            ,"personnationality" => $row['personnationality']
+                            ,"personimage" => $row['personimage']);
                 }
             }
             return NULL;

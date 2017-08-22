@@ -50,4 +50,8 @@ class UserBusiness {
         return $this->userData->isUser($user, $pass);
     }
     
+    public function isStudent($user, $pass) {
+        return $this->userData->isStudent($user, $pass);
+    }
+    
 }

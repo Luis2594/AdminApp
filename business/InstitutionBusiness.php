@@ -22,6 +22,10 @@ class InstitutionBusiness {
         return $this->institutionData->getInstitution();
     }
     
+    public function getInstitutionAPI() {
+        return $this->institutionData->getInstitutionAPI();
+    }
+    
     public function getInstitutionObject() {
         return $this->institutionData->getInstitutionObject();
     }
