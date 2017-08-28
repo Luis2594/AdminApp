@@ -15,7 +15,8 @@ include '../business/UserBusiness.php';
             if ($person != NULL) {
                 echo json_encode($_POST['username']);
             } else {
-                echo json_encode(NULL);
+//                echo json_encode(NULL);
+                echo NULL;
             }
 //        } else {
 //            echo json_encode(NULL);

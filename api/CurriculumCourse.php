@@ -1,4 +1,5 @@
 <?php
+
 //Cargar
 //get
 //Sin Parametros
@@ -6,4 +7,15 @@
 
 include '../business/CurriculumBusiness';
 $business = new CurriculumBusiness();
-echo json_encode($business->getAllCurriculumCourseParsed());
+
+$result = [];
+foreach ($business->getAllCurriculumCourseParsed() as $current) {
+    $array[] = array("curriculumcourseid" => $current->getId(),
+        "curriculumcoursecurriculum" => $current->getCurriculum(),
+        "curriculumcoursecourse" => $current->getCourse(),
+        "period" => $current->ggetPeriod()
+    );
+    array_push($result, $array);
+}
+
+echo json_encode($result);

@@ -6,4 +6,14 @@
 
 include '../business/CurriculumBusiness.php';
 $business = new CurriculumBusiness();
-echo json_encode($business->getAll());
+
+$result = [];
+foreach ($business->getAll() as $current) {
+    $array[] = array("curriculumid" => $current->getCurriculumId(),
+        "curriculumname" => $current->getCurriculumName(),
+        "curriculumyear" => $current->getCurriculumYear() 
+    );
+    array_push($result, $array);
+}
+
+echo json_encode($result);

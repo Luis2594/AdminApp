@@ -5,7 +5,7 @@
 //Recibe username y userpassword
 //Retorna las conversaciones de ese usuario si los credenciales son válidos, nulo si no es valido
 include '../business/UserBusiness.php';
-if (!empty($_POST)) {
+//if (!empty($_POST)) {
     if (isset($_POST['funcion']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
         if ($_POST['funcion'] == 'Cargar') {
             $userBusiness = new UserBusiness();
@@ -13,7 +13,15 @@ if (!empty($_POST)) {
             if ($person != NULL) {
                 include '../business/ConversationBusiness()';
                 $business = new ConversationBusiness();
-                echo json_encode($business->getConversationsByUser($person->getPersonId()));
+                $result = [];
+                foreach ($business->getConversationsByUser($person->getPersonId()) as $conversation) {
+                    $array[] = array("forumconversationid" => $conversation->getForumConversationId(),
+                        "forumid" => $conversation->getForumId(),
+                        "forumconversation" => $conversation->getForumConversation()
+                        );
+                    array_push($result, $array);
+                }
+                echo json_encode($result);
             } else {
                 echo json_encode(NULL);
             }
@@ -23,6 +31,6 @@ if (!empty($_POST)) {
     } else {
         echo json_encode(NULL);
     }
-} else {
-    echo json_encode(NULL);
-}
+//} else {
+//    echo json_encode(NULL);
+//}

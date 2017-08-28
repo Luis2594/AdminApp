@@ -492,7 +492,7 @@ foreach ($students as $student) {
             $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - III NIVEL  " . date("Y")));
             break;
         case 4:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - III NIVEL  " . date("Y")));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  " . date("Y")));
             break;
         default:
             break;
@@ -546,9 +546,6 @@ foreach ($students as $student) {
 //MODULES
     $pdf->SetFont('Arial', '', 8);
 
-    $groupA = "";
-    $groupB = "";
-
     $data = $enrollmentBusiness->getCoursesEnrollmentByStudent($id);
 
     $arrayI = array();
@@ -574,7 +571,7 @@ foreach ($students as $student) {
                 $groupA = $row["groupnumber"];
             }
 
-            if ($row['period'] == "VI") {
+            if ($row['period'] == "IV") {
                 array_push($arrayII, $row);
                 $groupB = $row["groupnumber"];
             }

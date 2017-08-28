@@ -17,7 +17,7 @@ if (!empty($_POST)) {
                 //para proximas versiones se podrá leer notificaciones de tipo:
                 //general y relacionadas al usuario
                 
-                echo json_encode($notificationBusiness->getAllNotificationByStudent());
+                echo json_encode($notificationBusiness->getAllNotificationByStudent($person[0]));
             } else {
                 echo json_encode(NULL);
             }
