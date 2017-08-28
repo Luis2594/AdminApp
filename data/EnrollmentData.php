@@ -13,7 +13,19 @@ class EnrollmentData extends Connector {
                 . "" . $enrollment->getEnrollmentperiod() . ","
                 . "" . $enrollment->getEnrollmentstatus() . ")";
         try {
-            return $this->exeQuery($query);
+            
+            if($this->exeQuery($query)){
+                $query = "call insertStudentCourse('" . $enrollment->getEnrollmentperson() . "',"
+                . "'" . $enrollment->getEnrollmentcourse() . "',"
+                . "" . $enrollment->getEnrollmentperiod() . ","
+                . "" . date("Y") . ")";
+                
+                return $this->exeQuery($query);
+                
+            }else{
+                return false;
+            }
+            
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
