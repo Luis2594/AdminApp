@@ -6,9 +6,7 @@
 
 include '../business/UserBusiness.php';
     
-//if (!empty($_POST)) {
     if (isset($_POST['username']) && isset($_POST['userpassword'])) { //isset($_POST['funcion']) && 
-//        if ($_POST['funcion'] == 'Cargar') {
             $business = new UserBusiness();
             $person = $business->isUser($_POST['username'], $_POST['userpassword']);
             if ($person != NULL) {
@@ -27,12 +25,6 @@ include '../business/UserBusiness.php';
             } else {
                 echo json_encode(NULL);
             }
-//        } else {
-//            echo json_encode(NULL);
-//        }
     } else {
         echo json_encode(NULL);
     }
-//} else {
-//    echo json_encode(NULL);
-//}

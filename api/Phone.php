@@ -21,7 +21,6 @@
 include '../business/PhoneBusiness.php';
 include '../business/UserBusiness.php';
 
-//if (empty($_POST)) {
 if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
 
     $userBusiness = new UserBusiness();
@@ -83,6 +82,3 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
 } else {
         echo json_encode(NULL);
 }
-//} else {
-//    echo json_encode(NULL);
-//}
