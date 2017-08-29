@@ -12,7 +12,7 @@ include '../business/CommentBusiness.php';
 if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
 
     $userBusiness = new UserBusiness();
-    $person = $userBusiness->isUser($_POST['username'], $_POST['userpassword']);
+    $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
     if ($person == NULL) {
         echo json_encode(NULL);
         return;
@@ -24,7 +24,7 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
 
         case 'Load':
             $result = [];
-            foreach ($business->getCommentsByUser($person->getPersonId()) as $current) {
+            foreach ($business->getCommentsByUser($person['personid']) as $current) {
                 $array[] = array("forumcommentid" => $current->getId(),
                     "forumcommentcomment" => $current->getComment(),
                     "forumcommentforumconversation" => $current->getConversation(),
@@ -36,9 +36,9 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
             break;
         case 'Insert':
             if (isset($_POST['number'])) {
-                $business->insert(new Comment(0, $_POST['idforumconversation'], $person->getPersonId(), $_POST['comment']));
+                $business->insert(new Comment(0, $_POST['idforumconversation'], $person['personid'], $_POST['comment']));
                 $result = [];
-                foreach ($business->getCommentsByUser($person->getPersonId()) as $current) {
+                foreach ($business->getCommentsByUser($person['personid']) as $current) {
                     $array[] = array("forumcommentid" => $current->getId(),
                         "forumcommentcomment" => $current->getComment(),
                         "forumcommentforumconversation" => $current->getConversation(),

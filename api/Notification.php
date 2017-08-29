@@ -7,7 +7,7 @@ include '../business/UserBusiness.php';
 if (!empty($_POST)) {
     if (isset($_POST['username']) && isset($_POST['userpassword'])) {
             $userBusiness = new UserBusiness();
-            $person = $userBusiness->isUser($_POST['username'], $_POST['userpassword']);
+            $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
             if ($person != NULL) {
                 include '../business/NotificationBusiness.php';
                 $notificationBusiness = new NotificationBusiness();
@@ -16,7 +16,7 @@ if (!empty($_POST)) {
                 //para proximas versiones se podrá leer notificaciones de tipo:
                 //general y relacionadas al usuario
                 
-                echo json_encode($notificationBusiness->getAllNotificationByStudent($person[0]));
+                echo json_encode($notificationBusiness->getAllNotificationByStudent($person['personid']));
             } else {
                 echo json_encode(NULL);
             }

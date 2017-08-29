@@ -18,7 +18,49 @@ class ScheduleData extends Connector {
         }
     }
 
-    public function getScheduleBYGroup($group) {
+    public function getScheduleByProfessor($id) {
+        $query = "call getScheduleByProfessor(" . $id . ")";
+        
+        try {
+            $allSchedule = $this->exeQuery($query);
+            $array = [];
+            if (mysqli_num_rows($allSchedule) > 0) {
+                while ($row = mysqli_fetch_array($allSchedule)) {
+
+                    $array[] = array("groupscheduleid" => $row['groupscheduleid'],
+                        "coursecode" => $row['coursecode'],
+                        "groupschedulehour" => $row['groupschedulehour'],
+                        "groupscheduleday" => $row['groupscheduleday']);
+                }
+            }
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+    
+    public function getScheduleByStudent($id) {
+        $query = "call getScheduleByStudent(" . $id . ")";
+        echo $query;
+        try {
+            $allSchedule = $this->exeQuery($query);
+            $array = [];
+            if (mysqli_num_rows($allSchedule) > 0) {
+                while ($row = mysqli_fetch_array($allSchedule)) {
+
+                    $array[] = array("groupscheduleid" => $row['groupscheduleid'],
+                        "coursecode" => $row['coursecode'],
+                        "groupschedulehour" => $row['groupschedulehour'],
+                        "groupscheduleday" => $row['groupscheduleday']);
+                }
+            }
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+    
+    public function getScheduleByGroup($group) {
         $query = "call getScheduleByGroup(" . $group . ")";
         try {
             $allSchedule = $this->exeQuery($query);

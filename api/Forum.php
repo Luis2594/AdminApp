@@ -8,12 +8,12 @@ include '../business/UserBusiness.php';
     
     if (isset($_POST['username']) && isset($_POST['userpassword'])) { //isset($_POST['funcion']) && 
             $business = new UserBusiness();
-            $person = $business->isUser($_POST['username'], $_POST['userpassword']);
+            $person = $business->isStudent($_POST['username'], $_POST['userpassword']);
             if ($person != NULL) {
                 include '../business/ForumBusiness.php';
                 $forumBusiness = new ForumBusiness();
                 $result = [];
-                foreach ($forumBusiness->getForumsByUser($person->getPersonId()) as $current) {
+                foreach ($forumBusiness->getForumsByUser($person['personid']) as $current) {
                     $array[] = array("forumid" => $current->getId(),
                         "forumname" => $current->getName(),
                         "forumcourse" => $current->getCourse(),
