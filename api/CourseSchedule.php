@@ -7,7 +7,7 @@
 
 include '../business/UserBusiness.php';
 //if (!empty($_POST)) {
-if (isset($_POST['funcion']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
+if (isset($_POST['username']) && isset($_POST['userpassword'])) {
 //        if ($_POST['funcion'] == 'Cargar') {
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isUser($_POST['username'], $_POST['userpassword']);

@@ -57,24 +57,11 @@ include_once '../resource/Constants.php';
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="./Home.php" class="logo"><b>
-                        <?php
-                        include '../business/InstitutionBusiness.php';
-                        $institutionBusiness = new InstitutionBusiness();
-                        $institutions = $institutionBusiness->getInstitution();
-                        $found = false;
-
-                        foreach ($institutions as $institution) {
-                            echo $institution->getInstitutionName();
-                            $found = true;
-                            break;
-                        }
-                        if (!$found) {
-                            echo 'Institución';
-                        }
-                        ?>
-
-                    </b></a>
+                <a href="./Home.php" class="logo">
+                    <b>
+                        <label>App Administración</label>
+                    </b>
+                </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
@@ -183,7 +170,7 @@ include_once '../resource/Constants.php';
                             <p>
                                 <?php
                                 if (isset($_SESSION['id'])) {
-                                    echo "<br/>".$person->getPersonFirstName() . " " . $person->getPersonFirstlastname();
+                                    echo "<br/>" . $person->getPersonFirstName() . " " . $person->getPersonFirstlastname();
                                 } else {
                                     ?>
                                     Usuario
@@ -220,15 +207,15 @@ include_once '../resource/Constants.php';
                         </li>
 
                         <!--NOTIFY-->
-<!--                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./ShowNotifications.php"><i class="fa"></i>Ver Notificaciones</a></li>
-                                <li><a href="./CreateNotification.php"><i class="fa"></i>Crear Notificaciones</a></li>
-                            </ul>
-                        </li>-->
+                        <!--                        <li class="treeview">
+                                                    <a>
+                                                        <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
+                                                    </a>
+                                                    <ul class="treeview-menu">
+                                                        <li><a href="./ShowNotifications.php"><i class="fa"></i>Ver Notificaciones</a></li>
+                                                        <li><a href="./CreateNotification.php"><i class="fa"></i>Crear Notificaciones</a></li>
+                                                    </ul>
+                                                </li>-->
 
                         <!--ADMIN-->
                         <li class="treeview">
