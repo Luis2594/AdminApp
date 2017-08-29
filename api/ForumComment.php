@@ -10,7 +10,7 @@
 //Retorna los comentarios de esa conversacion si los credenciales son válidos, nulo si no es valido
 include '../business/CommentBusiness.php';
 //if (!empty($_POST)) {
-if (isset($_POST['funcion']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
+if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
 
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isUser($_POST['username'], $_POST['userpassword']);
@@ -21,9 +21,9 @@ if (isset($_POST['funcion']) && isset($_POST['username']) && isset($_POST['userp
 
     include '../business/CommentBusiness.php';
     $business = new CommentBusiness();
-    switch ($_POST['funcion']) {
+    switch ($_POST['option']) {
 
-        case 'Cargar':
+        case 'Load':
             $result = [];
             foreach ($business->getCommentsByUser($person->getPersonId()) as $current) {
                 $array[] = array("forumcommentid" => $current->getId(),
@@ -35,8 +35,8 @@ if (isset($_POST['funcion']) && isset($_POST['username']) && isset($_POST['userp
             }
             echo json_encode($result);
             break;
-        case 'Insertar':
-            if (isset($_POST['numero'])) {
+        case 'Insert':
+            if (isset($_POST['number'])) {
                 $business->insert(new Comment(0, $_POST['idforumconversation'], $person->getPersonId(), $_POST['comment']));
                 $result = [];
                 foreach ($business->getCommentsByUser($person->getPersonId()) as $current) {

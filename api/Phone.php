@@ -22,7 +22,7 @@ include '../business/PhoneBusiness.php';
 include '../business/UserBusiness.php';
 
 //if (empty($_POST)) {
-if (isset($_POST['funcion']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
+if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
 
     $userBusiness = new UserBusiness();
 
@@ -35,8 +35,8 @@ if (isset($_POST['funcion']) && isset($_POST['username']) && isset($_POST['userp
 
     $phoneBusiness = new PhoneBusiness();
 
-    switch ($_POST['funcion']) {
-        case 'Cargar':
+    switch ($_POST['option']) {
+        case 'Load':
             $phones = $phoneBusiness->getAllPhone($person["personid"]);
             $result = array();
             foreach ($phones as $phone) {
@@ -45,8 +45,8 @@ if (isset($_POST['funcion']) && isset($_POST['username']) && isset($_POST['userp
 
             echo json_encode($result);
             break;
-        case 'Insertar':
-            if (isset($_POST['numero'])) {
+        case 'Insert':
+            if (isset($_POST['number'])) {
                 $phoneBusiness->insert(new Phone(0, $_POST['numero'], $person["personid"]));
                 $phones = $phoneBusiness->getAllPhone($person["personid"]);
                 $result = array();
@@ -59,7 +59,7 @@ if (isset($_POST['funcion']) && isset($_POST['username']) && isset($_POST['userp
                 echo json_encode(NULL);
             }
             break;
-        case 'Eliminar':
+        case 'Delete':
             if (isset($_POST['idphone'])) {
                 if ($phoneBusiness->delete($_POST['idphone'])) {
                     $phones = $phoneBusiness->getAllPhone($person["personid"]);
