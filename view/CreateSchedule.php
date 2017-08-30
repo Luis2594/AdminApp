@@ -659,7 +659,6 @@ include './reusable/Footer.php';
         hideDiv();
         groups();
         professors();
-        module();
     });
 
     function hideDiv() {
@@ -854,9 +853,15 @@ include './reusable/Footer.php';
 
     var htmlModule;
     function module() {
+
+        var parameters = {
+            "professor": $("#professor").val()
+        };
+
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: "../business/GetCourses.php",
+            data: parameters,
             success: function (data)
             {
                 var professor = JSON.parse(data);
@@ -864,14 +869,14 @@ include './reusable/Footer.php';
                 var bool = 0;
                 $.each(professor, function (i, item) {
                     bool = 1;
-                    htmlCombo += '<OPTION VALUE="' + item.courseid + '">' + item.coursename + '</OPTION>';
+                    htmlCombo += '<OPTION VALUE="' + item.courseid + '">' + item.coursecode + ' - ' + item.coursename + '</OPTION>';
                 });
 
                 if (bool == 1) {
                     htmlModule = htmlCombo;
                     $("#module").html(htmlModule);
                 } else {
-                    alertify.error("No se encuentran módulos registrados");
+                    alertify.error("No se encuentran módulos registrados para este profesor");
                 }
             },
             error: function ()
@@ -900,6 +905,7 @@ include './reusable/Footer.php';
         if ($(this).val() !== "0") {
             $("#module").html(htmlModule);
             $("#divModule").show();
+            module();
             clearCheck();
         } else {
             $("#divModule").hide();

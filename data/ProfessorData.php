@@ -67,19 +67,19 @@ class ProfessorData extends Connector {
             if (mysqli_num_rows($allProfessors) > 0) {
                 while ($row = mysqli_fetch_array($allProfessors)) {
                     $array[] = array(
-//                        "professorid" => $row['professorid'],
                         "personid" => $row['personid'],
-//                        "persondni" => $row['persondni'],
                         "personfirstname" => $row['personfirstname'],
                         "personfirstlastname" => $row['personfirstlastname'],
                         "personsecondlastname" => $row['personsecondlastname']);
-//                        "personemail" => $row['personemail'],
-//                        "persongender" => $row['persongender'],
-//                        "personnationality" => $row['personnationality'],
-//                        "userusername" => $row['userusername'],
-//                        "useruserpass" => $row['useruserpass']);
                 }
             }
+            
+            foreach ($array as $key => $row) {
+                $aux[$key] = $row['personfirstname'];
+            }
+            
+            array_multisort($aux, SORT_ASC, $array);
+            
             return $array;
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
