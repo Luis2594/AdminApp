@@ -46,7 +46,7 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
             break;
         case 'Insert':
             if (isset($_POST['number'])) {
-                $phoneBusiness->insert(new Phone(0, $_POST['numero'], $person["personid"]));
+                $phoneBusiness->insert(new Phone(0, $_POST['number'], $person["personid"]));
                 $phones = $phoneBusiness->getAllPhone($person["personid"]);
                 $result = array();
                 foreach ($phones as $phone) {

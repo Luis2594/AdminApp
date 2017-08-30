@@ -41,7 +41,7 @@ class ScheduleData extends Connector {
     
     public function getScheduleByStudent($id) {
         $query = "call getScheduleByStudent(" . $id . ")";
-        echo $query;
+        
         try {
             $allSchedule = $this->exeQuery($query);
             $array = [];

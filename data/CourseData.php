@@ -106,7 +106,38 @@ class CourseData extends Connector {
             foreach ($array as $key => $row) {
                 $aux[$key] = $row['coursecode'];
             }
-            
+
+            array_multisort($aux, SORT_ASC, $array);
+
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getCourseByStudent($id) {
+        $query = "call getCourseByStudent(" . $id . ")";
+        try {
+            $allCourses = $this->exeQuery($query);
+            $array = [];
+            if (mysqli_num_rows($allCourses) > 0) {
+                while ($row = mysqli_fetch_array($allCourses)) {
+
+                    $array[] = array("courseid" => $row['courseid'],
+                        "coursecode" => $row['coursecode'],
+                        "coursename" => $row['coursename'],
+                        "coursecredits" => $row['coursecredits'],
+                        "courselesson" => $row['courselesson'],
+                        "coursepdf" => $row['coursepdf'],
+                        "coursespeciality" => $row['coursespeciality'],
+                        "coursetype" => $row['coursetype']);
+                }
+            }
+
+            foreach ($array as $key => $row) {
+                $aux[$key] = $row['coursecode'];
+            }
+
             array_multisort($aux, SORT_ASC, $array);
 
             return $array;
@@ -175,13 +206,13 @@ class CourseData extends Connector {
                         "professorcourseyear" => $row['professorcourseyear']);
                 }
             }
-            
+
             foreach ($array as $key => $row) {
                 $aux[$key] = $row['coursecode'];
             }
-            
+
             array_multisort($aux, SORT_ASC, $array);
-            
+
             return $array;
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
