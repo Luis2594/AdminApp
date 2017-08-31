@@ -6,7 +6,7 @@ class CurriculumBusiness {
 
     private $curriculumData;
 
-    public function CurriculumBusiness() {
+    function CurriculumBusiness() {
         return $this->curriculumData = new CurriculumData();
     }
 

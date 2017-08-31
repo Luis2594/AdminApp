@@ -5,17 +5,17 @@
 //Sin Parametros
 //Retorna todas las realciones de cursos y malla
 
-include '../business/CurriculumBusiness';
+include '../business/CurriculumBusiness.php';
 $business = new CurriculumBusiness();
 
 $result = [];
 foreach ($business->getAllCurriculumCourseParsed() as $current) {
-    $array[] = array("curriculumcourseid" => $current->getId(),
+    $array = array("curriculumcourseid" => $current->getId(),
         "curriculumcoursecurriculum" => $current->getCurriculum(),
         "curriculumcoursecourse" => $current->getCourse(),
-        "period" => $current->ggetPeriod()
+        "period" => $current->getPeriod()
     );
     array_push($result, $array);
+    echo json_encode($result);
 }
-
 echo json_encode($result);
