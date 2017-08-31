@@ -10,7 +10,7 @@ $business = new CourseBusiness();
 
 $result = [];
 foreach ($business->getAllParsed() as $current) {
-    $array[] = array(
+    $array = array(
         "courseid" => $current->getCourseId(),
         "coursecode" => $current->getCourseCode(),
         "coursename" => $current->getCourseName(),

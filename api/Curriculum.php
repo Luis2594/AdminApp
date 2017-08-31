@@ -9,7 +9,7 @@ $business = new CurriculumBusiness();
 
 $result = [];
 foreach ($business->getAll() as $current) {
-    $array[] = array("curriculumid" => $current->getCurriculumId(),
+    $array = array("curriculumid" => $current->getCurriculumId(),
         "curriculumname" => $current->getCurriculumName(),
         "curriculumyear" => $current->getCurriculumYear() 
     );
