@@ -7,6 +7,11 @@
 
 include_once '../business/UserBusiness.php';
 
+
+
+//echo $_POST['username'];
+//exit();
+
 if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);

@@ -13,7 +13,7 @@ include '../business/UserBusiness.php';
                 $business = new ConversationBusiness();
                 $result = [];
                 foreach ($business->getConversationsByUser($person['personid']) as $conversation) {
-                    $array[] = array("forumconversationid" => $conversation->getForumConversationId(),
+                    $array = array("forumconversationid" => $conversation->getForumConversationId(),
                         "forumid" => $conversation->getForumId(),
                         "forumconversation" => $conversation->getForumConversation()
                         );

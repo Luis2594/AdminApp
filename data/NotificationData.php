@@ -82,7 +82,10 @@ class NotificationData extends Connector {
     }
     
     public function getAllNotificationByStudent($id) {
-        $query = 'call getAllNotificationByStudent("' . $id . '");';
+        $query = 'call getNotificationByStudent("' . $id . '");';
+        
+        echo $query;
+        exit();
         try {
             $allNotifications = $this->exeQuery($query);
             $array = [];
