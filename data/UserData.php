@@ -86,7 +86,7 @@ class UserData extends Connector {
     }
 
     public function getUserId($id) {
-        $query = "SELECT * FROM personuser WHERE userperson = " . $id;
+        $query = "SELECT * FROM personuser WHERE userperson = " . $id. ";";
         try {
             $allUser = $this->exeQuery($query);
             if (mysqli_num_rows($allUser) > 0) {

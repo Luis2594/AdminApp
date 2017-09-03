@@ -26,13 +26,15 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
             $user = $_POST['username'];
             $passOld = $_POST['userpassword'];
             $passNew = $_POST['passUpdate'];
-            
+
             if (isset($user) && isset($passOld) && isset($passNew) && $user != "" && $passOld != "" && $passOld != "") {
                 $userBusiness = new UserBusiness();
                 $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
                 if ($person != NULL) {
                     if ($userBusiness->updatePassword($person['personid'], $passOld, $passNew) == 1) {
-                        echo json_encode($person);
+                        $user = $userBusiness->getUserId($person['personid']);
+                        echo json_encode(array("username" => $user->getUserUsername()
+                            , "userpassword" => $user->getUserPass()));
                     } else {
                         echo NULL;
                     }
@@ -45,5 +47,5 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
             break;
     }
 } else {
-    echo json_encode(NULL);
+    echo null;
 }
