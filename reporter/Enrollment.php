@@ -10,7 +10,7 @@ class PDF extends FPDF {
     // Cabecera de p�gina
     function Header() {
         // Logo
-        $this->Image('../resource/images/header.png', 5, 1, 200);
+        $this->Image('../resource/images/header.png', 7, 5, 200);
         // Salto de l�nea
         $this->Ln(20);
     }
@@ -507,7 +507,7 @@ foreach ($students as $student) {
     $pdf->SetFont('Arial', 'B', 10);
     $pdf->Cell(-113, 5, utf8_decode($student->getPersonFirstName() . " " . $student->getPersonFirstlastname() . " " . $student->getPersonSecondlastname()), 0, 0, 0);
     $pdf->SetFont('Arial', '', 10);
-    $pdf->Cell(0, 5, utf8_decode(" Fecha nacimiento: " . $date->format("d-m-Y")), 0, 1);
+    $pdf->Cell(0, 5, utf8_decode("      Fecha nacimiento: " . $date->format("d-m-Y")), 0, 1);
 
     $phones = $phoneBusiness->getAllPhone($id);
     $txtPhones = "";
@@ -535,7 +535,6 @@ foreach ($students as $student) {
     $pdf->SetFont('Arial', '', 10);
 
 //HACER IF DE ADECUACIÓN
-
     switch ($student->getStudentAdecuacy()) {
         case 0:
             $pdf->Cell(0, 10, utf8_decode("Adecuación Curricular: No (X) Sí ( ) Tipo: _____________________________ "), 0, 1);
@@ -597,7 +596,7 @@ foreach ($students as $student) {
 
     $pdf->Ln();
 
-    $pdf->Cell(0, 10, utf8_decode("¿Matriculó algún curso libre?: No ( ) Si ( ) ¿Cuál?:_________________________________________________"), 0, 1);
+    $pdf->Cell(0, 10, utf8_decode("¿Matriculó algún curso opcional?: No ( ) Si ( ) ¿Cuál?:_________________________________________________"), 0, 1);
 
     $pdf->SetFont('Arial', 'B', 9);
     $pdf->Cell(0, 5, utf8_decode("Funcionario que realiza la matrícula: __________________________________________                          Sello "), 0, 1);
