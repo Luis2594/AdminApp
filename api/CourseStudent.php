@@ -8,7 +8,21 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     if ($person != NULL) {
         include_once '../business/CourseBusiness.php';
         $courseBusiness = new CourseBusiness();
-        $result = $courseBusiness->getCourseByStudent($person['personid']);
+
+        $result = [];
+        foreach ($courseBusiness->getCourseByStudentParsed($person['personid']) as $current) {
+            $array = array(
+                "courseid" => $current->getCourseId(),
+                "coursecode" => $current->getCourseCode(),
+                "coursename" => $current->getCourseName(),
+                "coursecredits" => $current->getCourseCredits(),
+                "courselesson" => $current->getCourseLesson(),
+                "coursepdf" => $current->getCoursePdf(),
+                "specialityname" => $current->getCourseSpeciality(),
+                "coursetype" => $current->getCourseType()
+            );
+            array_push($result, $array);
+        }
         echo json_encode($result);
     } else {
         echo json_encode(NULL);

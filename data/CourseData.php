@@ -145,6 +145,33 @@ class CourseData extends Connector {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
+    
+    public function getCourseByStudentParsed($id) {
+        $query = "call getCourseByStudent(" . $id . ")";
+        try {
+            $allCourses = $this->exeQuery($query);
+            $array = [];
+            if (mysqli_num_rows($allCourses) > 0) {
+                while ($row = mysqli_fetch_array($allCourses)) {
+                    $currentCourse = new Course(
+                            $row['courseid'], $row['coursecode'], $row['coursename'], 
+                            $row['coursecredits'], $row['courselesson'], $row['coursepdf'], 
+                            $row['specialityname'], $row['coursetype']);
+
+                    array_push($array, $currentCourse);
+                }
+            }
+            foreach ($array as $key => $row) {
+                $aux[$key] = $row['coursecode'];
+            }
+
+            array_multisort($aux, SORT_ASC, $array);
+
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
 
     public function getAllParsed() {
         $query = "call getAllCourse()";
@@ -154,7 +181,9 @@ class CourseData extends Connector {
             if (mysqli_num_rows($allCourses) > 0) {
                 while ($row = mysqli_fetch_array($allCourses)) {
                     $currentCourse = new Course(
-                            $row['courseid'], $row['coursecode'], $row['coursename'], $row['coursecredits'], $row['courselesson'], $row['coursepdf'], $row['specialityname'], $row['coursetype']);
+                            $row['courseid'], $row['coursecode'], $row['coursename'], 
+                            $row['coursecredits'], $row['courselesson'], $row['coursepdf'], 
+                            $row['specialityname'], $row['coursetype']);
 
                     array_push($array, $currentCourse);
                 }

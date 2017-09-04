@@ -38,6 +38,10 @@ class CourseBusiness {
         return $this->courseData->getCourseByStudent($id);
     }
     
+    public function getCourseByStudentParsed($id) {
+        return $this->courseData->getCourseByStudentParsed($id);
+    }
+    
     public function getAllParsed() {
         return $this->courseData->getAllParsed();
     }
