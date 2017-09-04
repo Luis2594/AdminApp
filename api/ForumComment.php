@@ -25,7 +25,7 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
         case 'Load':
             $result = [];
             foreach ($business->getCommentsByUser($person['personid']) as $current) {
-                $array[] = array("forumcommentid" => $current->getId(),
+                $array = array("forumcommentid" => $current->getId(),
                     "forumcommentcomment" => $current->getComment(),
                     "forumcommentforumconversation" => $current->getConversation(),
                     "person" => $current->getPerson()
@@ -39,7 +39,7 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
                 $business->insert(new Comment(0, $_POST['idforumconversation'], $person['personid'], $_POST['comment']));
                 $result = [];
                 foreach ($business->getCommentsByUser($person['personid']) as $current) {
-                    $array[] = array("forumcommentid" => $current->getId(),
+                    $array = array("forumcommentid" => $current->getId(),
                         "forumcommentcomment" => $current->getComment(),
                         "forumcommentforumconversation" => $current->getConversation(),
                         "person" => $current->getPerson()

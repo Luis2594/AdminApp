@@ -17,7 +17,7 @@ foreach ($business->getAllParsed() as $current) {
         "coursecredits" => $current->getCourseCredits(),
         "courselesson" => $current->getCourseLesson(),
         "coursepdf" => $current->getCoursePdf(),
-        "specialityname" => $current->getCourseSpeciality(),
+        "coursespeciality" => $current->getCourseSpeciality(),
         "coursetype" => $current->getCourseType()
     );
     array_push($result, $array);

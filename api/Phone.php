@@ -41,7 +41,6 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
             foreach ($phones as $phone) {
                 $result[] = array("phoneid" => $phone->getPhoneId(), "phonephone" => $phone->getPhonePhone(), "phoneperson" => $phone->getPhonePerson());
             }
-
             echo json_encode($result);
             break;
         case 'Insert':
