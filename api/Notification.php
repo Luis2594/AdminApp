@@ -11,12 +11,15 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     if ($person != NULL) {
         include '../business/NotificationBusiness.php';
         $notificationBusiness = new NotificationBusiness();
-
-        //TODO
-        //para proximas versiones se podrá leer notificaciones de tipo:
-        //general y relacionadas al usuario
-
-        echo json_encode($notificationBusiness->getAllNotificationByStudent($person['personid']));
+        $result = [];
+        foreach ($notificationBusiness->getAllNotificationByStudent($person['personid']) as $current) {
+            $array = array("notificationid" => $current->getNotificationId(),
+                "notificationtext" => $current->getNotificationText(),
+                "notificationdate" => $current->getNotificationDate()
+            );
+            array_push($result, $array);
+        }
+        echo json_encode($result);
     } else {
         echo json_encode(NULL);
     }
