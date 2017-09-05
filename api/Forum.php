@@ -18,7 +18,7 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) { //isset($_POST
             $array = array("forumid" => $current->getId(),
                 "forumname" => $current->getName(),
                 "forumcourse" => $current->getCourse(),
-                "forumpofessor" => $current->getProfessor()
+                "forumprofessor" => $current->getProfessor()
             );
             array_push($result, $array);
         }
