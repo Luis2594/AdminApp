@@ -51,10 +51,10 @@ class CommentData extends Connector {
     public function getAll() {
         $query = 'call getAllComment();';
         try {
-            $allInstitutions = $this->exeQuery($query);
+            $all = $this->exeQuery($query);
             $array = [];
-            if (mysqli_num_rows($allInstitutions) > 0) {
-                while ($row = mysqli_fetch_array($allInstitutions)) {
+            if (mysqli_num_rows(all) > 0) {
+                while ($row = mysqli_fetch_array($all)) {
                     $currentInstitution = new Comment(
                             $row['forumcommentid'], $row['forumcommentcomment'], $row['forumcommentforumconversation'], $row['forumcommentperson']
                     );
@@ -70,10 +70,10 @@ class CommentData extends Connector {
     public function getComment($id) {
         $query = 'call getComment("' . $id . '");';
         try {
-            $allInstitutions = $this->exeQuery($query);
+            $all = $this->exeQuery($query);
             $array = [];
-            if (mysqli_num_rows($allInstitutions) > 0) {
-                while ($row = mysqli_fetch_array($allInstitutions)) {
+            if (mysqli_num_rows(all) > 0) {
+                while ($row = mysqli_fetch_array($all)) {
                     $currentInstitution = new Comment(
                             $row['forumcommentid'], $row['forumcommentcomment'], $row['forumcommentforumconversation'], $row['forumcommentperson']
                     );
@@ -87,13 +87,14 @@ class CommentData extends Connector {
     }
 
     public function getCommentsByUser($id) {
-        $query = 'call getCommentByUser("' . $id . '");';
+        $query = 'call getCommentByUser(' . $id . ');';
         try {
-            $allInstitutions = $this->exeQuery($query);
+            $all = $this->exeQuery($query);
             $array = [];
-            if (mysqli_num_rows($allInstitutions) > 0) {
+            if (mysqli_num_rows(all) > 0) {
+                include_once '../business/PersonBusiness.php';
                 $business = new PersonBusiness();
-                while ($row = mysqli_fetch_array($allInstitutions)) {
+                while ($row = mysqli_fetch_array($all)) {
                     $person = $business->getPersonId($row['forumcommentperson']);
                     $currentInstitution = new Comment(
                             $row['forumcommentid'], $row['forumcommentcomment'], $row['forumcommentforumconversation'], 

@@ -9,16 +9,15 @@
 //Recibe username, userpassword, idforumconversation y nuevo comentario
 //Retorna los comentarios de esa conversacion si los credenciales son válidos, nulo si no es valido
 include '../business/CommentBusiness.php';
+include '../business/UserBusiness.php';
 if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
-
+    
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
     if ($person == NULL) {
         echo json_encode(NULL);
         return;
     }
-
-    include '../business/CommentBusiness.php';
     $business = new CommentBusiness();
     switch ($_POST['option']) {
 
