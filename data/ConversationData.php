@@ -35,7 +35,7 @@ class ConversationData extends Connector {
     }
 
     public function deteleConversation($id) {
-        $query = 'call deteleConversation("' . $id . '");';
+        $query = 'call deteleConversation(' . $id . ');';
         try {
             if ($this->exeQuery($query)) {
                 return TRUE;
@@ -50,10 +50,10 @@ class ConversationData extends Connector {
     public function getAll() {
         $query = 'call getAllConversation();';
         try {
-            $allInstitutions = $this->exeQuery($query);
+            $all = $this->exeQuery($query);
             $array = [];
-            if (mysqli_num_rows($allInstitutions) > 0) {
-                while ($row = mysqli_fetch_array($allInstitutions)) {
+            if (mysqli_num_rows($all) > 0) {
+                while ($row = mysqli_fetch_array($all)) {
                     $currentInstitution = new Conversation(
                             $row['forumconversationid'], $row['forumid'], $row['forumconversation']
                     );
@@ -67,12 +67,12 @@ class ConversationData extends Connector {
     }
 
     public function getConversation($id) {
-        $query = 'call getConversation("' . $id . '");';
+        $query = 'call getConversation(' . $id . ');';
         try {
-            $allInstitutions = $this->exeQuery($query);
+            $all = $this->exeQuery($query);
             $array = [];
-            if (mysqli_num_rows($allInstitutions) > 0) {
-                while ($row = mysqli_fetch_array($allInstitutions)) {
+            if (mysqli_num_rows($all) > 0) {
+                while ($row = mysqli_fetch_array($all)) {
                     $currentInstitution = new Conversation(
                             $row['forumconversationid'], $row['forumid'], $row['forumconversation']
                     );
@@ -86,12 +86,12 @@ class ConversationData extends Connector {
     }
 
     public function getConversationsByUser($id) {
-        $query = 'call getConversationByUser("' . $id . '");';
+        $query = 'call getConversationByUser(' . $id . ');';
         try {
-            $allInstitutions = $this->exeQuery($query);
+            $all = $this->exeQuery($query);
             $array = [];
-            if (mysqli_num_rows($allInstitutions) > 0) {
-                while ($row = mysqli_fetch_array($allInstitutions)) {
+            if (mysqli_num_rows($all) > 0) {
+                while ($row = mysqli_fetch_array($all)) {
                     $currentInstitution = new Conversation(
                             $row['forumconversationid'], $row['forumid'], $row['forumconversation']
                     );
