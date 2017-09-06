@@ -53,10 +53,10 @@ class ForumData extends Connector {
     public function getAll() {
         $query = 'call getAllForum();';
         try {
-            $allInstitutions = $this->exeQuery($query);
+            $all = $this->exeQuery($query);
             $array = [];
-            if (mysqli_num_rows($allInstitutions) > 0) {
-                while ($row = mysqli_fetch_array($allInstitutions)) {
+            if (mysqli_num_rows($all) > 0) {
+                while ($row = mysqli_fetch_array($all)) {
                     $currentInstitution = new Forum(
                             $row['forumid'], $row['forumname'], $row['forumcourse'], $row['forumprofessor']
                     );
@@ -72,10 +72,10 @@ class ForumData extends Connector {
     public function getForum($id) {
         $query = 'call getForum("' . $id . '");';
         try {
-            $allInstitutions = $this->exeQuery($query);
+            $all = $this->exeQuery($query);
             $array = [];
-            if (mysqli_num_rows($allInstitutions) > 0) {
-                while ($row = mysqli_fetch_array($allInstitutions)) {
+            if (mysqli_num_rows($all) > 0) {
+                while ($row = mysqli_fetch_array($all)) {
                     $currentInstitution = new Forum(
                             $row['forumid'], $row['forumname'], $row['forumcourse'], $row['forumprofessor']
                     );
@@ -89,13 +89,15 @@ class ForumData extends Connector {
     }
 
     public function getForumsByUser($id) {
-        $query = 'call getForumByUser("' . $id . '");';
+        $query = 'call getForumByUser(' . $id . ');';
         try {
-            $allInstitutions = $this->exeQuery($query);
+            $all = $this->exeQuery($query);
             $array = [];
-            if (mysqli_num_rows($allInstitutions) > 0) {
-                while ($row = mysqli_fetch_array($allInstitutions)) {
-                    $person = $business->getPersonId($row['forumprofessor']);
+            if (mysqli_num_rows($all) > 0) {
+                include_once '../business/PersonBusiness.php';
+                $businessPerson = new PersonBusiness();
+                while ($row = mysqli_fetch_array($all)) {
+                    $person = $businessPerson->getPersonId($row['forumprofessor']);
                     $currentInstitution = new Forum(
                             $row['forumid'], $row['forumname'], $row['forumcourse'],
                             $person[0]->getPersonFirstName()." ".$person[0]->getPersonFirstlastname()
