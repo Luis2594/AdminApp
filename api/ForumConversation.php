@@ -9,7 +9,7 @@ include '../business/UserBusiness.php';
             $userBusiness = new UserBusiness();
             $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
             if ($person != NULL) {
-                include '../business/ConversationBusiness()';
+                include '../business/ConversationBusiness.php';
                 $business = new ConversationBusiness();
                 $result = [];
                 foreach ($business->getConversationsByUser($person['personid']) as $conversation) {
