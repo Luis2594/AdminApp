@@ -161,11 +161,6 @@ class CourseData extends Connector {
                     array_push($array, $currentCourse);
                 }
             }
-            foreach ($array as $key => $row) {
-                $aux[$key] = $row['coursecode'];
-            }
-
-            array_multisort($aux, SORT_ASC, $array);
 
             return $array;
         } catch (Exception $ex) {

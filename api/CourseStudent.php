@@ -10,6 +10,9 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
         $courseBusiness = new CourseBusiness();
 
         $result = [];
+
+
+
         foreach ($courseBusiness->getCourseByStudentParsed($person['personid']) as $current) {
             $array = array(
                 "courseid" => $current->getCourseId(),
@@ -23,6 +26,13 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
             );
             array_push($result, $array);
         }
+
+        foreach ($result as $key => $row) {
+            $aux[$key] = $row['coursecode'];
+        }
+
+        array_multisort($aux, SORT_ASC, $result);
+
         echo json_encode($result);
     } else {
         echo json_encode(NULL);

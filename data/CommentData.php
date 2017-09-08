@@ -91,18 +91,21 @@ class CommentData extends Connector {
         try {
             $all = $this->exeQuery($query);
             $array = [];
-            if (mysqli_num_rows(all) > 0) {
+            if (mysqli_num_rows($all) > 0) {
                 include_once '../business/PersonBusiness.php';
                 $business = new PersonBusiness();
                 while ($row = mysqli_fetch_array($all)) {
                     $person = $business->getPersonId($row['forumcommentperson']);
-                    $currentInstitution = new Comment(
-                            $row['forumcommentid'], $row['forumcommentcomment'], $row['forumcommentforumconversation'], 
+                    $currentComment = new Comment(
+                            $row['forumcommentid'], 
+                            $row['forumcommentcomment'], 
+                            $row['forumcommentforumconversation'], 
                             $person[0]->getPersonFirstName()." ".$person[0]->getPersonFirstlastname()
                     );
-                    array_push($array, $currentInstitution);
+                    array_push($array, $currentComment);
                 }
             }
+           
             return $array;
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);

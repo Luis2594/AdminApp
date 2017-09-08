@@ -34,8 +34,8 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
             echo json_encode($result);
             break;
         case 'Insert':
-            if (isset($_POST['number'])) {
-                $business->insert(new Comment(0, $_POST['idforumconversation'], $person['personid'], $_POST['comment']));
+            if (isset($_POST['comment'])) {
+                $business->insert(new Comment(0, $_POST['comment'], $_POST['idforumconversation'], $person['personid']));
                 $result = [];
                 foreach ($business->getCommentsByUser($person['personid']) as $current) {
                     $array = array("forumcommentid" => $current->getId(),
