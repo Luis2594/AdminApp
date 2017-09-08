@@ -16,6 +16,5 @@ foreach ($business->getAllCurriculumCourseParsed() as $current) {
         "period" => $current->getPeriod()
     );
     array_push($result, $array);
-    echo json_encode($result);
 }
 echo json_encode($result);

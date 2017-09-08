@@ -79,16 +79,15 @@ class NotificationData extends Connector {
     
     public function getAllNotificationByStudent($id) {
         $query = 'call getNotificationByStudent("' . $id . '");';
-        
-        echo $query;
-        exit();
+       
         try {
             $allNotifications = $this->exeQuery($query);
             $array = [];
             if (mysqli_num_rows($allNotifications) > 0) {
                 while ($row = mysqli_fetch_array($allNotifications)) {
                     $currentNotification = new Notification(
-                            $row['notificationid'], $row['notificationtext'], 
+                            $row['notificationid'], 
+                            $row['notificationtext'], 
                             NULL, NULL, 
                             NULL, NULL, 
                             NULL, $row['notificationdate']);

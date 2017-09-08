@@ -175,9 +175,9 @@ include './reusable/Header.php';
                         <!--FRIDAY-->
                         <td bgcolor="gray" >RECREO</td>
                     </tr>
-                    <!--HOUR 9:10AM - 9:50AM-->
+                    <!--HOUR 9:15AM - 9:55AM-->
                     <tr>
-                        <td>9:10am-9:50am</td>
+                        <td>9:15am-9:55am</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-4-1" ></span>
@@ -211,7 +211,7 @@ include './reusable/Header.php';
                     </tr>
                     <!--HOUR 9:50AM - 10:30AM-->
                     <tr>
-                        <td>9:50am-10:30am</td>
+                        <td>9:55am-10:35am</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-5-1" ></span>
@@ -259,7 +259,7 @@ include './reusable/Header.php';
                     </tr>
                     <!--HOUR 10:40AM - 11:20AM-->
                     <tr>
-                        <td>10:40am-11:20am</td>
+                        <td>10:45am-11:25am</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-6-1" ></span>
@@ -293,7 +293,7 @@ include './reusable/Header.php';
                     </tr>
                     <!--HOUR 11:20AM - 12:00MM-->
                     <tr>
-                        <td>11:20am-12:00mm</td>
+                        <td>11:25am-12:05mm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-7-1" ></span>
@@ -457,9 +457,9 @@ include './reusable/Header.php';
                         <!--FRIDAY-->
                         <td bgcolor="gray" >RECREO</td>
                     </tr>
-                    <!--HOUR 2:40PM - 3:20PM-->
+                    <!--HOUR 2:45PM - 3:25PM-->
                     <tr>
-                        <td>2:40pm-3:20pm</td>
+                        <td>2:45pm-3:25pm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-11-1" ></span>
@@ -491,9 +491,9 @@ include './reusable/Header.php';
                             <input id="c-11-5" value="11-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
                         </td>
                     </tr>
-                    <!--HOUR 3:20PM - 4:00PM-->
+                    <!--HOUR 3:25PM - 4:05PM-->
                     <tr>
-                        <td>3:20pm-4:00pm</td>
+                        <td>3:25pm-4:05pm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-12-1" ></span>
@@ -539,9 +539,9 @@ include './reusable/Header.php';
                         <!--FRIDAY-->
                         <td bgcolor="gray" >RECREO</td>
                     </tr>
-                    <!--HOUR 4:10PM - 4:50PM-->
+                    <!--HOUR 4:15PM - 4:55PM-->
                     <tr>
-                        <td>4:10pm-4:50pm</td>
+                        <td>4:15pm-4:55pm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-13-1" ></span>
@@ -573,9 +573,9 @@ include './reusable/Header.php';
                             <input id="c-13-5" value="13-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
                         </td>
                     </tr>
-                    <!--HOUR 4:50PM - 5:30PM-->
+                    <!--HOUR 4:55PM - 5:35PM-->
                     <tr>
-                        <td>4:50pm-5:30pm</td>
+                        <td>4:55pm-5:35pm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-14-1" ></span>
