@@ -71,7 +71,7 @@
                             Desarrollador Full Stack
                         </p>
                         <br/>
-                        <a href="#" class="fa fa-facebook" style="width: 30px;height: 30px;"></a>
+                        <a href="https://www.facebook.com/LuisCastilloC7" class="fa fa-facebook" style="width: 30px;height: 30px;"></a>
                         <!--<a href="#" class="fa fa-twitter"></a>-->
                         <a href="#" class="fa fa-google" style="width: 30px;height: 30px;"></a>
                         <!--<a href="#" class="fa fa-linkedin" style="width: 30px;height: 30px;"></a>-->
@@ -79,7 +79,7 @@
                         <!--<a href="#" class="fa fa-instagram" style="width: 30px;height: 30px;"></a>-->
                         <!--<a href="#" class="fa fa-pinterest" style="width: 30px;height: 30px;"></a>-->
                         <!--<a href="#" class="fa fa-snapchat-ghost" style="width: 30px;height: 30px;"></a>-->
-                        <a href="#" class="fa fa-skype" style="width: 30px;height: 30px;"></a>
+                        <a href="skype:luis_da18?userinfo" class="fa fa-skype" style="width: 30px;height: 30px;"></a>
                         <!--<a href="#" class="fa fa-android" style="width: 30px;height: 30px;"></a>-->
                         <!--<a href="#" class="fa fa-dribbble" style="width: 30px;height: 30px;"></a>-->
                         <!--<a href="#" class="fa fa-vimeo" style="width: 30px;height: 30px;"></a>-->
@@ -135,7 +135,7 @@
                             Desarrollador Móvil
                         </p>
                         <br/>
-                        <a href="#" class="fa fa-facebook" style="width: 30px;height: 30px;"></a>
+                        <a href="https://www.facebook.com/DavidMorenoCar" class="fa fa-facebook" style="width: 30px;height: 30px;"></a>
                         <!--<a href="#" class="fa fa-twitter"></a>-->
                         <a href="#" class="fa fa-google" style="width: 30px;height: 30px;"></a>
                         <!--<a href="#" class="fa fa-linkedin" style="width: 30px;height: 30px;"></a>-->
