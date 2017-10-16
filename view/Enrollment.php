@@ -958,6 +958,7 @@ include './reusable/Footer.php';
 //        clearCheck();
         if ($(this).val() != 0) {
             open("../reporter/Enrollment.php?id=" + id + "&period=" + $(this).val());
+            open("../reporter/Manager.php?id=" + id + "&period=" + $(this).val());
         }
     }
     );
