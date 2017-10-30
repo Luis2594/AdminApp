@@ -159,12 +159,11 @@ include './reusable/Footer.php';
                 success: function (data)
                 {
                     debugger;
-                    if (data){
+                    if (data == "true"){
                         alertify.success("Acción Ejecutada Correctamente");
                     }else{
-                        debugger;
                         alertify.error("Error ...");
-                        sel.val(-1);
+                        sel.value = -1;
                     }
                 },
                 error: function ()

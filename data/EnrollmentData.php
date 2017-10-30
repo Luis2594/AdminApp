@@ -186,6 +186,7 @@ class EnrollmentData extends Connector {
 
     public function enrollmentActions($id, $value){
         $query = "call enrollmentActions(" . $id . ", ". $value.")";
+
         try {
             if ($this->exeQuery($query)) {
                 return TRUE;
