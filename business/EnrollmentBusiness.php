@@ -36,4 +36,8 @@ class EnrollmentBusiness {
      public function getCoursesReprobateByStudent($idStudent){
          return $this->enrollmentData->getCoursesReprobateByStudent($idStudent);
      }
+     
+     public function enrollmentActions($id, $value){
+         return $this->enrollmentData->enrollmentActions($id, $value);
+     }
 }
