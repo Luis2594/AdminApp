@@ -87,7 +87,7 @@ if (isset($id) && is_int($id)) {
                                         <!--<th>Atinencia/Especialidad</th>-->
                                         <th>Fecha de matrícula</th>
                                         <th>Estado del módulo</th>
-
+                                        <th>Aprobación</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tbodyHistorial">
@@ -104,6 +104,7 @@ if (isset($id) && is_int($id)) {
                                         <!--<th>Atinencia/Especialidad</th>-->
                                         <th>Fecha de matrícula</th>
                                         <th>Estado del módulo</th>
+                                        <th>Aprobación</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -147,8 +148,37 @@ include './reusable/Footer.php';
         loadAcademicHistorial(3);
     });
 
+    //ejecuta acciones de aprobación de un curso
+    function aprobar(sel, id)
+    {
+        if (sel.value != -1) {
+            $.ajax({
+                type: 'POST',
+                url: "../business/EnrollmentActions.php",
+                data: {"enrollment": id, "value": sel.value}, 
+                success: function (data)
+                {
+                    debugger;
+                    if (data == "true"){
+                        alertify.success("Acción Ejecutada Correctamente");
+                    }else{
+                        alertify.error("Error ...");
+                        sel.value = -1;
+                    }
+                },
+                error: function ()
+                {
+                    alertify.error("Error ...");
+                }
+            }
+            );
+        }
+    }
+
     //Cargar el historial academico del estudiante
     function loadAcademicHistorial(option) {
+        var selectA = '<select onchange="aprobar(this,';
+        var selectB = ');"><option value="-1">Seleccione</option><option value="1">Aprobar</option><option value="0">Reprobar</option></select>';
         $.ajax({
             type: 'POST',
             url: "../business/GetEnrollment.php",
@@ -172,15 +202,19 @@ include './reusable/Footer.php';
                     switch (item.enrollmentstatus) {
                         case "0":
                             htmlCourse += '<td style="color: red;">Reprobado</td>';
+                            htmlCourse += "<td> Reprobado </td>";
                             break;
                         case "1":
                             htmlCourse += '<td style="color: green;">Aprobado</td>';
+                            htmlCourse += "<td> Aprobado </td>";
                             break;
                         case "2":
                             htmlCourse += '<td style="color: blue;">Matriculado</td>';
+                            htmlCourse += "<td>" + selectA + item.enrollmentid + selectB + "</td>";
                             break;
                         default :
                             htmlCourse += "<td>Indefinido</td>";
+                            htmlCourse += "<td> Indefinido </td>";
                             break;
                     }
 
