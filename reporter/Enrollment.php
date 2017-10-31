@@ -461,16 +461,16 @@ foreach ($students as $student) {
 
     switch ($period) {
         case 1:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - II NIVEL  " . date("Y")));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - II NIVEL  2018"));
             break;
         case 2:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  " . date("Y")));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  2018"));
             break;
         case 3:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - III NIVEL  " . date("Y")));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - III NIVEL  2018"));
             break;
         case 4:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  " . date("Y")));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  2018"));
             break;
         default:
             break;
@@ -540,31 +540,9 @@ foreach ($students as $student) {
 
     $pdf->Cell(0, 15, utf8_decode("EN CASO DE EMERGENCIA O ALGUNA SITUACIÓN ESPECIAL CONTACTAR"), 0, 1);
     $pdf->SetFont('Arial', '', 10);
-    $pdf->Cell(0, 0, utf8_decode("Nombre: " . $student->getStudentManager() . "            Teléfonos: ____________/____________Parentesco: __________"), 0, 1);
+    $pdf->Cell(0, 0, utf8_decode("Nombre: " . $student->getStudentManager() . "            Parentesco: __________"), 0, 1);
     $pdf->Cell(0, 0, $pdf->Image('../resource/images/cuadro.png', 7, 80, 200), 0, 0, 'L', false);
     $pdf->Ln(30);
-    $pdf->SetFont('Arial', 'B', 10);
-    $pdf->Cell(0, 0, utf8_decode("DATOS ACADÉMICOS DEL ESTUDIANTE"), 0, 1);
-    $pdf->SetFont('Arial', '', 10);
-
-//HACER IF DE ADECUACIÓN
-    switch ($student->getStudentAdecuacy()) {
-        case 0:
-            $pdf->Cell(0, 10, utf8_decode("Adecuación Curricular: No (X) Sí ( ) Tipo: _____________________________ "), 0, 1);
-            break;
-        case 1:
-            $pdf->Cell(0, 10, utf8_decode("Adecuación Curricular: No ( ) Sí (X) Tipo: No significativa "), 0, 1);
-            break;
-        case 2:
-            $pdf->Cell(0, 10, utf8_decode("Adecuación Curricular: No ( ) Sí (X) Tipo: Significativa"), 0, 1);
-            break;
-        default:
-            $pdf->Cell(0, 10, utf8_decode("Adecuación Curricular: No ( ) Sí ( ) Tipo: _____________________________ "), 0, 1);
-            break;
-    }
-
-    $pdf->Cell(0, 0, utf8_decode("Beca: No ( ) Sí ( ) Entidad: _______________________________________"), 0, 1);
-    $pdf->Ln(8);
 
 //MODULES
     $pdf->SetFont('Arial', '', 8);
@@ -613,18 +591,21 @@ foreach ($students as $student) {
     $pdf->Cell(0, 10, utf8_decode("¿OPCIONAL?: No ( ) Si ( ) ¿Cuál?:_________________________________________________"), 0, 1);
 
     $pdf->SetFont('Arial', 'B', 9);
-    $pdf->Cell(0, 5, utf8_decode("Funcionario que realiza la matrícula: __________________________________________                          Sello "), 0, 1);
-    $pdf->Cell(0, 5, utf8_decode("Firma: ___________________________"), 0, 1);
-    $pdf->Cell(0, 5, utf8_decode("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"), 0, 1);
-    $pdf->Cell(0, 5, utf8_decode("DECLARACION JURADA: En mi calidad de estudiante y/o padre o encargado, manifiesto que todos los documentos aportados"), 0, 1);
-    $pdf->Cell(0, 5, utf8_decode("a la Institución en proceso de matrícula  y  ratificación de matrícula son veraces, bajo el entendido de que cualquier falsedad o"), 0, 1);
-    $pdf->Cell(0, 5, utf8_decode("inexactitud en los documentos anula el proceso de matrícula. Además declaro conocer y aceptar el REA-Decreto ejecutivo NO. "), 0, 1);
-    $pdf->Cell(0, 5, utf8_decode("35355-MEP"), 0, 1);
-    $pdf->Cell(0, 3, utf8_decode(""), 0, 1);
-//    $pdf->Cell(0, 8, utf8_decode("Nombre del padre o encargado de matrícula______________________________"), 0, 1);
-    $pdf->Cell(0, 8, utf8_decode("Firma del padre o encargado de matrícula______________________________"), 0, 1);
-    $pdf->Cell(0, 15, utf8_decode("Firma del estudiante: ______________________________________________________"), 0, 1);
+    $pdf->Cell(0, 10, utf8_decode("Funcionario que realiza la matrícula: __________________________________________"), 0, 1);
+    
+    
+    $pdf->SetFont('Arial', 'B', 8);
+    $pdf->Cell(0, 5, utf8_decode("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"), 0, 1);
+    $pdf->Cell(0, 5, utf8_decode("DECLARACION JURADA: En mi calidad de estudiante y/o padre o encargado, manifiesto que todos los documentos aportados a la Institución"), 0, 1);
+    $pdf->Cell(0, 5, utf8_decode("en proceso de matrícula  y  ratificación de matrícula son veraces, bajo el entendido de que cualquier falsedad o inexactitud en los documentos"), 0, 1);
+    $pdf->Cell(0, 5, utf8_decode("anula el proceso de matrícula. Además declaro conocer y aceptar el REA-Decreto ejecutivo NO. 35355-MEP"), 0, 1);
 
+    $pdf->SetFont('Arial', 'B', 9);
+    $pdf->Cell(0, 10, utf8_decode("Firma del padre o encargado de matrícula: ____________________________________"), 0, 1);
+    $pdf->Cell(0, 10, utf8_decode("Firma del estudiante: ______________________________________________________"), 0, 1);
+
+    
+    
     $pdf->Output();
 }
 ?>

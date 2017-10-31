@@ -955,9 +955,14 @@ include './reusable/Footer.php';
 
     //Logica del select de período
     $('#reportEnrrollment').on('change', function () {
-//        clearCheck();
         if ($(this).val() != 0) {
             open("../reporter/Enrollment.php?id=" + id + "&period=" + $(this).val());
+        }
+    }
+    );
+
+    $('#reportEnrrollment').on('change', function () {
+        if ($(this).val() != 0) {
             open("../reporter/Manager.php?id=" + id + "&period=" + $(this).val());
         }
     }
