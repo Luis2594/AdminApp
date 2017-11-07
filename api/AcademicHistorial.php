@@ -9,10 +9,12 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
     if ($person != NULL) {
-        include './EnrollmentBusiness.php';
+        
+        include_once '../business/EnrollmentBusiness.php';
 
         //$id = $_POST['id'];
-        $id = $person->getPersonId();
+        $id = $person["personid"];
+        
         //$option = (int) $_POST['option'];
         $option = 3;
 

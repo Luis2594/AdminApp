@@ -161,6 +161,7 @@ include './reusable/Footer.php';
                     debugger;
                     if (data == "true"){
                         alertify.success("Acción Ejecutada Correctamente");
+                        loadAcademicHistorial(3);
                     }else{
                         alertify.error("Error ...");
                         sel.value = -1;
