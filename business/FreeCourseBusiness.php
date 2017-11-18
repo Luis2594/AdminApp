@@ -35,6 +35,10 @@ class FreeCourseBusiness {
         return $this->data->getCourseById($id);
     }
     
+    public function getCourseByArea($area) {
+        return $this->data->getCourseByArea($area);
+    }
+    
     public function confirmCode($code) {
         return $this->data->confirmCode($code);
     }

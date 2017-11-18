@@ -101,7 +101,7 @@ $delete = $_GET['delete'];
                                         <?php
                                         if (isset($enrollment) && $enrollment == "enrollment") {
                                             ?>
-                                            <td><a href="Enrollment.php?id=<?php echo $student->getPk(); ?>">Matrícular</a></td>
+                                        <td><a href="EnrollmentEmergent.php?id=<?php echo $student->getPk(); ?>">Matrícular</a></td>
                                             <?php
                                         }
                                         ?>

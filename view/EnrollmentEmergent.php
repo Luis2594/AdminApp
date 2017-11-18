@@ -60,7 +60,7 @@ if (isset($id) && is_int($id)) {
                     </div>
                     <div class="box-body">
                         <div class="box-footer" style="text-align: center">
-                            <h1>CURSOS POR ÁREA</h1>
+                            <h1 id="labelArea">CURSOS POR ÁREA</h1>
                         </div>
                         <div class="table-responsive">
                             <table id="tableFreeCourse" class="table table-bordered table-striped">
@@ -74,7 +74,7 @@ if (isset($id) && is_int($id)) {
                                         <th>Hora</th>
                                     </tr>
                                 </thead>
-                                <tbody id="periodI">
+                                <tbody id="freeCourseByArea">
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -156,7 +156,7 @@ if (isset($id) && is_int($id)) {
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Matrícula para : <?php
+                        <h3 class="box-title">Historial de : <?php
                             echo $student->getFirstname()
                             . " " . $student->getFirstlastname()
                             . " " . $student->getSecondlastname();
@@ -234,6 +234,7 @@ include './reusable/Footer.php';
     //Ocultar los div de los periodos y oculatar el boton de matricula
     function hideDiv() {
         $("#showCourses").hide();
+        $("#enrollmentAction").hide();
     }
 
     //LImpiar los checkbox para elejir la matricula
@@ -255,6 +256,7 @@ include './reusable/Footer.php';
                 var speciality = JSON.parse(data);
                 var htmlCombo = '';
                 var bool = 0;
+                htmlCombo += '<OPTION VALUE="0">Seleccione una área</OPTION>';
                 $.each(speciality, function (i, item) {
                     bool = 1;
                     htmlCombo += '<OPTION VALUE="' + item.id + '">' + item.name + '</OPTION>';
@@ -290,7 +292,7 @@ include './reusable/Footer.php';
     function loadCourseByArea(area) {
         $.ajax({
             type: "POST",
-            url: "../business/GetCourseByArea.php",
+            url: "../business/GetFreeCourseByArea.php",
             data: {"area": area},
             success: function (data)
             {
@@ -299,16 +301,16 @@ include './reusable/Footer.php';
                 $.each(courses, function (i, item) {
                     htmlCourse += "<tr>";
                     htmlCourse += "<td>";
-                    htmlCourse += '<input value="' + item.courseid + '" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />';
+                    htmlCourse += '<input value="' + item.id + '" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />';
                     htmlCourse += "</td>";
-                    htmlCourse += "<td>" + item.coursecode + "</td>";
-                    htmlCourse += '<td><a href="InformationFreeCourse.php?id=' + item.courseid + '">' + item.coursename + '</a></td>';
-                    htmlCourse += "<td>" + item.coursecredits + "</td>";
-                    htmlCourse += "<td>" + item.courselesson + "</td>";
-                    htmlCourse += "<td>" + item.enrollmentdate + "</td>";
+                    htmlCourse += "<td>" + item.cod + "</td>";
+                    htmlCourse += '<td><a href="InformationFreeCourse.php?id=' + item.id + '">' + item.name + '</a></td>';
+                    htmlCourse += "<td>" + item.area + "</td>";
+                    htmlCourse += "<td>" + item.day + "</td>";
+                    htmlCourse += "<td>" + item.hour + "</td>";
                     htmlCourse += "</tr>";
                 });
-                $("#tableFreeCourse").html(htmlCourse);
+                $("#freeCourseByArea").html(htmlCourse);
             },
             error: function ()
             {
@@ -317,9 +319,44 @@ include './reusable/Footer.php';
         });
     }
 
+//Matricular los módulos seleccionados y verificar que haya al menos uno seleccionado
+    function enrollment(id) {
+        var bool = false;
+        var modules = "";
 
+        $("input[name=check]").each(function (index) {
+            if ($(this).is(':checked')) {
+                bool = true;
+                modules += $(this).val() + ",";
+            }
+        });
 
+        if (bool) {
+            modules = modules.substr(0, modules.length - 1);
 
+            clearCheck();
+            assignCourseToStudent(modules);
+        } else {
+            /*
+             * @title {String or DOMElement} The dialog title.
+             * @message {String or DOMElement} The dialog contents.
+             * @onok {Function} Invoked when the user clicks OK button.
+             * @oncancel {Function} Invoked when the user clicks Cancel button or closes the dialog.
+             *
+             * alertify.confirm(title, message, onok, oncancel);
+             *
+             */
+            alertify.confirm('Ups!', 'Tiene que seleccionar al menos un módulo', function () {
+                alertify.success("Selecciona un módulo");
+                return;
+            }
+            , function () {
+                alertify.success("Selecciona un módulo");
+                return;
+            });
+        }
+
+    }
 
 
     //Cargar el historial academico del estudiante
@@ -371,49 +408,7 @@ include './reusable/Footer.php';
         );
     }
 
-    //Matricular los módulos seleccionados y verificar que haya al menos uno seleccionado
-    function enrollment(id) {
-        var bool = false;
-        var coursePeriod = "";
-        var modules = "";
-        var periods = "";
 
-        $("input[name=check]").each(function (index) {
-            if ($(this).is(':checked')) {
-                bool = true;
-                coursePeriod = $(this).val().split("-");
-                modules += coursePeriod[0] + ",";
-                periods += coursePeriod[1] + ",";
-            }
-        });
-
-        if (bool) {
-            modules = modules.substr(0, modules.length - 1);
-            periods = periods.substr(0, periods.length - 1);
-
-            clearCheck();
-            assignCourseToStudent(modules, periods);
-        } else {
-            /*
-             * @title {String or DOMElement} The dialog title.
-             * @message {String or DOMElement} The dialog contents.
-             * @onok {Function} Invoked when the user clicks OK button.
-             * @oncancel {Function} Invoked when the user clicks Cancel button or closes the dialog.
-             *
-             * alertify.confirm(title, message, onok, oncancel);
-             *
-             */
-            alertify.confirm('Ups!', 'Tiene que seleccionar al menos un módulo', function () {
-                alertify.success("Selecciona un módulo");
-                return;
-            }
-            , function () {
-                alertify.success("Selecciona un módulo");
-                return;
-            });
-        }
-
-    }
 
     //Matricular los módulos con AJAX
     function assignCourseToStudent(modules, periods) {
@@ -741,7 +736,11 @@ include './reusable/Footer.php';
     //Logica del select de grupo
     $('#area').on('change', function () {
         if ($(this).val() !== "0") {
-
+            $("#freeCourseByArea").html("");
+            $("#labelArea").html("Cursos de " + $("#area option:selected").html());
+            loadCourseByArea($(this).val());
+            $("#showCourses").show();
+            $("#enrollmentAction").show();
         } else {
             clearCheck();
             hideDiv();

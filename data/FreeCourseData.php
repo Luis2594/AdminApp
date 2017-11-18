@@ -8,8 +8,8 @@ require_once '../domain/FreeCourse.php';
  *
  * @author luis
  */
-class FreeCourseData extends ConnectorEmergent{
-    
+class FreeCourseData extends ConnectorEmergent {
+
     public function insert($course) {
         $query = "call courseInsert('" . $course->getCod() . "',"
                 . "'" . $course->getDescription() . "',"
@@ -22,7 +22,7 @@ class FreeCourseData extends ConnectorEmergent{
             $result = $this->exeQuery($query);
             $array = mysqli_fetch_array($result);
             $id = trim($array[0]);
-            
+
             return $id;
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
@@ -47,7 +47,7 @@ class FreeCourseData extends ConnectorEmergent{
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-    
+
     public function delete($id) {
         $query = 'call courseDelete("' . $id . '");';
         try {
@@ -60,7 +60,7 @@ class FreeCourseData extends ConnectorEmergent{
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-    
+
     public function getAll() {
         $query = "call courseAll()";
         try {
@@ -69,14 +69,7 @@ class FreeCourseData extends ConnectorEmergent{
             if (mysqli_num_rows($allCourses) > 0) {
                 while ($row = mysqli_fetch_array($allCourses)) {
                     $currentCourse = new FreeCourse(
-                            $row['pk'], 
-                            $row['cod'], 
-                            $row['description'], 
-                            $row['fkarea'], 
-                            $row['daynumber'], 
-                            $row['fkhour'], 
-                            $row['datastate'], 
-                            $row['usertransacction']);
+                            $row['pk'], $row['cod'], $row['description'], $row['fkarea'], $row['daynumber'], $row['fkhour'], $row['datastate'], $row['usertransacction']);
                     array_push($array, $currentCourse);
                 }
             }
@@ -85,9 +78,10 @@ class FreeCourseData extends ConnectorEmergent{
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-    
+
     public function getCourseById($id) {
-         $query = 'call courseAll("' . $id . '");';
+        $query = 'call courseAll("' . $id . '");';
+
         try {
             $allCourses = $this->exeQuery($query);
 //            $array = [];
@@ -95,14 +89,7 @@ class FreeCourseData extends ConnectorEmergent{
             if (mysqli_num_rows($allCourses) > 0) {
                 while ($row = mysqli_fetch_array($allCourses)) {
                     $currentCourse = new FreeCourse(
-                            $row['pk'], 
-                            $row['cod'], 
-                            $row['description'], 
-                            $row['fkarea'], 
-                            $row['daynumber'], 
-                            $row['fkhour'], 
-                            $row['datastate'], 
-                            $row['usertransacction']);
+                            $row['pk'], $row['cod'], $row['description'], $row['fkarea'], $row['fkdaynumber'], $row['fkhour'], $row['datastate'], $row['usertransacction']);
 //                    array_push($array, $currentStudent);
                 }
             }
@@ -111,34 +98,37 @@ class FreeCourseData extends ConnectorEmergent{
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-    
+
     public function getCourseByArea($area) {
-         $query = 'call courseAll("' . $area . '");';
+         $query = 'call courseByArea("' . $area . '");';
         try {
             $allCourses = $this->exeQuery($query);
-//            $array = [];
-            $currentCourse = null;
+            $array = [];
             if (mysqli_num_rows($allCourses) > 0) {
                 while ($row = mysqli_fetch_array($allCourses)) {
-                    $currentCourse = new FreeCourse(
-                            $row['pk'], 
-                            $row['cod'], 
-                            $row['description'], 
-                            $row['fkarea'], 
-                            $row['daynumber'], 
-                            $row['fkhour'], 
-                            $row['datastate'], 
-                            $row['usertransacction']);
-//                    array_push($array, $currentStudent);
+//                    $array[] = array(
+//                        "cod"=>$row['cod'],
+//                        "name"=>$row['description'],
+//                        "area"=>$row['area'],
+//                        "day"=>$row['hour'],
+//                        "hour"=>$row['day']
+//                    );
+                    $array[] = array(
+                        "id" => $row['pk'],
+                        "cod" => $row['cod'],
+                        "name" => utf8_encode($row['description']),
+                        "area" => utf8_encode($row['area']),
+                        "day" => utf8_encode($row['days']),
+                        "hour" => $row['hours']
+                    );
                 }
             }
-            return $currentCourse;
+            return $array;
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-    
-    
+
     public function confirmCode($code) {
         $query = "call confirmCode('" . $code . "')";
         try {
@@ -150,5 +140,5 @@ class FreeCourseData extends ConnectorEmergent{
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-    
+
 }
