@@ -6,8 +6,8 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowStudentUpdate.php"><i class="fa fa-arrow-circle-right"></i>Actualizar Estudiantes</a></li>
-        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Actualizar Estudiante</a></li>
+        <li><a href="ShowStudentsEmergent.php?update=update"><i class="fa fa-arrow-circle-right"></i>Actualizar Estudiantes Emergentes</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Actualizar Estudiante Emergente</a></li>
     </ol>
 </section>
 <br>
@@ -20,46 +20,40 @@ include './reusable/Header.php';
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Información Estudiante</h3>
+                    <h3 class="box-title">Información Estudiante Emergente</h3>
                 </div><!-- /.box-header -->
 
                 <?php
-                include '../business/StudentBusiness.php';
+                include '../business/StudentEmergentBusiness.php';
 
-                $studentBusiness = new StudentBusiness();
+                $studentEmergentBusiness = new StudentEmergentBusiness();
                 $id = (int) $_GET['id'];
-                $students = $studentBusiness->getStudentId($id);
+                $student = $studentEmergentBusiness->getStudentById($id);
                 $bool = false;
-                foreach ($students as $student) {
                     ?>
-                    <!-- form start -->
-                    <form role="form" id="formStudent" action="../business/UpdateStudentAction.php" method="POST" enctype="multipart/form-data">
+                    <!-- FORM UPDATE STUDENT EMERGENT -->
+                    <form role="form" id="formStudent" action="../business/UpdateStudentEmergentAction.php" method="POST" enctype="multipart/form-data">
                         <div class="box-body">
                             <!--DNI-->
                             <div class="form-group">
                                 <label>Cédula</label>
-                                <input id="dni" name="dni" type="number" class="form-control" placeholder="Cédula" required="" value="<?php echo $student->getPersonDni() ?>"  />
+                                <input id="dni" name="dni" type="number" class="form-control" placeholder="Cédula" required="" value="<?php echo $student->getDni() ?>"  />
                             </div>
                             <!--NAME-->
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required="" value="<?php echo $student->getPersonFirstName() ?>"  />
+                                <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required="" value="<?php echo $student->getFirstname() ?>"  />
                             </div>
                             <!--FIRSTLASTNAME-->
                             <div class="form-group">
                                 <label>Primer Apellido</label>
-                                <input id="firstlastname" name="firstlastname" type="text" class="form-control" placeholder="Primer apellido" required="" value="<?php echo $student->getPersonFirstlastname() ?>"  />
+                                <input id="firstlastname" name="firstlastname" type="text" class="form-control" placeholder="Primer apellido" required="" value="<?php echo $student->getFirstlastname() ?>"  />
                             </div>
                             <!--SECONDLASTNAME-->
                             <div class="form-group">
                                 <label>Segundo Apellido</label>
-                                <input id="secondlastname" name="secondlastname" type="text" class="form-control" placeholder="Segundo apellido" required="" value="<?php echo $student->getPersonSecondlastname() ?>"  />
+                                <input id="secondlastname" name="secondlastname" type="text" class="form-control" placeholder="Segundo apellido" required="" value="<?php echo $student->getSecondlastname() ?>"  />
                             </div>
-                            <!--EMAIL-->
-                            <!--                        <div class="form-group">
-                                                        <label for="exampleInputEmail1">Email address</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="Enter email">
-                                                    </div>-->
                             <!-- BIRTHDATE -->
                             <div class="form-group">
                                 <label>Fecha de nacimiento:</label>
@@ -67,19 +61,19 @@ include './reusable/Header.php';
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input id="birthdate" name="birthdate" type="text" class="form-control" value="<?php echo date("d/m/Y", strtotime($student->getPersonBirthday())); ?>" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
+                                    <input id="birthdate" name="birthdate" type="text" class="form-control" value="<?php echo date("d/m/Y", strtotime($student->getBirthdate())); ?>" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
                                 </div><!-- /.input group -->
                             </div><!-- /.form group -->
                             <!--AGE-->
-                            <div class="form-group">
-                                <label>Edad</label>
-                                <input id="age" name="age" type="number" class="form-control" placeholder="Edad" required="" value="<?php echo $student->getPersonAge() ?>" readonly />
-                            </div>
+<!--                            <div class="form-group">
+                                <label>Año de matrícula</label>
+                                <input id="age" name="age" type="number" class="form-control" placeholder="Edad" required="" value="<?php // echo $student->getEnrollmentyear() ?>"  />
+                            </div>-->
                             <!--GENDER-->
                             <div class="form-group">
                                 <label>Género</label>
                                 <?php
-                                if ($student->getPersonGender() == "1") {
+                                if ($student->getGender() == "M") {
                                     ?>
                                     <div class="radio">
                                         <label>
@@ -115,121 +109,34 @@ include './reusable/Header.php';
                             <!--NATIONALITY-->
                             <div class="form-group">
                                 <label>Nacionalidad</label>
-                                <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required="" value="<?php echo $student->getPersonNacionality() ?>" />
+                                <input id="nationality" name="nationality" type="text" class="form-control" placeholder="Nacionalidad" required="" value="<?php echo $student->getNationality() ?>" />
                             </div>
-                            <!--ADECUACY-->
-                            <div class="form-group">
-                                <label>Adecuación</label>
-                                <?php
-                                if ($student->getStudentAdecuacy() == "0") {
-                                    ?>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy1" name="adecuacy1" value="0" checked>
-                                            Sin adecuación
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy2" name="adecuacy2" value="1">
-                                            Adecuación NO significativa
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy3" name="adecuacy3" value="2">
-                                            Adecuación significativa
-                                        </label>
-                                    </div>
-                                    <?php
-                                }
-
-                                if ($student->getStudentAdecuacy() == "1") {
-                                    ?>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy1" name="adecuacy1" value="0" >
-                                            Sin adecuación
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy2" name="adecuacy2" value="1" checked>
-                                            Adecuación NO significativa
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy3" name="adecuacy3" value="2">
-                                            Adecuación significativa
-                                        </label>
-                                    </div>
-                                    <?php
-                                }
-
-                                if ($student->getStudentAdecuacy() == "2") {
-                                    ?>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy1" name="adecuacy1" value="0" >
-                                            Sin adecuación
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy2" name="adecuacy2" value="1" >
-                                            Adecuación NO significativa
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="adecuacy" id="adecuacy3" name="adecuacy3" value="2" checked>
-                                            Adecuación significativa
-                                        </label>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                            <!--YEARINCOME-->
-                            <div class="form-group">
-                                <label>Año de ingreso</label>
-                                <input id="yearIncome" name="yearIncome" type="number" class="form-control" placeholder="Año de ingreso" required="" value="<?php echo $student->getStudentYearIncome() ?>"  />
-                            </div>
-                            <!--YEAROUT-->
-                            <!--                            <div class="form-group">
-                                                            <label>Año de salida</label>
-                                                            <input id="yearOut" name="yearOut" type="number" class="form-control" placeholder="Año de ingreso" required="" value="<?php echo $student->getStudentYearOut() ?>"  />
-                                                        </div>-->
                             <!--LOCALITATION-->
                             <div>
                                 <label>Localización</label>
-                                <input id="localitation" name="localitation" class="form-control" rows="3" placeholder="Localización ..." required="" value="<?php echo $student->getStudentLocation() ?>"  />
+                                <input id="localitation" name="localitation" class="form-control" rows="3" placeholder="Localización ..." required="" value="<?php echo $student->getAddress() ?>"  />
                             </div>
-                            <!--Group-->
-                            <!--                            <div class="form-group">
-                                                            <label>Grupo</label>
-                                                            <input id="group" name="group" type="text" class="form-control" placeholder="Grupo" required="" value="<?php echo $student->getStudentgroup() ?>"  />
-                                                        </div>-->
                             <!--MANAGER-->
                             <div class="form-group">
                                 <label>Encargado</label>
-                                <input id="managerStudent" name="managerStudent" type="text" class="form-control" placeholder="Encargado" required="" value="<?php echo $student->getStudentManager() ?>"  />
+                                <input id="managerStudent" name="managerStudent" type="text" class="form-control" placeholder="Encargado" required="" value="<?php echo $student->getResponsable() ?>"  />
                             </div>
-                            <input id="dniTemp" value="<?php echo $student->getPersonDni() ?>">
+                            <input id="dniTemp" value="<?php echo $student->getDni() ?>">
                             <input id="id" name="id" value="<?php echo $id ?>">
                         </div><!-- /.box-body -->
                     </form>
 
+                    <!--BUTTON UPDATE-->
                     <div class="pull-left">
                         <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
                     </div>
+                    
+                    <!--BUTTON BACK-->
                     <div class="pull-right">
                         <button onclick="backPage(<?php echo $id ?>);" class="btn btn-primary">Atrás</button>
                     </div>
 
                     <?php
-                }//fin del for
                 ?>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
@@ -303,8 +210,6 @@ include './reusable/Footer.php';
         var secondlastname = $('#secondlastname').val();
         var birthdate = $('#birthdate').val();
         var nationality = $('#nationality').val();
-        var yearIncome = $('#yearIncome').val();
-//        var yearOut = $('#yearOut').val();
         var managerStudent = $('#managerStudent').val();
         var direction = $('#localitation').val();
 
@@ -342,22 +247,7 @@ include './reusable/Footer.php';
             alertify.error("Verifique la nacionalidad");
             return false;
         }
-
-        if (!isInteger(yearIncome)) {
-            alertify.error("Verifique el año de ingreso");
-            return false;
-        }
-
-//        if (!isInteger(yearOut)) {
-//            alertify.error("Verifique el año de salida");
-//            return false;
-//        }
-
-//        if ((yearIncome <= 2015) || (yearIncome >= 10000)){
-//            alertify.error("Verifique el año de ingreso");
-//            return false;
-//        }
-
+        
         if (managerStudent.length === 0) {
             alertify.error("Verifique el nombre del encargado");
             return false;
@@ -398,7 +288,7 @@ include './reusable/Footer.php';
     function confirmDni(dni) {
         $.ajax({
             type: 'GET',
-            url: "../business/ConfirmDni.php",
+            url: "../business/ConfirmDniEmergent.php",
             data: {"dni": dni},
             success: function (data)
             {
@@ -416,6 +306,6 @@ include './reusable/Footer.php';
     }
 
     function backPage(id) {
-        window.location = "InformationStudent.php?id=" + id;
+        window.location = "InformationStudentEmergent.php?id=" + id;
     }
 </script>

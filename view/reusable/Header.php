@@ -314,6 +314,51 @@ include_once '../resource/Constants.php';
                             </ul>
                         </li>
 
+
+                        <!--EMERGIN ENROLLMENT-->
+                        <li class="treeview">
+                            <a>
+                                <i class="fa"></i> <span>Matrícula Emergente</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a><i class="fa"></i> Matrícula Emergente<i class="fa fa-angle-left pull-right"></i></a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="./ShowStudentsEmergent.php?enrollment=enrollment"><i class="fa"></i> Matricular</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa"></i> Estudiantes Emergentes <i class="fa fa-angle-left pull-right"></i></a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="./ShowStudentsEmergent.php"><i class="fa"></i> Ver estudiantes</a></li>
+                                        <li><a href="./CreateStudentEmergent.php"><i class="fa"></i> Crear estudiante</a></li>
+                                        <li><a href="./ShowStudentsEmergent.php?update=update"><i class="fa"></i> Actualizar estudiante</a></li>
+                                        <li><a href="./ShowStudentsEmergent.php?delete=delete"><i class="fa"></i> Eliminar estudiante</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa"></i> Cursos Libres <i class="fa fa-angle-left pull-right"></i></a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="#"><i class="fa"></i> Ver cursos libres</a></li>
+                                        <li><a href="./CreateFreeCourse.php"><i class="fa"></i> Crear curso libre</a></li>
+                                        <li><a href="#"><i class="fa"></i> Actualizar curso libre</a></li>
+                                        <li><a href="#"><i class="fa"></i> Eliminar curso libre</a></li>
+                                    </ul>
+                                </li>
+                                 <li>
+                                    <a><i class="fa"></i> Áreas <i class="fa fa-angle-left pull-right"></i></a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="./ShowArea.php"><i class="fa"></i> Ver áreas</a></li>
+                                        <li><a href="./CreateArea.php"><i class="fa"></i> Crear área</a></li>
+                                        <li><a href="./ShowArea.php?update=update"><i class="fa"></i> Actualizar área</a></li>
+                                        <li><a href="./ShowArea.php?delete=delete"><i class="fa"></i> Eliminar área</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </section>
                 <!-- /.sidebar -->
