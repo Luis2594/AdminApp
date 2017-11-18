@@ -317,6 +317,11 @@ include './reusable/Footer.php';
         });
     }
 
+
+
+
+
+
     //Cargar el historial academico del estudiante
     function loadAcademicHistorial() {
         $.ajax({

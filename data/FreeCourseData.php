@@ -87,7 +87,33 @@ class FreeCourseData extends ConnectorEmergent{
     }
     
     public function getCourseById($id) {
-         $query = 'call personDelete("' . $id . '");';
+         $query = 'call courseAll("' . $id . '");';
+        try {
+            $allCourses = $this->exeQuery($query);
+//            $array = [];
+            $currentCourse = null;
+            if (mysqli_num_rows($allCourses) > 0) {
+                while ($row = mysqli_fetch_array($allCourses)) {
+                    $currentCourse = new FreeCourse(
+                            $row['pk'], 
+                            $row['cod'], 
+                            $row['description'], 
+                            $row['fkarea'], 
+                            $row['daynumber'], 
+                            $row['fkhour'], 
+                            $row['datastate'], 
+                            $row['usertransacction']);
+//                    array_push($array, $currentStudent);
+                }
+            }
+            return $currentCourse;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+    
+    public function getCourseByArea($area) {
+         $query = 'call courseAll("' . $area . '");';
         try {
             $allCourses = $this->exeQuery($query);
 //            $array = [];
