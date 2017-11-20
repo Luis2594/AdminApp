@@ -115,8 +115,8 @@ include './reusable/Footer.php';
             alertify.error("Verifique el nombre del curso");
             return false;
         }
-
-        confirmCode(code);
+        $("#formCourse").submit();
+//        confirmCode(code);
     }
 //
     function isInteger(number) {

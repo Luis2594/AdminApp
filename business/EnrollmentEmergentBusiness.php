@@ -36,5 +36,9 @@ class EnrollmentEmergentBusiness {
     public function enrollmentByPerson($idStudent) {
         return $this->data->enrollmentByPerson($idStudent);
     }
+    
+    public function enrollmentCourseByPerson($idStudent) {
+        return $this->data->enrollmentCourseByPerson($idStudent);
+    }
 
 }

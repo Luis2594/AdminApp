@@ -106,4 +106,27 @@ class EnrollmentEmergentData extends ConnectorEmergent{
         }
     }
     
+    public function enrollmentCourseByPerson($idStudent) {
+         $query = 'call enrollmentCourseByPerson("' . $idStudent . '");';
+        try {
+            $allCourses = $this->exeQuery($query);
+            $array = [];
+            if (mysqli_num_rows($allCourses) > 0) {
+                while ($row = mysqli_fetch_array($allCourses)) {
+                    $array[] = array(
+                        "enrollment" => $row['enrollment'],
+                        "cod" => $row['cod'],
+                        "name" => utf8_encode($row['description']),
+                        "area" => utf8_encode($row['area']),
+                        "day" => utf8_encode($row['days']),
+                        "hour" => $row['hours'],
+                        "year" => $row['enrollmentyear']
+                    );
+                }
+            }
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
 }

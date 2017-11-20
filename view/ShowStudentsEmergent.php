@@ -60,6 +60,7 @@ $delete = $_GET['delete'];
                                     <?php
                                     if (isset($update) && $update == "update") {
                                         ?>
+                                        <th>Teléfonos</th>
                                         <th>Actualizar</th>
                                     <?php } ?>
                                     <?php
@@ -110,6 +111,7 @@ $delete = $_GET['delete'];
                                         <?php
                                         if (isset($update) && $update == "update") {
                                             ?>
+                                        <td><a href="UpdatePhonesEmergent.php?id=<?php echo $student->getPk(); ?>">Télefonos</a></td>
                                         <td><a href="UpdateStudentEmergent.php?id=<?php echo $student->getPk(); ?>">Actualizar</a></td>
                                             <?php
                                         }
@@ -144,6 +146,7 @@ $delete = $_GET['delete'];
                                     <?php
                                     if (isset($update) && $update == "update") {
                                         ?>
+                                        <th>Teléfonos</th>
                                         <th>Actualizar</th>
                                     <?php } ?>
                                     <?php
