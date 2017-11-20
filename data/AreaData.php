@@ -13,8 +13,8 @@ class AreaData extends ConnectorEmergent {
     //put your code here
 
     public function insert($area) {
-        $query = "call insertAdminCredentials('" . $person . "',"
-                . "'" . $pass . "')";
+        $query = "call insertArea('" . $description . "','"
+                . $datastate ."','" . $usertransacction . "')";
         try {
             $result = $this->exeQuery($query);
             $array = mysqli_fetch_array($result);
@@ -26,9 +26,9 @@ class AreaData extends ConnectorEmergent {
         }
     }
 
-    public function update($person, $pass) {
-        $query = "call updateAdmin('" . $person . "',"
-                . "'" . $pass . "')";
+    public function update($area) {
+        $query = "call updateArea('" . $pk . "','"
+                . $description ."','". $datastate ."','" . $usertransacction . "')";
         try {
             $result = $this->exeQuery($query);
             $array = mysqli_fetch_array($result);
@@ -44,9 +44,12 @@ class AreaData extends ConnectorEmergent {
         try {
             $allAreas = $this->exeQuery($query);
             $array = [];
-            while ($row = mysqli_fetch_array($allAreas)) {
-//                $array[] = array("id" => $row['pk'],
-//                    "name" => $row['description']);
+            if (mysqli_num_rows($allAreas) > 0) {
+                while ($row = mysqli_fetch_array($allAreas)) {
+                    $currentArea = new Area(
+                            $row['pk'], $row['dni'], $row['description'], $row['datastate'], $row['usertransacction']);
+                    array_push($array, $currentArea);
+                }
             }
             return $array;
         } catch (Exception $ex) {
@@ -69,8 +72,8 @@ class AreaData extends ConnectorEmergent {
         }
     }
 
-    public function delete($id) {
-        $query = 'call deleteCourse("' . $id . '");';
+    public function delete($pk) {
+        $query = 'call deleteArea("' . $pk . '");';
         try {
             if ($this->exeQuery($query)) {
                 return TRUE;
