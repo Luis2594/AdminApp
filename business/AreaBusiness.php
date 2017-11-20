@@ -11,30 +11,30 @@ class AreaBusiness {
 
     //put your code here
 
-    private $data;
+    private $areaData;
 
     public function AreaBusiness() {
-        return $this->data = new AreaData();
+        return $this->areaData = new AreaData();
     }
 
-    public function insert($course) {
-        
+    public function insert($area) {
+        return $this->areaData->insert($area);
     }
 
-    public function update($course) {
-        
+    public function update($area) {
+        return $this->areaData->update($area);
     }
 
-    public function delete($id) {
-        
+    public function delete($pk) {
+        return $this->areaData->delete($pk);
     }
 
     public function getAll() {
-        return $this->data->getAll();
+        return $this->areaData->getAll();
     }
 
     public function getAllToSelect() {
-        return $this->data->getAllToSelect();
+        return $this->areaData->getAllToSelect();
     }
 
 }
