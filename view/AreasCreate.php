@@ -32,8 +32,8 @@ include './reusable/Header.php';
                         </div>
                     </div><!-- /.box-body -->
                 </form>
-                <div class="box-footer">
-                    <button onclick="valueInputs();" class="btn btn-primary">Crear</button>
+                <div class="box-footer btn-group btn-group-justified">
+                    <a type="button" class="btn btn-success" href="javascript:valueInputs()">Crear</a>
                 </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->

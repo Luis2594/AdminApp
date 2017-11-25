@@ -211,8 +211,8 @@ include_once '../resource/Constants.php';
                                 <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="./ShowNotifications.php"><i class="fa"></i>Ver Notificaciones</a></li>
-                                <li><a href="./CreateNotification.php"><i class="fa"></i>Crear Notificaciones</a></li>
+                                <li><a href="./NotificationsShow.php"><i class="fa"></i>Ver Notificaciones</a></li>
+                                <li><a href="./NotificationsCreate.php"><i class="fa"></i>Crear Notificaciones</a></li>
                             </ul>
                         </li>
 

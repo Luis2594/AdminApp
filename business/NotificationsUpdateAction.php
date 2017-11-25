@@ -10,11 +10,11 @@ if(isset($text) && $text != ""){
     $notification = new Notification($id, $text,NULL, NULL, NULL, NULL, NULL, NULL );
     
     if($notificationBusiness->updateGeneralNotification($notification) != 0){
-        header("location: ../view/ShowNotifications.php?action=1&msg=Registro_actualizado_correctamente");
+        header("location: ../view/NotificationsShow.php?action=1&msg=Registro_actualizado_correctamente");
     }else{
-        header("location: ../view/ShowNotifications.php?action=0&msg=RActualización_fallida");
+        header("location: ../view/NotificationsUpdate.php?id=".$id."&action=0&msg=Actualización_fallida");
     }
 }else{
     //error
-    header("location: ../view/ShowNotifications.php?action=0&msg=Error_en_los_datos");
+    header("location: ../view/NotificationsUpdate.php?id=".$id."&action=0&msg=Error_en_los_datos");
 }

@@ -33,20 +33,16 @@ include './reusable/Header.php';
                 foreach ($notifications as $notification) {
                     ?>
                     <!-- form start -->
-                    <form role="form" id="formNotification" action="../business/UpdateNotificationAction.php" method="POST" enctype="multipart/form-data">
+                    <form role="form" id="formNotification" action="../business/NotificationsUpdateAction.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id" value="<?php echo $notification->getNotificationId() ?>"/>
                         <div class="form-group">
                             <textarea id="text" name="text" class="form-control" rows="3" placeholder="Notificación"><?php echo $notification->getNotificationText() ?></textarea>
                         </div>
                     </form>
-
-                    <div class="pull-left">
-                        <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
+                    <div class="box-footer btn-group btn-group-justified">
+                        <a type="button" class="btn btn-success" href="javascript:valueInputs()">Actualizar</a>
+                        <a type="button" class="btn btn-primary" href="javascript:backPage()">Atrás</a>
                     </div>
-                    <div class="pull-right">
-                        <button onclick="backPage(<?php echo $id ?>);" class="btn btn-primary">Atrás</button>
-                    </div>
-
                     <?php
                     break;
                 }//fin del for
@@ -118,7 +114,7 @@ include './reusable/Footer.php';
         $("#formNotification").submit();
     }
 
-    function backPage(id) {
-        window.location = "ShowNotifications.php";
+    function backPage() {
+        window.location = "NotificationsShow.php";
     }
 </script>
