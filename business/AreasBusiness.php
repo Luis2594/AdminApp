@@ -1,20 +1,18 @@
 <?php
 
-include_once '../data/AreaData.php';
+include_once '../data/AreasData.php';
 
 /**
  * Description of AreaBusiness
  *
- * @author luis
+ * @author Kevin ESquivel Marín <kevinesquivel21@gmail.com>
  */
-class AreaBusiness {
-
-    //put your code here
+class AreasBusiness {
 
     private $areaData;
 
-    public function AreaBusiness() {
-        return $this->areaData = new AreaData();
+    public function AreasBusiness() {
+        return $this->areaData = new AreasData();
     }
 
     public function insert($area) {
@@ -28,13 +26,12 @@ class AreaBusiness {
     public function delete($pk) {
         return $this->areaData->delete($pk);
     }
+    
+    public function getByPk($pk) {
+        return $this->areaData->getByPk($pk);
+    }
 
     public function getAll() {
         return $this->areaData->getAll();
     }
-
-    public function getAllToSelect() {
-        return $this->areaData->getAllToSelect();
-    }
-
 }

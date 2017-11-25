@@ -8,13 +8,10 @@ include '../domain/Area.php';
  *
  * @author luis
  */
-class AreaData extends ConnectorEmergent {
-
-    //put your code here
+class AreasData extends ConnectorEmergent {
 
     public function insert($area) {
-        $query = "call insertArea('" . $description . "','"
-                . $datastate ."','" . $usertransacction . "')";
+        $query = "call areasInsert('" . $area->getDescription() . "','" . $area->getUsertransacction() . "');";
         try {
             $result = $this->exeQuery($query);
             $array = mysqli_fetch_array($result);
@@ -27,8 +24,8 @@ class AreaData extends ConnectorEmergent {
     }
 
     public function update($area) {
-        $query = "call updateArea('" . $pk . "','"
-                . $description ."','". $datastate ."','" . $usertransacction . "')";
+        $query = "call areasUpdate(" . $area->getPk() . ",'".$area->getDescription() . "',"
+                . $area->getDatastate() .",'" . $area->getUsertransacction() . "');";
         try {
             $result = $this->exeQuery($query);
             $array = mysqli_fetch_array($result);
@@ -40,14 +37,13 @@ class AreaData extends ConnectorEmergent {
     }
 
     public function getAll() {
-        $query = "SELECT * FROM areas";
+        $query = "call areasAll();";
         try {
             $allAreas = $this->exeQuery($query);
             $array = [];
             if (mysqli_num_rows($allAreas) > 0) {
                 while ($row = mysqli_fetch_array($allAreas)) {
-                    $currentArea = new Area(
-                            $row['pk'], $row['dni'], $row['description'], $row['datastate'], $row['usertransacction']);
+                    $currentArea = new Area($row['pk'], $row['description'], $row['datastate'], $_SESSION["name"]);
                     array_push($array, $currentArea);
                 }
             }
@@ -56,24 +52,23 @@ class AreaData extends ConnectorEmergent {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-
-    public function getAllToSelect() {
-        $query = "SELECT * FROM areas";
+    
+    public function getByPk($pk) {
+        $query = 'call areasByPk(' . $pk . ');';
         try {
             $allAreas = $this->exeQuery($query);
-            $array = [];
-            while ($row = mysqli_fetch_array($allAreas)) {
-                $array[] = array("id" => utf8_encode($row['pk']),
-                    "name" => utf8_encode($row['description']));
+            if (mysqli_num_rows($allAreas) > 0) {
+                while ($row = mysqli_fetch_array($allAreas)) {
+                    return new Area($row['pk'], $row['description'], $row['datastate'], $_SESSION["name"]);
+                }
             }
-            return $array;
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
     public function delete($pk) {
-        $query = 'call deleteArea("' . $pk . '");';
+        $query = 'call areasDelete(' . $pk . ');';
         try {
             if ($this->exeQuery($query)) {
                 return TRUE;
@@ -84,5 +79,4 @@ class AreaData extends ConnectorEmergent {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-
 }

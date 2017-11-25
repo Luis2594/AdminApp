@@ -7,7 +7,8 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Crear Área</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Emergentes</a></li>
+        <li><a href="AreasCreate.php"><i class="fa fa-arrow-circle-right"></i>Crear Área</a></li>
     </ol>
 </section>
 <br>
@@ -23,11 +24,11 @@ include './reusable/Header.php';
                     <h3 class="box-title">Crear Área</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="formSpeciality" action="../business/CreateSpecialityAction.php" method="POST" enctype="multipart/form-data">
+                <form role="form" id="formCreateAreas" action="../business/AreasCreateAction.php" method="POST" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
-                            <label>Nombre del área</label>
-                            <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required=""/>
+                            <label>Descripción</label>
+                            <input id="description" name="description" type="text" class="form-control" placeholder="Descripción" required=""/>
                         </div>
                     </div><!-- /.box-body -->
                 </form>
@@ -72,13 +73,13 @@ include './reusable/Footer.php';
     }
 
     function valueInputs() {
-        var name = $('#name').val();
+        var name = $('#description').val();
         if (name.length === 0) {
-            alertify.error("Verifique el nombre de la atinencia o especialidad");
+            alertify.error("Verifique la descripción");
             return false;
         }
 
-        $("#formSpeciality").submit();
+        $("#formCreateAreas").submit();
     }
 
 </script>
