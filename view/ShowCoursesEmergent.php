@@ -58,28 +58,28 @@ $delete = $_GET['delete'];
                         </thead>
                         <tbody>
                             <?php
-                            include '../business/CourseBusiness.php';
-                            $coursesBusiness = new CourseBusiness();
+                            include '../business/FreeCourseBusiness.php';
+                            $coursesBusiness = new FreeCourseBusiness();
 
                             $courses = $coursesBusiness->getAll();
 
                             foreach ($courses as $course) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $course->getCourseCode(); ?></td>
-                                    <td><a href="InformationCourse.php?id=<?php echo $course->getCourseId() ?>"><?php echo $course->getCourseName(); ?></a></td>
-                                    <td><?php echo $course->getCourseCredits(); ?></td>
-                                    <td><?php echo $course->getCourseLesson(); ?></td>
-                                    <td><?php echo $course->getSpecialityname(); ?></td>
+                                    <td><?php echo $course->getCod(); ?></td>
+                                    <td id="name<?php echo $course->getPk(); ?>"><a href="InformationCourseEmergent.php?id=<?php echo $course->getPk() ?>"><?php echo $course->getDescription(); ?></a></td>
+                                    <td><?php echo $course->getFkarea(); ?></td>
+                                    <td><?php echo $course->getDaynumber(); ?></td>
+                                    <td><?php echo $course->getFkhour(); ?></td>
                                     <?php
                                     if (isset($update) && $update == "update") {
                                         ?>
-                                        <td><a href="InformationCourse.php?id=<?php echo $course->getCourseId() ?>">Actualizar</a></td>
+                                    <td><a href="UpdateCourseEmergent.php?id=<?php echo $course->getPk() ?>">Actualizar</a></td>
                                     <?php } ?>
                                     <?php
                                     if (isset($delete) && $delete == "delete") {
                                         ?>
-                                       <td><a href="InformationCourse.php?id=<?php echo $course->getCourseId() ?>">Eliminar</a></td>
+                                       <td><a href="javascript:deleteConfirmation(<?php echo $course->getPk(); ?>)" >Eliminar</a></td>
                                     <?php } ?>
 
                                 </tr>
@@ -122,5 +122,43 @@ include './reusable/Footer.php';
     $(function () {
         $("#example1").dataTable();
     });
+    
+    (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+    
+    function deleteConfirmation(id) {
+        alertify.confirm('Eliminar Curso Libre', '¿Desea eliminar el curso libre "' +
+                $("#name" + id).html() + " " +
+                '" de la lista de cursos libres?', function () {
+                    window.location = "../business/DeleteCourseEmergentAction.php?id=" + id;
+                }
+        , function () {
+            alertify.error('Cancelado');
+        });
+    }
+    
 </script>
 

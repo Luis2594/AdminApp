@@ -24,8 +24,8 @@ class AreasData extends ConnectorEmergent {
     }
 
     public function update($area) {
-        $query = "call areasUpdate(" . $area->getPk() . ",'".$area->getDescription() . "',"
-                . $area->getDatastate() .",'" . $area->getUsertransacction() . "');";
+        $query = "call areasUpdate(" . $area->getPk() . ",'" . $area->getDescription() . "',"
+                . $area->getDatastate() . ",'" . $area->getUsertransacction() . "');";
         try {
             $result = $this->exeQuery($query);
             $array = mysqli_fetch_array($result);
@@ -43,7 +43,7 @@ class AreasData extends ConnectorEmergent {
             $array = [];
             if (mysqli_num_rows($allAreas) > 0) {
                 while ($row = mysqli_fetch_array($allAreas)) {
-                    $currentArea = new Area($row['pk'], $row['description'], $row['datastate'], $_SESSION["name"]);
+                    $currentArea = new Area($row['pk'], utf8_decode($row['description']), $row['datastate'], $_SESSION["name"]);
                     array_push($array, $currentArea);
                 }
             }
@@ -52,7 +52,26 @@ class AreasData extends ConnectorEmergent {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-    
+
+    public function getAllToSelect() {
+        $query = "call areasAll();";
+        try {
+            $allAreas = $this->exeQuery($query);
+            $array = [];
+            if (mysqli_num_rows($allAreas) > 0) {
+                while ($row = mysqli_fetch_array($allAreas)) {
+                    $array[] = array("id" => $row['pk'],
+                        "name" => utf8_encode($row['description']),
+                        "datastate" => $row['datastate'],
+                        "system" => $_SESSION["name"]);
+                }
+            }
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
     public function getByPk($pk) {
         $query = 'call areasByPk(' . $pk . ');';
         try {
@@ -79,4 +98,5 @@ class AreasData extends ConnectorEmergent {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
+
 }

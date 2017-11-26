@@ -40,7 +40,7 @@ if (isset($pk) && $pk != '' && is_int($pk)) {
                         <div class="box-body">
                             <div class="form-group">
                                 <label>Descripción</label>
-                                <input id="description" name="description" value="<?php echo $entity->getDescription(); ?>" type="text" class="form-control" placeholder="Nombre" required=""/>
+                                <input id="description" name="description" value="<?php echo utf8_decode($entity->getDescription()); ?>" type="text" class="form-control" placeholder="Nombre" required=""/>
                             </div>
                         </div><!-- /.box-body -->
                     </form>

@@ -17,6 +17,7 @@ class StudentEmergentBusiness {
         return $this->data = new StudentEmergentData();
     }
 
+
     public function insert($studentEmergent) {
         return $this->data->insert($studentEmergent);
     }
@@ -36,8 +37,8 @@ class StudentEmergentBusiness {
     public function getStudentById($id) {
         return $this->data->getStudentById($id);
     }
-    
-    public function confirmDni($dni){
+
+    public function confirmDni($dni) {
         return $this->data->confirmDni($dni);
     }
 

@@ -5,6 +5,7 @@ include_once '../resource/Constants.php';
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>Administración</title>
         <link rel="icon" type="image/png" href="./../resource/images/cindeaTurrialba.ico" />
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -185,135 +186,140 @@ include_once '../resource/Constants.php';
                     <ul class="sidebar-menu">
                         <li class="header">MENÚ</li>
 
-                        <!--ENROLLMENT-->
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Perfil</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./ShowProfile.php"><i class="fa"></i>Mi Perfil</a></li>
-                                <li><a href="./UpdatePassword.php"><i class="fa"></i>Cambiar Contraseña</a></li>
-                            </ul>
-                        </li>
+                        <?php
+                        if ($_SESSION['dni'] != "999999999") {
+                            ?>
 
-                        <!--ENROLLMENT-->
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Matrícula</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./ShowStudents.php?enrollment=enrollment"><i class="fa"></i>Matrícular</a></li>
-                            </ul>
-                        </li>
+                            <!--PROFILE-->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Perfil</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./ShowProfile.php"><i class="fa"></i>Mi Perfil</a></li>
+                                    <li><a href="./UpdatePassword.php"><i class="fa"></i>Cambiar Contraseña</a></li>
+                                </ul>
+                            </li>
 
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./NotificationsShow.php"><i class="fa"></i>Ver Notificaciones</a></li>
-                                <li><a href="./NotificationsCreate.php"><i class="fa"></i>Crear Notificaciones</a></li>
-                            </ul>
-                        </li>
+                            <!--ENROLLMENT-->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Matrícula</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./ShowStudents.php?enrollment=enrollment"><i class="fa"></i>Matrícular</a></li>
+                                </ul>
+                            </li>
 
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Administrador</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./ShowAdmins.php"><i class="fa"></i>Ver Administradores</a></li>
-                                <li><a href="./CreateAdmin.php"><i class="fa"></i>Crear Administrador</a></li>
-                            </ul>
-                        </li>
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./NotificationsShow.php"><i class="fa"></i>Ver Notificaciones</a></li>
+                                    <li><a href="./NotificationsCreate.php"><i class="fa"></i>Crear Notificaciones</a></li>
+                                </ul>
+                            </li>
 
-                        <!--TEACHER-->
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Profesores</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./ShowProfessors.php"><i class="fa"></i>Ver Profesores</a></li>
-                                <li><a href="./CreateProfessor.php"><i class="fa"></i>Crear Profesor</a></li>
-                                <li><a href="./ShowProfessors.php?assign=assign"><i class="fa"></i>Asignar módulos</a></li>
-                                <li><a href="./ShowProfessorUpdate.php"><i class="fa"></i>Actualizar Profesor</a></li>
-                                <li><a href="./ShowProfessorDelete.php"><i class="fa"></i>Eliminar Profesor</a></li>
-                            </ul>
-                        </li>
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Administrador</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./ShowAdmins.php"><i class="fa"></i>Ver Administradores</a></li>
+                                    <li><a href="./CreateAdmin.php"><i class="fa"></i>Crear Administrador</a></li>
+                                </ul>
+                            </li>
 
-                        <!--STUDENTS-->
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Estudiante</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./ShowStudents.php"><i class="fa"></i>Ver Estudiantes</a></li>
-                                <li><a href="./CreateStudent.php"><i class="fa"></i>Crear Estudiante</a></li>
-                                <li><a href="./ShowStudentUpdate.php"><i class="fa"></i>Actualizar Estudiante</a></li>
-                                <li><a href="./ShowStudentDelete.php"><i class="fa"></i>Eliminar Estudiante</a></li>
-                            </ul>
-                        </li>
+                            <!--TEACHER-->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Profesores</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./ShowProfessors.php"><i class="fa"></i>Ver Profesores</a></li>
+                                    <li><a href="./CreateProfessor.php"><i class="fa"></i>Crear Profesor</a></li>
+                                    <li><a href="./ShowProfessors.php?assign=assign"><i class="fa"></i>Asignar módulos</a></li>
+                                    <li><a href="./ShowProfessorUpdate.php"><i class="fa"></i>Actualizar Profesor</a></li>
+                                    <li><a href="./ShowProfessorDelete.php"><i class="fa"></i>Eliminar Profesor</a></li>
+                                </ul>
+                            </li>
 
-                        <!--SPECIALITIES-->
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Atinencia</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./ShowSpecialities.php"><i class="fa"></i>Ver Atinencia</a></li>
-                                <li><a href="./CreateSpeciality.php"><i class="fa"></i>Crear Atinencia</a></li>
-                                <li><a href="./ShowSpecialityUpdate.php"><i class="fa"></i>Actualizar Atinencia</a></li>
-                                <li><a href="./ShowSpecialityDelete.php"><i class="fa"></i>Eliminar Atinencia</a></li>
-                            </ul>
-                        </li>
+                            <!--STUDENTS-->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Estudiante</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./ShowStudents.php"><i class="fa"></i>Ver Estudiantes</a></li>
+                                    <li><a href="./CreateStudent.php"><i class="fa"></i>Crear Estudiante</a></li>
+                                    <li><a href="./ShowStudentUpdate.php"><i class="fa"></i>Actualizar Estudiante</a></li>
+                                    <li><a href="./ShowStudentDelete.php"><i class="fa"></i>Eliminar Estudiante</a></li>
+                                </ul>
+                            </li>
 
-                        <!--COURSES-->
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Módulos</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./ShowCourses.php"><i class="fa"></i>Ver Módulos</a></li>
-                                <li><a href="./CreateCourse.php"><i class="fa"></i>Crear Módulo</a></li>
-                                <li><a href="./ShowCourseUpdate.php"><i class="fa"></i>Actualizar Módulo</a></li>
-                                <li><a href="./ShowCourseDelete.php"><i class="fa"></i>Eliminar Módulo</a></li>
-                            </ul>
-                        </li>
+                            <!--SPECIALITIES-->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Atinencia</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./ShowSpecialities.php"><i class="fa"></i>Ver Atinencia</a></li>
+                                    <li><a href="./CreateSpeciality.php"><i class="fa"></i>Crear Atinencia</a></li>
+                                    <li><a href="./ShowSpecialityUpdate.php"><i class="fa"></i>Actualizar Atinencia</a></li>
+                                    <li><a href="./ShowSpecialityDelete.php"><i class="fa"></i>Eliminar Atinencia</a></li>
+                                </ul>
+                            </li>
 
-                        <!--CURRICULUM-->
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Malla curricular</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Malla Curricular</a></li>
-                                <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear Malla Curricular</a></li>
-                                <li><a href="./ShowCurriculum.php?assign=assign"><i class="fa"></i>Asignar Módulos a Malla</a></li>
-                                <li><a href="./ShowCurriculumUpdate.php"><i class="fa"></i>Actualizar Malla Curricular</a></li>
-                                <li><a href="./ShowCurriculumDelete.php"><i class="fa"></i>Eliminar Malla Curricular</a></li>
-                            </ul>
-                        </li>
+                            <!--COURSES-->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Módulos</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./ShowCourses.php"><i class="fa"></i>Ver Módulos</a></li>
+                                    <li><a href="./CreateCourse.php"><i class="fa"></i>Crear Módulo</a></li>
+                                    <li><a href="./ShowCourseUpdate.php"><i class="fa"></i>Actualizar Módulo</a></li>
+                                    <li><a href="./ShowCourseDelete.php"><i class="fa"></i>Eliminar Módulo</a></li>
+                                </ul>
+                            </li>
 
-                        <!--SCHEDULE-->
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Horarios</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class="active"><a href="./ShowSchedule.php"><i class="fa"></i>Ver Horarios</a></li>
-                                <li class="active"><a href="./CreateSchedule.php"><i class="fa"></i>Crear Horarios</a></li>
-                            </ul>
-                        </li>
+                            <!--CURRICULUM-->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Malla curricular</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Malla Curricular</a></li>
+                                    <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear Malla Curricular</a></li>
+                                    <li><a href="./ShowCurriculum.php?assign=assign"><i class="fa"></i>Asignar Módulos a Malla</a></li>
+                                    <li><a href="./ShowCurriculumUpdate.php"><i class="fa"></i>Actualizar Malla Curricular</a></li>
+                                    <li><a href="./ShowCurriculumDelete.php"><i class="fa"></i>Eliminar Malla Curricular</a></li>
+                                </ul>
+                            </li>
 
-                        <!--INFO-->
-                        <li class="treeview">
-                            <a>
-                                <i class="fa"></i> <span>Información CINDEA</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="./InformationInstitution.php"><i class="fa"></i>Ver Información</a></li>
-                            </ul>
-                        </li>
+                            <!--SCHEDULE-->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Horarios</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li class="active"><a href="./ShowSchedule.php"><i class="fa"></i>Ver Horarios</a></li>
+                                    <li class="active"><a href="./CreateSchedule.php"><i class="fa"></i>Crear Horarios</a></li>
+                                </ul>
+                            </li>
 
+                            <!--INFO-->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Información CINDEA</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./InformationInstitution.php"><i class="fa"></i>Ver Información</a></li>
+                                </ul>
+                            </li>
+
+                            <?php } ?>
 
                         <!--EMERGIN ENROLLMENT-->
                         <li class="treeview">
@@ -326,7 +332,7 @@ include_once '../resource/Constants.php';
                                     <a><i class="fa"></i> Matrícula Emergente<i class="fa fa-angle-left pull-right"></i></a>
                                     <ul class="treeview-menu">
                                         <li><a href="./ShowStudentsEmergent.php?enrollment=enrollment"><i class="fa"></i> Matricular</a></li>
-                                        
+
                                     </ul>
                                 </li>
                                 <li>
@@ -341,13 +347,13 @@ include_once '../resource/Constants.php';
                                 <li>
                                     <a><i class="fa"></i> Cursos Libres <i class="fa fa-angle-left pull-right"></i></a>
                                     <ul class="treeview-menu">
-                                        <li><a href="#"><i class="fa"></i> Ver Cursos Libres</a></li>
+                                        <li><a href="./ShowCoursesEmergent.php"><i class="fa"></i> Ver Cursos Libres</a></li>
                                         <li><a href="./CreateFreeCourse.php"><i class="fa"></i> Crear Curso Libre</a></li>
-                                        <li><a href="#"><i class="fa"></i> Actualizar Curso Libre</a></li>
-                                        <li><a href="#"><i class="fa"></i> Eliminar Curso Libre</a></li>
+                                        <li><a href="./ShowCoursesEmergent.php?update=update"><i class="fa"></i> Actualizar Curso Libre</a></li>
+                                        <li><a href="./ShowCoursesEmergent.php?delete=delete"><i class="fa"></i> Eliminar Curso Libre</a></li>
                                     </ul>
                                 </li>
-                                 <li>
+                                <li>
                                     <a><i class="fa"></i> Áreas <i class="fa fa-angle-left pull-right"></i></a>
                                     <ul class="treeview-menu">
                                         <li><a href="./AreasShow.php"><i class="fa"></i> Ver Áreas</a></li>

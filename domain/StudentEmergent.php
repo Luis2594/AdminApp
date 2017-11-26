@@ -15,7 +15,7 @@ class StudentEmergent {
     private $address;
     private $datastate;
     private $usertransacction;
-    
+
     function StudentEmergent($pk, $dni, $firstname, $firstlastname, $secondlastname, $birthdate, $gender, $nationality, $enrollmentyear, $responsable, $address, $datastate, $usertransacction) {
         $this->pk = $pk;
         $this->dni = $dni;
@@ -30,6 +30,13 @@ class StudentEmergent {
         $this->address = $address;
         $this->datastate = $datastate;
         $this->usertransacction = $usertransacction;
+    }
+
+    function age($birthdate) {
+        $cumpleanos = new DateTime($birthdate);
+        $today = new DateTime();
+        $age = $today->diff($cumpleanos);
+        return $age->y;
     }
 
     function getPk() {

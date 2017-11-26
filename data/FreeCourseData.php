@@ -33,10 +33,10 @@ class FreeCourseData extends ConnectorEmergent {
         $query = "call courseUpdate('" . $course->getPk() . "',"
                 . "'" . $course->getCod() . "',"
                 . "'" . $course->getDescription() . "',"
-                . "'" . $course->getFkarea() . "',"
-                . "'" . $course->getDaynumber() . "',"
-                . "'" . $course->getFkhour() . "',"
-                . "'" . $course->getDatastate() . "',"
+                . "" . $course->getFkarea() . ","
+                . "" . $course->getDaynumber() . ","
+                . "" . $course->getFkhour() . ","
+                . "" . $course->getDatastate() . ","
                 . "'" . $course->getUsertransacction() . "')";
         try {
             $result = $this->exeQuery($query);
@@ -69,10 +69,18 @@ class FreeCourseData extends ConnectorEmergent {
             if (mysqli_num_rows($allCourses) > 0) {
                 while ($row = mysqli_fetch_array($allCourses)) {
                     $currentCourse = new FreeCourse(
-                            $row['pk'], $row['cod'], $row['description'], $row['fkarea'], $row['daynumber'], $row['fkhour'], $row['datastate'], $row['usertransacction']);
+                            $row['pk'],
+                            $row['cod'], 
+                            utf8_encode($row['description']),
+                            utf8_encode($row['area']),
+                            utf8_encode($row['days']),
+                            $row['hours'],
+                            $row['datastate'], 
+                            $row['usertransacction']);
                     array_push($array, $currentCourse);
                 }
             }
+
             return $array;
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
@@ -80,7 +88,7 @@ class FreeCourseData extends ConnectorEmergent {
     }
 
     public function getCourseById($id) {
-        $query = 'call courseAll("' . $id . '");';
+        $query = 'call courseByPk("' . $id . '");';
 
         try {
             $allCourses = $this->exeQuery($query);
@@ -89,7 +97,14 @@ class FreeCourseData extends ConnectorEmergent {
             if (mysqli_num_rows($allCourses) > 0) {
                 while ($row = mysqli_fetch_array($allCourses)) {
                     $currentCourse = new FreeCourse(
-                            $row['pk'], $row['cod'], $row['description'], $row['fkarea'], $row['fkdaynumber'], $row['fkhour'], $row['datastate'], $row['usertransacction']);
+                            $row['pk'],
+                            $row['cod'], 
+                            utf8_encode($row['description']),
+                            utf8_encode($row['area']),
+                            utf8_encode($row['days']),
+                            $row['hours'],
+                            $row['datastate'], 
+                            $row['usertransacction']);
 //                    array_push($array, $currentStudent);
                 }
             }
@@ -100,7 +115,7 @@ class FreeCourseData extends ConnectorEmergent {
     }
 
     public function getCourseByArea($area) {
-         $query = 'call courseByArea("' . $area . '");';
+        $query = 'call courseByArea("' . $area . '");';
         try {
             $allCourses = $this->exeQuery($query);
             $array = [];

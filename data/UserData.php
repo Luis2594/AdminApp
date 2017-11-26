@@ -119,6 +119,7 @@ class UserData extends Connector {
                     $_SESSION["img"] = $row['personimage'];
                     $_SESSION["type"] = $row['userusertype'];
                     $_SESSION["id"] = $row['personid'];
+                    $_SESSION["dni"] = $row['userusername'];
                     $_SESSION["name"] = $row['personfirstname'] + " " + $row['personfirstlastname'];
                     break;
                 }

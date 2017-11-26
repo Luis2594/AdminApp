@@ -20,7 +20,7 @@ if (isset($code) &&
     $res = $freeCourseBusiness->insert($course);
 
     if ($res != 0) {
-        header("location: ../view/CreateFreeCourse.php?id=" . $res . "&action=1&msg=Registro_creado_correctamente");
+        header("location: ../view/InformationCourseEmergent.php?id=" . $res . "&action=1&msg=Registro_creado_correctamente");
     } else {
         header("location: ../view/CreateFreeCourse.php?action=0&msg=El_curso_no_fue_creado_correctamente._Puede_que_exista_uno_con_el_mismo_código_de_módulo.");
     }

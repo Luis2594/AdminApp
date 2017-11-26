@@ -425,7 +425,7 @@ include './reusable/Footer.php';
     //Logica del select de período
     $('#reportEnrrollment').on('change', function () {
         if ($(this).val() != 0) {
-            open("../reporter/Enrollment.php?id=" + id + "&period=" + $(this).val());
+            open("../reporter/EnrollmentEmergent.php?id=" + id);
         }
     }
     );

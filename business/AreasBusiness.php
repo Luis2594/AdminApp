@@ -34,4 +34,7 @@ class AreasBusiness {
     public function getAll() {
         return $this->areaData->getAll();
     }
+    public function getAllToSelect() {
+        return $this->areaData->getAllToSelect();
+    }
 }

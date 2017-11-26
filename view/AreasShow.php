@@ -38,7 +38,7 @@ include './reusable/Header.php';
                             foreach ($all as $entity) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $entity->getDescription(); ?></td>
+                                    <td><?php echo utf8_decode($entity->getDescription()); ?></td>
                                 <div class="btn-group btn-group-justified">
                                     <td>
                                         <a type="button" class="btn btn-primary" href="javascript:update(<?php echo $entity->getPk() ?>)">Actualizar</a>                    
