@@ -6,7 +6,7 @@ $description = $_POST['description'];
 
 if(isset($description)){
     $areaBusiness = new AreasBusiness();
-    $area = new Area(0, $description, true, $_SESSION["name"]);
+    $area = new Area(0, utf8_decode($description), true, $_SESSION["name"]);
     $id_last = $areaBusiness->insert($area);
     
     if($id_last != 0){

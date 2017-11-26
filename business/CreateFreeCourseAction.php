@@ -16,7 +16,7 @@ if (isset($code) &&
 ) {
     $freeCourseBusiness = new FreeCourseBusiness();
 
-    $course = new FreeCourse(NULL, $code, $name, $area, $day, $hour, "", "");
+    $course = new FreeCourse(NULL, $code, utf8_decode($name), $area, $day, $hour, "", "");
     $res = $freeCourseBusiness->insert($course);
 
     if ($res != 0) {

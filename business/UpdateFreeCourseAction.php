@@ -17,7 +17,7 @@ if (isset($code) &&
 ) {
     $freeCourseBusiness = new FreeCourseBusiness();
 
-    $course = new FreeCourse($id, $code, $name, $area, $day, $hour, 0, "System");
+    $course = new FreeCourse($id, $code, utf8_decode($name), $area, $day, $hour, 0, "System");
 
     if ($freeCourseBusiness->update($course)) {
         header("location: ../view/InformationCourseEmergent.php?id=" . $id . "&action=1&msg=Registro_creado_correctamente");
