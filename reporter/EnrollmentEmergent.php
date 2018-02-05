@@ -89,7 +89,7 @@ $pdf->SetFont('Arial', 'B', 10);
 
 $name = $student->getFirstname() . " " . $student->getFirstlastname() . " " . $student->getSecondlastname();
 
-if (strlen($name) >= 20 && strlen($name) < 25) {
+if (strlen($name) < 25) {
     $pdf->Cell(-110, 5, utf8_decode($name), 0, 0, 0);
 }
 
@@ -138,13 +138,15 @@ $pdf->SetFont('Arial', '', 10);
 $pdf->Cell(0, 5, utf8_decode("          Edad: " . $student->age($date->format("d-m-Y")) . "            Teléfonos: " . substr($txtPhones, 0, (strlen($txtPhones) - 2))), 0, 1);
 
 $pdf->Cell(0, 5, utf8_decode("Dirección Exacta: " . $student->getAddress()), 0, 1);
-$pdf->SetFont('Arial', 'B', 10);
 
+if ($student->age($student->getBirthdate()) < 18) {
+    $pdf->SetFont('Arial', 'B', 10);
+    $pdf->Cell(0, 15, utf8_decode("EN CASO DE EMERGENCIA O ALGUNA SITUACIÓN ESPECIAL CONTACTAR"), 0, 1);
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->Cell(0, 0, utf8_decode("Nombre: " . $student->getResponsable()), 0, 1);
+    $pdf->Ln(10);
+}
 
-$pdf->Cell(0, 15, utf8_decode("EN CASO DE EMERGENCIA O ALGUNA SITUACIÓN ESPECIAL CONTACTAR"), 0, 1);
-$pdf->SetFont('Arial', '', 10);
-$pdf->Cell(0, 0, utf8_decode("Nombre: " . $student->getResponsable() . "            Parentesco: __________"), 0, 1);
-$pdf->Ln(10);
 
 //MODULES
 $pdf->SetFont('Arial', 'B', 13);

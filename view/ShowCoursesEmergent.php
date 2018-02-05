@@ -4,6 +4,7 @@ include './reusable/Header.php';
 
 $update = $_GET['update'];
 $delete = $_GET['delete'];
+$export = $_GET['export'];
 ?>
 
 <!-- Content Header (Page header) -->
@@ -21,6 +22,12 @@ $delete = $_GET['delete'];
         if (isset($delete) && $delete == "delete") {
             ?>
             <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Eliminar Cursos Libres</a></li>
+        <?php } ?>
+
+        <?php
+        if (isset($export) && $export == "export") {
+            ?>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Exportar</a></li>
         <?php } ?>
 
     </ol>
@@ -54,6 +61,11 @@ $delete = $_GET['delete'];
                                     ?>
                                     <th>Eliminar</th>
                                 <?php } ?>
+                                <?php
+                                if (isset($export) && $export == "export") {
+                                    ?>
+                                    <th>Exportar</th>
+                                <?php } ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,12 +86,17 @@ $delete = $_GET['delete'];
                                     <?php
                                     if (isset($update) && $update == "update") {
                                         ?>
-                                    <td><a href="UpdateCourseEmergent.php?id=<?php echo $course->getPk() ?>">Actualizar</a></td>
+                                        <td><a href="UpdateCourseEmergent.php?id=<?php echo $course->getPk() ?>">Actualizar</a></td>
                                     <?php } ?>
                                     <?php
                                     if (isset($delete) && $delete == "delete") {
                                         ?>
-                                       <td><a href="javascript:deleteConfirmation(<?php echo $course->getPk(); ?>)" >Eliminar</a></td>
+                                        <td><a href="javascript:deleteConfirmation(<?php echo $course->getPk(); ?>)" >Eliminar</a></td>
+                                    <?php } ?>
+                                    <?php
+                                    if (isset($export) && $export == "export") {
+                                        ?>
+                                        <td><a href="javascript:exportStudents(<?php echo $course->getPk(); ?>)" >EXPORTAR</a></td>
                                     <?php } ?>
 
                                 </tr>
@@ -104,6 +121,11 @@ $delete = $_GET['delete'];
                                     ?>
                                     <th>Eliminar</th>
                                 <?php } ?>
+                                <?php
+                                if (isset($export) && $export == "export") {
+                                    ?>
+                                    <th>Exportar</th>
+                                <?php } ?>
                             </tr>
                         </tfoot>
                     </table>
@@ -122,7 +144,7 @@ include './reusable/Footer.php';
     $(function () {
         $("#example1").dataTable();
     });
-    
+
     (function ($) {
         $.get = function (key) {
             key = key.replace(/[\[]/, '\\[');
@@ -148,7 +170,7 @@ include './reusable/Footer.php';
         msg = msg.replace(/_/g, " ");
         alertify.error(msg);
     }
-    
+
     function deleteConfirmation(id) {
         alertify.confirm('Eliminar Curso Libre', '¿Desea eliminar el curso libre "' +
                 $("#name" + id).html() + " " +
@@ -160,5 +182,9 @@ include './reusable/Footer.php';
         });
     }
     
+    function exportStudents(course) {
+        open("../reporter/ExportExcel.php?course=" + course);
+    }
+
 </script>
 

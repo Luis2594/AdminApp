@@ -339,6 +339,7 @@ include_once '../resource/Constants.php';
                                     <a><i class="fa"></i> Estudiantes Emergentes <i class="fa fa-angle-left pull-right"></i></a>
                                     <ul class="treeview-menu">
                                         <li><a href="./ShowStudentsEmergent.php"><i class="fa"></i> Ver Estudiantes</a></li>
+                                        <li><a href="./ShowCoursesEmergent.php?export=export"><i class="fa"></i> Exportar Estudiantes</a></li>
                                         <li><a href="./CreateStudentEmergent.php"><i class="fa"></i> Crear Estudiante</a></li>
                                         <li><a href="./ShowStudentsEmergent.php?update=update"><i class="fa"></i> Actualizar Estudiante</a></li>
                                         <li><a href="./ShowStudentsEmergent.php?delete=delete"><i class="fa"></i> Eliminar Estudiante</a></li>

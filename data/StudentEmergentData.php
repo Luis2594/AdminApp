@@ -117,5 +117,27 @@ class StudentEmergentData extends ConnectorEmergent {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
+    
+    public function getStudentsByCourse($course) {
+        $query = 'call getStudentsByCourse(' . $course . ', '.date("Y").');';
+        try {
+            $allStudents = $this->exeQuery($query);
+            $array = [];
+            $currentStudent = null;
+            if (mysqli_num_rows($allStudents) > 0) {
+                while ($row = mysqli_fetch_array($allStudents)) {
+                    $array[] = array("dni" => $row['dni'],
+                        "firstname" => $row['firstname'],
+                        "firstlastname" => $row['firstlastname'],
+                        "secondlastname" => $row['secondlastname'],
+                        "phone" => $row['phone']);
+                }
+            }
+
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
 
 }

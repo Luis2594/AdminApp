@@ -41,5 +41,9 @@ class StudentEmergentBusiness {
     public function confirmDni($dni) {
         return $this->data->confirmDni($dni);
     }
+    
+    public function getStudentsByCourse($course){
+        return $this->data->getStudentsByCourse($course);
+    }
 
 }
