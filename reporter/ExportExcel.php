@@ -54,6 +54,8 @@ for ($i = 0; $i < count($students); $i++) {
     $cont++;
 }
 
+
+
 //CON XLSX
 //header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 //header('Content-Disposition: attachment;filename="Excel.xlsx"');
