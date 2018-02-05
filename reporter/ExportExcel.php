@@ -1,6 +1,6 @@
 <?php
 
-require ('../resource/excel/PHPExcel.php');
+require '../resource/excel/PHPExcel.php';
 include_once '../business/StudentEmergentBusiness.php';
 
 //capture required IDs
@@ -55,24 +55,14 @@ for ($i = 0; $i < count($students); $i++) {
 }
 
 
-
-//CON XLSX
-//header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-//header('Content-Disposition: attachment;filename="Excel.xlsx"');
-//header('Cache-Control: max-age=0');
-//
-//$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-//$objWriter->save('php://output');
-//$objWriter->save('Excel.xlsx');
-//readfile('Excel.xlsx'); 
-
-
-//CON XLS
-header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="Excel.xls"');
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="Excel.xlsx"');
 header('Cache-Control: max-age=0');
-	
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+/* Obtenemos los caracteres adicionales o mensajes de advertencia y los
+  guardamos en el archivo "depuracion.txt" si tenemos permisos */
+//file_put_contents('depuracion.txt', ob_get_contents());
+/* Limpiamos el búfer */
+ob_end_clean();
 $objWriter->save('php://output');
-
 ?>
