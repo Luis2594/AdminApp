@@ -25,7 +25,4 @@ switch ($option) {
         break;
 }
 
-
-
-
 echo json_encode($result);

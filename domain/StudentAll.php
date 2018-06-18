@@ -21,7 +21,24 @@ class StudentAll {
     private $userUsername;
     private $userPass;
     
-    function StudentAll($personId, $personDni, $personFirstName, $personFirstlastname, $personSecondlastname, $personEmail, $personBirthday, $personAge, $personGender, $personNacionality, $studentAdecuacy, $studentYearIncome, $studentYearOut, $studentLocation, $studentgroup, $studentManager, $userUsername, $userPass) {
+    function StudentAll($personId, 
+            $personDni, 
+            $personFirstName, 
+            $personFirstlastname, 
+            $personSecondlastname, 
+            $personEmail, 
+            $personBirthday, 
+            $personAge, 
+            $personGender, 
+            $personNacionality, 
+            $studentAdecuacy, 
+            $studentYearIncome, 
+            $studentYearOut, 
+            $studentLocation, 
+            $studentgroup, 
+            $studentManager, 
+            $userUsername, 
+            $userPass) {
         $this->personId = $personId;
         $this->personDni = $personDni;
         $this->personFirstName = $personFirstName;

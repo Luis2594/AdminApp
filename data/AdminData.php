@@ -41,7 +41,17 @@ class AdminData extends Connector {
             if (mysqli_num_rows($allPersons) > 0) {
                 while ($row = mysqli_fetch_array($allPersons)) {
                     $currentPerson = new Person(
-                            $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['personbirthday'], $row['personage'], $row['persongender'], $row['personnationality'], $row['personimage']);
+                            $row['personid'], 
+                            $row['persondni'], 
+                            $row['personfirstname'], 
+                            $row['personfirstlastname'], 
+                            $row['personsecondlastname'], 
+                            $row['personemail'], 
+                            $row['personbirthdate'], 
+                            $row['personage'], 
+                            $row['persongender'], 
+                            $row['personnationality'], 
+                            $row['personimage']);
                     array_push($array, $currentPerson);
                 }
             }

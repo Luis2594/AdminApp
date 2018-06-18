@@ -1,7 +1,11 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
-$assign = $_GET['assign'];
+
+if(isset($_GET['assign'])){
+   $assign = $_GET['assign']; 
+}
+
 ?>
 
 <!-- Content Header (Page header) -->

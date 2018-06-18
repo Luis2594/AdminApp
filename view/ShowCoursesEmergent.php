@@ -2,9 +2,12 @@
 include './reusable/Session.php';
 include './reusable/Header.php';
 
-$update = $_GET['update'];
-$delete = $_GET['delete'];
-$export = $_GET['export'];
+if(isset($_GET['update']))$update = $_GET['update'];
+
+if(isset($_GET['delete']))$delete = $_GET['delete'];
+
+if(isset($_GET['export']))$export = $_GET['export'];
+
 ?>
 
 <!-- Content Header (Page header) -->

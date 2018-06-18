@@ -431,6 +431,7 @@ include './reusable/Footer.php';
             data: {"id": id, "option": 3}, // 0 reprobate, 1 approved, 2 enrollment , 3  academic historial
             success: function (data)
             {
+                
                 var courses = JSON.parse(data);
                 var htmlCourse = '';
 

@@ -2,6 +2,7 @@
 
 require_once '../data/ConnectorEmergent.php';
 require_once '../domain/EnrollmentEmergent.php';
+date_default_timezone_set('America/Costa_Rica');
 
 /**
  * Description of EnrollmentEmergentData

@@ -25,7 +25,7 @@ include './reusable/Header.php';
                 </div><!-- /.box-header -->
 
                 <?php
-                include './business/InstitutionBusiness.php';
+                include '../business/InstitutionBusiness.php';
 
                 $institutionBusiness = new InstitutionBusiness();
                 $institutions = $institutionBusiness->getInstitution();

@@ -2,7 +2,9 @@
 
 require_once '../data/Connector.php';
 include '../domain/Enrollment.php';
-//require_once './resource/log/ErrorHandler.php';
+date_default_timezone_set('America/Costa_Rica');
+
+//require_once '../resource/log/ErrorHandler.php';
 
 class EnrollmentData extends Connector {
 
@@ -14,20 +16,19 @@ class EnrollmentData extends Connector {
                 . "" . $enrollment->getEnrollmentstatus() . ")";
         try {
             $enrollmentID = $this->exeQuery($query);
-            if((mysqli_num_rows($enrollmentID) > 0)){
+            if ((mysqli_num_rows($enrollmentID) > 0)) {
                 $query = "call insertStudentCourse('" . $enrollment->getEnrollmentperson() . "',"
-                . "'" . $enrollment->getEnrollmentcourse() . "',"
-                . "" . $enrollment->getEnrollmentperiod() . ","
-                . "" . date("Y") . ","
-                . "" . mysqli_fetch_array($enrollmentID)['id'] . ")";
-                
+                        . "'" . $enrollment->getEnrollmentcourse() . "',"
+                        . "" . $enrollment->getEnrollmentperiod() . ","
+                        . "" . date("Y") . ","
+                        . "" . mysqli_fetch_array($enrollmentID)[0] . ")";
+
                 return $this->exeQuery($query);
-            }else{
+            } else {
                 return false;
             }
-            
         } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
@@ -37,7 +38,7 @@ class EnrollmentData extends Connector {
         try {
             return $this->exeQuery($query);
         } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
@@ -50,7 +51,7 @@ class EnrollmentData extends Connector {
                 return FALSE;
             }
         } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
@@ -82,7 +83,7 @@ class EnrollmentData extends Connector {
             }
             return $array;
         } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
@@ -95,7 +96,6 @@ class EnrollmentData extends Connector {
                 while ($row = mysqli_fetch_array($allCourses)) {
 
                     $date = new DateTime($row['enrollmentdate']);
-
                     $array[] = array("enrollmentid" => $row['enrollmentid'],
                         "enrollmentstatus" => $row['enrollmentstatus'],
                         "enrollmentdate" => $date->format("d-m-Y"),
@@ -107,15 +107,14 @@ class EnrollmentData extends Connector {
                         "coursepdf" => $row['coursepdf'],
                         "groupnumber" => $row['groupnumber'],
                         "period" => $row['period']);
-//                    "coursetype" => $row['coursetype'],
-//                    "personfirstname" => $row['personfirstname'],
-//                    "personfirstlastname" => $row['personfirstlastname'],
-//                    "personsecondlastname" => $row['personsecondlastname']);
                 }
             }
+
+
             return $array;
         } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+            echo $ex;
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
@@ -148,7 +147,7 @@ class EnrollmentData extends Connector {
             }
             return $array;
         } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
@@ -180,12 +179,13 @@ class EnrollmentData extends Connector {
             }
             return $array;
         } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
-    public function enrollmentActions($id, $value){
-        $query = "call enrollmentActions(" . $id . ", ". $value.")";
+    public function enrollmentActions($id, $value) {
+        
+        $query = "call enrollmentActions(" . $id . ", " . $value . ")";
 
         try {
             if ($this->exeQuery($query)) {
@@ -194,8 +194,8 @@ class EnrollmentData extends Connector {
                 return FALSE;
             }
         } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-    
+
 }

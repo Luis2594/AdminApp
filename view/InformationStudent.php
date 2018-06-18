@@ -1,6 +1,7 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
+date_default_timezone_set('America/Costa_Rica');
 ?>
 
 <!-- Content Header (Page header) -->

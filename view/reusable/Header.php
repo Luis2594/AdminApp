@@ -81,6 +81,7 @@ include_once '../resource/Constants.php';
 
                                         $personBusiness = new PersonBusiness();
                                         $person = $personBusiness->getPersonId((int) $_SESSION['id'])[0];
+                                        
                                         ?>
                                         <img id="imageProfile3" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="user-image" alt="User Image" />
                                         <span class="hidden-xs"><?php echo $person->getPersonFirstName() . " " . $person->getPersonFirstlastname(); ?></span>

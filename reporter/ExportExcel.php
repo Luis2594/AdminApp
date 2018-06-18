@@ -3,6 +3,7 @@
 require '../resource/excel/PHPExcel.php';
 include_once '../business/StudentEmergentBusiness.php';
 include_once '../business/FreeCourseBusiness.php';
+date_default_timezone_set('America/Costa_Rica');
 
 //capture required IDs
 $idCourse = (int) $_GET['course'];

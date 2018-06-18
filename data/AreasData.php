@@ -63,7 +63,7 @@ class AreasData extends ConnectorEmergent {
                     $array[] = array("id" => $row['pk'],
                         "name" => utf8_encode($row['description']),
                         "datastate" => $row['datastate'],
-                        "system" => $_SESSION["name"]);
+                        "system" => "System");
                 }
             }
             return $array;

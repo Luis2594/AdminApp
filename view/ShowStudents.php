@@ -1,7 +1,10 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
-$enrollment = $_GET['enrollment'];
+
+if(isset($_GET['enrollment'])){
+   $enrollment = $_GET['enrollment']; 
+}
 ?>
 
 <!-- Content Header (Page header) -->

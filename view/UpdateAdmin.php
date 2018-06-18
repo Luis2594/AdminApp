@@ -25,7 +25,7 @@ include './reusable/Header.php';
                 </div><!-- /.box-header -->
 
                 <?php
-                include './business/PersonBusiness.php';
+                include_once '../business/PersonBusiness.php';
                 include_once '../domain/Person.php';
 
                 $AdminBusiness = new PersonBusiness();

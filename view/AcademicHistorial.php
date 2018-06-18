@@ -63,12 +63,12 @@ if (isset($id) && is_int($id)) {
                 <div class="box">
                     <div class="box-header">
                         <?php
-                        foreach ($persons as $person) {
+                        foreach ($students as $student) {
                             ?>
                             <h3 class="box-title">Historial académico de : <?php
-                                echo $person->getPersonFirstName()
-                                . " " . $person->getPersonFirstlastname()
-                                . " " . $person->getPersonSecondlastname();
+                                echo $student->getPersonFirstName()
+                                . " " . $student->getPersonFirstlastname()
+                                . " " . $student->getPersonSecondlastname();
                                 ?> </h3>
                         <?php } ?>
                     </div>

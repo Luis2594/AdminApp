@@ -58,7 +58,24 @@ class StudentData extends Connector {
             if (mysqli_num_rows($allStudents) > 0) {
                 while ($row = mysqli_fetch_array($allStudents)) {
                     $currentStudent = new StudentAll(
-                            $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['personbirthdate'], $row['personage'], $row['persongender'], $row['personnationality'], $row['studentadecuacy'], $row['studentyearincome'], $row['studentyearout'], $row['studentlocation'], $row['studentgroup'], $row['studentmanager'], $row['userusername'], $row['useruserpass']);
+                            $row['personid'], 
+                            $row['persondni'], 
+                            $row['personfirstname'], 
+                            $row['personfirstlastname'], 
+                            $row['personsecondlastname'], 
+                            $row['personemail'], 
+                            $row['personbirthdate'], 
+                            $row['personage'], 
+                            $row['persongender'], 
+                            $row['personnationality'], 
+                            $row['studentadecuacy'], 
+                            $row['studentyearincome'], 
+                            $row['studentyearout'], 
+                            $row['studentlocation'], 
+                            "", 
+                            $row['studentmanager'], 
+                            $row['userusername'], 
+                            $row['useruserpass']);
                     array_push($array, $currentStudent);
                 }
             }
@@ -91,7 +108,7 @@ class StudentData extends Connector {
                             $row['studentyearincome'], 
                             $row['studentyearout'], 
                             $row['studentlocation'], 
-                            $row['studentgroup'], 
+                            "", 
                             $row['studentmanager'], 
                             $row['userusername'], 
                             $row['useruserpass']);
@@ -128,7 +145,7 @@ class StudentData extends Connector {
                             $row['studentyearincome'], 
                             $row['studentyearout'], 
                             $row['studentlocation'], 
-                            $row['studentgroup'], 
+                            $row['studentgroup'],
                             $row['studentmanager'], 
                             $row['userusername'], 
                             $row['useruserpass']);

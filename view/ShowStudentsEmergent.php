@@ -1,9 +1,13 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
-$enrollment = $_GET['enrollment'];
-$update = $_GET['update'];
-$delete = $_GET['delete'];
+
+if(isset($_GET['enrollment']))$enrollment = $_GET['enrollment']; 
+   
+if(isset($_GET['update']))$update = $_GET['update'];
+
+if(isset($_GET['delete']))$delete = $_GET['delete'];
+
 ?>
 
 <!-- Content Header (Page header) -->
@@ -174,7 +178,6 @@ include './reusable/Footer.php';
         $("#example1").dataTable();
     });
     
-   
     (function ($) {
         $.get = function (key) {
             key = key.replace(/[\[]/, '\\[');

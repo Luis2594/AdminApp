@@ -27,7 +27,7 @@ include './reusable/Header.php';
                     <div class="box-body">
                         <div class="form-group">
                             <?php
-                            include './business/InstitutionBusiness.php';
+                            include '../business/InstitutionBusiness.php';
                             $institutionBusiness = new InstitutionBusiness();
                             $institutions = $institutionBusiness->getInstitution();
                             $found = false;
