@@ -1,6 +1,12 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
+
+if (isset($_GET['update']))
+    $update = $_GET['update'];
+
+if (isset($_GET['delete']))
+    $delete = $_GET['delete'];
 ?>
 
 <!-- Content Header (Page header) -->
@@ -8,6 +14,16 @@ include './reusable/Header.php';
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowCourses.php"><i class="fa fa-arrow-circle-right"></i> Módulos</a></li>
+        <?php
+        if (isset($update) && $update == "update") {
+            ?>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Actualizar Módulos</a></li>
+        <?php } ?>
+        <?php
+        if (isset($delete) && $delete == "delete") {
+            ?>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Eliminar Módulos</a></li>
+        <?php } ?>
     </ol>
 </section>
 <br>
@@ -30,7 +46,18 @@ include './reusable/Header.php';
                                 <th>Lecciones</th>
                                 <th>Tipo</th>
                                 <th>Atinencia/Especialidad</th>
+                                <th>Períodos</th>
                                 <th>Plan de estudios</th>
+                                <?php
+                                if (isset($update) && $update == "update") {
+                                    ?>
+                                    <th>Actualizar</th>
+                                <?php } ?>
+                                <?php
+                                if (isset($delete) && $delete == "delete") {
+                                    ?>
+                                    <th>Eliminar</th>
+                                <?php } ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,7 +76,19 @@ include './reusable/Header.php';
                                     <td><?php echo $course->getCourseLesson(); ?></td>
                                     <td><?php echo $course->getCourseType(); ?></td>
                                     <td><?php echo $course->getSpecialityname(); ?></td>
+                                    <td><a href="UpdatePeriods.php?id=<?php echo $course->getCourseId(); ?>" >Períodos</a></td>
                                     <td><a href="../../pdf/<?php echo $course->getCoursePdf() ?>" target="_blank" >Plan de estudio</a></td>
+
+                                    <?php
+                                    if (isset($update) && $update == "update") {
+                                        ?>
+                                        <td><a href="UpdateCourse.php?id=<?php echo $course->getCourseId(); ?>" >Actualizar</a></td>
+                                    <?php } ?>
+                                    <?php
+                                    if (isset($delete) && $delete == "delete") {
+                                        ?>
+                                        <td><a href="javascript:deleteConfirmation(<?php echo $course->getCourseId(); ?>)" >Eliminar</a></td>
+                                    <?php } ?>
                                 </tr>
                                 <?php
                             }
@@ -63,7 +102,18 @@ include './reusable/Header.php';
                                 <th>Lecciones</th>
                                 <th>Tipo</th>
                                 <th>Atinencia/Especialidad</th>
+                                <th>Períodos</th>
                                 <th>Plan de estudios</th>
+                                <?php
+                                if (isset($update) && $update == "update") {
+                                    ?>
+                                    <th>Actualizar</th>
+                                <?php } ?>
+                                <?php
+                                if (isset($delete) && $delete == "delete") {
+                                    ?>
+                                    <th>Eliminar</th>
+                                <?php } ?>
                             </tr>
                         </tfoot>
                     </table>
@@ -82,5 +132,42 @@ include './reusable/Footer.php';
     $(function () {
         $("#example1").dataTable();
     });
+
+    (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+
+    function deleteConfirmation(id) {
+        alertify.confirm('Eliminar Módulo', '¿Desea eliminar el módulo "' +
+                $("#name" + id).html() + " " +
+                '" de la lista de módulos?', function () {
+                    window.location = "../business/DeleteCourseAction.php?id=" + id;
+                }
+        , function () {
+            alertify.error('Cancelado');
+        });
+    }
 </script>
 

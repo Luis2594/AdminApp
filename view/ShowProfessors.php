@@ -2,10 +2,14 @@
 include './reusable/Session.php';
 include './reusable/Header.php';
 
-if(isset($_GET['assign'])){
-   $assign = $_GET['assign']; 
-}
+if (isset($_GET['assign']))
+    $assign = $_GET['assign'];
 
+if (isset($_GET['update']))
+    $update = $_GET['update'];
+
+if (isset($_GET['delete']))
+    $delete = $_GET['delete'];
 ?>
 
 <!-- Content Header (Page header) -->
@@ -13,6 +17,16 @@ if(isset($_GET['assign'])){
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowProfessors.php"><i class="fa fa-arrow-circle-right"></i> Profesores</a></li>
+        <?php
+        if (isset($update) && $update == "update") {
+            ?>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Actualizar Profesores</a></li>
+        <?php } ?>
+        <?php
+        if (isset($delete) && $delete == "delete") {
+            ?>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Eliminar Profesores</a></li>
+        <?php } ?>
     </ol>
 </section>
 <br>
@@ -42,6 +56,16 @@ if(isset($_GET['assign'])){
                                         ?>
                                         <th>Asignar módulos</th>
                                     <?php } ?>
+                                    <?php
+                                    if (isset($update) && $update == "update") {
+                                        ?>
+                                        <th>Actualizar</th>
+                                    <?php } ?>
+                                    <?php
+                                    if (isset($delete) && $delete == "delete") {
+                                        ?>
+                                        <th>Eliminar</th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,13 +91,24 @@ if(isset($_GET['assign'])){
                                         } else {
                                             ?> 
                                             <td>Mujer</td>
-                                            <?php }
+                                        <?php }
                                         ?>
                                         <td><a href="ShowCoursesProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Módulos</a></td>
                                         <?php
                                         if (isset($assign) && $assign == "assign") {
                                             ?>
                                             <td><a href="AssignCourseToProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Asignar módulos</a></td>
+                                        <?php } ?>
+
+                                        <?php
+                                        if (isset($update) && $update == "update") {
+                                            ?>
+                                            <td><a  href="UpdateProfessor.php?id=<?php echo $professor->getPersonId() ?>" >Actualizar</a></td>
+                                        <?php } ?>
+                                        <?php
+                                        if (isset($delete) && $delete == "delete") {
+                                            ?>
+                                            <td><a  href="javascript:deleteConfirmation(<?php echo $professor->getPersonId() ?>)" >Eliminar</a></td>
                                         <?php } ?>
 
                                     </tr>
@@ -95,7 +130,16 @@ if(isset($_GET['assign'])){
                                         ?>
                                         <th>Asignar módulos</th>
                                     <?php } ?>
-
+                                    <?php
+                                    if (isset($update) && $update == "update") {
+                                        ?>
+                                        <th>Actualizar</th>
+                                    <?php } ?>
+                                    <?php
+                                    if (isset($delete) && $delete == "delete") {
+                                        ?>
+                                        <th>Eliminar</th>
+                                    <?php } ?>
                                 </tr>
                             </tfoot>
                         </table>
@@ -115,5 +159,44 @@ include './reusable/Footer.php';
     $(function () {
         $("#example1").dataTable();
     });
+    (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+
+    function deleteConfirmation(id) {
+        alertify.confirm('Eliminar profesor', '¿Desea eliminar a ' +
+                $("#name" + id).html() + " " +
+                $("#firtsLastname" + id).html() + " " +
+                $("#secondlastname" + id).html() +
+                " con cédula " + $("#dni" + id).html() +
+                " de la lista de profesores?", function () {
+                    window.location = "../business/DeleteProfessorAction.php?id=" + id;
+                }
+        , function () {
+            alertify.error('Cancelado');
+        });
+    }
 </script>
 

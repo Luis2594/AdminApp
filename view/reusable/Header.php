@@ -241,8 +241,8 @@ include_once '../resource/Constants.php';
                                     <li><a href="./ShowProfessors.php"><i class="fa"></i>Ver Profesores</a></li>
                                     <li><a href="./CreateProfessor.php"><i class="fa"></i>Crear Profesor</a></li>
                                     <li><a href="./ShowProfessors.php?assign=assign"><i class="fa"></i>Asignar módulos</a></li>
-                                    <li><a href="./ShowProfessorUpdate.php"><i class="fa"></i>Actualizar Profesor</a></li>
-                                    <li><a href="./ShowProfessorDelete.php"><i class="fa"></i>Eliminar Profesor</a></li>
+                                    <li><a href="./ShowProfessors.php?update=update"><i class="fa"></i>Actualizar Profesor</a></li>
+                                    <li><a href="./ShowProfessors.php?delete=delete"><i class="fa"></i>Eliminar Profesor</a></li>
                                 </ul>
                             </li>
 
@@ -254,8 +254,8 @@ include_once '../resource/Constants.php';
                                 <ul class="treeview-menu">
                                     <li><a href="./ShowStudents.php"><i class="fa"></i>Ver Estudiantes</a></li>
                                     <li><a href="./CreateStudent.php"><i class="fa"></i>Crear Estudiante</a></li>
-                                    <li><a href="./ShowStudentUpdate.php"><i class="fa"></i>Actualizar Estudiante</a></li>
-                                    <li><a href="./ShowStudentDelete.php"><i class="fa"></i>Eliminar Estudiante</a></li>
+                                    <li><a href="./ShowStudents.php?update=update"><i class="fa"></i>Actualizar Estudiante</a></li>
+                                    <li><a href="./ShowStudents.php?delete=delete"><i class="fa"></i>Eliminar Estudiante</a></li>
                                 </ul>
                             </li>
 
@@ -267,8 +267,8 @@ include_once '../resource/Constants.php';
                                 <ul class="treeview-menu">
                                     <li><a href="./ShowSpecialities.php"><i class="fa"></i>Ver Atinencia</a></li>
                                     <li><a href="./CreateSpeciality.php"><i class="fa"></i>Crear Atinencia</a></li>
-                                    <li><a href="./ShowSpecialityUpdate.php"><i class="fa"></i>Actualizar Atinencia</a></li>
-                                    <li><a href="./ShowSpecialityDelete.php"><i class="fa"></i>Eliminar Atinencia</a></li>
+                                    <li><a href="./ShowSpecialities.php?update=update"><i class="fa"></i>Actualizar Atinencia</a></li>
+                                    <li><a href="./ShowSpecialities.php?delete=delete"><i class="fa"></i>Eliminar Atinencia</a></li>
                                 </ul>
                             </li>
 
@@ -280,8 +280,8 @@ include_once '../resource/Constants.php';
                                 <ul class="treeview-menu">
                                     <li><a href="./ShowCourses.php"><i class="fa"></i>Ver Módulos</a></li>
                                     <li><a href="./CreateCourse.php"><i class="fa"></i>Crear Módulo</a></li>
-                                    <li><a href="./ShowCourseUpdate.php"><i class="fa"></i>Actualizar Módulo</a></li>
-                                    <li><a href="./ShowCourseDelete.php"><i class="fa"></i>Eliminar Módulo</a></li>
+                                    <li><a href="./ShowCourses.php?update=update"><i class="fa"></i>Actualizar Módulo</a></li>
+                                    <li><a href="./ShowCourses.php?delete=delete"><i class="fa"></i>Eliminar Módulo</a></li>
                                 </ul>
                             </li>
 
@@ -294,8 +294,8 @@ include_once '../resource/Constants.php';
                                     <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Malla Curricular</a></li>
                                     <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear Malla Curricular</a></li>
                                     <li><a href="./ShowCurriculum.php?assign=assign"><i class="fa"></i>Asignar Módulos a Malla</a></li>
-                                    <li><a href="./ShowCurriculumUpdate.php"><i class="fa"></i>Actualizar Malla Curricular</a></li>
-                                    <li><a href="./ShowCurriculumDelete.php"><i class="fa"></i>Eliminar Malla Curricular</a></li>
+                                    <li><a href="./ShowCurriculum.php?update=update"><i class="fa"></i>Actualizar Malla Curricular</a></li>
+                                    <li><a href="./ShowCurriculum.php?delete=delete"><i class="fa"></i>Eliminar Malla Curricular</a></li>
                                 </ul>
                             </li>
 

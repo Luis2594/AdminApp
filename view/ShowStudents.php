@@ -2,9 +2,14 @@
 include './reusable/Session.php';
 include './reusable/Header.php';
 
-if(isset($_GET['enrollment'])){
-   $enrollment = $_GET['enrollment']; 
-}
+if (isset($_GET['enrollment']))
+    $enrollment = $_GET['enrollment'];
+
+if (isset($_GET['update']))
+    $update = $_GET['update'];
+
+if (isset($_GET['delete']))
+    $delete = $_GET['delete'];
 ?>
 
 <!-- Content Header (Page header) -->
@@ -12,6 +17,16 @@ if(isset($_GET['enrollment'])){
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowStudents.php"><i class="fa fa-arrow-circle-right"></i> Estudiantes</a></li>
+        <?php
+        if (isset($update) && $update == "update") {
+            ?>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Actualizar Estudiantes</a></li>
+        <?php } ?>
+        <?php
+        if (isset($delete) && $delete == "delete") {
+            ?>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Eliminar Estudiantes</a></li>
+        <?php } ?>
     </ol>
 </section>
 <br>
@@ -41,6 +56,18 @@ if(isset($_GET['enrollment'])){
                                     if (isset($enrollment) && $enrollment == "enrollment") {
                                         ?>
                                         <th>Matrícular</th>
+                                    <?php } ?>
+                                    <?php
+                                    if (isset($update) && $update == "update") {
+                                        ?>
+                                        <th>Télefonos</th>
+                                        <th>Grupos</th>
+                                        <th>Actualizar</th>
+                                    <?php } ?>
+                                    <?php
+                                    if (isset($delete) && $delete == "delete") {
+                                        ?>
+                                        <th>Eliminar</th>
                                     <?php } ?>
                                 </tr>
                             </thead>
@@ -85,16 +112,28 @@ if(isset($_GET['enrollment'])){
                                         if ($student->getStudentAdecuacy() == "2") {
                                             ?>
                                             <td>Significativa</td>
-                                            <?php
-                                        }?>
-                                            <td><a href="AcademicHistorial.php?id=<?php echo $student->getPersonId(); ?>">Historial Académico</a></td>
-                                        <?php    
+                                        <?php }
+                                        ?>
+                                        <td><a href="AcademicHistorial.php?id=<?php echo $student->getPersonId(); ?>">Historial Académico</a></td>
+                                        <?php
                                         if (isset($enrollment) && $enrollment == "enrollment") {
                                             ?>
                                             <td><a href="Enrollment.php?id=<?php echo $student->getPersonId(); ?>">Matrícular</a></td>
                                             <?php
                                         }
                                         ?>
+                                        <?php
+                                        if (isset($update) && $update == "update") {
+                                            ?>
+                                            <td><a href="UpdatePhones.php?id=<?php echo $student->getPersonId(); ?>">Télefonos</a></td>
+                                            <td><a href="UpdateGroup.php?id=<?php echo $student->getPersonId(); ?>">Grupos</a></td>
+                                            <td><a href="UpdateStudent.php?id=<?php echo $student->getPersonId(); ?>">Actualizar</a></td>
+                                        <?php } ?>
+                                        <?php
+                                        if (isset($delete) && $delete == "delete") {
+                                            ?>
+                                            <td><a  href="javascript:deleteConfirmation(<?php echo $student->getPersonId() ?>)" >Eliminar</a></td>
+                                        <?php } ?>
                                     </tr>
                                     <?php
                                 }
@@ -115,6 +154,18 @@ if(isset($_GET['enrollment'])){
                                         ?>
                                         <th>Matrícular</th>
                                     <?php } ?>
+                                    <?php
+                                    if (isset($update) && $update == "update") {
+                                        ?>
+                                        <th>Télefonos</th>
+                                        <th>Grupos</th>
+                                        <th>Actualizar</th>
+                                    <?php } ?>
+                                    <?php
+                                    if (isset($delete) && $delete == "delete") {
+                                        ?>
+                                        <th>Eliminar</th>
+                                    <?php } ?>
                                 </tr>
                             </tfoot>
                         </table>
@@ -134,5 +185,46 @@ include './reusable/Footer.php';
     $(function () {
         $("#example1").dataTable();
     });
+    
+    (function ($) {
+        $.get = function (key) {
+            key = key.replace(/[\[]/, '\\[');
+            key = key.replace(/[\]]/, '\\]');
+            var pattern = "[\\?&]" + key + "=([^&#]*)";
+            var regex = new RegExp(pattern);
+            var url = unescape(window.location.href);
+            var results = regex.exec(url);
+            if (results === null) {
+                return null;
+            } else {
+                return results[1];
+            }
+        }
+    })(jQuery);
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+
+    function deleteConfirmation(id) {
+        alertify.confirm('Eliminar estudiante', '¿Desea eliminar a ' +
+                $("#name" + id).html() + " " +
+                $("#firtsLastname" + id).html() + " " +
+                $("#secondlastname" + id).html() + 
+                " con cédula "+ $("#dni" + id).html()+ 
+                " de la lista de estudiantes?", function () {
+            window.location = "../business/DeleteStudentAction.php?id=" + id;
+        }
+        , function () {
+            alertify.error('Cancelado');
+        });
+    }
+    
 </script>
 

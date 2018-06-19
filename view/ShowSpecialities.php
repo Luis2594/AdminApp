@@ -1,6 +1,12 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
+
+if (isset($_GET['update']))
+    $update = $_GET['update'];
+
+if (isset($_GET['delete']))
+    $delete = $_GET['delete'];
 ?>
 
 <!-- Content Header (Page header) -->
@@ -8,6 +14,16 @@ include './reusable/Header.php';
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowSpecialities.php"><i class="fa fa-arrow-circle-right"></i> Atinencia/Especialidades</a></li>
+        <?php
+        if (isset($update) && $update == "update") {
+            ?>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Actualizar Atinencia/Especialidades</a></li>
+        <?php } ?>
+        <?php
+        if (isset($delete) && $delete == "delete") {
+            ?>
+            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Eliminar Atinencia/Especialidades</a></li>
+        <?php } ?>
     </ol>
 </section>
 <br>
@@ -25,19 +41,39 @@ include './reusable/Header.php';
                         <thead>
                             <tr>
                                 <th>Atinencia/Especialidad</th>
+                                <?php
+                                if (isset($update) && $update == "update") {
+                                    ?>
+                                    <th>Actualizar</th>
+                                <?php } ?>
+                                <?php
+                                if (isset($delete) && $delete == "delete") {
+                                    ?>
+                                    <th>Eliminar</th>
+                                <?php } ?>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             include '../business/SpecialityBusiness.php';
                             $specialityBusiness = new SpecialityBusiness();
-                            
+
                             $specialities = $specialityBusiness->getAll();
-                            
+
                             foreach ($specialities as $speciality) {
                                 ?>
                                 <tr>
                                     <td><a href="InformationSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>"><?php echo $speciality->getSpecialityName(); ?></a></td>
+                                    <?php
+                                    if (isset($update) && $update == "update") {
+                                        ?>
+                                        <td><a href="UpdateSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>">Actualizar</a></td>
+                                    <?php } ?>
+                                    <?php
+                                    if (isset($delete) && $delete == "delete") {
+                                        ?>
+                                        <td><a href="javascript:deleteConfirmation(<?php echo $speciality->getSpecialityId(); ?>)">Eliminar</a></td>
+                                    <?php } ?>
                                 </tr>
                                 <?php
                             }
@@ -46,6 +82,16 @@ include './reusable/Header.php';
                         <tfoot>
                             <tr>
                                 <th>Atinencia/Especialidad</th>
+                                <?php
+                                if (isset($update) && $update == "update") {
+                                    ?>
+                                    <th>Actualizar</th>
+                                <?php } ?>
+                                <?php
+                                if (isset($delete) && $delete == "delete") {
+                                    ?>
+                                    <th>Eliminar</th>
+                                <?php } ?>
                             </tr>
                         </tfoot>
                     </table>
@@ -64,8 +110,8 @@ include './reusable/Footer.php';
     $(function () {
         $("#example1").dataTable();
     });
-    
-      (function ($) {
+
+    (function ($) {
         $.get = function (key) {
             key = key.replace(/[\[]/, '\\[');
             key = key.replace(/[\]]/, '\\]');
@@ -91,5 +137,15 @@ include './reusable/Footer.php';
         alertify.error(msg);
     }
 
+    function deleteConfirmation(id) {
+        alertify.confirm('Eliminar Atinencia/Especialidad', '¿Desea eliminar la Atinencia/Especialidad "' +
+                $("#name" + id).html() + " " +
+                '"?', function () {
+                    window.location = "../business/DeleteSpecialityAction.php?id=" + id;
+                }
+        , function () {
+            alertify.error('Cancelado');
+        });
+    }
 </script>
 

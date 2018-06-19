@@ -7,10 +7,10 @@ $id = $_GET['id'];
 if(isset($id)){
     $personBusiness = new PersonBusiness();
     if($personBusiness->delete($id)){
-        header("location: ../view/ShowStudentDelete.php?action=1&msg=Registro_eliminado_correctamente");
+        header("location: ../view/ShowStudents.php?action=1&msg=Registro_eliminado_correctamente");
     }else{
-        header("location: ../view/ShowStudentDelete.php?action=0&msg=Error_al_eliminar_registro");
+        header("location: ../view/ShowStudents.php?action=0&msg=Error_al_eliminar_registro");
     }
 }else{
-    header("location: ../view/ShowStudentDelete.php?action=0&msg=Error_al_capturar_los_datos");
+    header("location: ../view/ShowStudents.php?action=0&msg=Error_al_capturar_los_datos");
 }
