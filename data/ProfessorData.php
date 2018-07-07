@@ -3,6 +3,7 @@
 require_once '../data/Connector.php';
 include_once '../domain/Professor.php';
 include_once '../domain/ProfessorAll.php';
+date_default_timezone_set('America/Costa_Rica');
 
 //require_once './resource/log/ErrorHandler.php';
 
