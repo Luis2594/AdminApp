@@ -175,9 +175,9 @@ include './reusable/Header.php';
                         <!--FRIDAY-->
                         <td bgcolor="gray" >RECREO</td>
                     </tr>
-                    <!--HOUR 9:15AM - 9:55AM-->
+                    <!--HOUR 9:10AM - 9:50AM-->
                     <tr>
-                        <td>9:15am-9:55am</td>
+                        <td>9:10am-9:50am</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-4-1" ></span>
@@ -211,7 +211,7 @@ include './reusable/Header.php';
                     </tr>
                     <!--HOUR 9:50AM - 10:30AM-->
                     <tr>
-                        <td>9:55am-10:35am</td>
+                        <td>9:50am-10:30am</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-5-1" ></span>
@@ -259,7 +259,7 @@ include './reusable/Header.php';
                     </tr>
                     <!--HOUR 10:40AM - 11:20AM-->
                     <tr>
-                        <td>10:45am-11:25am</td>
+                        <td>10:40am-11:20am</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-6-1" ></span>
@@ -293,7 +293,7 @@ include './reusable/Header.php';
                     </tr>
                     <!--HOUR 11:20AM - 12:00MM-->
                     <tr>
-                        <td>11:25am-12:05mm</td>
+                        <td>11:20am-12:00mm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-7-1" ></span>
@@ -325,25 +325,9 @@ include './reusable/Header.php';
                             <input id="c-7-5" value="7-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
                         </td>
                     </tr>
-                    <!--BREAK-->
+                    <!--HOUR 12:00MM - 12:40MM-->
                     <tr>
-                        <td bgcolor="gray" >ALMUERZO</td>
-                        <!--MONDAY-->
-                        <td bgcolor="gray" >ALMUERZO</td>
-                        <!--TUESDAY-->
-                        <td bgcolor="gray" >ALMUERZO</td>
-                        <!--WEDNESDAY-->
-                        <td bgcolor="gray" >ALMUERZO</td>
-                        <!--THURSDAY-->
-                        <td bgcolor="gray" >ALMUERZO</td>
-                        <!--FRIDAY-->
-                        <td bgcolor="gray" >ALMUERZO</td>
-                    </tr>
-
-                    <!--AFTERNOON-->
-                    <!--HOUR 12:30:00MM - 1:10PM-->
-                    <tr>
-                        <td>12:30mm-1:10pm</td>
+                        <td>12:00am-12:40mm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-8-1" ></span>
@@ -375,9 +359,25 @@ include './reusable/Header.php';
                             <input id="c-8-5" value="8-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
                         </td>
                     </tr>
-                    <!--HOUR 1:10PM - 1:50PM-->
+                    <!--BREAK-->
                     <tr>
-                        <td>1:10pm-1:50pm</td>
+                        <td bgcolor="gray" >ALMUERZO</td>
+                        <!--MONDAY-->
+                        <td bgcolor="gray" >ALMUERZO</td>
+                        <!--TUESDAY-->
+                        <td bgcolor="gray" >ALMUERZO</td>
+                        <!--WEDNESDAY-->
+                        <td bgcolor="gray" >ALMUERZO</td>
+                        <!--THURSDAY-->
+                        <td bgcolor="gray" >ALMUERZO</td>
+                        <!--FRIDAY-->
+                        <td bgcolor="gray" >ALMUERZO</td>
+                    </tr>
+
+                    <!--AFTERNOON-->
+                    <!--HOUR 12:20:00MM - 1:00PM-->
+                    <tr>
+                        <td>12:20mm-1:00pm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-9-1" ></span>
@@ -409,9 +409,9 @@ include './reusable/Header.php';
                             <input id="c-9-5" value="9-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
                         </td>
                     </tr>
-                    <!--HOUR 1:50PM - 2:30PM-->
+                    <!--HOUR 1:00PM - 1:40PM-->
                     <tr>
-                        <td>1:50pm-2:30pm</td>
+                        <td>1:00pm-1:40pm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-10-1" ></span>
@@ -443,23 +443,9 @@ include './reusable/Header.php';
                             <input id="c-10-5" value="10-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
                         </td>
                     </tr>
-                    <!--BREAK-->
+                    <!--HOUR 1:40PM - 2:20PM-->
                     <tr>
-                        <td bgcolor="gray" >RECREO</td>
-                        <!--MONDAY-->
-                        <td bgcolor="gray" >RECREO</td>
-                        <!--TUESDAY-->
-                        <td bgcolor="gray" >RECREO</td>
-                        <!--WEDNESDAY-->
-                        <td bgcolor="gray" >RECREO</td>
-                        <!--THURSDAY-->
-                        <td bgcolor="gray" >RECREO</td>
-                        <!--FRIDAY-->
-                        <td bgcolor="gray" >RECREO</td>
-                    </tr>
-                    <!--HOUR 2:45PM - 3:25PM-->
-                    <tr>
-                        <td>2:45pm-3:25pm</td>
+                        <td>1:40pm-2:20pm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-11-1" ></span>
@@ -491,9 +477,23 @@ include './reusable/Header.php';
                             <input id="c-11-5" value="11-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
                         </td>
                     </tr>
-                    <!--HOUR 3:25PM - 4:05PM-->
+                    <!--BREAK-->
                     <tr>
-                        <td>3:25pm-4:05pm</td>
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--MONDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--TUESDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--WEDNESDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--THURSDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--FRIDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                    </tr>
+                    <!--HOUR 2:30PM - 3:10PM-->
+                    <tr>
+                        <td>2:30pm-3:10pm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-12-1" ></span>
@@ -525,23 +525,9 @@ include './reusable/Header.php';
                             <input id="c-12-5" value="12-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
                         </td>
                     </tr>
-                    <!--BREAK-->
+                    <!--HOUR 3:10PM - 3:50PM-->
                     <tr>
-                        <td bgcolor="gray" >RECREO</td>
-                        <!--MONDAY-->
-                        <td bgcolor="gray" >RECREO</td>
-                        <!--TUESDAY-->
-                        <td bgcolor="gray" >RECREO</td>
-                        <!--WEDNESDAY-->
-                        <td bgcolor="gray" >RECREO</td>
-                        <!--THURSDAY-->
-                        <td bgcolor="gray" >RECREO</td>
-                        <!--FRIDAY-->
-                        <td bgcolor="gray" >RECREO</td>
-                    </tr>
-                    <!--HOUR 4:15PM - 4:55PM-->
-                    <tr>
-                        <td>4:15pm-4:55pm</td>
+                        <td>3:10pm-3:50pm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-13-1" ></span>
@@ -573,9 +559,23 @@ include './reusable/Header.php';
                             <input id="c-13-5" value="13-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
                         </td>
                     </tr>
-                    <!--HOUR 4:55PM - 5:35PM-->
+                    <!--BREAK-->
                     <tr>
-                        <td>4:55pm-5:35pm</td>
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--MONDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--TUESDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--WEDNESDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--THURSDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--FRIDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                    </tr>
+                    <!--HOUR 4:00PM - 4:40PM-->
+                    <tr>
+                        <td>4:00pm-4:40pm</td>
                         <!--MONDAY-->
                         <td>
                             <span id="s-14-1" ></span>
@@ -607,6 +607,324 @@ include './reusable/Header.php';
                             <input id="c-14-5" value="14-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
                         </td>
                     </tr>
+                    <!--HOUR 4:40PM - 5:20PM-->
+                    <tr>
+                        <td>4:40pm-5:20pm</td>
+                        <!--MONDAY-->
+                        <td>
+                            <span id="s-15-1" ></span>
+                            <!-- checkbox -->
+                            <input id="c-15-1" value="15-1" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--TUESDAY-->
+                        <td>
+                            <span id="s-15-2" ></span>
+                            <!-- checkbox -->
+                            <input id="c-15-2" value="15-2" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--WEDNESDAY-->
+                        <td>
+                            <span id="s-15-3" ></span>
+                            <!-- checkbox -->
+                            <input id="c-15-3" value="15-3" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--THURSDAY-->
+                        <td>
+                            <span id="s-15-4" ></span>
+                            <!-- checkbox -->
+                            <input id="c-15-4" value="15-4" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--FRIDAY-->
+                        <td>
+                            <span id="s-15-5" ></span>
+                            <!-- checkbox -->
+                            <input id="c-15-5" value="15-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                    </tr>
+                    
+                    <!--BREAK-->
+                    <tr>
+                        <td bgcolor="gray" >NOCHE</td>
+                        <!--MONDAY-->
+                        <td bgcolor="gray" >NOCHE</td>
+                        <!--TUESDAY-->
+                        <td bgcolor="gray" >NOCHE</td>
+                        <!--WEDNESDAY-->
+                        <td bgcolor="gray" >NOCHE</td>
+                        <!--THURSDAY-->
+                        <td bgcolor="gray" >NOCHE</td>
+                        <!--FRIDAY-->
+                        <td bgcolor="gray" >NOCHE</td>
+                    </tr>
+                    
+                    <!--NIGHT-->
+                    <!--HOUR 5:30PM - 6:05PM-->
+                    <tr>
+                        <td>5:30PM-6:05pm</td>
+                        <!--MONDAY-->
+                        <td>
+                            <span id="s-16-1" ></span>
+                            <!-- checkbox -->
+                            <input id="c-16-1" value="16-1" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--TUESDAY-->
+                        <td>
+                            <span id="s-16-2" ></span>
+                            <!-- checkbox -->
+                            <input id="c-16-2" value="16-2" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--WEDNESDAY-->
+                        <td>
+                            <span id="s-16-3" ></span>
+                            <!-- checkbox -->
+                            <input id="c-16-3" value="16-3" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--THURSDAY-->
+                        <td>
+                            <span id="s-16-4" ></span>
+                            <!-- checkbox -->
+                            <input id="c-16-4" value="16-4" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--FRIDAY-->
+                        <td>
+                            <span id="s-16-5" ></span>
+                            <!-- checkbox -->
+                            <input id="c-16-5" value="16-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                    </tr>
+                    <!--HOUR 6:05PM - 6:40PM-->
+                    <tr>
+                        <td>6:05pm-6:40pm</td>
+                        <!--MONDAY-->
+                        <td>
+                            <span id="s-17-1" ></span>
+                            <!-- checkbox -->
+                            <input id="c-17-1" value="17-1" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--TUESDAY-->
+                        <td>
+                            <span id="s-17-2" ></span>
+                            <!-- checkbox -->
+                            <input id="c-17-2" value="17-2" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--WEDNESDAY-->
+                        <td>
+                            <span id="s-17-3" ></span>
+                            <!-- checkbox -->
+                            <input id="c-17-3" value="17-3" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--THURSDAY-->
+                        <td>
+                            <span id="s-17-4" ></span>
+                            <!-- checkbox -->
+                            <input id="c-17-4" value="17-4" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--FRIDAY-->
+                        <td>
+                            <span id="s-17-5" ></span>
+                            <!-- checkbox -->
+                            <input id="c-17-5" value="17-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                    </tr>
+                    <!--HOUR 6:40PM - 7:15PM-->
+                    <tr>
+                        <td>6:40pm-7:15pm</td>
+                        <!--MONDAY-->
+                        <td>
+                            <span id="s-18-1" ></span>
+                            <!-- checkbox -->
+                            <input id="c-18-1" value="18-1" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--TUESDAY-->
+                        <td>
+                            <span id="s-18-2" ></span>
+                            <!-- checkbox -->
+                            <input id="c-18-2" value="18-2" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--WEDNESDAY-->
+                        <td>
+                            <span id="s-18-3" ></span>
+                            <!-- checkbox -->
+                            <input id="c-18-3" value="18-3" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--THURSDAY-->
+                        <td>
+                            <span id="s-18-4" ></span>
+                            <!-- checkbox -->
+                            <input id="c-18-4" value="18-4" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--FRIDAY-->
+                        <td>
+                            <span id="s-18-5" ></span>
+                            <!-- checkbox -->
+                            <input id="c-18-5" value="18-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                    </tr>
+                    <!--BREAK-->
+                    <tr>
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--MONDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--TUESDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--WEDNESDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--THURSDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--FRIDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                    </tr>
+                    <!--HOUR 7:25PM - 8:00PM-->
+                    <tr>
+                        <td>7:25pm-8:00pm</td>
+                        <!--MONDAY-->
+                        <td>
+                            <span id="s-19-1" ></span>
+                            <!-- checkbox -->
+                            <input id="c-19-1" value="19-1" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--TUESDAY-->
+                        <td>
+                            <span id="s-19-2" ></span>
+                            <!-- checkbox -->
+                            <input id="c-19-2" value="19-2" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--WEDNESDAY-->
+                        <td>
+                            <span id="s-19-3" ></span>
+                            <!-- checkbox -->
+                            <input id="c-19-3" value="19-3" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--THURSDAY-->
+                        <td>
+                            <span id="s-19-4" ></span>
+                            <!-- checkbox -->
+                            <input id="c-19-4" value="19-4" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--FRIDAY-->
+                        <td>
+                            <span id="s-19-5" ></span>
+                            <!-- checkbox -->
+                            <input id="c-19-5" value="19-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                    </tr>
+                    <!--HOUR 8:00PM - 8:35PM-->
+                    <tr>
+                        <td>8:00pm-8:35pm</td>
+                        <!--MONDAY-->
+                        <td>
+                            <span id="s-20-1" ></span>
+                            <!-- checkbox -->
+                            <input id="c-20-1" value="20-1" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--TUESDAY-->
+                        <td>
+                            <span id="s-20-2" ></span>
+                            <!-- checkbox -->
+                            <input id="c-20-2" value="20-2" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--WEDNESDAY-->
+                        <td>
+                            <span id="s-20-3" ></span>
+                            <!-- checkbox -->
+                            <input id="c-20-3" value="20-3" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--THURSDAY-->
+                        <td>
+                            <span id="s-20-4" ></span>
+                            <!-- checkbox -->
+                            <input id="c-20-4" value="20-4" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--FRIDAY-->
+                        <td>
+                            <span id="s-20-5" ></span>
+                            <!-- checkbox -->
+                            <input id="c-20-5" value="20-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                    </tr>
+                    <!--BREAK-->
+                    <tr>
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--MONDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--TUESDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--WEDNESDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--THURSDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                        <!--FRIDAY-->
+                        <td bgcolor="gray" >RECREO</td>
+                    </tr>
+                    <!--HOUR 8:40PM - 9:15PM-->
+                    <tr>
+                        <td>8:40pm-9:15pm</td>
+                        <!--MONDAY-->
+                        <td>
+                            <span id="s-21-1" ></span>
+                            <!-- checkbox -->
+                            <input id="c-21-1" value="21-1" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--TUESDAY-->
+                        <td>
+                            <span id="s-21-2" ></span>
+                            <!-- checkbox -->
+                            <input id="c-21-2" value="21-2" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--WEDNESDAY-->
+                        <td>
+                            <span id="s-21-3" ></span>
+                            <!-- checkbox -->
+                            <input id="c-21-3" value="21-3" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--THURSDAY-->
+                        <td>
+                            <span id="s-21-4" ></span>
+                            <!-- checkbox -->
+                            <input id="c-21-4" value="21-4" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--FRIDAY-->
+                        <td>
+                            <span id="s-21-5" ></span>
+                            <!-- checkbox -->
+                            <input id="c-21-5" value="21-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                    </tr>
+                    <!--HOUR 9:15PM - 9:50PM-->
+                    <tr>
+                        <td>9:15pm-9:50pm</td>
+                        <!--MONDAY-->
+                        <td>
+                            <span id="s-22-1" ></span>
+                            <!-- checkbox -->
+                            <input id="c-22-1" value="22-1" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--TUESDAY-->
+                        <td>
+                            <span id="s-22-2" ></span>
+                            <!-- checkbox -->
+                            <input id="c-22-2" value="22-2" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--WEDNESDAY-->
+                        <td>
+                            <span id="s-22-3" ></span>
+                            <!-- checkbox -->
+                            <input id="c-22-3" value="22-3" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--THURSDAY-->
+                        <td>
+                            <span id="s-22-4" ></span>
+                            <!-- checkbox -->
+                            <input id="c-22-4" value="22-4" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                        <!--FRIDAY-->
+                        <td>
+                            <span id="s-22-5" ></span>
+                            <!-- checkbox -->
+                            <input id="c-22-5" value="22-5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
+                        </td>
+                    </tr>
+                    
                 </table>
             </div>
         </div><!-- /.box-body -->
