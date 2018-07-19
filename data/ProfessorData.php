@@ -119,11 +119,17 @@ class ProfessorData extends Connector {
     }
 
     public function insertCourseToProfessor($id, $group, $period, $course) {
+        $year = date("Y");
+        
+        if(date("m") > 7){
+            $year+=1;
+        }
+        
         $query = "call insertProfessorCourse('" . $id . "',"
                 . "'" . $group . "',"
                 . "" . $period . ","
                 . "" . $course . ","
-                . "" . date("Y") . ")";
+                . "" . $year . ")";
         try {
             return $this->exeQuery($query);
         } catch (Exception $ex) {

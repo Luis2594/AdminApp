@@ -43,7 +43,8 @@ include './reusable/Header.php';
                     </div><!-- /.box-body -->
                 </form>
                 <div class="box-footer">
-                    <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
+                    <button onclick="valueInputs();" style="width: 49%" class="btn btn-primary">Actualizar</button>
+                    <button onclick="backPage();" style="width: 49%" class="btn btn-primary">Ver Perfil</button>
                 </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
@@ -107,6 +108,10 @@ include './reusable/Footer.php';
             return false;
         }
         $("#formPass").submit();
+    }
+    
+    function backPage() {
+        window.location = "ShowProfile.php";
     }
 
 
