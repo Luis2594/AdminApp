@@ -204,4 +204,130 @@ class EnrollmentData extends Connector {
         }
     }
 
+     public function getTotalStudents() {
+        $query = "call getTotalStudents()";
+        try {
+            $value = $this->exeQuery($query);
+            if ((mysqli_num_rows($value) > 0)) {
+                return mysqli_fetch_array($value)[0];
+            } else {
+                return 0;
+            }
+        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+    
+    public function getAllStudentEnrollmented() {
+        $query = "call getAllStudentEnrollmented()";
+        try {
+            $value = $this->exeQuery($query);
+            if ((mysqli_num_rows($value) > 0)) {
+                return mysqli_fetch_array($value)[0];
+            } else {
+                return 0;
+            }
+        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getAllParcialStudentsEnrollment($dateStart, $dateEnd) {
+        $query = "call getAllParcialStudentsEnrollment('" . $dateStart . "', '" . $dateEnd . "')";
+        try {
+            $value = $this->exeQuery($query);
+            if ((mysqli_num_rows($value) > 0)) {
+                return mysqli_fetch_array($value)[0];
+            } else {
+                return 0;
+            }
+        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getTotalStudentsSecondLevel($dateStart, $dateEnd) {
+        $query = "call getAllStudentSecondLevel('" . $dateStart . "', '" . $dateEnd . "')";
+        try {
+            $value = $this->exeQuery($query);
+            if ((mysqli_num_rows($value) > 0)) {
+                return mysqli_fetch_array($value)[0];
+            } else {
+                return 0;
+            }
+        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getTotalStudentsSecondLevelWoman($dateStart, $dateEnd) {
+        $query = "call getAllStudentSecondLevelWoman('" . $dateStart . "', '" . $dateEnd . "')";
+        try {
+            $value = $this->exeQuery($query);
+            if ((mysqli_num_rows($value) > 0)) {
+                return mysqli_fetch_array($value)[0];
+            } else {
+                return 0;
+            }
+        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getTotalStudentsSecondLevelMan($dateStart, $dateEnd) {
+        $query = "call getAllStudentSecondLevelMen('" . $dateStart . "', '" . $dateEnd . "')";
+        try {
+            $value = $this->exeQuery($query);
+            if ((mysqli_num_rows($value) > 0)) {
+                return mysqli_fetch_array($value)[0];
+            } else {
+                return 0;
+            }
+        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getTotalStudentsThirdLevel($dateStart, $dateEnd) {
+        $query = "call getAllStudentThirdLevel('" . $dateStart . "', '" . $dateEnd . "')";
+        try {
+            $value = $this->exeQuery($query);
+            if ((mysqli_num_rows($value) > 0)) {
+                return mysqli_fetch_array($value)[0];
+            } else {
+                return 0;
+            }
+        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getTotalStudentsThirdLevelWoman($dateStart, $dateEnd) {
+        $query = "call getAllStudentThirdLevelWoman('" . $dateStart . "', '" . $dateEnd . "')";
+        try {
+            $value = $this->exeQuery($query);
+            if ((mysqli_num_rows($value) > 0)) {
+                return mysqli_fetch_array($value)[0];
+            } else {
+                return 0;
+            }
+        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getTotalStudentsThirdLevelMan($dateStart, $dateEnd) {
+        $query = "call getAllStudentThirdLevelMen('" . $dateStart . "', '" . $dateEnd . "')";
+        try {
+            $value = $this->exeQuery($query);
+            if ((mysqli_num_rows($value) > 0)) {
+                return mysqli_fetch_array($value)[0];
+            } else {
+                return 0;
+            }
+        } catch (Exception $ex) {
+//            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
 }

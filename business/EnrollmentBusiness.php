@@ -40,4 +40,46 @@ class EnrollmentBusiness {
      public function enrollmentActions($id, $value){
          return $this->enrollmentData->enrollmentActions($id, $value);
      }
+     
+     
+     public function getTotalEnrrollment(){
+         return $this->enrollmentData->getTotalEnrrollment();
+     }
+     
+     public function getTotalStudents(){
+         return $this->enrollmentData->getTotalStudents();
+     }
+     
+     public function getAllStudentEnrollmented(){
+         return $this->enrollmentData->getAllStudentEnrollmented();
+     }
+     
+     public function getAllParcialStudentsEnrollment($dateStart, $dateEnd){
+         return $this->enrollmentData->getAllParcialStudentsEnrollment($dateStart, $dateEnd);
+     }
+    
+     public function getTotalStudentsSecondLevel($dateStart, $dateEnd){
+         return $this->enrollmentData->getTotalStudentsSecondLevel($dateStart, $dateEnd);
+     }
+     
+     public function getTotalStudentsSecondLevelWoman($dateStart, $dateEnd){
+         return $this->enrollmentData->getTotalStudentsSecondLevelWoman($dateStart, $dateEnd);
+     }
+     
+     public function getTotalStudentsSecondLevelMan($dateStart, $dateEnd){
+         return $this->enrollmentData->getTotalStudentsSecondLevelMan($dateStart, $dateEnd);
+     }
+     
+     public function getTotalStudentsThirdLevel($dateStart, $dateEnd){
+         return $this->enrollmentData->getTotalStudentsThirdLevel($dateStart, $dateEnd);
+     }
+     
+     public function getTotalStudentsThirdLevelWoman($dateStart, $dateEnd){
+         return $this->enrollmentData->getTotalStudentsThirdLevelWoman($dateStart, $dateEnd);
+     }
+     
+     public function getTotalStudentsThirdLevelMan($dateStart, $dateEnd){
+         return $this->enrollmentData->getTotalStudentsThirdLevelMan($dateStart, $dateEnd);
+     }
+     
 }

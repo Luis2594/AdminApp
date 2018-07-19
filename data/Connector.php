@@ -1,6 +1,7 @@
 <?php
 
 class Connector {
+
     private $server;
     private $user;
     private $password;
@@ -13,12 +14,20 @@ class Connector {
     public function Connector() {
         $this->server = 'localhost';
         $this->user = 'root';
-        $this->password = '1234';
+
+//        ********   LOCAL    ********
+        //        $this->db = 'institution';
+//        $this->password = '1234';
+
+//        ********   DEVELOP  ********
+        $this->password = 'cindea2017@';
+        $this->db = 'test_institution';
+
+//        ********   PRODUCTION  ********
 //        $this->password = 'cindea2017@';
-        $this->db = 'institution';
-//        $this->db = 'institutionTesting';
+//        $this->db = 'institution';
     }
- 
+
     /**
      * Open connection to the data base
      */
@@ -58,8 +67,8 @@ class Connector {
             return false;
         }
     }
-    
-     /**
+
+    /**
      * Execute a query to know the last id of a table
      * @param type $query query to select data from db
      * @return boolean indicates if the given values are registred on the db
