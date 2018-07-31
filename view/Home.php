@@ -61,7 +61,7 @@ require '../resource/log/ErrorHandler.php';
 
             <div id="divInfo">
 
-                <H2>Total Parcial de Estudiantes Matriculados</H2>
+                <H2>Total de Estudiantes Matriculados por Semestre</H2>
                 <div class="row">
                     <div class="col-md-9">
                         <div class="panel panel-warning" style="margin-left: 5px">
@@ -72,7 +72,7 @@ require '../resource/log/ErrorHandler.php';
                                     </div>
                                     <div class="col-xs-9">
                                         <h3 id="totalParcialEnrollment"></h3>
-                                        <h4>Total Parcial Matriculados</h4>
+                                        <h4>Total Semestral Matriculados</h4>
                                     </div>
                                 </div>
                             </div>
