@@ -115,12 +115,8 @@ include './reusable/Header.php';
                     </div><!-- /.box-body -->
                 </form>
 
-                <div class="pull-left">
-                    <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
-                </div>
-                <div class="pull-right">
-                    <button onclick="backPage();" class="btn btn-primary">Atrás</button>
-                </div>
+                <button onclick="valueInputs();" style="width: 49%" class="btn btn-primary">Actualizar</button>
+                <button onclick="backPage();" style="width: 49%" class="btn btn-primary">Atrás</button>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
     </div>   <!-- /.row -->

@@ -15,12 +15,18 @@ class EnrollmentData extends Connector {
                 . "" . $enrollment->getEnrollmentperiod() . ","
                 . "" . $enrollment->getEnrollmentstatus() . ")";
         try {
+            $year = date("Y");
+
+            if (date("m") > 7) {
+                $year += 1;
+            }
+
             $enrollmentID = $this->exeQuery($query);
             if ((mysqli_num_rows($enrollmentID) > 0)) {
                 $query = "call insertStudentCourse('" . $enrollment->getEnrollmentperson() . "',"
                         . "'" . $enrollment->getEnrollmentcourse() . "',"
                         . "" . $enrollment->getEnrollmentperiod() . ","
-                        . "" . date("Y") . ","
+                        . "" . $year . ","
                         . "" . mysqli_fetch_array($enrollmentID)[0] . ")";
 
                 return $this->exeQuery($query);

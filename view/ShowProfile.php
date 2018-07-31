@@ -156,7 +156,7 @@ include './reusable/Header.php';
                     </div><!-- /.box-body -->
                 </form>
                 <div class="box-footer">
-                    <a type="button" class="btn btn-primary" href="javascript:updateAdmin(<?php echo $person->getPersonId() ?>)">Actualizar</a>
+                    <a type="button" class="btn btn-primary" style="width: 100%" href="javascript:updateAdmin(<?php echo $person->getPersonId() ?>)">Actualizar</a>
                 </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->

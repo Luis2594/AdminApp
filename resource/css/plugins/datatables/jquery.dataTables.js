@@ -9306,7 +9306,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Viendo 0 de 0 de 0 Entidades",
+			"sInfoEmpty": "Viendo 0 de 0 de 0 entidades",
 		
 		
 			/**
