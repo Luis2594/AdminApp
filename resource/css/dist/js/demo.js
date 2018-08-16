@@ -31,10 +31,10 @@ $(function () {
           //Boxed layout
           + "<div class='form-group'>"
           + "<div class='checkbox'>"
-          + "<label>"
-          + "<input type='checkbox' onchange='change_layout(\"layout-boxed\");'/> "
+/*          + "<label>"
+           + "<input type='checkbox' onchange='change_layout(\"layout-boxed\");'/> "
           + "Encajonado"
-          + "</label>"
+          + "</label>" */
           + "</div>"
           + "</div>"
           //Sidebar Collapse

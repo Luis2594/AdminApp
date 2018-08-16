@@ -59,7 +59,6 @@ if (isset($id) && $id != '' && is_int($id)) {
                                         <td><a href="InformationCourse.php?id=<?php echo $course->getCourseId(); ?>"><?php echo $course->getCourseName(); ?></a></td>
                                         <td><?php echo $course->getCourseCredits(); ?></td>
                                         <td><?php echo $course->getCourseLesson(); ?></td>
-                                        <!--<td><?php// echo $course->getSpecialityname();  ?></td>-->
                                     </tr>
                                     <?php
                                 }
