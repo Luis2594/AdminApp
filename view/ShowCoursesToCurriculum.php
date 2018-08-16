@@ -46,7 +46,6 @@ if (isset($id) && $id != '' && is_int($id)) {
                                     <th>Nombre</th>
                                     <th>Creditos</th>
                                     <th>Lecciones</th>
-                                    <!--<th>Atinencia/Especialidad</th>-->
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,7 +69,6 @@ if (isset($id) && $id != '' && is_int($id)) {
                                     <th>Nombre</th>
                                     <th>Creditos</th>
                                     <th>Lecciones</th>
-                                    <!--<th>Atinencia/Especialidad</th>-->
                                 </tr>
                             </tfoot>
                         </table>

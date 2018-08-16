@@ -33,7 +33,7 @@ if (isset($id) && is_int($id)) {
                         $students = $studentBusiness->getStudentId($id);
                         foreach ($students as $student) {
                             ?>
-                            <h3 class="box-title">Matrícula para : <?php
+                            <h3 class="box-title">Matrícula para: <?php
                                 echo $student->getPersonFirstName()
                                 . " " . $student->getPersonFirstlastname()
                                 . " " . $student->getPersonSecondlastname();
@@ -51,13 +51,13 @@ if (isset($id) && is_int($id)) {
                             </div>
                             <!--CURRICULUM-->
                             <div class="form-group" id="divCurriculum">
-                                <label>Malla curricular</label>
+                                <label>Malla Curricular</label>
                                 <select id="curriculum" name="curriculum" class="form-control">
                                 </select>
                             </div>
                             <!--PERIOD-->
                             <div class="form-group" id="divFilterPeriod">
-                                <label>Filtrar por período</label>
+                                <label>Filtrar por Período</label>
                                 <select id="period" name="period" class="form-control">
                                 </select>
                             </div>
@@ -70,7 +70,7 @@ if (isset($id) && is_int($id)) {
             <div class="col-xs-12" id="showPeriodI">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Módulos del período I</h3>
+                        <h3 class="box-title">Módulos del Período I</h3>
                     </div>
                     <div class="box-body">
                         <div class="box-footer" style="text-align: center">
@@ -86,7 +86,7 @@ if (isset($id) && is_int($id)) {
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
                                         <th>Tipo</th>
-                                        <th>Atinencia/Especialidad</th>
+                                        <th>Atinencia <br/>Especialidad</th>
                                     </tr>
                                 </thead>
                                 <tbody id="periodI">
@@ -99,7 +99,7 @@ if (isset($id) && is_int($id)) {
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
                                         <th>Tipo</th>
-                                        <th>Atinencia/Especialidad</th>
+                                        <th>Atinencia <br/>Especialidad</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -112,7 +112,7 @@ if (isset($id) && is_int($id)) {
             <div class="col-xs-12" id="showPeriodII">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Módulos del período II</h3>
+                        <h3 class="box-title">Módulos del Período II</h3>
                     </div>
                     <div class="box-body">
                         <div class="box-footer" style="text-align: center">
@@ -128,7 +128,7 @@ if (isset($id) && is_int($id)) {
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
                                         <th>Tipo</th>
-                                        <th>Atinencia/Especialidad</th>
+                                        <th>Atinencia <br/>Especialidad</th>
                                     </tr>
                                 </thead>
                                 <tbody id="periodII">
@@ -141,7 +141,7 @@ if (isset($id) && is_int($id)) {
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
                                         <th>Tipo</th>
-                                        <th>Atinencia/Especialidad</th>
+                                        <th>Atinencia <br/>Especialidad</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -154,7 +154,7 @@ if (isset($id) && is_int($id)) {
             <div class="col-xs-12" id="showPeriodIII">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Módulos del período III</h3>
+                        <h3 class="box-title">Módulos del Período III</h3>
                     </div>
                     <div class="box-body">
                         <div class="box-footer" style="text-align: center">
@@ -170,7 +170,7 @@ if (isset($id) && is_int($id)) {
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
                                         <th>Tipo</th>
-                                        <th>Atinencia/Especialidad</th>
+                                        <th>Atinencia <br/>Especialidad</th>
                                     </tr>
                                 </thead>
                                 <tbody id="periodIII">
@@ -183,7 +183,7 @@ if (isset($id) && is_int($id)) {
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
                                         <th>Tipo</th>
-                                        <th>Atinencia/Especialidad</th>
+                                        <th>Atinencia <br/>Especialidad</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -196,7 +196,7 @@ if (isset($id) && is_int($id)) {
             <div class="col-xs-12" id="showPeriodIV">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Módulos del período IV</h3>
+                        <h3 class="box-title">Módulos del Período IV</h3>
                     </div>
                     <div class="box-body">
                         <div class="box-footer" style="text-align: center">
@@ -212,7 +212,7 @@ if (isset($id) && is_int($id)) {
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
                                         <th>Tipo</th>
-                                        <th>Atinencia/Especialidad</th>
+                                        <th>Atinencia <br/>Especialidad</th>
                                     </tr>
                                 </thead>
                                 <tbody id="periodIV">
@@ -225,7 +225,7 @@ if (isset($id) && is_int($id)) {
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
                                         <th>Tipo</th>
-                                        <th>Atinencia/Especialidad</th>
+                                        <th>Atinencia <br/>Especialidad</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -240,7 +240,7 @@ if (isset($id) && is_int($id)) {
                 <div class="box">
                     <div class="box-body">
                         <div class="box-footer" style="text-align: center">
-                            <button onclick="enrollment(<?php echo $id; ?>);" class="btn btn-primary">Matrícular módulo(s)</button>
+                            <button onclick="enrollment(<?php echo $id; ?>);" class="btn btn-primary">Matrícular Módulo(s)</button>
                         </div>
                     </div>
                 </div>
@@ -253,7 +253,7 @@ if (isset($id) && is_int($id)) {
                         <?php
                         foreach ($students as $student) {
                             ?>
-                            <h3 class="box-title">Nueva Matrícula de : <?php
+                            <h3 class="box-title">Nueva Matrícula: <?php
                                 echo $student->getPersonFirstName()
                                 . " " . $student->getPersonFirstlastname()
                                 . " " . $student->getPersonSecondlastname();
@@ -278,11 +278,9 @@ if (isset($id) && is_int($id)) {
                                         <th>Nombre</th>
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
-                                        <!--<th>Tipo</th>-->
                                         <th>Grupo</th>
                                         <th>Período</th>
-                                        <!--<th>Atinencia/Especialidad</th>-->
-                                        <th>Fecha de matrícula</th>
+                                        <th>Fecha <br/>Matrícula</th>
                                         <th>Eliminar</th>
                                     </tr>
                                 </thead>
@@ -294,11 +292,9 @@ if (isset($id) && is_int($id)) {
                                         <th>Nombre</th>
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
-                                        <!--<th>Tipo</th>-->
                                         <th>Grupo</th>
                                         <th>Período</th>
-                                        <!--<th>Atinencia/Especialidad</th>-->
-                                        <th>Fecha de matrícula</th>
+                                        <th>Fecha <br/>Matrícula</th>
                                         <th>Eliminar</th>
                                     </tr>
                                 </tfoot>
@@ -331,12 +327,10 @@ if (isset($id) && is_int($id)) {
                                         <th>Nombre</th>
                                         <th>Créditos</th>
                                         <th>Lecciones</th>
-                                        <!--<th>Tipo</th>-->
                                         <th>Grupo</th>
                                         <th>Período</th>
-                                        <!--<th>Atinencia/Especialidad</th>-->
-                                        <th>Fecha de matrícula</th>
-                                        <th>Estado del módulo</th>
+                                        <th>Fecha <br/>Matrícula</th>
+                                        <th>Estado del Módulo</th>
 
                                     </tr>
                                 </thead>
@@ -352,8 +346,8 @@ if (isset($id) && is_int($id)) {
                                         <th>Grupo</th>
                                         <th>Período</th>
                                         <!--<th>Atinencia/Especialidad</th>-->
-                                        <th>Fecha de matrícula</th>
-                                        <th>Estado del módulo</th>
+                                        <th>Fecha <br/>Matrícula</th>
+                                        <th>Estado del Módulo</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -441,7 +435,6 @@ include './reusable/Footer.php';
                     htmlCourse += '<td><a href="InformationCourse.php?id=' + item.courseid + '">' + item.coursename + '</a></td>';
                     htmlCourse += "<td>" + item.coursecredits + "</td>";
                     htmlCourse += "<td>" + item.courselesson + "</td>";
-//                    htmlCourse += "<td>" + item.coursetype + "</td>";
                     htmlCourse += "<td>" + item.groupnumber + "</td>";
                     htmlCourse += "<td>" + item.period + "</td>";
                     htmlCourse += "<td>" + item.enrollmentdate + "</td>";
@@ -731,7 +724,6 @@ include './reusable/Footer.php';
                             htmlCourse += "<td>" + item.coursetype + "</td>";
                             htmlCourse += "<td>" + item.specialityname + "</td>";
                             htmlCourse += "</tr>";
-                            //htmlCourse += '<td><a href="javascript:deleteCourseToProfessor(' + item.professorcourseid + ')">Eliminar</a></td>';
                         }
                     }
                 });
@@ -860,7 +852,6 @@ include './reusable/Footer.php';
                     htmlCourse += '<td><a href="InformationCourse.php?id=' + item.courseid + '">' + item.coursename + '</a></td>';
                     htmlCourse += "<td>" + item.coursecredits + "</td>";
                     htmlCourse += "<td>" + item.courselesson + "</td>";
-//                    htmlCourse += "<td>" + item.coursetype + "</td>";
                     htmlCourse += "<td>" + item.groupnumber + "</td>";
                     htmlCourse += "<td>" + item.period + "</td>";
                     htmlCourse += "<td>" + item.enrollmentdate + "</td>";

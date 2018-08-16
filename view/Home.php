@@ -1,9 +1,8 @@
 <?php
 include './reusable/Header.php';
 require '../resource/log/ErrorHandler.php';
-//ErrorHandler::Log(__METHOD__, "algo", $_SESSION["id"]);
 ?>
-<H2 style="margin-left: 10px">Totalidad de estudiantes</H2>
+<H2 style="margin-left: 10px">Totalidad de Estudiantes</H2>
 <div class="row">
     <div class="col-lg-3 col-md-6">
         <div class="panel" style="margin-left: 10px">
@@ -14,7 +13,7 @@ require '../resource/log/ErrorHandler.php';
                     </div>
                     <div class="col-xs-9 text-right">
                         <h3 id="totalStudents"></h3>
-                        <h4>Total Estudiantes</h4>
+                        <h5>Total Estudiantes</h5>
                     </div>
                 </div>
             </div>
@@ -29,7 +28,7 @@ require '../resource/log/ErrorHandler.php';
                     </div>
                     <div class="col-xs-9 text-right">
                         <h3 id="totalEnrollment"></h3>
-                        <h4>Total Matriculados</h4>
+                        <h5>Total Matriculados</h5>
                     </div>
                 </div>
             </div>
@@ -43,28 +42,32 @@ require '../resource/log/ErrorHandler.php';
         <div class="box box-primary">
             <form>
                 <div class="box-body">
-                    <div class="form-group">
-                        <label>Fecha de inicio</label>
-                        <input id="dateStart" type="date" class="form-control">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Fecha Inicio</label>
+                            <input id="dateStart" type="date" class="form-control">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Fecha final</label>
-                        <input id="dateEnd" type="date" class="form-control">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Fecha Final</label>
+                            <input id="dateEnd" type="date" class="form-control">
+                        </div>
                     </div>
-
                 </div><!-- /.box-body -->
-
             </form>
-            <div class="box-footer" style="text-align: center">
-                <button onclick="sendConsult();" class="btn btn-primary">Consultar</button>
+            <div class="box-footer" style="text-align: center;">
+                <button onclick="sendConsult();" class="btn btn-primary" style="width:30%;">Consultar</button>
             </div>
+            <hr/>
 
             <div id="divInfo">
 
-                <H2>Total de Estudiantes Matriculados por Semestre</H2>
+                <h3 class="center-block text-center">Total de Estudiantes Matriculados por Semestre</h3>
                 <div class="row">
-                    <div class="col-md-9">
-                        <div class="panel panel-warning" style="margin-left: 5px">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="panel panel-warning center-block text-center" style="margin-left: 5px">
                             <div class="panel-heading" >
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -72,19 +75,20 @@ require '../resource/log/ErrorHandler.php';
                                     </div>
                                     <div class="col-xs-9">
                                         <h3 id="totalParcialEnrollment"></h3>
-                                        <h4>Total Semestral Matriculados</h4>
+                                        <h5>Total Semestral Matriculados</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-2"></div>
                 </div>
 
                 <H4 id="students_both_levels">Nota: </H4>
 
-                <H2>Estudiantes Segundo Nivel</H2>
+                <h3>Estudiantes Segundo Nivel</h3>
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-4">
                         <div class="panel panel-primary" style="margin-left: 5px">
                             <div class="panel-heading" >
                                 <div class="row">
@@ -93,13 +97,13 @@ require '../resource/log/ErrorHandler.php';
                                     </div>
                                     <div class="col-xs-9">
                                         <h3 id="totalStudentsSecondLevel"></h3>
-                                        <h4>Estudiantes</h4>
+                                        <h5>Estudiantes</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-4">
                         <div class="panel panel-primary">
                             <div class="panel-heading" >
                                 <div class="row">
@@ -108,13 +112,13 @@ require '../resource/log/ErrorHandler.php';
                                     </div>
                                     <div class="col-xs-9">
                                         <h3 id="totalStudentsSecondLevelWoman"></h3>
-                                        <h4>Mujeres</h4>
+                                        <h5>Mujeres</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-4">
                         <div class="panel panel-primary">
                             <div class="panel-heading" >
                                 <div class="row">
@@ -123,7 +127,7 @@ require '../resource/log/ErrorHandler.php';
                                     </div>
                                     <div class="col-xs-9">
                                         <h3 id="totalStudentsSecondLevelMen"></h3>
-                                        <h4>Hombres</h4>
+                                        <h5>Hombres</h5>
                                     </div>
                                 </div>
                             </div>
@@ -131,9 +135,9 @@ require '../resource/log/ErrorHandler.php';
                     </div>
                 </div>
 
-                <H2>Estudiantes Tercer Nivel</H2>
+                <h3>Estudiantes Tercer Nivel</h3>
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-4">
                         <div class="panel panel-success" style="margin-left: 5px">
                             <div class="panel-heading" >
                                 <div class="row">
@@ -142,13 +146,13 @@ require '../resource/log/ErrorHandler.php';
                                     </div>
                                     <div class="col-xs-9">
                                         <h3 id="totalStudentsThirdLevel"></h3>
-                                        <h4>Estudiantes</h4>
+                                        <h5>Estudiantes</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-4">
                         <div class="panel panel-success">
                             <div class="panel-heading" >
                                 <div class="row">
@@ -157,13 +161,13 @@ require '../resource/log/ErrorHandler.php';
                                     </div>
                                     <div class="col-xs-9">
                                         <h3 id="totalStudentsThirdLevelWoman"></h3>
-                                        <h4>Mujeres</h4>
+                                        <h5>Mujeres</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-4">
                         <div class="panel panel-success">
                             <div class="panel-heading" >
                                 <div class="row">
@@ -172,23 +176,18 @@ require '../resource/log/ErrorHandler.php';
                                     </div>
                                     <div class="col-xs-9">
                                         <h3 id="totalStudentsThirdLevelMen"></h3>
-                                        <h4>Hombres</h4>
+                                        <h5>Hombres</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>
     <div class="col-md-6">
-
         <img src="../resource/images/cindeaTurrialba.ico" class="img-responsive img-circle center-block "/>
-
     </div>
 </div>
 
@@ -201,9 +200,7 @@ include './reusable/Footer.php';
 ?>
 
 <script>
-
     (function ($) {
-
         getAllStatusEnrollment();
 
         $.get = function (key) {
@@ -220,12 +217,15 @@ include './reusable/Footer.php';
             }
         }
     })(jQuery);
+
     var action = $.get("action");
     var msg = $.get("msg");
+
     if (action === "1") {
         msg = msg.replace(/_/g, " ");
         alertify.success(msg);
     }
+
     if (action === "0") {
         msg = msg.replace(/_/g, " ");
         alertify.error(msg);
@@ -250,7 +250,6 @@ include './reusable/Footer.php';
             }
         }
         );
-
     }
 
     var divInfo = $("#divInfo").hide();
@@ -281,8 +280,6 @@ include './reusable/Footer.php';
                     $("#totalStudentsThirdLevel").html(item.totalStudentsThirdLevel);
                     $("#totalStudentsThirdLevelWoman").html(item.totalStudentsThirdLevelWoman);
                     $("#totalStudentsThirdLevelMen").html(item.totalStudentsThirdLevelMen);
-
-
                 });
 
                 if (students_both_level > 0) {
@@ -295,7 +292,6 @@ include './reusable/Footer.php';
                 } else {
                     note.hide();
                 }
-
             },
             error: function ()
             {
@@ -303,8 +299,5 @@ include './reusable/Footer.php';
             }
         }
         );
-
     }
-
-
 </script>
