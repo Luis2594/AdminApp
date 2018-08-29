@@ -2,192 +2,217 @@
 include './reusable/Header.php';
 require '../resource/log/ErrorHandler.php';
 ?>
-<H2 style="margin-left: 10px">Totalidad de Estudiantes</H2>
+
 <div class="row">
-    <div class="col-lg-3 col-md-6">
-        <div class="panel" style="margin-left: 10px">
-            <div class="panel-heading" >
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-users fa-5x"></i>
+    <div class="col-md-6 center-block text-center" style="margin-top:30px;">
+        <H2 style="margin-left: 10px; text-aling:center;">Totalidad de Estudiantes</H2>
+        <div class="col-md-6">
+            <div class="panel" style="margin-left: 10px">
+                <div class="panel-heading" >
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-users fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <h3 id="totalStudents"></h3>
+                            <h5>Total Estudiantes</h5>
+                        </div>
                     </div>
-                    <div class="col-xs-9 text-right">
-                        <h3 id="totalStudents"></h3>
-                        <h5>Total Estudiantes</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel" style="margin-left: 10px; margin-right: 10px">
+                <div class="panel-heading" >
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-users fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <h3 id="totalEnrollment"></h3>
+                            <h5>Total Matriculados</h5>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="panel" style="margin-left: 10px; margin-right: 10px">
-            <div class="panel-heading" >
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-users fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <h3 id="totalEnrollment"></h3>
-                        <h5>Total Matriculados</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
+    <div class="col-md-6">
+        <img src="../resource/images/cindeaTurrialba.ico" class="img-responsive img-circle center-block "/>
     </div>
 </div>
 
-<div>
-    <div class="col-md-6">
+<div class="row" style="margin-top:5px;">
+    <div class="col-md-12">
         <!-- general form elements -->
         <div class="box box-primary">
-            <form>
-                <div class="box-body">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Fecha Inicio</label>
-                            <input id="dateStart" type="date" class="form-control">
+            <div class="row">
+                <div class="box-body center-block text-center" >
+                    <form>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Fecha Inicio</label>
+                                <input id="dateStart" type="date" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Fecha Final</label>
-                            <input id="dateEnd" type="date" class="form-control">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Fecha Final</label>
+                                <input id="dateEnd" type="date" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                </div><!-- /.box-body -->
-            </form>
-            <div class="box-footer" style="text-align: center;">
-                <button onclick="sendConsult();" class="btn btn-primary" style="width:30%;">Consultar</button>
+                    </form>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label></label>
+                            <button onclick="sendConsult();" class="btn btn-primary" style="width:30%;margin-top:9px;">Consultar</button>
+                        </div>
+                    </div>                   
+                </div>
+                <hr/>
             </div>
             <hr/>
-
             <div id="divInfo">
-
-                <h3 class="center-block text-center">Total de Estudiantes Matriculados por Semestre</h3>
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <div class="panel panel-warning center-block text-center" style="margin-left: 5px">
-                            <div class="panel-heading" >
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-users fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <h3 id="totalParcialEnrollment"></h3>
-                                        <h5>Total Semestral Matriculados</h5>
+                    <h3 class="center-block text-center">Total de Estudiantes Matriculados por Semestre</h3>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <div class="panel panel-warning center-block text-center" style="margin-left: 5px">
+                                <div class="panel-heading" >
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-users fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9">
+                                            <h3 id="totalParcialEnrollment"></h3>
+                                            <h5>Total Semestral Matriculados</h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-2"></div>
                     </div>
-                    <div class="col-md-2"></div>
+
+                    <H4 id="students_both_levels">Nota: </H4>
                 </div>
+                <div class="row center-block text-center">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <h3>Estudiantes Segundo Nivel</h3>
+                        </div>
 
-                <H4 id="students_both_levels">Nota: </H4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="panel panel-primary" style="margin-left: 5px">
+                                    <div class="panel-heading" >
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <i class="fa fa-users fa-3x"></i>
+                                            </div>
+                                            <div class="col-md-9 pull-right">
+                                                <h3 id="totalStudentsSecondLevel"></h3>
+                                                <h5>Estudiantes</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" >
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <i class="fa fa-users fa-3x"></i>
+                                            </div>
+                                            <div class="col-md-9 pull-right">
+                                                <h3 id="totalStudentsSecondLevelWoman"></h3>
+                                                <h5>Mujeres</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" >
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <i class="fa fa-users fa-3x"></i>
+                                            </div>
+                                            <div class="col-md-9 pull-right">
+                                                <h3 id="totalStudentsSecondLevelMen"></h3>
+                                                <h5>Hombres</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <h3>Estudiantes Tercer Nivel</h3>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="panel panel-success" style="margin-left: 5px">
+                                    <div class="panel-heading" >
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <i class="fa fa-users fa-3x"></i>
+                                            </div>
+                                            <div class="col-md-9 pull-right">
+                                                <h3 id="totalStudentsThirdLevel"></h3>
+                                                <h5>Estudiantes</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading" >
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <i class="fa fa-users fa-3x"></i>
+                                            </div>
+                                            <div class="col-md-9 pull-right">
+                                                <h3 id="totalStudentsThirdLevelWoman"></h3>
+                                                <h5>Mujeres</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading" >
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <i class="fa fa-users fa-3x"></i>
+                                            </div>
+                                            <div class="col-md-9 pull-right">
+                                                <h3 id="totalStudentsThirdLevelMen"></h3>
+                                                <h5>Hombres</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                <h3>Estudiantes Segundo Nivel</h3>
-                <div class="row">
-                    <div class="col-lg-3 col-md-4">
-                        <div class="panel panel-primary" style="margin-left: 5px">
-                            <div class="panel-heading" >
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-users fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <h3 id="totalStudentsSecondLevel"></h3>
-                                        <h5>Estudiantes</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading" >
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-users fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <h3 id="totalStudentsSecondLevelWoman"></h3>
-                                        <h5>Mujeres</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading" >
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-users fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <h3 id="totalStudentsSecondLevelMen"></h3>
-                                        <h5>Hombres</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Estudiantes Tercer Nivel</h3>
-                <div class="row">
-                    <div class="col-lg-3 col-md-4">
-                        <div class="panel panel-success" style="margin-left: 5px">
-                            <div class="panel-heading" >
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-users fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <h3 id="totalStudentsThirdLevel"></h3>
-                                        <h5>Estudiantes</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4">
-                        <div class="panel panel-success">
-                            <div class="panel-heading" >
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-users fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <h3 id="totalStudentsThirdLevelWoman"></h3>
-                                        <h5>Mujeres</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4">
-                        <div class="panel panel-success">
-                            <div class="panel-heading" >
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-users fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <h3 id="totalStudentsThirdLevelMen"></h3>
-                                        <h5>Hombres</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="col-md-6">
-        <img src="../resource/images/cindeaTurrialba.ico" class="img-responsive img-circle center-block "/>
+        
     </div>
 </div>
 

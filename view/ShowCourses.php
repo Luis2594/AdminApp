@@ -34,7 +34,7 @@ if (isset($_GET['delete']))
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Módulos del Cindea</h3>
+                    <h3 class="box-title">Módulos del CINDEA</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -45,7 +45,7 @@ if (isset($_GET['delete']))
                                 <th>Créditos</th>
                                 <th>Lecciones</th>
                                 <th>Tipo</th>
-                                <th>Atinencia/Especialidad</th>
+                                <th>Atinencia <br/>Especialidad</th>
                                 <th>Períodos</th>
                                 <th>Plan de estudios</th>
                                 <?php
@@ -101,7 +101,7 @@ if (isset($_GET['delete']))
                                 <th>Créditos</th>
                                 <th>Lecciones</th>
                                 <th>Tipo</th>
-                                <th>Atinencia/Especialidad</th>
+                                <th>Atinencia <br/>Especialidad</th>
                                 <th>Períodos</th>
                                 <th>Plan de estudios</th>
                                 <?php
@@ -148,12 +148,15 @@ include './reusable/Footer.php';
             }
         }
     })(jQuery);
+
     var action = $.get("action");
     var msg = $.get("msg");
+
     if (action === "1") {
         msg = msg.replace(/_/g, " ");
         alertify.success(msg);
     }
+
     if (action === "0") {
         msg = msg.replace(/_/g, " ");
         alertify.error(msg);

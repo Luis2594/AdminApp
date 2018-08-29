@@ -7,7 +7,8 @@ include_once '../resource/Constants.php';
         <meta charset="UTF-8">
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>Administración</title>
-        <link rel="icon" type="image/png" href="./../resource/images/cindeaTurrialba.ico" />
+        <link rel="icon" type="image/png" href="./../resource/images/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="./../resource/images/favicon-16x16.png" sizes="16x16" />
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="./../resource/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -216,8 +217,18 @@ include_once '../resource/Constants.php';
                                     <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="./NotificationsShow.php"><i class="fa"></i>Ver Notificaciones</a></li>
-                                    <li><a href="./NotificationsCreate.php"><i class="fa"></i>Crear Notificaciones</a></li>
+                                    <li>
+                                        <a>
+                                            <i class="fa"></i> <span> Ver Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a href="./NotificationsShow.php"><i class="fa"></i> Administrativos</a></li>
+                                            <li><a href="./NotificationsShow.php"><i class="fa"></i> Profesores</a></li>
+                                            <li><a href="./NotificationsShow.php"><i class="fa"></i> Estudiantes</a></li>
+                                            <li><a href="./NotificationsShow.php"><i class="fa"></i> Grupos</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="./NotificationsCreate.php"><i class="fa"></i>Crear Notificación</a></li>
                                 </ul>
                             </li>
 

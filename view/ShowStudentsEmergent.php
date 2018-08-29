@@ -42,7 +42,7 @@ if(isset($_GET['delete']))$delete = $_GET['delete'];
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Estudiantes Emergentes del Cindea</h3>
+                    <h3 class="box-title">Estudiantes Emergentes del CINDEA</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">

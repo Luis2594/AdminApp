@@ -37,7 +37,7 @@ if (isset($_GET['delete']))
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Profesores del Cindea</h3>
+                    <h3 class="box-title">Profesores del CINDEA</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">
