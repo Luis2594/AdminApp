@@ -6,9 +6,9 @@ $id = (int) $_POST['id'];
 $period = (int) $_POST['period'];
 $modules = $_POST['modules'];
 
-if (isset($id) && is_int($id) 
-        && isset($period) && is_int($period) 
-        && isset($modules)) {
+if (isset($id) && is_int($id)
+    && isset($period) && is_int($period)
+    && isset($modules)) {
 
     $curriculumBusiness = new CurriculumBusiness();
 
@@ -19,4 +19,4 @@ if (isset($id) && is_int($id)
     echo TRUE;
 } else {
     echo FALSE;
-} 
+}

@@ -45,8 +45,8 @@ if (isset($pk) && $pk != '' && is_int($pk)) {
                         </div><!-- /.box-body -->
                     </form>
                     <div class="box-footer btn-group btn-group-justified">
-                        <a type="button" class="btn btn-success" href="javascript:valueInputs()">Actualizar</a>
-                        <a type="button" class="btn btn-primary" href="javascript:backPage()">Atrás</a>
+                        <a type="button" class="btn btn-success" style="width: 49%" href="javascript:valueInputs()">Actualizar</a>
+                        <a type="button" class="btn btn-primary" style="width: 49%" href="javascript:backPage()">Atrás</a>
                     </div>
                 </div><!-- /.box -->
             </div><!--/.col (left) -->

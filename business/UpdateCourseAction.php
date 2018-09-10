@@ -11,17 +11,17 @@ $speciality = (int) $_POST['speciality'];
 $type = (int) $_POST['typeCourse'];
 
 if (isset($id) &&
-        isset($code) &&
-        isset($name) &&
-        isset($credits) &&
-        isset($lessons) &&
-        isset($speciality) &&
-        isset($type)
+    isset($code) &&
+    isset($name) &&
+    isset($credits) &&
+    isset($lessons) &&
+    isset($speciality) &&
+    isset($type)
 ) {
     $coursesBusiness = new CourseBusiness();
-    
+
     $courseTemp = $coursesBusiness->getCourseIdUpdate($id);
-    
+
     $pdf = $_POST['schedule'];
     if (!empty($_FILES) && $_FILES["schedule"]["name"]) {
         $path_parts = pathinfo($_FILES["schedule"]["name"]);
@@ -47,12 +47,11 @@ if (isset($id) &&
     $course = new Course($id, $code, $name, $credits, $lessons, $pdf, $speciality, $type);
 
     if ($coursesBusiness->update($course)) {
-        header("location: ../view/InformationCourse.php?id=".$id."&action=1&msg=Registro_actualizado_correctamente");
+        header("location: ../view/InformationCourse.php?id=" . $id . "&action=1&msg=Registro_actualizado_correctamente");
     } else {
-        header("location: ../view/InformationCourse.php?id=".$id."&action=0&msg=Error_al_actualizar_registro");
+        header("location: ../view/InformationCourse.php?id=" . $id . "&action=0&msg=Error_al_actualizar_registro");
     }
 } else {
     //error
-    header("location: ../view/InformationCourse.php?id=".$id."&action=0&msg=Datos_erroneos");
+    header("location: ../view/InformationCourse.php?id=" . $id . "&action=0&msg=Datos_erroneos");
 }
-?>

@@ -17,16 +17,6 @@ if (isset($_GET['delete']))
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowCurriculum.php"><i class="fa fa-arrow-circle-right"></i> Maya curricular</a></li>
-        <?php
-        if (isset($update) && $update == "update") {
-            ?>
-            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Actualizar Maya curricular</a></li>
-        <?php } ?>
-        <?php
-        if (isset($delete) && $delete == "delete") {
-            ?>
-            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Eliminar Maya curricular</a></li>
-        <?php } ?>
     </ol>
 </section>
 <br>
@@ -38,6 +28,7 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Malla Curricular del CINDEA</h3>
+                    <a type="button" class="btn btn-primary pull-right" href="CreateCurriculum.php">Crear Malla Curricular</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -46,24 +37,9 @@ if (isset($_GET['delete']))
                                 <th>Año</th>
                                 <th>Nombre</th>
                                 <th>Módulos</th>
-                                <?php
-                                if (isset($assign) && $assign == 'assign') {
-                                    ?>
-                                    <th>Asignar módulos</th>
-                                    <?php
-                                }
-                                ?>
-
-                                <?php
-                                if (isset($update) && $update == "update") {
-                                    ?>
-                                    <th>Actualizar</th>
-                                <?php } ?>
-                                <?php
-                                if (isset($delete) && $delete == "delete") {
-                                    ?>
-                                    <th>Eliminar</th>
-                                <?php } ?>
+                                <th>Asignar Módulos</th>
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,24 +55,9 @@ if (isset($_GET['delete']))
                                     <td><?php echo $curriculum->getCurriculumYear(); ?></td>
                                     <td><a href="InformationCurriculum.php?id=<?php echo $curriculum->getCurriculumId(); ?>"><?php echo $curriculum->getCurriculumName(); ?></a></td>
                                     <td><a href="ShowCoursesCurriculum.php?id=<?php echo $curriculum->getCurriculumId(); ?>">Módulos</a></td>
-                                    <?php
-                                    if (isset($assign) && $assign == 'assign') {
-                                        ?>
-                                        <td><a href="AssignCourseToCurriculum.php?id=<?php echo $curriculum->getCurriculumId() ?>">Asignar módulos</a></td>
-                                        <?php
-                                    }
-                                    ?>
-
-                                    <?php
-                                    if (isset($update) && $update == "update") {
-                                        ?>
-                                        <td><a href="UpdateCurriculum.php?id=<?php echo $curriculum->getCurriculumId() ?>">Actualizar</a></td>
-                                    <?php } ?>
-                                    <?php
-                                    if (isset($delete) && $delete == "delete") {
-                                        ?>
-                                        <td><a href="javascript:deleteConfirmation(<?php echo $curriculum->getCurriculumId() ?>)">Eliminar</a></td>
-                                    <?php } ?>
+                                    <td><a href="AssignCourseToCurriculum.php?id=<?php echo $curriculum->getCurriculumId() ?>">Asignar módulos</a></td>
+                                    <td><a href="UpdateCurriculum.php?id=<?php echo $curriculum->getCurriculumId() ?>">Actualizar</a></td>
+                                    <td><a href="javascript:deleteConfirmation(<?php echo $curriculum->getCurriculumId() ?>)">Eliminar</a></td>
                                 </tr>
                                 <?php
                             }
@@ -107,23 +68,9 @@ if (isset($_GET['delete']))
                                 <th>Año</th>
                                 <th>Nombre</th>
                                 <th>Módulos</th>
-                                <?php
-                                if (isset($assign) && $assign == 'assign') {
-                                    ?>
-                                    <th>Asignar módulos</th>
-                                    <?php
-                                }
-                                ?>
-                                <?php
-                                if (isset($update) && $update == "update") {
-                                    ?>
-                                    <th>Actualizar</th>
-                                <?php } ?>
-                                <?php
-                                if (isset($delete) && $delete == "delete") {
-                                    ?>
-                                    <th>Eliminar</th>
-                                <?php } ?>
+                                <th>Asignar Módulos</th>
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </tfoot>
                     </table>

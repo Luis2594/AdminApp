@@ -20,10 +20,10 @@ $nationality = $_POST['nationality'];
 $quantityPhones = (int) $_POST['phones'];
 
 if (isset($id) && isset($dni) &&
-        isset($name) &&
-        isset($firstlastname) &&
-        isset($secondlastname) &&
-        isset($genderTemp)) {
+    isset($name) &&
+    isset($firstlastname) &&
+    isset($secondlastname) &&
+    isset($genderTemp)) {
 
     $name = ucwords(strtolower($name));
     $firstlastname = ucwords(strtolower($firstlastname));
@@ -31,7 +31,7 @@ if (isset($id) && isset($dni) &&
     $personBusiness = new PersonBusiness();
 
     $person = new Person(
-            $id, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), NULL, $genderTemp, $nationality, "profile_default.png");
+        $id, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), NULL, $genderTemp, $nationality, "profile_default.png");
 
     $res = $personBusiness->update($person);
 
@@ -56,4 +56,3 @@ if (isset($id) && isset($dni) &&
 } else {
     header("location: ../view/UpdateProfessor.php?id=" . $id . "&action=0&msg=Datos_erroneos");
 }
-?>

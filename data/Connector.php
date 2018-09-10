@@ -16,7 +16,7 @@ class Connector {
         $this->user = 'root';
 
 //        ********   LOCAL    ********
-        $this->db = 'institutionBase';
+        $this->db = 'institution';
         $this->password = '1234';
 
 //        ********   DEVELOP  ********

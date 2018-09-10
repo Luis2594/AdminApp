@@ -7,7 +7,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="CreateCurriculum.php"><i class="fa fa-arrow-circle-right"></i>Crear Maya Curricular</a></li>
+        <li><a href="CreateCurriculum.php"><i class="fa fa-arrow-circle-right"></i>Crear Malla Curricular</a></li>
     </ol>
 </section>
 <br>
@@ -20,7 +20,7 @@ include './reusable/Header.php';
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Crear malla curricular</h3>
+                    <h3 class="box-title">Crear Malla Curricular</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form role="form" id="formCurriculum" action="../business/CreateCurriculumAction.php" method="POST" enctype="multipart/form-data">
@@ -36,7 +36,7 @@ include './reusable/Header.php';
                     </div><!-- /.box-body -->
                 </form>
                 <div class="box-footer">
-                    <button onclick="valueInputs();" class="btn btn-primary">Crear</button>
+                    <button onclick="valueInputs();" style="width: 100%" class="btn btn-primary">Crear</button>
                 </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->

@@ -24,16 +24,16 @@ $secundaryGroup = $_POST['secundaryGroup'];
 $quantityPhones = (int) $_POST['phones'];
 
 if (isset($dni) &&
-        isset($name) &&
-        isset($firstlastname) &&
-        isset($secondlastname) &&
-        isset($birthdate) &&
-        isset($genderTemp) &&
-        isset($mainGroup) &&
-        isset($secundaryGroup) &&
-        isset($yearIncome) &&
-        isset($managerStudent) &&
-        isset($localitation)) {
+    isset($name) &&
+    isset($firstlastname) &&
+    isset($secondlastname) &&
+    isset($birthdate) &&
+    isset($genderTemp) &&
+    isset($mainGroup) &&
+    isset($secundaryGroup) &&
+    isset($yearIncome) &&
+    isset($managerStudent) &&
+    isset($localitation)) {
 
     $name = ucwords(strtolower($name));
     $firstlastname = ucwords(strtolower($firstlastname));
@@ -49,7 +49,7 @@ if (isset($dni) &&
     }
 
     //Creamos instancia de persona
-    $person = new Person(NULL, $dni, $name, $firstlastname, $secondlastname, "", date('Y-m-d', strtotime(str_replace('/', '-', $birthdate))), NULL, $gender, $nationality, "profile_default.png");
+    $person = new Person(NULL, $dni, $name, $firstlastname, $secondlastname, "", date('Y-m-d', strtotime(str_replace('/', '-', $birthdate))), null, $gender, $nationality, "profile_default.png");
 
     $id_last = $personBusiness->insert($person);
 
@@ -76,22 +76,22 @@ if (isset($dni) &&
 
         $student = new Student(NULL, $adecuacy, $yearIncome, NULL, $localitation, NULL, $managerStudent, $id_last);
         $pass = strtoupper(substr($firstlastname, 0, 2)) . strtoupper(substr($secondlastname, 0, 2)) . substr($dni, -3);
-        
+
         if ($studentBusiness->insertStudentWithCredentials($student, $pass)) {
-            
+
             $groupBusiness = new GroupBusiness();
-            if($groupBusiness->insertStudentGroup($mainGroup, $id_last, 1)){
-                if($secundaryGroup != 0 && $secundaryGroup != $mainGroup){
-                    if($groupBusiness->insertStudentGroup($secundaryGroup, $id_last, 0)){
-                        
-                    }else{
+            if ($groupBusiness->insertStudentGroup($mainGroup, $id_last, 1)) {
+                if ($secundaryGroup != 0 && $secundaryGroup != $mainGroup) {
+                    if ($groupBusiness->insertStudentGroup($secundaryGroup, $id_last, 0)) {
+
+                    } else {
                         header("location: ../view/CreateStudent.php?action=0&msg=Error_al_ingresar_grupo_secundario");
                     }
                 }
-            }else{
+            } else {
                 header("location: ../view/CreateStudent.php?action=0&msg=Error_al_ingresar_grupo_principal");
             }
-           
+
             if (isset($quantityPhones)) {
                 $phoneBusiness = new PhoneBusiness();
                 for ($i = 0; $i <= $quantityPhones; $i++) {

@@ -100,9 +100,9 @@ if (isset($id) && is_int($id)) {
                         </div><!-- /.box-body -->
 
                     </form>
-
                     <div class="box-footer">
-                        <button onclick="addPhonePerson();" class="btn btn-primary">Crear</button>
+                        <button onclick="addPhonePerson();" style="width: 49%" class="btn btn-primary">Crear</button>
+                        <button onclick="goBack();" style="width: 49%" class="btn btn-primary">Atrás</button>
                     </div>
                 </div><!-- /.box -->
             </div><!--/.col (left) -->
@@ -142,6 +142,10 @@ include './reusable/Footer.php';
     if (action === "0") {
         msg = msg.replace(/_/g, " ");
         alertify.error(msg);
+    }
+
+    function goBack() {
+        window.history.back();
     }
 
     function addPhonePerson() {

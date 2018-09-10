@@ -12,7 +12,7 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
         include '../business/NotificationBusiness.php';
         $notificationBusiness = new NotificationBusiness();
         $result = [];
-        foreach ($notificationBusiness->getAllNotificationByStudent($person['personid']) as $current) {
+        foreach ($notificationBusiness->getAllNotificationsByStudent($person['personid']) as $current) {
             $array = array("notificationid" => $current->getNotificationId(),
                 "notificationtext" => $current->getNotificationText(),
                 "notificationdate" => $current->getNotificationDate()

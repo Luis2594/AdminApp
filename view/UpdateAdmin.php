@@ -114,9 +114,10 @@ include './reusable/Header.php';
                         <input id="id" name="id" value="<?php echo $id ?>">
                     </div><!-- /.box-body -->
                 </form>
-
-                <button onclick="valueInputs();" style="width: 49%" class="btn btn-primary">Actualizar</button>
-                <button onclick="backPage();" style="width: 49%" class="btn btn-primary">Atrás</button>
+                <div class="box-footer">
+                    <button onclick="valueInputs();" style="width: 49%" class="btn btn-primary">Actualizar</button>
+                    <button onclick="backPage();" style="width: 49%" class="btn btn-primary">Atrás</button>
+                </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
     </div>   <!-- /.row -->

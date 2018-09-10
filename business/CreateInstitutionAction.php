@@ -10,17 +10,17 @@ $institutionMission = $_POST['mission'];
 $institutionView = $_POST['view'];
 
 if (
-        isset($institutionAddress) && $institutionAddress != "" &&
-        isset($institutionFax) && $institutionFax != "" &&
-        isset($institutionMission) && $institutionMission != "" &&
-        isset($institutionName) && $institutionName != "" &&
-        isset($institutionPhone) && $institutionPhone != "" &&
-        isset($institutionView) && $institutionView != ""
+    isset($institutionAddress) && $institutionAddress != "" &&
+    isset($institutionFax) && $institutionFax != "" &&
+    isset($institutionMission) && $institutionMission != "" &&
+    isset($institutionName) && $institutionName != "" &&
+    isset($institutionPhone) && $institutionPhone != "" &&
+    isset($institutionView) && $institutionView != ""
 ) {
     //$institutionName = ucwords(strtolower($institutionName));
-    
+
     $institutionBusiness = new InstitutionBusiness();
-    
+
     $institution = new Institution(NULL, $institutionName, $institutionAddress, $institutionFax, $institutionPhone, $institutionMission, $institutionView);
 
     if ($institutionBusiness->insert($institution) != 0) {

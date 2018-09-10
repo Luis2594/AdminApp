@@ -50,9 +50,9 @@ if (isset($id) && $id != '' && is_int($id)) {
                             </div><!-- /.box-body -->
                         </form>
                         <div class="box-footer">
-                            <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
+                            <button onclick="valueInputs();" style="width: 49%" class="btn btn-primary">Actualizar</button>
+                            <button onclick="goBack();" style="width: 49%" class="btn btn-primary">Atrás</button>
                         </div>
-
                     <?php } ?>
                 </div><!-- /.box -->
             </div><!--/.col (left) -->
@@ -65,6 +65,9 @@ include './reusable/Footer.php';
 ?>
 
 <script type="text/javascript">
+    function goBack() {
+        window.history.back();
+    }
 
     (function ($) {
         $.get = function (key) {

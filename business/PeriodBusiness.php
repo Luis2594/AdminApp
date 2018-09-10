@@ -2,24 +2,29 @@
 
 include_once '../data/PeriodData.php';
 
-class PeriodBusiness {
+class PeriodBusiness
+{
 
     private $periodData;
-    
-    public function PeriodBusiness() {
+
+    public function PeriodBusiness()
+    {
         return $this->periodData = new PeriodData();
     }
-    
-    public function getAllPeriods() {
+
+    public function getAllPeriods()
+    {
         return $this->periodData->getAllPeriods();
     }
-    
-    public function getAllPeriodsByCourse($id) {
+
+    public function getAllPeriodsByCourse($id)
+    {
         return $this->periodData->getAllPeriodsByCourse($id);
     }
-    
-    public function deletePeridoCourse($idCourse, $idPeriod) {
+
+    public function deletePeridoCourse($idCourse, $idPeriod)
+    {
         return $this->periodData->deletePeridoCourse($idCourse, $idPeriod);
     }
-    
+
 }

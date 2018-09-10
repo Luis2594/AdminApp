@@ -17,16 +17,6 @@ if (isset($_GET['delete']))
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowProfessors.php"><i class="fa fa-arrow-circle-right"></i> Profesores</a></li>
-        <?php
-        if (isset($update) && $update == "update") {
-            ?>
-            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Actualizar Profesores</a></li>
-        <?php } ?>
-        <?php
-        if (isset($delete) && $delete == "delete") {
-            ?>
-            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Eliminar Profesores</a></li>
-        <?php } ?>
     </ol>
 </section>
 <br>
@@ -38,6 +28,7 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Profesores del CINDEA</h3>
+                    <a type="button" class="btn btn-primary pull-right" href="CreateProfessor.php">Crear Profesor</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">
@@ -51,21 +42,6 @@ if (isset($_GET['delete']))
                                     <th>Correo</th>
                                     <th>Género</th>
                                     <th>Módulos</th>
-                                    <?php
-                                    if (isset($assign) && $assign == "assign") {
-                                        ?>
-                                        <th>Asignar módulos</th>
-                                    <?php } ?>
-                                    <?php
-                                    if (isset($update) && $update == "update") {
-                                        ?>
-                                        <th>Actualizar</th>
-                                    <?php } ?>
-                                    <?php
-                                    if (isset($delete) && $delete == "delete") {
-                                        ?>
-                                        <th>Eliminar</th>
-                                    <?php } ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,23 +70,6 @@ if (isset($_GET['delete']))
                                         <?php }
                                         ?>
                                         <td><a href="ShowCoursesProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Módulos</a></td>
-                                        <?php
-                                        if (isset($assign) && $assign == "assign") {
-                                            ?>
-                                            <td><a href="AssignCourseToProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Asignar módulos</a></td>
-                                        <?php } ?>
-
-                                        <?php
-                                        if (isset($update) && $update == "update") {
-                                            ?>
-                                            <td><a  href="UpdateProfessor.php?id=<?php echo $professor->getPersonId() ?>" >Actualizar</a></td>
-                                        <?php } ?>
-                                        <?php
-                                        if (isset($delete) && $delete == "delete") {
-                                            ?>
-                                            <td><a  href="javascript:deleteConfirmation(<?php echo $professor->getPersonId() ?>)" >Eliminar</a></td>
-                                        <?php } ?>
-
                                     </tr>
                                     <?php
                                 }
@@ -125,21 +84,6 @@ if (isset($_GET['delete']))
                                     <th>Correo</th>
                                     <th>Género</th>
                                     <th>Módulos</th>
-                                    <?php
-                                    if (isset($assign) && $assign == "assign") {
-                                        ?>
-                                        <th>Asignar módulos</th>
-                                    <?php } ?>
-                                    <?php
-                                    if (isset($update) && $update == "update") {
-                                        ?>
-                                        <th>Actualizar</th>
-                                    <?php } ?>
-                                    <?php
-                                    if (isset($delete) && $delete == "delete") {
-                                        ?>
-                                        <th>Eliminar</th>
-                                    <?php } ?>
                                 </tr>
                             </tfoot>
                         </table>

@@ -46,9 +46,9 @@ if (isset($id) && $id != '' && is_int($id)) {
                             </div><!-- /.box-body -->
                         </form>
                         <div class="box-footer">
-                            <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
+                            <button onclick="valueInputs();" style="width: 49%" class="btn btn-primary">Actualizar</button>
+                            <button onclick="goBack();" style="width: 49%" class="btn btn-primary">Atrás</button>
                         </div>
-
                     <?php } ?>
                 </div><!-- /.box -->
             </div><!--/.col (left) -->
@@ -77,6 +77,7 @@ include './reusable/Footer.php';
             }
         }
     })(jQuery);
+
     var action = $.get("action");
     var msg = $.get("msg");
     if (action === "1") {
@@ -98,6 +99,10 @@ include './reusable/Footer.php';
         }
 
         $("#formSpeciality").submit();
+    }
+
+    function goBack() {
+        window.history.back();
     }
 
 </script>

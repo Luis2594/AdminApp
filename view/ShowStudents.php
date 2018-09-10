@@ -38,6 +38,7 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Estudiantes del CINDEA</h3>
+                    <a type="button" class="btn btn-primary pull-right" href="CreateStudent.php">Crear Estudiante</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">

@@ -7,42 +7,50 @@ include_once '../data/StudentEmergentData.php';
  *
  * @author luis
  */
-class StudentEmergentBusiness {
+class StudentEmergentBusiness
+{
 
     //put your code here
 
     private $data;
 
-    public function StudentEmergentBusiness() {
+    public function StudentEmergentBusiness()
+    {
         return $this->data = new StudentEmergentData();
     }
 
-
-    public function insert($studentEmergent) {
+    public function insert($studentEmergent)
+    {
         return $this->data->insert($studentEmergent);
     }
 
-    public function update($studentEmergent) {
+    public function update($studentEmergent)
+    {
         return $this->data->update($studentEmergent);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         return $this->data->delete($id);
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         return $this->data->getAll();
     }
 
-    public function getStudentById($id) {
+    public function getStudentById($id)
+    {
         return $this->data->getStudentById($id);
     }
 
-    public function confirmDni($dni) {
+    public function confirmDni($dni)
+    {
         return $this->data->confirmDni($dni);
     }
-    
-    public function getStudentsByCourse($course){
+
+    public function getStudentsByCourse($course)
+    {
         return $this->data->getStudentsByCourse($course);
     }
 

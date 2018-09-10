@@ -10,10 +10,10 @@ $day = (int) $_POST['day'];
 $hour = (int) $_POST['hour'];
 
 if (isset($code) &&
-        isset($name) &&
-        isset($area) &&
-        isset($day) &&
-        isset($hour)
+    isset($name) &&
+    isset($area) &&
+    isset($day) &&
+    isset($hour)
 ) {
     $freeCourseBusiness = new FreeCourseBusiness();
 
@@ -28,4 +28,3 @@ if (isset($code) &&
     //error
     header("location: ../view/InformationCourseEmergent.php?id=" . $id . "&action=0&msg=Datos_erroneos");
 }
-?>

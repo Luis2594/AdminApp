@@ -19,10 +19,10 @@ $nationality = $_POST['nationality'];
 $quantityPhones = (int) $_POST['phones'];
 
 if (isset($dni) &&
-        isset($name) &&
-        isset($firstlastname) &&
-        isset($secondlastname) &&
-        isset($genderTemp)) {
+    isset($name) &&
+    isset($firstlastname) &&
+    isset($secondlastname) &&
+    isset($genderTemp)) {
 
     $name = ucwords(strtolower($name));
     $firstlastname = ucwords(strtolower($firstlastname));
@@ -30,7 +30,7 @@ if (isset($dni) &&
     $personBusiness = new PersonBusiness();
 
     $person = new Person(
-            NULL, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), NULL, $genderTemp, $nationality, "profile_default.png");
+        NULL, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), null, $genderTemp, $nationality, "profile_default.png");
 
     $id_last = $personBusiness->insert($person);
 

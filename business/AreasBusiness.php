@@ -7,34 +7,41 @@ include_once '../data/AreasData.php';
  *
  * @author Kevin ESquivel Marín <kevinesquivel21@gmail.com>
  */
-class AreasBusiness {
-
+class AreasBusiness
+{
     private $areaData;
 
-    public function AreasBusiness() {
+    public function AreasBusiness()
+    {
         return $this->areaData = new AreasData();
     }
 
-    public function insert($area) {
+    public function insert($area)
+    {
         return $this->areaData->insert($area);
     }
 
-    public function update($area) {
+    public function update($area)
+    {
         return $this->areaData->update($area);
     }
 
-    public function delete($pk) {
+    public function delete($pk)
+    {
         return $this->areaData->delete($pk);
     }
-    
-    public function getByPk($pk) {
+
+    public function getByPk($pk)
+    {
         return $this->areaData->getByPk($pk);
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         return $this->areaData->getAll();
     }
-    public function getAllToSelect() {
+    public function getAllToSelect()
+    {
         return $this->areaData->getAllToSelect();
     }
 }

@@ -13,19 +13,18 @@ $genderTemp = $_POST['optionsRadios'];
 $nationality = $_POST['nationality'];
 
 $managerStudent = $_POST['managerStudent'];
-//$yearOut = $_POST['yearOut'];
 $localitation = $_POST['localitation'];
 
 if (isset($id) &&
-        isset($dni) &&
-        isset($name) &&
-        isset($firstlastname) &&
-        isset($secondlastname) &&
-        isset($birthdate) &&
-        isset($genderTemp) &&
-        isset($nationality) &&
-        isset($managerStudent) &&
-        isset($localitation)) {
+    isset($dni) &&
+    isset($name) &&
+    isset($firstlastname) &&
+    isset($secondlastname) &&
+    isset($birthdate) &&
+    isset($genderTemp) &&
+    isset($nationality) &&
+    isset($managerStudent) &&
+    isset($localitation)) {
 
     $name = ucwords(strtolower($name));
     $firstlastname = ucwords(strtolower($firstlastname));
@@ -56,4 +55,3 @@ if (isset($id) &&
 } else {
     header("location: ../view/InformationStudentEmergent.php?id=" . $id . "&action=0&msg=Datos_erroneos");
 }
-?>

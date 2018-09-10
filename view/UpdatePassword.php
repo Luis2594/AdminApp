@@ -88,11 +88,6 @@ include './reusable/Footer.php';
         var passUpdate = $('#passUpdate').val();
         var passConfirm = $('#passConfirm').val();
 
-//        if (pass !== "prueba") {
-//            alertify.error("La contraseña indicada no coincide con la del usuario");
-//            return false;
-//        }
-
         if (passUpdate.length < 8) {
             alertify.error("La nueva contraseña debe de tener minimo 8 caracteres");
             return false;
@@ -113,7 +108,6 @@ include './reusable/Footer.php';
     function backPage() {
         window.location = "ShowProfile.php";
     }
-
 
 </script>
 

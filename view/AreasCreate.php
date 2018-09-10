@@ -33,7 +33,7 @@ include './reusable/Header.php';
                     </div><!-- /.box-body -->
                 </form>
                 <div class="box-footer btn-group btn-group-justified">
-                    <a type="button" class="btn btn-success" href="javascript:valueInputs()">Crear</a>
+                    <a type="button" class="btn btn-success" style="width: 100%" href="javascript:valueInputs()">Crear</a>
                 </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->

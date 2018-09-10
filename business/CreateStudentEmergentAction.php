@@ -17,13 +17,13 @@ $localitation = $_POST['localitation'];
 $quantityPhones = (int) $_POST['phones'];
 
 if (isset($dni) &&
-        isset($name) &&
-        isset($firstlastname) &&
-        isset($secondlastname) &&
-        isset($birthdate) &&
-        isset($genderTemp) &&
-        isset($managerStudent) &&
-        isset($localitation)) {
+    isset($name) &&
+    isset($firstlastname) &&
+    isset($secondlastname) &&
+    isset($birthdate) &&
+    isset($genderTemp) &&
+    isset($managerStudent) &&
+    isset($localitation)) {
 
     $name = ucwords(strtolower($name));
     $firstlastname = ucwords(strtolower($firstlastname));

@@ -14,6 +14,4 @@ $result[] = array("totalParcialEnrollment" => $enrollmentBusiness->getAllParcial
     "totalStudentsThirdLevelWoman" => $enrollmentBusiness->getTotalStudentsThirdLevelWoman($dateStart, $dateEnd),
     "totalStudentsThirdLevelMen" => $enrollmentBusiness->getTotalStudentsThirdLevelMan($dateStart, $dateEnd));
 
-//$result[] = array("totalStudentsSecondLevel" => $enrollmentBusiness->getTotalStudentsSecondLevel());
-
 echo json_encode($result);

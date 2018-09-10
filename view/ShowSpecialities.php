@@ -14,16 +14,6 @@ if (isset($_GET['delete']))
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="ShowSpecialities.php"><i class="fa fa-arrow-circle-right"></i> Atinencia/Especialidades</a></li>
-        <?php
-        if (isset($update) && $update == "update") {
-            ?>
-            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Actualizar Atinencia/Especialidades</a></li>
-        <?php } ?>
-        <?php
-        if (isset($delete) && $delete == "delete") {
-            ?>
-            <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Eliminar Atinencia/Especialidades</a></li>
-        <?php } ?>
     </ol>
 </section>
 <br>
@@ -35,22 +25,15 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Atinencia/Especialidades del CINDEA</h3>
+                    <a type="button" class="btn btn-primary pull-right" href="CreateSpeciality.php">Crear Atinencia</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Atinencia/Especialidad</th>
-                                <?php
-                                if (isset($update) && $update == "update") {
-                                    ?>
-                                    <th>Actualizar</th>
-                                <?php } ?>
-                                <?php
-                                if (isset($delete) && $delete == "delete") {
-                                    ?>
-                                    <th>Eliminar</th>
-                                <?php } ?>
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,16 +47,8 @@ if (isset($_GET['delete']))
                                 ?>
                                 <tr>
                                     <td><a href="InformationSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>"><?php echo $speciality->getSpecialityName(); ?></a></td>
-                                    <?php
-                                    if (isset($update) && $update == "update") {
-                                        ?>
-                                        <td><a href="UpdateSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>">Actualizar</a></td>
-                                    <?php } ?>
-                                    <?php
-                                    if (isset($delete) && $delete == "delete") {
-                                        ?>
+                                    <td><a href="UpdateSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>">Actualizar</a></td>
                                         <td><a href="javascript:deleteConfirmation(<?php echo $speciality->getSpecialityId(); ?>)">Eliminar</a></td>
-                                    <?php } ?>
                                 </tr>
                                 <?php
                             }
@@ -82,16 +57,8 @@ if (isset($_GET['delete']))
                         <tfoot>
                             <tr>
                                 <th>Atinencia/Especialidad</th>
-                                <?php
-                                if (isset($update) && $update == "update") {
-                                    ?>
-                                    <th>Actualizar</th>
-                                <?php } ?>
-                                <?php
-                                if (isset($delete) && $delete == "delete") {
-                                    ?>
-                                    <th>Eliminar</th>
-                                <?php } ?>
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </tfoot>
                     </table>

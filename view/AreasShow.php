@@ -26,6 +26,8 @@ include './reusable/Header.php';
                         <thead>
                             <tr>
                                 <th>Descripción</th>
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,6 +44,8 @@ include './reusable/Header.php';
                                 <div class="btn-group btn-group-justified">
                                     <td>
                                         <a type="button" class="btn btn-primary" href="javascript:update(<?php echo $entity->getPk() ?>)">Actualizar</a>                    
+                                    </td>
+                                    <td>
                                         <a type="button" class="btn btn-danger" href="javascript:remove(<?php echo $entity->getPk() ?>)">Eliminar</a>
                                     </td>
                                 </div>
@@ -53,6 +57,8 @@ include './reusable/Header.php';
                         <tfoot>
                             <tr>
                                 <th>Descripción</th>
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </tfoot>
                     </table>

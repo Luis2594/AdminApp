@@ -7,8 +7,8 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowNotifications.php"><i class="fa fa-arrow-circle-right"></i> Notificaciones</a></li>
-        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Actualizar Notificación</a></li>
+        <li><a href="NotificationsShowProfessors.php"><i class="fa fa-arrow-circle-right"></i> Notificaciones</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Actualizar Notificación Profesores</a></li>
     </ol>
 </section>
 <br>
@@ -21,7 +21,7 @@ include './reusable/Header.php';
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Actualizar Notificación</h3>
+                    <h3 class="box-title">Actualizar Notificación Profesores</h3>
                 </div><!-- /.box-header -->
 
                 <?php
@@ -29,11 +29,11 @@ include './reusable/Header.php';
 
                 $notificationBusiness = new NotificationBusiness();
                 $id = $_GET['id'];
-                $notifications = $notificationBusiness->getNotification($id);
+                $notifications = $notificationBusiness->getNotificationProfessor($id);
                 foreach ($notifications as $notification) {
                     ?>
                     <!-- form start -->
-                    <form role="form" id="formNotification" action="../business/NotificationsUpdateAction.php" method="POST" enctype="multipart/form-data">
+                    <form role="form" id="formNotification" action="../business/NotificationsUpdateProfessorAction.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id" value="<?php echo $notification->getNotificationId() ?>"/>
                         <div class="form-group">
                             <textarea id="text" name="text" class="form-control" rows="3" placeholder="Notificación"><?php echo $notification->getNotificationText() ?></textarea>
@@ -115,6 +115,6 @@ include './reusable/Footer.php';
     }
 
     function backPage() {
-        window.location = "NotificationsShow.php";
+        window.location = "NotificationsShowProfessors.php";
     }
 </script>

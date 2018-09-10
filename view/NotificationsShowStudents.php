@@ -7,7 +7,7 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowNotifications.php"><i class="fa fa-arrow-circle-right"></i> Notificaciones</a></li>
+        <li><a href="NotificationsShowStudents.php"><i class="fa fa-arrow-circle-right"></i> Notificaciones a Estudiantes</a></li>
     </ol>
 </section>
 <br>
@@ -18,42 +18,45 @@ include './reusable/Header.php';
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Notificaciones</h3>
+                    <h3 class="box-title">Notificaciones a Estudiantes</h3>
+                    <a type="button" class="btn btn-primary pull-right" href="CreateNotificationStudent.php">Crear Notificación</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="tablaNotificaciones" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Contenido</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            include '../business/NotificationBusiness.php';
-                            $notificationBusiness = new NotificationBusiness();
+                                include '../business/NotificationBusiness.php';
+                                $notificationBusiness = new NotificationBusiness();
 
-                            $notifications = $notificationBusiness->getAllGeneralNotification();
+                                $notifications = $notificationBusiness->getAllStudentsNotifications();
 
-                            foreach ($notifications as $not) {
-                                ?>
-                                <tr>
-                                    <td><?php echo $not->getNotificationText(); ?></td>
-                            <div class="btn-group btn-group-justified">
-                                <td>
-                                    <a type="button" class="btn btn-primary" href="javascript:update(<?php echo $not->getNotificationId() ?>)">Actualizar</a>                    
-                                </td>
-                                <td>
-                                    <a type="button" class="btn btn-danger" href="javascript:remove(<?php echo $not->getNotificationId() ?>)">Eliminar</a>
-                                </td>
-                            </div>
-                            </tr>
+                                foreach ($notifications as $not) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $not->getNotificationText(); ?></td>
+                                        <td>
+                                            <a type="button" class="btn btn-primary" href="javascript:update(<?php echo $not->getNotificationId() ?>)">Actualizar</a>                    
+                                        </td>
+                                        <td>
+                                            <a type="button" class="btn btn-danger" href="javascript:remove(<?php echo $not->getNotificationId() ?>)">Eliminar</a>
+                                        </td>
+                                    </tr>
                             <?php
-                        }
-                        ?> 
+                                }
+                            ?> 
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>Contenido</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </tfoot>
                     </table>
@@ -96,16 +99,16 @@ include './reusable/Footer.php';
     }
     
     $(function () {
-        $("#example1").dataTable();
+        $("#tablaNotificaciones").dataTable();
     });
     
     function update(id) {
-        window.location = "NotificationsUpdate.php?id=" + id;
+        window.location = "NotificationsUpdateStudents.php?id=" + id;
     }
 
     function remove(id) {
         alertify.confirm('Eliminar Registro', '¿Desea eliminar?', function () {
-                    window.location = "../business/NotificationsDeleteAction.php?id=" + id;
+                    window.location = "../business/NotificationsDeleteStudentAction.php?id=" + id;
                 }
         , function () {
             alertify.error('Cancelado');

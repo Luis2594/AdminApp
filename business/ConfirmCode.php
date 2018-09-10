@@ -4,13 +4,13 @@ include_once './CourseBusiness.php';
 
 $code = $_GET['code'];
 
-if(isset($code)){
+if (isset($code)) {
     $courseBusiness = new CourseBusiness();
-    if($courseBusiness->confirmCode($code) == '0'){
+    if ($courseBusiness->confirmCode($code) == '0') {
         echo TRUE;
-    }else{
+    } else {
         echo FALSE;
     }
-}else{
+} else {
     echo FALSE;
 }

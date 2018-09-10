@@ -43,6 +43,7 @@ if(isset($_GET['delete']))$delete = $_GET['delete'];
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Estudiantes Emergentes del CINDEA</h3>
+                    <a type="button" class="btn btn-primary pull-right" href="CreateStudentEmergent.php">Crear Estudiante Emergente</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">
@@ -54,11 +55,11 @@ if(isset($_GET['delete']))$delete = $_GET['delete'];
                                     <th>Primer Apellido</th>
                                     <th>Segundo Apellido</th>
                                     <th>Género</th>
-                                    <th>Año de matrícula</th>
+                                    <th>Año Matrícula</th>
                                     <?php
                                     if (isset($enrollment) && $enrollment == "enrollment") {
                                         ?>
-                                        <th>Matrícular</th>
+                                        <th>Matricular</th>
                                     <?php } ?>
 
                                     <?php
@@ -141,11 +142,11 @@ if(isset($_GET['delete']))$delete = $_GET['delete'];
                                     <th>Primer Apellido</th>
                                     <th>Segundo Apellido</th>
                                     <th>Género</th>
-                                    <th>Año de matrícula</th>
+                                    <th>Año Matrícula</th>
                                     <?php
                                     if (isset($enrollment) && $enrollment == "enrollment") {
                                         ?>
-                                        <th>Matrícular</th>
+                                        <th>Matricular</th>
                                     <?php } ?>
                                     <?php
                                     if (isset($update) && $update == "update") {

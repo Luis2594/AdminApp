@@ -20,7 +20,7 @@ switch ($option) {
         $result = $enrollmentBusiness->getTotalStudentsSecondLevel();
         break;
     case 4:
-        $result = $enrollmentBusiness->getTotalStudentsSecondLevelWoman();	
+        $result = $enrollmentBusiness->getTotalStudentsSecondLevelWoman();
         break;
     case 5:
         $result = $enrollmentBusiness->getTotalStudentsSecondLevelMan();

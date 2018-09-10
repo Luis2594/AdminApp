@@ -68,9 +68,9 @@ include './reusable/Header.php';
                         </div>
                     </div><!-- /.box-body -->
                 </form>
-
-                <div class="btn-group btn-group-justified">
-                    <a type="button" class="btn btn-primary" href="javascript:updateCourse()">Actualizar</a>
+                <div class="box-footer">
+                    <a type="button" class="btn btn-primary" style="width: 49%" href="javascript:updateCourse()">Actualizar</a>
+                    <button onclick="goBack();" style="width: 49%" class="btn btn-primary">Atrás</button>
                 </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
@@ -82,6 +82,10 @@ include './reusable/Footer.php';
 ?>
 
 <script type="text/javascript">
+    function goBack() {
+        window.history.back();
+    }
+    
     $("#codeTemp").hide();
 
     $(function () {

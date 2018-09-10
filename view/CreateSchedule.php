@@ -933,7 +933,7 @@ include './reusable/Header.php';
         <br>
         <!--CREATE SCHEDULE-->
         <div class="box-footer" style="text-align: center">
-            <button onclick="SetSchedule();" class="btn btn-primary">Establecer horario</button>
+            <button onclick="SetSchedule();" class="btn btn-primary">Establecer Horario</button>
         </div>
     </div><!-- /.box -->
     <!--</div> /.col -->

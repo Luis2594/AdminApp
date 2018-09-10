@@ -44,6 +44,7 @@ if(isset($_GET['export']))$export = $_GET['export'];
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Cursos Libres del CINDEA</h3>
+                    <a type="button" class="btn btn-primary pull-right" href="CreateFreeCourse.php">Crear Curso Libre</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">

@@ -2,6 +2,11 @@
 
 include_once '../data/InstitutionData.php';
 
+/**
+ * Description of InstitutionBusiness
+ *
+ * @author Kevin ESquivel Marín <kevinesquivel21@gmail.com>
+ */
 class InstitutionBusiness {
 
     private $institutionData;

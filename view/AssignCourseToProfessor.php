@@ -78,7 +78,7 @@ if (isset($id) && is_int($id)) {
                     </div>
                     <div class="box-body">
                         <div class="box-footer" style="text-align: center">
-                            <button onclick="Assign(<?php echo $id; ?>);" class="btn btn-primary">Asignar módulo(s)</button>
+                            <button onclick="Assign(<?php echo $id; ?>);" class="btn btn-primary">Asignar Módulo(s)</button>
                         </div>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>

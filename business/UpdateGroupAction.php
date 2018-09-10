@@ -42,7 +42,6 @@ if (isset($idPerson) && is_int($idPerson)) {
         }
     }
 
-
     header("location: ../view/UpdateGroup.php?id=" . $idPerson . "&action=1&msg=Registro_actualizado_correctamente");
 } else {
     header("location: ../view/UpdateGroup.php?id=" . $idPerson . "&action=0&msg=Error_al_actualizar_registro");

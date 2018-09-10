@@ -212,57 +212,50 @@ include_once '../resource/Constants.php';
                                 </ul>
                             </li>
 
+                            <!-- NOTIFICATIONS -->
                             <li class="treeview">
                                 <a>
                                     <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li>
-                                        <a>
-                                            <i class="fa"></i> <span> Ver Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
-                                        </a>
-                                        <ul class="treeview-menu">
-                                            <li><a href="./NotificationsShow.php"><i class="fa"></i> Administrativos</a></li>
-                                            <li><a href="./NotificationsShow.php"><i class="fa"></i> Profesores</a></li>
-                                            <li><a href="./NotificationsShow.php"><i class="fa"></i> Estudiantes</a></li>
-                                            <li><a href="./NotificationsShow.php"><i class="fa"></i> Grupos</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="./NotificationsCreate.php"><i class="fa"></i>Crear Notificación</a></li>
+                                    <li><a href="./NotificationsShowAdmins.php"><i class="fa"></i> Administrativos</a></li>
+                                    <li><a href="./NotificationsShowProfessors.php"><i class="fa"></i> Profesores</a></li>
+                                    <li><a href="./NotificationsShowStudents.php"><i class="fa"></i> Estudiantes</a></li>
+                                    <li><a href="./NotificationsShowIncoming.php"><i class="fa"></i> Recibidas</a></li>
                                 </ul>
                             </li>
 
+                            <!-- ADMIN -->
                             <li class="treeview">
                                 <a>
-                                    <i class="fa"></i> <span>Administrador</span> <i class="fa fa-angle-left pull-right"></i>
+                                    <i class="fa"></i> <span>Administradores</span> <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="./ShowAdmins.php"><i class="fa"></i>Ver Administradores</a></li>
-                                    <li><a href="./CreateAdmin.php"><i class="fa"></i>Crear Administrador</a></li>
+                                    <li><a href="./ShowAdmins.php"><i class="fa"></i> Administradores</a></li>
+                                    <li><a href="./CreateAdmin.php"><i class="fa"></i> Crear Administradores</a></li>
                                 </ul>
                             </li>
 
-                            <!--TEACHER-->
+                            <!--PROFESSOR-->
                             <li class="treeview">
                                 <a>
                                     <i class="fa"></i> <span>Profesores</span> <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="./ShowProfessors.php"><i class="fa"></i>Ver Profesores</a></li>
-                                    <li><a href="./CreateProfessor.php"><i class="fa"></i>Crear Profesor</a></li>
-                                    <li><a href="./ShowProfessors.php?assign=assign"><i class="fa"></i>Asignar módulos</a></li>
-                                    <li><a href="./ShowProfessors.php?update=update"><i class="fa"></i>Actualizar Profesor</a></li>
-                                    <li><a href="./ShowProfessors.php?delete=delete"><i class="fa"></i>Eliminar Profesor</a></li>
+                                    <li><a href="./ShowProfessors.php"><i class="fa"></i> Profesores</a></li>
+                                    <li><a href="./CreateProfessor.php"><i class="fa"></i> Crear Profesores</a></li>
+                                    <li><a href="./ShowProfessorsManagement.php"><i class="fa"></i> Gestionar Profesores</a></li>
                                 </ul>
                             </li>
 
                             <!--STUDENTS-->
                             <li class="treeview">
                                 <a>
-                                    <i class="fa"></i> <span>Estudiante</span> <i class="fa fa-angle-left pull-right"></i>
+                                    <i class="fa"></i> <span>Estudiantes</span> <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="./ShowStudents.php"><i class="fa"></i>Ver Estudiantes</a></li>
+                                    <li><a href="./ShowCoursesLists.php"><i class="fa"></i>Ver Grupos de Estudiantes</a></li>
                                     <li><a href="./CreateStudent.php"><i class="fa"></i>Crear Estudiante</a></li>
                                     <li><a href="./ShowStudents.php?update=update"><i class="fa"></i>Actualizar Estudiante</a></li>
                                     <li><a href="./ShowStudents.php?delete=delete"><i class="fa"></i>Eliminar Estudiante</a></li>
@@ -277,8 +270,6 @@ include_once '../resource/Constants.php';
                                 <ul class="treeview-menu">
                                     <li><a href="./ShowSpecialities.php"><i class="fa"></i>Ver Atinencia</a></li>
                                     <li><a href="./CreateSpeciality.php"><i class="fa"></i>Crear Atinencia</a></li>
-                                    <li><a href="./ShowSpecialities.php?update=update"><i class="fa"></i>Actualizar Atinencia</a></li>
-                                    <li><a href="./ShowSpecialities.php?delete=delete"><i class="fa"></i>Eliminar Atinencia</a></li>
                                 </ul>
                             </li>
 
@@ -292,20 +283,18 @@ include_once '../resource/Constants.php';
                                     <li><a href="./CreateCourse.php"><i class="fa"></i>Crear Módulo</a></li>
                                     <li><a href="./ShowCourses.php?update=update"><i class="fa"></i>Actualizar Módulo</a></li>
                                     <li><a href="./ShowCourses.php?delete=delete"><i class="fa"></i>Eliminar Módulo</a></li>
+                                    <li><a href="./ShowGroups.php"><i class="fa"></i>Actualizar Grupos</a></li>
                                 </ul>
                             </li>
 
                             <!--CURRICULUM-->
                             <li class="treeview">
                                 <a>
-                                    <i class="fa"></i> <span>Malla curricular</span> <i class="fa fa-angle-left pull-right"></i>
+                                    <i class="fa"></i> <span>Malla Curricular</span> <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="./ShowCurriculum.php"><i class="fa"></i>Ver Malla Curricular</a></li>
                                     <li><a href="./CreateCurriculum.php"><i class="fa"></i>Crear Malla Curricular</a></li>
-                                    <li><a href="./ShowCurriculum.php?assign=assign"><i class="fa"></i>Asignar Módulos a Malla</a></li>
-                                    <li><a href="./ShowCurriculum.php?update=update"><i class="fa"></i>Actualizar Malla Curricular</a></li>
-                                    <li><a href="./ShowCurriculum.php?delete=delete"><i class="fa"></i>Eliminar Malla Curricular</a></li>
                                 </ul>
                             </li>
 
@@ -317,16 +306,6 @@ include_once '../resource/Constants.php';
                                 <ul class="treeview-menu">
                                     <li class="active"><a href="./ShowSchedule.php"><i class="fa"></i>Ver Horarios</a></li>
                                     <li class="active"><a href="./CreateSchedule.php"><i class="fa"></i>Crear Horarios</a></li>
-                                </ul>
-                            </li>
-
-                            <!--INFO-->
-                            <li class="treeview">
-                                <a>
-                                    <i class="fa"></i> <span>Información CINDEA</span> <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="./InformationInstitution.php"><i class="fa"></i>Ver Información</a></li>
                                 </ul>
                             </li>
 
@@ -374,6 +353,16 @@ include_once '../resource/Constants.php';
                                 </li>
                             </ul>
                         </li>
+
+                            <!--INFO-->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Información CINDEA</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./InformationInstitution.php"><i class="fa"></i>Ver Información</a></li>
+                                </ul>
+                            </li>
 
                     </ul>
                 </section>

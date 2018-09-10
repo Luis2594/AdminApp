@@ -12,11 +12,11 @@ if (isset($id) && is_int($id) && isset($modules)) {
     $arrayCourses = explode(",", $modules);
 
     for ($i = 0; $i < count($arrayCourses); $i++) {
-        $enrollment = new EnrollmentEmergent(null, $id, $arrayCourses[$i], (date("Y") + 1), 1, "", "");
+        $enrollment = new EnrollmentEmergent(NULL, $id, $arrayCourses[$i], (date("Y") + 1), 1, "", "");
         $enrollmentEmergentBusiness->insert($enrollment);
     }
-    
+
     echo TRUE;
 } else {
     echo FALSE;
-} 
+}

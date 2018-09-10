@@ -8,8 +8,8 @@ $id = (int) $_GET['id'];
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowCurriculum.php?assign=assign"><i class="fa fa-arrow-circle-right"></i>Asignar módulos a malla</a></li>
-        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Asignar módulos</a></li>
+        <li><a href="ShowCurriculum.php?assign=assign"><i class="fa fa-arrow-circle-right"></i>Asignar Módulos a Malla</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Asignar Módulos</a></li>
     </ol>
 </section>
 <br>

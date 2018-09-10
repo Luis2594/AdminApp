@@ -2,36 +2,48 @@
 
 include_once '../data/ForumData.php';
 
-class ForumBusiness {
+/**
+ * Description of ForumBusiness
+ *
+ * @author Kevin ESquivel Marín <kevinesquivel21@gmail.com>
+ */
+class ForumBusiness
+{
+    private $conversationData;
 
-     private $conversationData;
-
-    public function ForumBusiness() {
+    public function ForumBusiness()
+    {
         return $this->conversationData = new ForumData();
     }
-    
-     public function insert($conversation) {
-       return $this->conversationData->insert($conversation);
+
+    public function insert($conversation)
+    {
+        return $this->conversationData->insert($conversation);
     }
-    
-    public function update($conversation) {
-       return $this->conversationData->update($conversation);
+
+    public function update($conversation)
+    {
+        return $this->conversationData->update($conversation);
     }
-    
-    public function delete($id) {
-      return $this->conversationData->delete($id);
+
+    public function delete($id)
+    {
+        return $this->conversationData->delete($id);
     }
-    
-    public function getAll() {
-      return $this->conversationData->getAll();
+
+    public function getAll()
+    {
+        return $this->conversationData->getAll();
     }
-    
-    public function getForum($id) {
-     return $this->conversationData->getForum($id);
+
+    public function getForum($id)
+    {
+        return $this->conversationData->getForum($id);
     }
-    
-    public function getForumsByUser($id) {
-     return $this->conversationData->getForumsByUser($id);
+
+    public function getForumsByUser($id)
+    {
+        return $this->conversationData->getForumsByUser($id);
     }
-    
+
 }

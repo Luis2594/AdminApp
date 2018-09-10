@@ -34,45 +34,40 @@ include './reusable/Header.php';
                     ?>
                     <!-- form start -->
                     <form role="form" id="formUpdateInstitution" action="../business/UpdateInstitutionAction.php" method="POST" enctype="multipart/form-data">
-                        <div class="box-body">
                             <div class="box-body">
-                        <div class="form-group">
-                            <input id="id" name="id" type="hidden" class="form-control" placeholder="Nombre" required value="<?php echo $institution->getInstitutionId()?>" hidden="true"/>
-                        </div><div class="form-group">
-                            <label>Nombre</label>
-                            <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required value="<?php echo $institution->getInstitutionName()?>"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Misión</label>
-                            <input id="mission" name="mission" type="text" class="form-control" placeholder="Mission" required value="<?php echo $institution->getInstitutionMission()?>"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Visión</label>
-                            <input id="view" name="view" type="text" class="form-control" placeholder="Visión" required value="<?php echo $institution->getInstitutionView()?>"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Dirección</label>
-                            <input id="address" name="address" type="text" class="form-control" placeholder="Dirección" required value="<?php echo $institution->getInstitutionAddress()?>"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Teléfono</label>
-                            <input id="phone" name="phone" type="text" class="form-control" placeholder="Teléfono" required value="<?php echo $institution->getInstitutionPhone()?>"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Fax</label>
-                            <input id="fax" name="fax" type="text" class="form-control" placeholder="Nombre" required value="<?php echo $institution->getInstitutionFax()?>"/>
-                        </div>
-                    </div><!-- /.box-body -->
-                        </div>
-                    </form>
-
-                    <div class="pull-left">
-                        <button onclick="valueInputs();" class="btn btn-primary">Actualizar</button>
+                                <div class="form-group">
+                                    <input id="id" name="id" type="hidden" class="form-control" placeholder="Nombre" required value="<?php echo $institution->getInstitutionId()?>" hidden="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required value="<?php echo $institution->getInstitutionName()?>"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Misión</label>
+                                    <input id="mission" name="mission" type="text" class="form-control" placeholder="Mission" required value="<?php echo $institution->getInstitutionMission()?>"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Visión</label>
+                                    <input id="view" name="view" type="text" class="form-control" placeholder="Visión" required value="<?php echo $institution->getInstitutionView()?>"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dirección</label>
+                                    <input id="address" name="address" type="text" class="form-control" placeholder="Dirección" required value="<?php echo $institution->getInstitutionAddress()?>"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Teléfono</label>
+                                    <input id="phone" name="phone" type="text" class="form-control" placeholder="Teléfono" required value="<?php echo $institution->getInstitutionPhone()?>"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Fax</label>
+                                    <input id="fax" name="fax" type="text" class="form-control" placeholder="Nombre" required value="<?php echo $institution->getInstitutionFax()?>"/>
+                                </div>
+                            </div>
+                    </form>    
+                    <div class="box-footer">             
+                        <button onclick="valueInputs();" style="width: 49%" class="btn btn-primary">Actualizar</button>
+                        <button onclick="backPage();" style="width: 49%" class="btn btn-primary">Atrás</button>
                     </div>
-                    <div class="pull-right">
-                        <button onclick="backPage();" class="btn btn-primary">Atrás</button>
-                    </div>
-
                     <?php
                 }//fin del for
                 ?>

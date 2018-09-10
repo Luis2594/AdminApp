@@ -35,6 +35,7 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Módulos del CINDEA</h3>
+                    <a type="button" class="btn btn-primary pull-right" href="CreateCourse.php">Crear Módulo</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -47,7 +48,7 @@ if (isset($_GET['delete']))
                                 <th>Tipo</th>
                                 <th>Atinencia <br/>Especialidad</th>
                                 <th>Períodos</th>
-                                <th>Plan de estudios</th>
+                                <th>Plan de Estudios</th>
                                 <?php
                                 if (isset($update) && $update == "update") {
                                     ?>
@@ -77,7 +78,7 @@ if (isset($_GET['delete']))
                                     <td><?php echo $course->getCourseType(); ?></td>
                                     <td><?php echo $course->getSpecialityname(); ?></td>
                                     <td><a href="UpdatePeriods.php?id=<?php echo $course->getCourseId(); ?>" >Períodos</a></td>
-                                    <td><a href="../../pdf/<?php echo $course->getCoursePdf() ?>" target="_blank" >Plan de estudio</a></td>
+                                    <td><a href="../../pdf/<?php echo $course->getCoursePdf() ?>" target="_blank" >Plan de Estudio</a></td>
 
                                     <?php
                                     if (isset($update) && $update == "update") {
@@ -103,7 +104,7 @@ if (isset($_GET['delete']))
                                 <th>Tipo</th>
                                 <th>Atinencia <br/>Especialidad</th>
                                 <th>Períodos</th>
-                                <th>Plan de estudios</th>
+                                <th>Plan de Estudios</th>
                                 <?php
                                 if (isset($update) && $update == "update") {
                                     ?>

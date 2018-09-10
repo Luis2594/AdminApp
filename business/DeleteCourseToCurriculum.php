@@ -13,4 +13,3 @@ if (isset($id) && is_int($id)) {
 } else {
     echo FALSE;
 }
-

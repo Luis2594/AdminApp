@@ -11,11 +11,11 @@ $speciality = (int) $_POST['speciality'];
 $type = (int) $_POST['typeCourse'];
 
 if (isset($code) &&
-        isset($name) &&
-        isset($credits) &&
-        isset($lessons) &&
-        isset($speciality) &&
-        isset($type)
+    isset($name) &&
+    isset($credits) &&
+    isset($lessons) &&
+    isset($speciality) &&
+    isset($type)
 ) {
     $coursesBusiness = new CourseBusiness();
 
@@ -36,7 +36,7 @@ if (isset($code) &&
 
         $pdf = $name_tmp_pdf . "." . $ext;
     } else {
-        $pdf = null;
+        $pdf = NULL;
     }
 
     $course = new Course(NULL, $code, $name, $credits, $lessons, $pdf, $speciality, $type);
@@ -58,4 +58,3 @@ if (isset($code) &&
     //error
     header("location: ../view/CreateCourse.php?action=0&msg=Datos_erroneos");
 }
-?>

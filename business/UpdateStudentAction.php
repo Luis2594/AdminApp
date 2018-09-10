@@ -16,23 +16,20 @@ $nationality = $_POST['nationality'];
 
 $yearIncome = $_POST['yearIncome'];
 $managerStudent = $_POST['managerStudent'];
-//$yearOut = $_POST['yearOut'];
 $localitation = $_POST['localitation'];
 $adecuacyTemp = $_POST['adecuacy'];
 
-
 if (isset($id) &&
-        isset($dni) &&
-        isset($name) &&
-        isset($firstlastname) &&
-        isset($secondlastname) &&
-        isset($birthdate) &&
-        isset($genderTemp) &&
-        isset($nationality) &&
-        isset($yearIncome) &&
-//        isset($yearOut) &&
-        isset($managerStudent) &&
-        isset($localitation)) {
+    isset($dni) &&
+    isset($name) &&
+    isset($firstlastname) &&
+    isset($secondlastname) &&
+    isset($birthdate) &&
+    isset($genderTemp) &&
+    isset($nationality) &&
+    isset($yearIncome) &&
+    isset($managerStudent) &&
+    isset($localitation)) {
 
     $name = ucwords(strtolower($name));
     $firstlastname = ucwords(strtolower($firstlastname));
@@ -50,7 +47,7 @@ if (isset($id) &&
     //Esto es por si ocupo algo de la persona
     //$personTemp = $personBusiness->getPersonId($id);
     //Creamos instancia de persona
-    $person = new Person($id, $dni, $name, $firstlastname, $secondlastname, "email", date('Y-m-d', strtotime(str_replace('/', '-', $birthdate))), NULL, $gender, $nationality, "profile_default.png");
+    $person = new Person($id, $dni, $name, $firstlastname, $secondlastname, "email", date('Y-m-d', strtotime(str_replace('/', '-', $birthdate))), null, $gender, $nationality, "profile_default.png");
 
     $res = $personBusiness->update($person);
 
@@ -76,16 +73,16 @@ if (isset($id) &&
         }
 
         $student = new Student(NULL, $adecuacy, $yearIncome, NULL, $localitation, NULL, $managerStudent, $id);
-        
+
         if ($studentBusiness->update($student)) {
             $userBusiness = new UserBusiness();
-            
+
             $userTemp = $userBusiness->getUserId($id);
-            
+
             $pass = strtoupper(substr($firstlastname, 0, 2)) . strtoupper(substr($secondlastname, 0, 2)) . substr($dni, -3);
-            
+
             $user = new User($userTemp->getUserId(), $dni, $pass, NULL, NULL);
-            
+
             if ($userBusiness->update($user)) {
                 header("location: ../view/InformationStudent.php?id=" . $id . "&action=1&msg=Estudiante_actualizado_correctamente");
             } else {
@@ -102,4 +99,3 @@ if (isset($id) &&
 } else {
     header("location: ../view/UpdateStudent.php?id=" . $id . "&action=0&msg=Datos_erroneos");
 }
-?>

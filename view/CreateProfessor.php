@@ -96,7 +96,7 @@ include './reusable/Header.php';
                     </div><!-- /.box-body -->
                 </form>
                 <div class="box-footer">
-                    <button onclick="valueInputs();" class="btn btn-primary">Crear</button>
+                    <button onclick="valueInputs();" style="width: 100%" class="btn btn-primary">Crear</button>
                 </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->

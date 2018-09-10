@@ -4,13 +4,13 @@ include './PersonBusiness.php';
 
 $dni = $_GET['dni'];
 
-if(isset($dni)){
+if (isset($dni)) {
     $personBusiness = new PersonBusiness();
-    if($personBusiness->confirmDni($dni) == '0'){
+    if ($personBusiness->confirmDni($dni) == '0') {
         echo TRUE;
-    }else{
+    } else {
         echo FALSE;
     }
-}else{
+} else {
     echo FALSE;
 }
