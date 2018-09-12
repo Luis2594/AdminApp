@@ -2,7 +2,7 @@
 
 include_once './FreeCourseBusiness.php';
 
-$code = (int) $_POST['code'];
+$code = $_POST['code'];
 $name = $_POST['name'];
 $area = (int) $_POST['area'];
 $day = (int) $_POST['day'];

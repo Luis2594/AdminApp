@@ -38,7 +38,7 @@ include './reusable/Header.php';
                         <!--CODE-->
                         <div class="form-group">
                             <label>Código</label>
-                            <input id="code" name="code" type="number" class="form-control" placeholder="Código" required="" value="<?php echo $course->getCod(); ?>" />
+                            <input id="code" name="code" type="text" class="form-control" placeholder="Código" required="" value="<?php echo $course->getCod(); ?>" />
                         </div>
                         <!--NAME-->
                         <div class="form-group">
@@ -169,8 +169,8 @@ include './reusable/Footer.php';
         var code = $('#code').val();
         var name = $('#name').val();
 
-        if (!isInteger(code)) {
-            alertify.error("Formato de código incorrecto");
+        if (code.length === 0) {
+            alertify.error("Verifique el código");
             return false;
         }
 

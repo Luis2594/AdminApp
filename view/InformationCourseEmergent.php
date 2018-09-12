@@ -38,7 +38,7 @@ include './reusable/Header.php';
                         <!--CODE-->
                         <div class="form-group">
                             <label>Código</label>
-                            <input id="code" name="code" type="number" class="form-control" placeholder="Código" required="" readonly value="<?php echo $course->getCod(); ?>" />
+                            <input id="code" name="code" type="text" class="form-control" placeholder="Código" required="" readonly value="<?php echo $course->getCod(); ?>" />
                         </div>
                         <!--NAME-->
                         <div class="form-group">

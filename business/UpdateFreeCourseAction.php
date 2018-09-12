@@ -3,17 +3,17 @@
 include_once './FreeCourseBusiness.php';
 
 $id = $_GET['id'];
-$code = (int) $_POST['code'];
+$code = $_POST['code'];
 $name = $_POST['name'];
 $area = (int) $_POST['area'];
 $day = (int) $_POST['day'];
 $hour = (int) $_POST['hour'];
 
 if (isset($code) &&
-    isset($name) &&
-    isset($area) &&
-    isset($day) &&
-    isset($hour)
+        isset($name) &&
+        isset($area) &&
+        isset($day) &&
+        isset($hour)
 ) {
     $freeCourseBusiness = new FreeCourseBusiness();
 
