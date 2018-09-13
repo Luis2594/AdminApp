@@ -43,7 +43,7 @@ if(isset($_GET['delete']))$delete = $_GET['delete'];
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Estudiantes Emergentes del CINDEA</h3>
-                    <a type="button" class="btn btn-primary pull-right" href="CreateStudentEmergent.php">Crear Estudiante Emergente</a>
+                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateStudentEmergent.php">Crear Estudiante Emergente</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">
@@ -107,7 +107,7 @@ if(isset($_GET['delete']))$delete = $_GET['delete'];
                                         <?php
                                         if (isset($enrollment) && $enrollment == "enrollment") {
                                             ?>
-                                        <td><a href="EnrollmentEmergent.php?id=<?php echo $student->getPk(); ?>">Matrícular</a></td>
+                                        <td><a class="btn btn-info btn-sm" href="EnrollmentEmergent.php?id=<?php echo $student->getPk(); ?>">Matrícular</a></td>
                                             <?php
                                         }
                                         ?>
@@ -116,8 +116,8 @@ if(isset($_GET['delete']))$delete = $_GET['delete'];
                                         <?php
                                         if (isset($update) && $update == "update") {
                                             ?>
-                                        <td><a href="UpdatePhonesEmergent.php?id=<?php echo $student->getPk(); ?>">Télefonos</a></td>
-                                        <td><a href="UpdateStudentEmergent.php?id=<?php echo $student->getPk(); ?>">Actualizar</a></td>
+                                        <td><a class="btn btn-info btn-sm" href="UpdatePhonesEmergent.php?id=<?php echo $student->getPk(); ?>">Télefonos</a></td>
+                                        <td><a class="btn btn-primary btn-sm" href="UpdateStudentEmergent.php?id=<?php echo $student->getPk(); ?>">Actualizar</a></td>
                                             <?php
                                         }
                                         ?>
@@ -126,7 +126,7 @@ if(isset($_GET['delete']))$delete = $_GET['delete'];
                                         <?php
                                         if (isset($delete) && $delete == "delete") {
                                             ?>
-                                            <td><a  href="javascript:deleteConfirmation(<?php echo $student->getPk() ?>)" >Eliminar</a></td>
+                                            <td><a class="btn btn-danger btn-sm" href="javascript:deleteConfirmation(<?php echo $student->getPk() ?>)" >Eliminar</a></td>
                                             <?php
                                         }
                                         ?>

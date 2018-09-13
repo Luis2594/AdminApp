@@ -46,7 +46,7 @@ if (isset($course) && is_int($course) && isset($professor) && is_int($professor)
                                     ?>
                                 </b>
                             </h3>
-                            <a type="button" class="btn btn-primary pull-right" title="Exportar como archivo de excel."
+                            <a type="button" class="btn btn-primary btn-sm pull-right" title="Exportar como archivo de excel."
                             href="../actions/ExportStudentsListByCourseAndProfessorAction.php?course=<?php echo $course; ?>&period=<?php echo $period; ?>&year=<?php echo $year; ?>&group=<?php echo $group; ?>&professor=<?php echo $professor; ?>">Exportar</a>
                             <?php
                             break;

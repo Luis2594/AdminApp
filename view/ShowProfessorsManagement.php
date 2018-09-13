@@ -28,7 +28,7 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Profesores del CINDEA</h3>
-                    <a type="button" class="btn btn-primary pull-right" href="CreateProfessor.php">Crear Profesor</a>
+                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateProfessor.php">Crear Profesor</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">
@@ -58,9 +58,9 @@ if (isset($_GET['delete']))
                                         <td><a href="InformationProfessor.php?id=<?php echo $professor->getPersonId(); ?>"><?php echo $professor->getPersonFirstName(); ?></a></td>
                                         <td><?php echo $professor->getPersonFirstlastname(); ?></td>
                                         <td><?php echo $professor->getPersonSecondlastname(); ?></td>
-                                        <td><a href="AssignCourseToProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Asignar</a></td>
-                                        <td><a  href="UpdateProfessor.php?id=<?php echo $professor->getPersonId() ?>" >Actualizar</a></td>
-                                        <td><a  href="javascript:deleteConfirmation(<?php echo $professor->getPersonId() ?>)" >Eliminar</a></td>
+                                        <td><a class="btn btn-info btn-sm" href="AssignCourseToProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Asignar</a></td>
+                                        <td><a class="btn btn-primary btn-sm" href="UpdateProfessor.php?id=<?php echo $professor->getPersonId() ?>" >Actualizar</a></td>
+                                        <td><a class="btn btn-danger btn-sm" href="javascript:deleteConfirmation(<?php echo $professor->getPersonId() ?>)" >Eliminar</a></td>
                                     </tr>
                                     <?php
                                 }

@@ -19,7 +19,7 @@ include './reusable/Header.php';
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Administradores del CINDEA</h3>
-                    <a type="button" class="btn btn-primary pull-right" href="CreateAdmin.php">Crear Administrador</a>
+                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateAdmin.php">Crear Administrador</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -47,10 +47,10 @@ include './reusable/Header.php';
                                     <td><?php echo $admin->getPersonSecondlastname(); ?></td>
                             <div class="btn-group btn-group-justified">
                                 <td>
-                                    <a type="button" class="btn btn-primary" href="javascript:updateAdmin(<?php echo $admin->getPersonId() ?>)">Actualizar</a>
+                                    <a type="button" class="btn btn-primary btn-sm" href="javascript:updateAdmin(<?php echo $admin->getPersonId() ?>)">Actualizar</a>
                                 </td>
                                 <td>
-                                    <a type="button" class="btn btn-danger" href="javascript:deleteAdmin(<?php echo $admin->getPersonId() ?>)">Eliminar</a>
+                                    <a type="button" class="btn btn-danger btn-sm" href="javascript:deleteAdmin(<?php echo $admin->getPersonId() ?>)">Eliminar</a>
                                 </td>
                             </div>
                             </tr>

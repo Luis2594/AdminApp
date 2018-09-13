@@ -46,7 +46,7 @@ if (isset($_GET['export']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Cursos Libres del CINDEA</h3>
-                    <a type="button" class="btn btn-primary pull-right" href="CreateFreeCourse.php">Crear Curso Libre</a>
+                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateFreeCourse.php">Crear Curso Libre</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -94,17 +94,17 @@ if (isset($_GET['export']))
                                     <?php
                                     if (isset($update) && $update == "update") {
                                         ?>
-                                        <td><a href="UpdateCourseEmergent.php?id=<?php echo $course->getPk() ?>">Actualizar</a></td>
+                                        <td><a class="btn btn-primary btn-sm" href="UpdateCourseEmergent.php?id=<?php echo $course->getPk() ?>">Actualizar</a></td>
                                     <?php } ?>
                                     <?php
                                     if (isset($delete) && $delete == "delete") {
                                         ?>
-                                        <td><a href="javascript:deleteConfirmation(<?php echo $course->getPk(); ?>)" >Eliminar</a></td>
+                                        <td><a class="btn btn-danger btn-sm" href="javascript:deleteConfirmation(<?php echo $course->getPk(); ?>)" >Eliminar</a></td>
                                     <?php } ?>
                                     <?php
                                     if (isset($export) && $export == "export") {
                                         ?>
-                                        <td><a href="javascript:exportStudents(<?php echo $course->getPk(); ?>)" >EXPORTAR</a></td>
+                                        <td><a class="btn btn-info btn-sm" href="javascript:exportStudents(<?php echo $course->getPk(); ?>)" >EXPORTAR</a></td>
                                 <?php } ?>
 
                                 </tr>

@@ -25,7 +25,7 @@ include_once './reusable/Header.php';
                         </div>
                         <div class="pull-right col-md-6 text-right right">
                             <div class="col-md-4">
-                                <select class="btn btn-primary" style="width: 100%" id="filterPeriod">
+                                <select class="btn btn-info btn-sm" style="width: 100%" id="filterPeriod">
                                     <option value="0">Periodo</option>
                                     <option value="1">I</option>
                                     <option value="2">II</option>
@@ -34,7 +34,7 @@ include_once './reusable/Header.php';
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <select class="btn btn-primary" style="width: 100%" id="filterYear">
+                                <select class="btn btn-info btn-sm" style="width: 100%" id="filterYear">
                                     <option value="0">Año</option>
                                     <?php
                                         include_once '../business/FiltersBusiness.php';
@@ -50,7 +50,7 @@ include_once './reusable/Header.php';
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <button onclick="getCoursesByFiltersRequest();" class="btn btn-primary" style="width: 100%" id="search">Filtrar</button>
+                                <button onclick="getCoursesByFiltersRequest();" class="btn btn-primary btn-sm" style="width: 100%" id="search">Filtrar</button>
                             </div>
                         </div>
                     </div>
@@ -146,7 +146,7 @@ include_once './reusable/Footer.php';
                         htmlToInsert += "<td>" + item.groupnumber + "</td>";
                         htmlToInsert += "<td>" + item.period + "</td>";
                         htmlToInsert += "<td>" + item.professorcourseyear + "</td>";
-                        htmlToInsert += '<td><a href="ShowStudentsByCourse.php?' +
+                        htmlToInsert += '<td><a class="btn btn-info btn-sm" href="ShowStudentsByCourse.php?' +
                                 'course=' + item.courseid + '&' +
                                 'professor=' + item.professorcourseperson + '&' +
                                 'year=' + item.professorcourseyear + '&' +
@@ -199,7 +199,7 @@ include_once './reusable/Footer.php';
                             htmlToInsert += "<td>" + item.groupnumber + "</td>";
                             htmlToInsert += "<td>" + item.period + "</td>";
                             htmlToInsert += "<td>" + item.professorcourseyear + "</td>";
-                            htmlToInsert += '<td><a href="ShowStudentsByCourse.php?' +
+                            htmlToInsert += '<td><a class="btn btn-info btn-sm" href="ShowStudentsByCourse.php?' +
                                     'course=' + item.courseid + '&' +
                                     'professor=' + item.professorcourseperson + '&' +
                                     'year=' + item.professorcourseyear + '&' +

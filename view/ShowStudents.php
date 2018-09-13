@@ -38,7 +38,7 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Estudiantes del CINDEA</h3>
-                    <a type="button" class="btn btn-primary pull-right" href="CreateStudent.php">Crear Estudiante</a>
+                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateStudent.php">Crear Estudiante</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">
@@ -115,25 +115,25 @@ if (isset($_GET['delete']))
                                             <td>Significativa</td>
                                         <?php }
                                         ?>
-                                        <td><a href="AcademicHistorial.php?id=<?php echo $student->getPersonId(); ?>">Historial Académico</a></td>
+                                        <td><a class="btn btn-info btn-sm" href="AcademicHistorial.php?id=<?php echo $student->getPersonId(); ?>">Historial Académico</a></td>
                                         <?php
                                         if (isset($enrollment) && $enrollment == "enrollment") {
                                             ?>
-                                            <td><a href="Enrollment.php?id=<?php echo $student->getPersonId(); ?>">Matrícular</a></td>
+                                            <td><a class="btn btn-info btn-sm" href="Enrollment.php?id=<?php echo $student->getPersonId(); ?>">Matrícular</a></td>
                                             <?php
                                         }
                                         ?>
                                         <?php
                                         if (isset($update) && $update == "update") {
                                             ?>
-                                            <td><a href="UpdatePhones.php?id=<?php echo $student->getPersonId(); ?>">Télefonos</a></td>
-                                            <td><a href="UpdateGroup.php?id=<?php echo $student->getPersonId(); ?>">Grupos</a></td>
-                                            <td><a href="UpdateStudent.php?id=<?php echo $student->getPersonId(); ?>">Actualizar</a></td>
+                                            <td><a class="btn btn-info btn-sm" href="UpdatePhones.php?id=<?php echo $student->getPersonId(); ?>">Télefonos</a></td>
+                                            <td><a class="btn btn-info btn-sm" href="UpdateGroup.php?id=<?php echo $student->getPersonId(); ?>">Grupos</a></td>
+                                            <td><a class="btn btn-primary btn-sm" href="UpdateStudent.php?id=<?php echo $student->getPersonId(); ?>">Actualizar</a></td>
                                         <?php } ?>
                                         <?php
                                         if (isset($delete) && $delete == "delete") {
                                             ?>
-                                            <td><a  href="javascript:deleteConfirmation(<?php echo $student->getPersonId() ?>)" >Eliminar</a></td>
+                                            <td><a class="btn btn-danger btn-sm" href="javascript:deleteConfirmation(<?php echo $student->getPersonId() ?>)" >Eliminar</a></td>
                                         <?php } ?>
                                     </tr>
                                     <?php

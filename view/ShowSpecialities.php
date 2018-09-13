@@ -25,7 +25,7 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Atinencia/Especialidades del CINDEA</h3>
-                    <a type="button" class="btn btn-primary pull-right" href="CreateSpeciality.php">Crear Atinencia</a>
+                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateSpeciality.php">Crear Atinencia</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -46,9 +46,9 @@ if (isset($_GET['delete']))
                             foreach ($specialities as $speciality) {
                                 ?>
                                 <tr>
-                                    <td><a href="InformationSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>"><?php echo $speciality->getSpecialityName(); ?></a></td>
-                                    <td><a href="UpdateSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>">Actualizar</a></td>
-                                        <td><a href="javascript:deleteConfirmation(<?php echo $speciality->getSpecialityId(); ?>)">Eliminar</a></td>
+                                    <td><a class="btn btn-link" href="InformationSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>"><?php echo $speciality->getSpecialityName(); ?></a></td>
+                                    <td><a class="btn btn-primary btn-sm" href="UpdateSpeciality.php?id=<?php echo $speciality->getSpecialityId(); ?>">Actualizar</a></td>
+                                    <td><a class="btn btn-danger btn-sm" href="javascript:deleteConfirmation(<?php echo $speciality->getSpecialityId(); ?>)">Eliminar</a></td>
                                 </tr>
                                 <?php
                             }

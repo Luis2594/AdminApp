@@ -20,7 +20,7 @@ include './reusable/Header.php';
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Grupos del CINDEA</h3>
-                    <a type="button" class="btn btn-primary pull-right" href="CreateGroup.php">Crear Grupo</a>
+                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateGroup.php">Crear Grupo</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -41,9 +41,9 @@ include './reusable/Header.php';
                             foreach ($groups as $group) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $group[number]; ?></td>
-                                    <td><a href="UpdateGroupNumber.php?id=<?php echo $group[id]; ?>" >Actualizar</a></td>
-                                    <td><a href="javascript:deleteConfirmation(<?php echo $group[id]; ?>, '<?php echo $group[number]; ?>')" >Eliminar</a></td>
+                                    <td><label class="btn btn-ligth btn-lg"><?php echo $group[number]; ?></label></td>
+                                    <td><a class="btn btn-primary btn-sm" href="UpdateGroupNumber.php?id=<?php echo $group[id]; ?>" >Actualizar</a></td>
+                                    <td><a class="btn btn-danger btn-sm" href="javascript:deleteConfirmation(<?php echo $group[id]; ?>, '<?php echo $group[number]; ?>')" >Eliminar</a></td>
                                 </tr>
                                 <?php
                             }

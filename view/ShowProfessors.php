@@ -28,7 +28,7 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Profesores del CINDEA</h3>
-                    <a type="button" class="btn btn-primary pull-right" href="CreateProfessor.php">Crear Profesor</a>
+                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateProfessor.php">Crear Profesor</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">
@@ -69,7 +69,7 @@ if (isset($_GET['delete']))
                                             <td>Mujer</td>
                                         <?php }
                                         ?>
-                                        <td><a href="ShowCoursesProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Módulos</a></td>
+                                        <td><a class="btn btn-info btn-sm" href="ShowCoursesProfessor.php?id=<?php echo $professor->getPersonId(); ?>">Módulos</a></td>
                                     </tr>
                                     <?php
                                 }

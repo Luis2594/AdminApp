@@ -28,7 +28,7 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Malla Curricular del CINDEA</h3>
-                    <a type="button" class="btn btn-primary pull-right" href="CreateCurriculum.php">Crear Malla Curricular</a>
+                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateCurriculum.php">Crear Malla Curricular</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -54,10 +54,10 @@ if (isset($_GET['delete']))
                                 <tr>
                                     <td><?php echo $curriculum->getCurriculumYear(); ?></td>
                                     <td><a href="InformationCurriculum.php?id=<?php echo $curriculum->getCurriculumId(); ?>"><?php echo $curriculum->getCurriculumName(); ?></a></td>
-                                    <td><a href="ShowCoursesCurriculum.php?id=<?php echo $curriculum->getCurriculumId(); ?>">Módulos</a></td>
-                                    <td><a href="AssignCourseToCurriculum.php?id=<?php echo $curriculum->getCurriculumId() ?>">Asignar módulos</a></td>
-                                    <td><a href="UpdateCurriculum.php?id=<?php echo $curriculum->getCurriculumId() ?>">Actualizar</a></td>
-                                    <td><a href="javascript:deleteConfirmation(<?php echo $curriculum->getCurriculumId() ?>)">Eliminar</a></td>
+                                    <td><a class="btn btn-info btn-sm" href="ShowCoursesCurriculum.php?id=<?php echo $curriculum->getCurriculumId(); ?>">Módulos</a></td>
+                                    <td><a class="btn btn-info btn-sm" href="AssignCourseToCurriculum.php?id=<?php echo $curriculum->getCurriculumId() ?>">Asignar módulos</a></td>
+                                    <td><a class="btn btn-primary btn-sm" href="UpdateCurriculum.php?id=<?php echo $curriculum->getCurriculumId() ?>">Actualizar</a></td>
+                                    <td><a class="btn btn-danger btn-sm" href="javascript:deleteConfirmation(<?php echo $curriculum->getCurriculumId() ?>)">Eliminar</a></td>
                                 </tr>
                                 <?php
                             }

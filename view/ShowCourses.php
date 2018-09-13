@@ -35,7 +35,7 @@ if (isset($_GET['delete']))
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Módulos del CINDEA</h3>
-                    <a type="button" class="btn btn-primary pull-right" href="CreateCourse.php">Crear Módulo</a>
+                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateCourse.php">Crear Módulo</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -77,18 +77,18 @@ if (isset($_GET['delete']))
                                     <td><?php echo $course->getCourseLesson(); ?></td>
                                     <td><?php echo $course->getCourseType(); ?></td>
                                     <td><?php echo $course->getSpecialityname(); ?></td>
-                                    <td><a href="UpdatePeriods.php?id=<?php echo $course->getCourseId(); ?>" >Períodos</a></td>
-                                    <td><a href="../../pdf/<?php echo $course->getCoursePdf() ?>" target="_blank" >Plan de Estudio</a></td>
+                                    <td><a class="btn btn-primary btn-sm" href="UpdatePeriods.php?id=<?php echo $course->getCourseId(); ?>" >Períodos</a></td>
+                                    <td><a class="btn btn-info btn-sm" href="../../pdf/<?php echo $course->getCoursePdf() ?>" target="_blank" >Plan de Estudio</a></td>
 
                                     <?php
                                     if (isset($update) && $update == "update") {
                                         ?>
-                                        <td><a href="UpdateCourse.php?id=<?php echo $course->getCourseId(); ?>" >Actualizar</a></td>
+                                        <td><a class="btn btn-primary btn-sm" href="UpdateCourse.php?id=<?php echo $course->getCourseId(); ?>" >Actualizar</a></td>
                                     <?php } ?>
                                     <?php
                                     if (isset($delete) && $delete == "delete") {
                                         ?>
-                                        <td><a href="javascript:deleteConfirmation(<?php echo $course->getCourseId(); ?>)" >Eliminar</a></td>
+                                        <td><a class="btn btn-danger btn-sm" href="javascript:deleteConfirmation(<?php echo $course->getCourseId(); ?>)" >Eliminar</a></td>
                                     <?php } ?>
                                 </tr>
                                 <?php
