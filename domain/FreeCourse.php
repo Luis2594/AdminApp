@@ -18,16 +18,18 @@ class FreeCourse {
     private $pk;
     private $cod;
     private $description;
+    private $numberGroup;
     private $fkarea;
     private $daynumber;
     private $fkhour;
     private $datastate;
     private $usertransacction;
 
-    function FreeCourse($pk, $cod, $description, $fkarea, $daynumber, $fkhour, $datastate, $usertransacction) {
+    function FreeCourse($pk, $cod, $description, $numberGroup, $fkarea, $daynumber, $fkhour, $datastate, $usertransacction) {
         $this->pk = $pk;
         $this->cod = $cod;
         $this->description = $description;
+        $this->numberGroup = $numberGroup;
         $this->fkarea = $fkarea;
         $this->daynumber = $daynumber;
         $this->fkhour = $fkhour;
@@ -45,6 +47,14 @@ class FreeCourse {
 
     function getDescription() {
         return $this->description;
+    }
+    
+    function getNumberGroup() {
+        return $this->numberGroup;
+    }
+
+    function setNumberGroup($numberGroup) {
+        $this->numberGroup = $numberGroup;
     }
 
     function getFkarea() {
