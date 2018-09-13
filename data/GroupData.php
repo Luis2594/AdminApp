@@ -2,47 +2,18 @@
 
 require_once '../data/Connector.php';
 include_once '../domain/Group.php';
-//require_once './resource/log/ErrorHandler.php';
 
-class GroupData extends Connector {
+/**
+ * Description of GroupData
+ *
+ * @author Kevin Esquivel Marín <kevinesquivel21@gmail.com>
+ */
+class GroupData extends Connector
+{
 
-    public function insert($number) {
-        $query = "call insert('" . $number . "')";
-        try {
-            $result = $result = $this->exeQuery($query);
-            $array = mysqli_fetch_array($result);
-            $id = trim($array[0]);
-            return $id;
-        } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
-        }
-    }
-
-    public function insertStudentGroup($idGroup, $idStudent, $priority) {
-        $query = "call insertStudentGroup(" . $idGroup . ","
-                . "" . $idStudent . ","
-                . "" . $priority . ")";
-        try {
-            return $this->exeQuery($query);
-        } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
-        }
-    }
-
-    public function delete($idPerson, $group) {
-        $query = 'call deleteStudentGroup(' . $idPerson . ', ' . $group . ');';
-        try {
-            if ($this->exeQuery($query)) {
-                return TRUE;
-            } else {
-                return FALSE;
-            }
-        } catch (Exception $ex) {
-            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
-        }
-    }
-
-    public function getAll() {
+    /** GROUPS */
+    public function getAll()
+    {
         $query = "call getAllGroups();";
         try {
             $group = $this->exeQuery($query);
@@ -57,7 +28,50 @@ class GroupData extends Connector {
         }
     }
 
-    public function getGroupByStudent($id) {
+    public function insertGroup($number)
+    {
+        $query = "call insertGroup('" . $number . "')";
+
+        try {
+            $result = $result = $this->exeQuery($query);
+            $array = mysqli_fetch_array($result);
+            $id = trim($array[0]);
+            return $id;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function updateGroup($id, $number)
+    {
+        $query = "call updateGroup(".$id.",'" . $number . "')";
+        try {
+            $result = $result = $this->exeQuery($query);
+            $array = mysqli_fetch_array($result);
+            $id = trim($array[0]);
+            return $id;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function deleteGroup($id)
+    {
+        $query = "call deleteGroup(" . $id . ")";
+        try {
+            if ($this->exeQuery($query)) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    /**STUDENT GROUP */
+    public function getGroupByStudent($id)
+    {
         $query = "call getGroupByStudent(" . $id . ");";
         try {
             $group = $this->exeQuery($query);
@@ -72,7 +86,8 @@ class GroupData extends Connector {
         }
     }
 
-    public function getGroupByPerson($id) {
+    public function getGroupByPerson($id)
+    {
         $query = 'call getGroupByStudent(' . $id . ');';
         try {
             $allGroups = $this->exeQuery($query);
@@ -84,6 +99,32 @@ class GroupData extends Connector {
                 }
             }
             return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function delete($idPerson, $group)
+    {
+        $query = 'call deleteStudentGroup(' . $idPerson . ', ' . $group . ');';
+        try {
+            if ($this->exeQuery($query)) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function insertStudentGroup($idGroup, $idStudent, $priority)
+    {
+        $query = "call insertStudentGroup(" . $idGroup . ","
+            . "" . $idStudent . ","
+            . "" . $priority . ")";
+        try {
+            return $this->exeQuery($query);
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }

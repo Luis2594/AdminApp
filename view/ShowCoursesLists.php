@@ -37,20 +37,20 @@ include_once './reusable/Header.php';
                                 <select class="btn btn-primary" style="width: 100%" id="filterYear">
                                     <option value="0">Año</option>
                                     <?php
-                                    include_once '../business/FiltersBusiness.php';
-                                    $filtersBusiness = new FiltersBusiness();
-                                    $years = $filtersBusiness->getCoursesYears();
+                                        include_once '../business/FiltersBusiness.php';
+                                        $filtersBusiness = new FiltersBusiness();
+                                        $years = $filtersBusiness->getCoursesYears();
 
-                                    foreach ($years as $tmpYear) {
-                                        ?>
+                                        foreach ($years as $tmpYear) {
+                                     ?>
                                         <option value="<?php echo $tmpYear; ?>" ><?php echo $tmpYear; ?></option>
-                                        <?php
+                                    <?php
                                     }
                                     ?>
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <button onclick="getCoursesByFilters();" class="btn btn-primary" style="width: 100%" id="search">Filtrar</button>
+                                <button onclick="getCoursesByFiltersRequest();" class="btn btn-primary" style="width: 100%" id="search">Filtrar</button>
                             </div>
                         </div>
                     </div>
@@ -109,6 +109,26 @@ include_once './reusable/Footer.php';
         };
     })(jQuery);
 
+    var a = -1;
+    var b = -1;
+    $(document).ready(function () {
+        try{
+            a = $.get("a");
+            b = $.get("b");
+        }catch(e){
+            a = -1;
+            b = -1;
+        }
+        
+        if (a && b && a != -1 && b != -1){
+            $('#filterYear').val(a);
+            $('#filterPeriod').val(b);
+            getCoursesByFilters();
+        }else{
+            coursesToProfessor();
+        }
+    });
+
     function coursesToProfessor() {
         $.ajax({
             type: 'POST',
@@ -152,18 +172,25 @@ include_once './reusable/Footer.php';
         });
     }
 
-    function getCoursesByFilters() {
+    function getCoursesByFiltersRequest(){
         if ($("#filterYear").val() != 0 && $("#filterPeriod").val() != 0) {
-            
+            window.location.href = "ShowCoursesLists.php?a="+$("#filterYear").val() +"&b="+$("#filterPeriod").val();
+        } else {
+            alertify.error("Seleccione los filtros...");
+        }
+    }
+
+    function getCoursesByFilters() {
+        if (a && b && a != -1 && b != -1){
             $.ajax({
                 type: 'POST',
                 url: "../business/GetCoursesAllProfessorsByFilters.php",
-                data: {"period": $("#filterPeriod").val(), "year": $("#filterYear").val()},
+                data: {"period": b, "year": a},
                 success: function (data)
                 {
                     var courses = JSON.parse(data);
                     var htmlToInsert = '';
-                    
+
                     if (!(courses === undefined || courses.length === 0)) {
                         $.each(courses, function (i, item) {
                             htmlToInsert += "<tr>";
@@ -197,11 +224,7 @@ include_once './reusable/Footer.php';
                 }
             });
         } else {
-            alertify.error("Seleccione los filtros...");
+            coursesToProfessor();
         }
     }
-
-    $(document).ready(function () {
-        coursesToProfessor();
-    });
 </script>

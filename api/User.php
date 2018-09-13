@@ -14,10 +14,10 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
         case 'Login':
             $userBusiness = new UserBusiness();
             $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
-            if ($person != NULL) {
+            if ($person != null) {
                 echo json_encode($_POST['username']);
             } else {
-                echo NULL;
+                echo null;
             }
             break;
         case 'Change':
@@ -30,19 +30,19 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
             if (isset($user) && isset($passOld) && isset($passNew) && $user != "" && $passOld != "" && $passOld != "") {
                 $userBusiness = new UserBusiness();
                 $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
-                if ($person != NULL) {
+                if ($person != null) {
                     if ($userBusiness->updatePassword($person['personid'], $passOld, $passNew) == 1) {
                         $user = $userBusiness->getUserId($person['personid']);
                         echo json_encode(array("username" => $user->getUserUsername()
                             , "userpassword" => $user->getUserPass()));
                     } else {
-                        echo NULL;
+                        echo null;
                     }
                 } else {
                     echo null;
                 }
             } else {
-                echo NULL;
+                echo null;
             }
             break;
     }

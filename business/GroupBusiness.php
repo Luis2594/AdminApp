@@ -5,7 +5,7 @@ include_once '../data/GroupData.php';
 /**
  * Description of GroupBusiness
  *
- * @author Kevin ESquivel Marín <kevinesquivel21@gmail.com>
+ * @author Kevin Esquivel Marín <kevinesquivel21@gmail.com>
  */
 class GroupBusiness
 {
@@ -16,11 +16,28 @@ class GroupBusiness
         return $this->groupData = new GroupData();
     }
 
-    public function insert($number)
+    /**GROUP */
+    public function insertGroup($number)
     {
-        return $this->groupData->insert($number);
+        return $this->groupData->insertGroup($number);
     }
 
+    public function updateGroup($id, $number)
+    {
+        return $this->groupData->updateGroup($id, $number);
+    }
+
+    public function deleteGroup($id)
+    {
+        return $this->groupData->deleteGroup($id);
+    }
+
+    public function getAll()
+    {
+        return $this->groupData->getAll();
+    }
+
+    /**STUDENT GROUP */
     public function insertStudentGroup($idGroup, $idStudent, $priority)
     {
         return $this->groupData->insertStudentGroup($idGroup, $idStudent, $priority);
@@ -29,11 +46,6 @@ class GroupBusiness
     public function delete($idPerson, $group)
     {
         return $this->groupData->delete($idPerson, $group);
-    }
-
-    public function getAll()
-    {
-        return $this->groupData->getAll();
     }
 
     public function getGroupByStudent($id)

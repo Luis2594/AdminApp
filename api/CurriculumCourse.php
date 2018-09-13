@@ -13,7 +13,7 @@ foreach ($business->getAllCurriculumCourseParsed() as $current) {
     $array = array("curriculumcourseid" => $current->getId(),
         "curriculumcoursecurriculum" => $current->getCurriculum(),
         "curriculumcoursecourse" => $current->getCourse(),
-        "period" => $current->getPeriod()
+        "period" => $current->getPeriod(),
     );
     array_push($result, $array);
 }

@@ -152,7 +152,7 @@ include './reusable/Footer.php';
                 var htmlMainGroup = '<OPTION VALUE="-1">Seleccionar grupo principal</OPTION>';
                 htmlMainGroup += '<OPTION VALUE="0">Eliminar grupo principal</OPTION>';
                 var htmlSecundaryGroup = '<OPTION VALUE="-1">Seleccionar grupo secunadario</OPTION>';
-                htmlSecundaryGroup += '<OPTION VALUE="0">ELiminar grupo secundario</OPTION>';
+                htmlSecundaryGroup += '<OPTION VALUE="0">Eliminar grupo secundario</OPTION>';
                 var bool = 0;
                 $.each(group, function (i, item) {
                     bool = 1;

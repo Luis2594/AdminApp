@@ -15,6 +15,5 @@ if (isset($text) && $text != "") {
         header("location: ../view/NotificationsUpdateProfessor.php?id=" . $id . "&action=0&msg=Actualización_fallida");
     }
 } else {
-    //error
     header("location: ../view/NotificationsUpdateProfessor.php?id=" . $id . "&action=0&msg=Error_en_los_datos");
 }

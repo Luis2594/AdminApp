@@ -14,8 +14,8 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
 
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
-    if ($person == NULL) {
-        echo json_encode(NULL);
+    if ($person == null) {
+        echo json_encode(null);
         return;
     }
     $business = new CommentBusiness();
@@ -27,7 +27,7 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
                 $array = array("forumcommentid" => $current->getId(),
                     "forumcommentcomment" => $current->getComment(),
                     "forumcommentforumconversation" => $current->getConversation(),
-                    "person" => $current->getPerson()
+                    "person" => $current->getPerson(),
                 );
                 array_push($result, $array);
             }
@@ -41,19 +41,19 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
                     $array = array("forumcommentid" => $current->getId(),
                         "forumcommentcomment" => $current->getComment(),
                         "forumcommentforumconversation" => $current->getConversation(),
-                        "person" => $current->getPerson()
+                        "person" => $current->getPerson(),
                     );
                     array_push($result, $array);
                 }
                 echo json_encode($result);
             } else {
-                echo json_encode(NULL);
+                echo json_encode(null);
             }
             break;
         default:
-            echo json_encode(NULL);
+            echo json_encode(null);
             break;
     }
 } else {
-    echo json_encode(NULL);
+    echo json_encode(null);
 }

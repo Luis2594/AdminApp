@@ -7,10 +7,10 @@
 
 include '../business/UserBusiness.php';
 
-if (isset($_POST['username']) && isset($_POST['userpassword'])) { //isset($_POST['funcion']) && 
+if (isset($_POST['username']) && isset($_POST['userpassword'])) { //isset($_POST['funcion']) &&
     $business = new UserBusiness();
     $person = $business->isStudent($_POST['username'], $_POST['userpassword']);
-    if ($person != NULL) {
+    if ($person != null) {
         include '../business/ForumBusiness.php';
         $forumBusiness = new ForumBusiness();
         $result = [];
@@ -18,14 +18,14 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) { //isset($_POST
             $array = array("forumid" => $current->getId(),
                 "forumname" => $current->getName(),
                 "forumcourse" => $current->getCourse(),
-                "forumprofessor" => $current->getProfessor()
+                "forumprofessor" => $current->getProfessor(),
             );
             array_push($result, $array);
         }
         echo json_encode($result);
     } else {
-        echo json_encode(NULL);
+        echo json_encode(null);
     }
 } else {
-    echo json_encode(NULL);
+    echo json_encode(null);
 }

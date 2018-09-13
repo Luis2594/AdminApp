@@ -8,14 +8,12 @@ include '../business/UserBusiness.php';
 if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
-    if ($person != NULL) {
-        
+    if ($person != null) {
+
         include_once '../business/EnrollmentBusiness.php';
 
-        //$id = $_POST['id'];
         $id = $person["personid"];
-        
-        //$option = (int) $_POST['option'];
+
         $option = 3;
 
         $enrollmentBusiness = new EnrollmentBusiness();
@@ -39,8 +37,8 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
         }
         echo json_encode($result);
     } else {
-        echo json_encode(NULL);
+        echo json_encode(null);
     }
 } else {
-    echo json_encode(NULL);
+    echo json_encode(null);
 }

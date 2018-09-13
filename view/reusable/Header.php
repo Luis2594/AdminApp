@@ -255,10 +255,10 @@ include_once '../resource/Constants.php';
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="./ShowStudents.php"><i class="fa"></i>Ver Estudiantes</a></li>
-                                    <li><a href="./ShowCoursesLists.php"><i class="fa"></i>Ver Grupos de Estudiantes</a></li>
                                     <li><a href="./CreateStudent.php"><i class="fa"></i>Crear Estudiante</a></li>
                                     <li><a href="./ShowStudents.php?update=update"><i class="fa"></i>Actualizar Estudiante</a></li>
                                     <li><a href="./ShowStudents.php?delete=delete"><i class="fa"></i>Eliminar Estudiante</a></li>
+                                    <li><a href="./ShowCoursesLists.php"><i class="fa"></i>Ver Estudiantes por Grupo</a></li>
                                 </ul>
                             </li>
 
@@ -283,7 +283,17 @@ include_once '../resource/Constants.php';
                                     <li><a href="./CreateCourse.php"><i class="fa"></i>Crear Módulo</a></li>
                                     <li><a href="./ShowCourses.php?update=update"><i class="fa"></i>Actualizar Módulo</a></li>
                                     <li><a href="./ShowCourses.php?delete=delete"><i class="fa"></i>Eliminar Módulo</a></li>
-                                    <li><a href="./ShowGroups.php"><i class="fa"></i>Actualizar Grupos</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- GROUPS -->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Grupos</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./ShowGroups.php"><i class="fa"></i>Gestionar Grupos</a></li>
+                                    <li><a href="./CreateGroup.php"><i class="fa"></i>Crear Grupo</a></li>
                                 </ul>
                             </li>
 

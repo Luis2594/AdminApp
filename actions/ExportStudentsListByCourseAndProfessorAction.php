@@ -1,6 +1,4 @@
 <?php
-
-//Capture data from GET method
 $course = $_GET['course'];
 $professor = $_GET['professor'];
 $period = $_GET['period'];

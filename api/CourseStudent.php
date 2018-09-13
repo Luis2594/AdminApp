@@ -5,13 +5,11 @@ include_once '../business/UserBusiness.php';
 if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
-    if ($person != NULL) {
+    if ($person != null) {
         include_once '../business/CourseBusiness.php';
         $courseBusiness = new CourseBusiness();
 
         $result = [];
-
-
 
         foreach ($courseBusiness->getCourseByStudentParsed($person['personid']) as $current) {
             $array = array(
@@ -22,7 +20,7 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
                 "courselesson" => $current->getCourseLesson(),
                 "coursepdf" => $current->getCoursePdf(),
                 "coursespeciality" => $current->getCourseSpeciality(),
-                "coursetype" => $current->getCourseType()
+                "coursetype" => $current->getCourseType(),
             );
             array_push($result, $array);
         }
@@ -35,8 +33,8 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
 
         echo json_encode($result);
     } else {
-        echo json_encode(NULL);
+        echo json_encode(null);
     }
 } else {
-    echo json_encode(NULL);
+    echo json_encode(null);
 }

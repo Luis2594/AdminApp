@@ -158,7 +158,6 @@ include './reusable/Footer.php';
                 data: {"enrollment": id, "value": sel.value}, 
                 success: function (data)
                 {
-                    debugger;
                     if (data == "true"){
                         alertify.success("Acción Ejecutada Correctamente");
                         loadAcademicHistorial(3);

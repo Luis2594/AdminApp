@@ -1,20 +1,14 @@
 <?php
 include './reusable/Session.php';
 include './reusable/Header.php';
-
-if (isset($_GET['update']))
-    $update = $_GET['update'];
-
-if (isset($_GET['delete']))
-    $delete = $_GET['delete'];
 ?>
 
 <!-- Content Header (Page header) -->
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="ShowCourses.php"><i class="fa fa-arrow-circle-right"></i> Módulos</a></li>
-        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Actualizar Grupos</a></li>
+        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Grupos</a></li>
+        <li><a href="ShowGroups.php"><i class="fa fa-arrow-circle-right"></i> Gestionar Grupos</a></li>
     </ol>
 </section>
 <br>
@@ -34,6 +28,7 @@ if (isset($_GET['delete']))
                             <tr>
                                 <th>Grupo</th>
                                 <th>Actualizar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,8 +41,9 @@ if (isset($_GET['delete']))
                             foreach ($groups as $group) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $group->getGroupName(); ?></td>
-                                    <td><a href="UpdateGroup.php?id=<?php echo $course->getGroupId(); ?>" >Actualizar</a></td>
+                                    <td><?php echo $group[number]; ?></td>
+                                    <td><a href="UpdateGroupNumber.php?id=<?php echo $group[id]; ?>" >Actualizar</a></td>
+                                    <td><a href="javascript:deleteConfirmation(<?php echo $group[id]; ?>, '<?php echo $group[number]; ?>')" >Eliminar</a></td>
                                 </tr>
                                 <?php
                             }
@@ -57,6 +53,7 @@ if (isset($_GET['delete']))
                             <tr>
                                 <th>Grupo</th>
                                 <th>Actualizar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -105,11 +102,10 @@ include './reusable/Footer.php';
         alertify.error(msg);
     }
 
-    function deleteConfirmation(id) {
-        alertify.confirm('Eliminar Módulo', '¿Desea eliminar el módulo "' +
-                $("#name" + id).html() + " " +
-                '" de la lista de módulos?', function () {
-                    window.location = "../business/DeleteCourseAction.php?id=" + id;
+    function deleteConfirmation(id, name) {
+        alertify.confirm('Eliminar Grupo', '¿Desea eliminar el módulo "' +
+                name + '" de la lista de grupos?', function () {
+                    window.location = "../actions/GroupDeleteAction.php?id=" + id;
                 }
         , function () {
             alertify.error('Cancelado');

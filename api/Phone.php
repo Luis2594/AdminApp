@@ -9,13 +9,13 @@
 //Insertar
 //Post
 //Recibe username, userpassword y nuevo numero
-//Retorna los teléfonos de ese usuario si los 
+//Retorna los teléfonos de ese usuario si los
 //credenciales son válidos, nulo si no es valido
 //
 //Eliminar
 //Post
 //Recibe username, userpassword y idphone
-//Retorna los teléfonos de ese usuario si los 
+//Retorna los teléfonos de ese usuario si los
 //credenciales son válidos, nulo si no es valido
 
 include '../business/PhoneBusiness.php';
@@ -27,8 +27,8 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
 
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
 
-    if ($person == NULL) {
-        echo json_encode(NULL);
+    if ($person == null) {
+        echo json_encode(null);
         return;
     }
 
@@ -54,7 +54,7 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
 
                 echo json_encode($result);
             } else {
-                echo json_encode(NULL);
+                echo json_encode(null);
             }
             break;
         case 'Delete':
@@ -68,16 +68,16 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
 
                     echo json_encode($result);
                 } else {
-                    echo json_encode(NULL);
+                    echo json_encode(null);
                 }
             } else {
-                echo json_encode(NULL);
+                echo json_encode(null);
             }
             break;
         default:
-            echo json_encode(NULL);
+            echo json_encode(null);
             break;
     }
 } else {
-        echo json_encode(NULL);
+    echo json_encode(null);
 }
