@@ -13,6 +13,7 @@ class FreeCourseData extends ConnectorEmergent {
     public function insert($course) {
         $query = "call courseInsert('" . $course->getCod() . "',"
                 . "'" . $course->getDescription() . "',"
+                . "'" . $course->getNumberGroup() . "',"
                 . "'" . $course->getFkarea() . "',"
                 . "'" . $course->getDaynumber() . "',"
                 . "'" . $course->getFkhour() . "',"
@@ -155,5 +156,4 @@ class FreeCourseData extends ConnectorEmergent {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-
 }
