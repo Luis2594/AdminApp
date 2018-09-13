@@ -74,6 +74,7 @@ class FreeCourseData extends ConnectorEmergent {
                             $row['pk'],
                             $row['cod'], 
                             utf8_encode($row['description']),
+                            $row['numbergroup'], 
                             utf8_encode($row['area']),
                             utf8_encode($row['days']),
                             $row['hours'],
