@@ -2,21 +2,23 @@
 
 include_once './FreeCourseBusiness.php';
 
-$code = (int) $_POST['code'];
+$code = $_POST['code'];
 $name = $_POST['name'];
+$numberGroup = $_POST['numbergroup'];
 $area = (int) $_POST['area'];
 $day = (int) $_POST['day'];
 $hour = (int) $_POST['hour'];
 
 if (isset($code) &&
-    isset($name) &&
-    isset($area) &&
-    isset($day) &&
-    isset($hour)
+        isset($name) &&
+        isset($numberGroup) &&
+        isset($area) &&
+        isset($day) &&
+        isset($hour)
 ) {
     $freeCourseBusiness = new FreeCourseBusiness();
 
-    $course = new FreeCourse(NULL, $code, utf8_decode($name), $area, $day, $hour, "", "");
+    $course = new FreeCourse(NULL, $code, utf8_decode($name), $numberGroup, $area, $day, $hour, "", "");
     $res = $freeCourseBusiness->insert($course);
 
     if ($res != 0) {

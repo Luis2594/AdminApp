@@ -28,12 +28,34 @@ include './reusable/Header.php';
                         <!--CODE-->
                         <div class="form-group">
                             <label>Código</label>
-                            <input id="code" name="code" type="number" class="form-control" placeholder="Código" required=""/>
+                            <input id="code" name="code" type="text" class="form-control" placeholder="Código" required=""/>
                         </div>
                         <!--NAME-->
                         <div class="form-group">
                             <label>Nombre</label>
                             <input id="name" name="name" type="text" class="form-control" placeholder="Nombre" required=""/>
+                        </div>
+                        <!--NUMBER GROUP-->
+                        <div class="form-group">
+                            <label>Grupo</label>
+                            <table style="width:100%">
+                                <tr style="align-content: center;">
+                                    <th>1</th>
+                                    <th>2</th> 
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </tr>
+                                <tr>
+                                    <td> <input value="1" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" /></td>
+                                    <td> <input value="2" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" /></td>
+                                    <td> <input value="3" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" /></td>
+                                    <td> <input value="4" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" /></td>
+                                    <td> <input value="5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" /></td>
+                                </tr>
+
+                            </table>
+                            <input id="numbergroup" name="numbergroup" type="text" class="form-control" />
                         </div>
                         <!--AREA-->
                         <div class="form-group">
@@ -74,6 +96,7 @@ include './reusable/Footer.php';
         areas();
         days();
         hours();
+         $("#numbergroup").hide();
     });
 
     (function ($) {
@@ -106,8 +129,8 @@ include './reusable/Footer.php';
         var code = $('#code').val();
         var name = $('#name').val();
 
-        if (!isInteger(code)) {
-            alertify.error("Formato de código incorrecto");
+        if (code.length === 0) {
+            alertify.error("Verifique el código");
             return false;
         }
 
@@ -115,9 +138,35 @@ include './reusable/Footer.php';
             alertify.error("Verifique el nombre del curso");
             return false;
         }
+
+        var bool = false;
+        $("input[name=check]").each(function (index) {
+            if ($(this).is(':checked')) {
+                bool = true;
+                $("#numbergroup").val(code + "-" + $(this).val());
+            }
+        });
+        
+        if(!bool){
+           alertify.error("Seleccione un grupo");
+            return false;  
+        }
+
         $("#formCourse").submit();
 //        confirmCode(code);
     }
+
+    $("input:checkbox").on('click', function () {
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    });
 //
     function isInteger(number) {
         if (number % 1 === 0) {

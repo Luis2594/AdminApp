@@ -2,12 +2,14 @@
 include './reusable/Session.php';
 include './reusable/Header.php';
 
-if(isset($_GET['update']))$update = $_GET['update'];
+if (isset($_GET['update']))
+    $update = $_GET['update'];
 
-if(isset($_GET['delete']))$delete = $_GET['delete'];
+if (isset($_GET['delete']))
+    $delete = $_GET['delete'];
 
-if(isset($_GET['export']))$export = $_GET['export'];
-
+if (isset($_GET['export']))
+    $export = $_GET['export'];
 ?>
 
 <!-- Content Header (Page header) -->
@@ -31,7 +33,7 @@ if(isset($_GET['export']))$export = $_GET['export'];
         if (isset($export) && $export == "export") {
             ?>
             <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Exportar</a></li>
-        <?php } ?>
+<?php } ?>
 
     </ol>
 </section>
@@ -52,6 +54,7 @@ if(isset($_GET['export']))$export = $_GET['export'];
                             <tr>
                                 <th>Código</th>
                                 <th>Nombre</th>
+                                <th>Grupo</th>
                                 <th>Área</th>
                                 <th>Día</th>
                                 <th>Hora</th>
@@ -69,7 +72,7 @@ if(isset($_GET['export']))$export = $_GET['export'];
                                 if (isset($export) && $export == "export") {
                                     ?>
                                     <th>Exportar</th>
-                                <?php } ?>
+<?php } ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,6 +87,7 @@ if(isset($_GET['export']))$export = $_GET['export'];
                                 <tr>
                                     <td><?php echo $course->getCod(); ?></td>
                                     <td id="name<?php echo $course->getPk(); ?>"><a href="InformationCourseEmergent.php?id=<?php echo $course->getPk() ?>"><?php echo $course->getDescription(); ?></a></td>
+                                    <td><?php echo $course->getNumberGroup(); ?></td>
                                     <td><?php echo $course->getFkarea(); ?></td>
                                     <td><?php echo $course->getDaynumber(); ?></td>
                                     <td><?php echo $course->getFkhour(); ?></td>
@@ -101,7 +105,7 @@ if(isset($_GET['export']))$export = $_GET['export'];
                                     if (isset($export) && $export == "export") {
                                         ?>
                                         <td><a href="javascript:exportStudents(<?php echo $course->getPk(); ?>)" >EXPORTAR</a></td>
-                                    <?php } ?>
+                                <?php } ?>
 
                                 </tr>
                                 <?php
@@ -112,6 +116,7 @@ if(isset($_GET['export']))$export = $_GET['export'];
                             <tr>
                                 <th>Código</th>
                                 <th>Nombre</th>
+                                <th>Grupo</th>
                                 <th>Área</th>
                                 <th>Día</th>
                                 <th>Hora</th>
@@ -129,7 +134,7 @@ if(isset($_GET['export']))$export = $_GET['export'];
                                 if (isset($export) && $export == "export") {
                                     ?>
                                     <th>Exportar</th>
-                                <?php } ?>
+<?php } ?>
                             </tr>
                         </tfoot>
                     </table>
@@ -185,7 +190,7 @@ include './reusable/Footer.php';
             alertify.error('Cancelado');
         });
     }
-    
+
     function exportStudents(course) {
         open("../reporter/ExportExcel.php?course=" + course);
     }
