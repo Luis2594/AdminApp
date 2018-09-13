@@ -37,7 +37,7 @@ include './reusable/Header.php';
                         </div>
                         <!--NUMBER GROUP-->
                         <div class="form-group">
-                            <label>Número de grupo</label>
+                            <label>Grupo</label>
                             <table style="width:100%">
                                 <tr style="align-content: center;">
                                     <th>1</th>
@@ -146,6 +146,11 @@ include './reusable/Footer.php';
                 $("#numbergroup").val(code + "-" + $(this).val());
             }
         });
+        
+        if(!bool){
+           alertify.error("Seleccione un grupo");
+            return false;  
+        }
 
         $("#formCourse").submit();
 //        confirmCode(code);

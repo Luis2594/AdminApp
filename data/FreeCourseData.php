@@ -34,6 +34,7 @@ class FreeCourseData extends ConnectorEmergent {
         $query = "call courseUpdate('" . $course->getPk() . "',"
                 . "'" . $course->getCod() . "',"
                 . "'" . $course->getDescription() . "',"
+                . "'" . $course->getNumberGroup() . "',"
                 . "" . $course->getFkarea() . ","
                 . "" . $course->getDaynumber() . ","
                 . "" . $course->getFkhour() . ","
@@ -93,7 +94,6 @@ class FreeCourseData extends ConnectorEmergent {
 
         try {
             $allCourses = $this->exeQuery($query);
-//            $array = [];
             $currentCourse = null;
             if (mysqli_num_rows($allCourses) > 0) {
                 while ($row = mysqli_fetch_array($allCourses)) {
@@ -101,12 +101,12 @@ class FreeCourseData extends ConnectorEmergent {
                             $row['pk'],
                             $row['cod'], 
                             utf8_encode($row['description']),
+                            $row['numbergroup'], 
                             utf8_encode($row['area']),
                             utf8_encode($row['days']),
                             $row['hours'],
                             $row['datastate'], 
                             $row['usertransacction']);
-//                    array_push($array, $currentStudent);
                 }
             }
             return $currentCourse;

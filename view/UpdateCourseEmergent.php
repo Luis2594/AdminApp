@@ -45,6 +45,30 @@ include './reusable/Header.php';
                             <label>Nombre</label>
                             <input id="name" name="name"type="text" class="form-control" placeholder="Nombre" required="" value="<?php echo $course->getDescription(); ?>" />
                         </div>
+                        <!--NUMBER GROUP-->
+                        <div class="form-group">
+                            <label>Grupo</label>
+                            <table style="width:100%">
+                                <tr style="align-content: center;">
+                                    <th>1</th>
+                                    <th>2</th> 
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </tr>
+                                <tr>
+                                    <td> <input value="1" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" /></td>
+                                    <td> <input value="2" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" /></td>
+                                    <td> <input value="3" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" /></td>
+                                    <td> <input value="4" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" /></td>
+                                    <td> <input value="5" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" /></td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <input id="numbergroup" name="numbergroup" type="text" class="form-control" placeholder="Grupo" required="" readonly value="<?php echo $course->getNumberGroup(); ?>"/>
+                        </div>
                         <!--AREA-->
                         <div class="form-group">
                             <label>Área</label>
@@ -85,7 +109,7 @@ include './reusable/Footer.php';
     function goBack() {
         window.history.back();
     }
-    
+
     $("#codeTemp").hide();
 
     $(function () {
@@ -168,6 +192,7 @@ include './reusable/Footer.php';
     function valueInputs() {
         var code = $('#code').val();
         var name = $('#name').val();
+        var numbergroup = $('#numbergroup').val();
 
         if (code.length === 0) {
             alertify.error("Verifique el código");
@@ -179,9 +204,33 @@ include './reusable/Footer.php';
             return false;
         }
 
+        if (numbergroup.length === 0) {
+            alertify.error("Verifique el grupo del curso");
+            return false;
+        }
+
         $("#formCourse").submit();
 
     }
+
+    var groupValue = "";
+    $("input:checkbox").on('click', function () {
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+            groupValue =  $(this).val();
+            $("#numbergroup").val($("#code").val() + "-" + groupValue);
+        } else {
+            $box.prop("checked", false);
+        }
+    });
+
+    $("#code").on('keyup', function () {
+        $("#numbergroup").val($(this).val() + "-" + groupValue);
+    }).keyup();
 
     function isInteger(number) {
         if (number % 1 === 0) {
