@@ -66,7 +66,7 @@ require '../resource/log/ErrorHandler.php';
                     <div class="col-md-4">
                         <div class="form-group">
                             <label></label>
-                            <button onclick="sendConsult();" class="btn btn-primary" style="width:30%;margin-top:9px;">Consultar</button>
+                            <button onclick="sendConsult();" class="btn btn-primary" style="width:100%;margin-top:5px;">Consultar</button>
                         </div>
                     </div>                   
                 </div>
