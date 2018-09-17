@@ -35,14 +35,14 @@ $id = (int) $_GET['id'];
                                 $group = $business->getAll();
                                 $porActualizar = null;
                                 foreach ($group as $item){
-                                    if ($id == $item[id]){
+                                    if ($id == $item['id']){
                                         $porActualizar = $item;
                                         break;
                                     }
                                 }
                             ?>
-                            <input id="id" name="id" type="hidden" value="<?php echo $porActualizar[id]; ?>" class="form-control" required="required"/>
-                            <input id="name" name="name" type="text" value="<?php echo $porActualizar[number]; ?>" class="form-control" maxlength="5" placeholder="Grupo" required="required"/>
+                            <input id="id" name="id" type="hidden" value="<?php echo $porActualizar['id']; ?>" class="form-control" required="required"/>
+                            <input id="name" name="name" type="text" value="<?php echo $porActualizar['number']; ?>" class="form-control" maxlength="5" placeholder="Grupo" required="required"/>
                         </div>
                     </div><!-- /.box-body -->
                 </form>

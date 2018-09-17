@@ -41,9 +41,9 @@ include './reusable/Header.php';
                             foreach ($groups as $group) {
                                 ?>
                                 <tr>
-                                    <td><label class="btn btn-ligth btn-lg"><?php echo $group[number]; ?></label></td>
-                                    <td><a class="btn btn-primary btn-sm" href="UpdateGroupNumber.php?id=<?php echo $group[id]; ?>" >Actualizar</a></td>
-                                    <td><a class="btn btn-danger btn-sm" href="javascript:deleteConfirmation(<?php echo $group[id]; ?>, '<?php echo $group[number]; ?>')" >Eliminar</a></td>
+                                    <td><label class="btn btn-ligth btn-lg"><?php echo $group['number']; ?></label></td>
+                                    <td><a class="btn btn-primary btn-sm" href="UpdateGroupNumber.php?id=<?php echo $group['id']; ?>" >Actualizar</a></td>
+                                    <td><a class="btn btn-danger btn-sm" href="javascript:deleteConfirmation(<?php echo $group['id']; ?>, '<?php echo $group['number']; ?>')" >Eliminar</a></td>
                                 </tr>
                                 <?php
                             }
