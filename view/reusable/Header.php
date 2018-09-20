@@ -213,7 +213,7 @@ include_once '../resource/Constants.php';
                             </li>
 
                             <!-- NOTIFICATIONS -->
-                            <!-- <li class="treeview">
+                            <li class="treeview">
                                 <a>
                                     <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
                                 </a>
@@ -223,7 +223,7 @@ include_once '../resource/Constants.php';
                                     <li><a href="./NotificationsShowStudents.php"><i class="fa"></i> Estudiantes</a></li>
                                     <li><a href="./NotificationsShowIncoming.php"><i class="fa"></i> Recibidas</a></li>
                                 </ul>
-                            </li> -->
+                            </li>
 
                             <!-- ADMIN -->
                             <li class="treeview">

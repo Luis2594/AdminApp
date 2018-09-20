@@ -2,11 +2,7 @@
 include_once './reusable/Session.php';
 include_once './reusable/Header.php';
 
-$course = (int) $_GET['course'];
-$professor = (int) $_GET['professor'];
-$year = (int) $_GET['year'];
-$period = (int) $_GET['period'];
-$group = (int) $_GET['group'];
+$admin = $_GET['admin'];
 ?>
 
 <!-- Content Header (Page header) -->
@@ -14,7 +10,7 @@ $group = (int) $_GET['group'];
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Notificaciones</a></li>
-        <li><a href="CreateNotificationStudent.php"><i class="fa fa-arrow-circle-right"></i>Crear Notificación Estudiantes</a></li>
+        <li><a href="CreateNotificationStudent.php"><i class="fa fa-arrow-circle-right"></i> Crear Notificación Estudiantes</a></li>
     </ol>
 </section>
 <br>
@@ -33,6 +29,7 @@ $group = (int) $_GET['group'];
                     <form role="form" id="formNotification" action="../actions/NotificationsCreateStudentAction.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <textarea id="text" name="text" class="form-control" rows="3" placeholder="Texto Notificación" required="true"></textarea>
+                            <input id="admin" hidden name="admin" value="<?php echo $admin; ?>"/>
                         </div>
                     </form>
 
@@ -55,16 +52,8 @@ include_once './reusable/Footer.php';
             alertify.error("Verifique el texto de su notificación.");
             return false;
         }
-        if ($('#curso').val() === "-1") {
-            alertify.error("Verifique el módulo seleccionado.");
-            return false;
-        }
 
         $("#formNotification").submit();
-    }
-
-    if ($('#curso').val() === "-1") {
-        $('#enviar').attr("disabled", true);
     }
 
     (function ($) {

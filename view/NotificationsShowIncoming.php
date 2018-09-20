@@ -25,6 +25,7 @@ include './reusable/Header.php';
                         <thead>
                             <tr>
                                 <th>Contenido</th>
+                                <th>Emisor</th>
                                 <th>Fecha</th>
                             </tr>
                         </thead>
@@ -33,15 +34,14 @@ include './reusable/Header.php';
                                 include '../business/NotificationBusiness.php';
                                 $notificationBusiness = new NotificationBusiness();
 
-                                $notifications = $notificationBusiness->getAllNotificationIncomingAdmin((int) $_SESSION['id']);
+                                $notifications = $notificationBusiness->getAllAdminsIncomingNotifications($_SESSION['id']);
 
                                 foreach ($notifications as $not) {
                                     ?>
                                     <tr>
-                                        <td><?php echo $not->getNotificationText(); ?></td>
-                                        <td>
-                                        <?php echo $not->getNotificationDate(); ?>
-                                        </td>
+                                    <td><?php echo $not->getNotificationText(); ?></td>
+                                    <td><?php echo $not->getNotificationId(); ?></td>
+                                    <td><?php echo $not->getNotificationDate(); ?></td>
                                     </tr>
                             <?php
                                 }
@@ -50,6 +50,7 @@ include './reusable/Header.php';
                         <tfoot>
                             <tr>
                                 <th>Contenido</th>
+                                <th>Emisor</th>
                                 <th>Fecha</th>
                             </tr>
                         </tfoot>
@@ -81,7 +82,17 @@ include './reusable/Footer.php';
             }
         }
     })(jQuery);
-
+    var action = $.get("action");
+    var msg = $.get("msg");
+    if (action === "1") {
+        msg = msg.replace(/_/g, " ");
+        alertify.success(msg);
+    }
+    if (action === "0") {
+        msg = msg.replace(/_/g, " ");
+        alertify.error(msg);
+    }
+    
     $(function () {
         $("#tablaNotificaciones").dataTable();
     });
