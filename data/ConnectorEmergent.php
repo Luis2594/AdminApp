@@ -16,13 +16,13 @@ class ConnectorEmergent {
         $this->user = 'root';
 
 //        ********   LOCAL    ********
-//        $this->password = '1234';
-//        $this->db = 'institution_submodule';
+        $this->password = '1234';
+        $this->db = 'institution_submodule';
 //        
 //        
 //        ********   DEVELOP  ********
-        $this->password = 'cindea2017@';
-        $this->db = 'test_institution_submodule';
+//        $this->password = 'cindea2017@';
+//        $this->db = 'test_institution_submodule';
 
 //        ********   PRODUCTION  ********
 //        $this->password = 'cindea2017@';

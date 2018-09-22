@@ -213,7 +213,7 @@ include_once '../resource/Constants.php';
                             </li>
 
                             <!-- NOTIFICATIONS -->
-                            <!-- <li class="treeview">
+                            <li class="treeview">
                                 <a>
                                     <i class="fa"></i> <span>Notificaciones</span> <i class="fa fa-angle-left pull-right"></i>
                                 </a>
@@ -223,7 +223,7 @@ include_once '../resource/Constants.php';
                                     <li><a href="./NotificationsShowStudents.php"><i class="fa"></i> Estudiantes</a></li>
                                     <li><a href="./NotificationsShowIncoming.php"><i class="fa"></i> Recibidas</a></li>
                                 </ul>
-                            </li> -->
+                            </li>
 
                             <!-- ADMIN -->
                             <li class="treeview">
@@ -258,7 +258,7 @@ include_once '../resource/Constants.php';
                                     <li><a href="./CreateStudent.php"><i class="fa"></i>Crear Estudiante</a></li>
                                     <li><a href="./ShowStudents.php?update=update"><i class="fa"></i>Actualizar Estudiante</a></li>
                                     <li><a href="./ShowStudents.php?delete=delete"><i class="fa"></i>Eliminar Estudiante</a></li>
-                                    <li><a href="./ShowCoursesLists.php"><i class="fa"></i>Ver Estudiantes por Grupo</a></li>
+                                    <li><a href="./ShowGroupsList.php"><i class="fa"></i>Ver Estudiantes por Grupo</a></li>
                                 </ul>
                             </li>
 

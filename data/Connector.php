@@ -16,12 +16,12 @@ class Connector {
         $this->user = 'root';
 
 //        ********   LOCAL    ********
-//        $this->db = 'institution';
-//        $this->password = '1234';
+        $this->db = 'institution';
+        $this->password = '1234';
 
 //        ********   DEVELOP  ********
-        $this->password = 'cindea2017@';
-        $this->db = 'test_institution';
+//        $this->password = 'cindea2017@';
+//        $this->db = 'test_institution';
 
 //        ********   PRODUCTION  ********
 //        $this->password = 'cindea2017@';

@@ -19,14 +19,13 @@ include './reusable/Header.php';
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Notificaciones a Estudiantes</h3>
-                    <a type="button" class="btn btn-primary btn-sm pull-right" href="CreateNotificationStudent.php">Crear Notificación</a>
+                    <a type="button" class="btn btn-primary pull-right btn-sm" href="CreateNotificationStudent.php?admin=<?php echo $_SESSION["id"]; ?>">Crear Notificación</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <table id="tablaNotificaciones" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Contenido</th>
-                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -35,15 +34,12 @@ include './reusable/Header.php';
                                 include '../business/NotificationBusiness.php';
                                 $notificationBusiness = new NotificationBusiness();
 
-                                $notifications = $notificationBusiness->getAllStudentsNotifications();
+                                $notifications = $notificationBusiness->getAllStudentsNotifications($_SESSION['id']);
 
                                 foreach ($notifications as $not) {
                                     ?>
                                     <tr>
                                         <td><?php echo $not->getNotificationText(); ?></td>
-                                        <td>
-                                            <a type="button" class="btn btn-primary" href="javascript:update(<?php echo $not->getNotificationId() ?>)">Actualizar</a>                    
-                                        </td>
                                         <td>
                                             <a type="button" class="btn btn-danger" href="javascript:remove(<?php echo $not->getNotificationId() ?>)">Eliminar</a>
                                         </td>
@@ -55,7 +51,6 @@ include './reusable/Header.php';
                         <tfoot>
                             <tr>
                                 <th>Contenido</th>
-                                <th></th>
                                 <th></th>
                             </tr>
                         </tfoot>
@@ -101,14 +96,10 @@ include './reusable/Footer.php';
     $(function () {
         $("#tablaNotificaciones").dataTable();
     });
-    
-    function update(id) {
-        window.location = "NotificationsUpdateStudents.php?id=" + id;
-    }
 
     function remove(id) {
         alertify.confirm('Eliminar Registro', '¿Desea eliminar?', function () {
-                    window.location = "../business/NotificationsDeleteStudentAction.php?id=" + id;
+                    window.location = "../actions/NotificationsDeleteStudentAction.php?id=" + id;
                 }
         , function () {
             alertify.error('Cancelado');
