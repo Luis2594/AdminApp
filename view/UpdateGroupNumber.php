@@ -43,6 +43,7 @@ $id = (int) $_GET['id'];
                             ?>
                             <input id="id" name="id" type="hidden" value="<?php echo $porActualizar['id']; ?>" class="form-control" required="required"/>
                             <input id="name" name="name" type="text" value="<?php echo $porActualizar['number']; ?>" class="form-control" maxlength="100" placeholder="Grupo" required="required"/>
+
                         </div>
                     </div><!-- /.box-body -->
                 </form>

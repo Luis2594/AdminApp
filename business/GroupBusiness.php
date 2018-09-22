@@ -17,24 +17,76 @@ class GroupBusiness
     }
 
     /**GROUP */
+
+    /**
+     * Guarda un registro de grupo.
+     */
     public function insertGroup($number)
     {
         return $this->groupData->insertGroup($number);
     }
 
+    /**
+     * Actualiza la descripción de un grupo.
+     */
     public function updateGroup($id, $number)
     {
         return $this->groupData->updateGroup($id, $number);
     }
 
+    /**
+     * Obtiene un grupo de base de datos.
+     */
+    public function getGroup($id)
+    {
+        return $this->groupData->getGroup($id);
+    }
+
+    /**
+     * Elimina tupla de tabla groups
+     */
     public function deleteGroup($id)
     {
         return $this->groupData->deleteGroup($id);
     }
 
+    /**
+     * Captura los registros de grupos.
+     *
+     * groupid->     id
+     * groupnumber-> number
+     */
     public function getAll()
     {
         return $this->groupData->getAll();
+    }
+
+    /**
+     * Captura los registros de grupos para los cuales hay estudiantes
+     * matriculados, en el periodo y año actuales.
+     *
+     * groupid:     id del grupo
+     * groupnumber: descripción del grupo
+     * period:      periodo actual
+     * year:        año actual
+     */
+    public function getAllGroups()
+    {
+        return $this->groupData->getAllGroups();
+    }
+
+    /**
+     * Captura los registros de grupos para los cuales hay estudiantes
+     * matriculados, en el periodo y año ingresados.
+     *
+     * groupid:     id del grupo
+     * groupnumber: descripción del grupo
+     * period:      periodo actual
+     * year:        año actual
+     */
+    public function getAllGroupsByFilters($period, $year)
+    {
+        return $this->groupData->getAllGroupsByFilters($period, $year);
     }
 
     /**STUDENT GROUP */

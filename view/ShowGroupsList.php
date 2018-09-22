@@ -8,7 +8,7 @@ include_once './reusable/Header.php';
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
         <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Estudiantes</a></li>
-        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Ver Grupos de Estudiantes</a></li>
+        <li><a href="ShowGroupsList.php"><i class="fa fa-arrow-circle-right"></i> Ver Grupos de Estudiantes</a></li>
     </ol>
 </section>
 <br>
@@ -21,7 +21,7 @@ include_once './reusable/Header.php';
                 <div class="box">
                     <div class="box-header row col-md-12">
                         <div class="pull-left col-md-6">
-                            <h3 class="box-title">Grupos por Módulo
+                            <h3 class="box-title">Grupos
                         </div>
                         <div class="pull-right col-md-6 text-right right">
                             <div class="col-md-4">
@@ -50,7 +50,7 @@ include_once './reusable/Header.php';
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <button onclick="getCoursesByFiltersRequest();" class="btn btn-primary btn-sm" style="width: 100%" id="search">Filtrar</button>
+                                <button onclick="getGroupsByFiltersByFiltersRequest();" class="btn btn-primary btn-sm" style="width: 100%" id="search">Filtrar</button>
                             </div>
                         </div>
                     </div>
@@ -58,8 +58,6 @@ include_once './reusable/Header.php';
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Código</th>
-                                    <th>Nombre</th>
                                     <th>Grupo</th>
                                     <th>Periodo</th>
                                     <th>Año</th>
@@ -71,8 +69,6 @@ include_once './reusable/Header.php';
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Código</th>
-                                    <th>Nombre</th>
                                     <th>Grupo</th>
                                     <th>Periodo</th>
                                     <th>Año</th>
@@ -123,36 +119,41 @@ include_once './reusable/Footer.php';
         if (a && b && a != -1 && b != -1){
             $('#filterYear').val(a);
             $('#filterPeriod').val(b);
-            getCoursesByFilters();
+            getGroupsByFilters();
         }else{
-            coursesToProfessor();
+            getGroups();
         }
     });
 
-    function coursesToProfessor() {
+    function getGroups() {
         $.ajax({
             type: 'POST',
-            url: "../business/GetCoursesAllProfessors.php",
+            url: "../actions/GroupGetAllAction.php",
             success: function (data)
             {
-                var courses = JSON.parse(data);
+                var groups = JSON.parse(data);
                 var htmlToInsert = '';
 
-                if (!(courses === undefined || courses.length === 0)) {
-                    $.each(courses, function (i, item) {
+                if (!(groups === undefined || groups.length === 0)) {
+                    $.each(groups, function (i, item) {
+                        var descPeriod = "IV";
+                        switch(item.period){
+                            case 1:
+                                descPeriod = "I";
+                                break;
+                            case 2:
+                                descPeriod = "II";
+                                break;
+                            case 3:
+                                descPeriod = "III";
+                                break;
+                        }
                         htmlToInsert += "<tr>";
-                        htmlToInsert += "<td>" + item.coursecode + "</td>";
-                        htmlToInsert += '<td><a href="InformationCourse.php?id=' + item.courseid + '">' + item.coursename + '</a></td>';
                         htmlToInsert += "<td>" + item.groupnumber + "</td>";
-                        htmlToInsert += "<td>" + item.period + "</td>";
-                        htmlToInsert += "<td>" + item.professorcourseyear + "</td>";
-                        htmlToInsert += '<td><a class="btn btn-info btn-sm" href="ShowStudentsByCourse.php?' +
-                                'course=' + item.courseid + '&' +
-                                'professor=' + item.professorcourseperson + '&' +
-                                'year=' + item.professorcourseyear + '&' +
-                                'period=' + item.periodid + '&' +
-                                'group=' + item.groupid +
-                                '">Estudiantes</a></td>';
+                        htmlToInsert += "<td>" + descPeriod + "</td>";
+                        htmlToInsert += "<td>" + item.year + "</td>";
+                        htmlToInsert += '<td><a class="btn btn-info btn-sm" href="ShowStudentsByGroup.php?' +
+                        'group=' + item.groupid + '&period=' + item.period + '&year=' + item.year + '">Estudiantes</a></td>';
                         htmlToInsert += "</tr>";
                     });
 
@@ -172,40 +173,44 @@ include_once './reusable/Footer.php';
         });
     }
 
-    function getCoursesByFiltersRequest(){
+    function getGroupsByFiltersByFiltersRequest(){
         if ($("#filterYear").val() != 0 && $("#filterPeriod").val() != 0) {
-            window.location.href = "ShowCoursesLists.php?a="+$("#filterYear").val() +"&b="+$("#filterPeriod").val();
+            window.location.href = "ShowGroupsList.php?a="+$("#filterYear").val() +"&b="+$("#filterPeriod").val();
         } else {
             alertify.error("Seleccione los filtros...");
         }
     }
 
-    function getCoursesByFilters() {
+    function getGroupsByFilters() {
         if (a && b && a != -1 && b != -1){
             $.ajax({
                 type: 'POST',
-                url: "../business/GetCoursesAllProfessorsByFilters.php",
+                url: "../actions/GroupGetAllByFiltersAction.php",
                 data: {"period": b, "year": a},
                 success: function (data)
                 {
-                    var courses = JSON.parse(data);
+                    var groups = JSON.parse(data);
                     var htmlToInsert = '';
 
-                    if (!(courses === undefined || courses.length === 0)) {
-                        $.each(courses, function (i, item) {
+                    if (!(groups === undefined || groups.length === 0)) {
+                        $.each(groups, function (i, item) {
+                            var descPeriod = "IV";
+                            if (item.period == 1){
+                                descPeriod = "I";
+                            } else
+                            if (item.period == 2){
+                                descPeriod = "II";
+                            } else
+                            if (item.period == 3){
+                                descPeriod = "III";
+                            }
+
                             htmlToInsert += "<tr>";
-                            htmlToInsert += "<td>" + item.coursecode + "</td>";
-                            htmlToInsert += '<td><a href="InformationCourse.php?id=' + item.courseid + '">' + item.coursename + '</a></td>';
-                            htmlToInsert += "<td>" + item.groupnumber + "</td>";
-                            htmlToInsert += "<td>" + item.period + "</td>";
-                            htmlToInsert += "<td>" + item.professorcourseyear + "</td>";
-                            htmlToInsert += '<td><a class="btn btn-info btn-sm" href="ShowStudentsByCourse.php?' +
-                                    'course=' + item.courseid + '&' +
-                                    'professor=' + item.professorcourseperson + '&' +
-                                    'year=' + item.professorcourseyear + '&' +
-                                    'period=' + item.periodid + '&' +
-                                    'group=' + item.groupid +
-                                    '">Estudiantes</a></td>';
+                            htmlToInsert += "<td>" + item.groupnumber + "no</td>";
+                            htmlToInsert += "<td>" + descPeriod + "</td>";
+                            htmlToInsert += "<td>" + item.year + "</td>";
+                            htmlToInsert += "<td><a class='btn btn-info btn-sm' href='ShowStudentsByGroup.php?" +
+                            "group=" + item.groupid + "&period=" + item.period + "&year=" + item.year + "'>Estudiantes</a></td>";
                             htmlToInsert += "</tr>";
                         });
                         
