@@ -28,6 +28,59 @@ class GroupData extends Connector
         }
     }
 
+    public function getGroup($id)
+    {
+        $query = "call getGroupsById(".$id.");";
+        try {
+            $group = $this->exeQuery($query);
+            while ($row = mysqli_fetch_array($group)) {
+                return array("id" => $row['groupid'],
+                    "number" => $row['groupnumber']);
+            }
+            return [];
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getAllGroups()
+    {
+        $query = "call getGroupsList();";
+        try {
+            $group = $this->exeQuery($query);
+            $array = [];
+            while ($row = mysqli_fetch_array($group)) {
+                $array[] = array(
+                    "groupid" => $row['groupid'],
+                    "groupnumber" => $row['groupnumber'],
+                    "period" => $row['period'],
+                    "year" => $row['year']);
+            }
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getAllGroupsByFilters($period, $year)
+    {
+        $query = "call getGroupsByFilter(".$period.",".$year.");";
+        try {
+            $group = $this->exeQuery($query);
+            $array = [];
+            while ($row = mysqli_fetch_array($group)) {
+                $array[] = array(
+                    "groupid" => $row['groupid'],
+                    "groupnumber" => $row['groupnumber'],
+                    "period" => $row['period'],
+                    "year" => $row['year']);
+            }
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
     public function insertGroup($number)
     {
         $query = "call insertGroup('" . $number . "')";
@@ -44,7 +97,7 @@ class GroupData extends Connector
 
     public function updateGroup($id, $number)
     {
-        $query = "call updateGroup(".$id.",'" . $number . "')";
+        $query = "call updateGroup(" . $id . ",'" . $number . "')";
         try {
             $result = $result = $this->exeQuery($query);
             $array = mysqli_fetch_array($result);
@@ -64,6 +117,25 @@ class GroupData extends Connector
             } else {
                 return false;
             }
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
+    public function getStudentByGroupByFilter($group, $period, $year)
+    {
+        $query = "call getStudentByGroupByFilter(".$group.",".$year.",".$year.");";
+        try {
+            $group = $this->exeQuery($query);
+            $array = [];
+            while ($row = mysqli_fetch_array($group)) {
+                $array[] = array(
+                    "id" => $row['personid'],
+                    "dni" => $row['persondni'],
+                    "name" => $row['person'],
+                    "phone" => $row['year']);
+            }
+            return $array;
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }

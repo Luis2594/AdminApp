@@ -47,4 +47,17 @@ class StudentBusiness
         return $this->studentData->getLastId();
     }
 
+    /**
+     * Captura los estudiantes de un grupo para un año y periodo dados.
+     *
+     * dni:   cédula del estudiante
+     * name:  nombre completo del estudiante
+     * phone: teléfono del estudiante
+     *
+     */
+    public function getStudentByGroupByFilter($group, $period, $year)
+    {
+        return $this->studentData->getStudentByGroupByFilter($group, $period, $year);
+    }
+
 }

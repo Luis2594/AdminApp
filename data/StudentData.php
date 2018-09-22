@@ -85,6 +85,41 @@ class StudentData extends Connector {
         }
     }
 
+    public function getStudentByGroupByFilter($group, $period, $year) {
+        $query = "call getStudentByGroupByFilter(".$group.",".$period.",". $year.")";
+        try {
+            $allStudents = $this->exeQuery($query);
+            $array = [];
+            if (mysqli_num_rows($allStudents) > 0) {
+                while ($row = mysqli_fetch_array($allStudents)) {
+                    $currentStudent = new StudentAll(
+                            $row['personid'], 
+                            $row['persondni'], 
+                            $row['personfirstname'], 
+                            $row['personfirstlastname'], 
+                            $row['personsecondlastname'], 
+                            $row['personemail'], 
+                            $row['personbirthdate'], 
+                            $row['personage'], 
+                            $row['persongender'], 
+                            $row['personnationality'], 
+                            $row['studentadecuacy'], 
+                            $row['studentyearincome'], 
+                            $row['studentyearout'], 
+                            $row['studentlocation'], 
+                            "", 
+                            $row['studentmanager'], 
+                            $row['userusername'], 
+                            $row['useruserpass']);
+                    array_push($array, $currentStudent);
+                }
+            }
+            return $array;
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
     public function getStudentId($id) {
         $query = 'call getStudent("' . $id . '");';
         try {
