@@ -225,6 +225,17 @@ include_once '../resource/Constants.php';
                                 </ul>
                             </li>
 
+                            <!-- CIRCULAR -->
+                            <li class="treeview">
+                                <a>
+                                    <i class="fa"></i> <span>Circulares</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="./CircularCreate.php"><i class="fa"></i> Enviar Circular</a></li>
+                                    <li><a href="./CircularShow.php"><i class="fa"></i> Ver Circulares</a></li>
+                                </ul>
+                            </li>
+
                             <!-- ADMIN -->
                             <li class="treeview">
                                 <a>

@@ -7,7 +7,8 @@ include './reusable/Header.php';
 <section class="content-header" style="text-align: left">
     <ol class="breadcrumb">
         <li><a href="Home.php"><i class="fa fa-arrow-circle-right"></i> Inicio</a></li>
-        <li><a href="NotificationsCreate.php"><i class="fa fa-arrow-circle-right"></i>Enviar Notificación</a></li>
+        <li><a href="CircularShow.php"><i class="fa fa-arrow-circle-right"></i> Circulares</a></li>
+        <li><a href="CircularCreate.php"><i class="fa fa-arrow-circle-right"></i> Enviar Circular</a></li>
     </ol>
 </section>
 <br>
@@ -20,17 +21,21 @@ include './reusable/Header.php';
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Enviar Notificación</h3>
+                    <h3 class="box-title">Enviar Circular</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="formNotification" action="../business/NotificationsCreateAction.php" method="POST" enctype="multipart/form-data">
-                    <!-- textarea -->
-                    <div class="form-group">
-                        <textarea id="text" name="text" class="form-control" rows="3" placeholder="Notificación"></textarea>
-                    </div>
-                </form>
                 <div class="box-footer">
-                    <button onclick="valueInputs();" class="btn btn-primary">Enviar</button>
+                    <form role="form" id="formCircular" action="../actions/CircularCreateAction.php" method="POST" enctype="multipart/form-data">
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <textarea id="text" name="text" class="form-control" rows="3" placeholder="Circular" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="fileToUpload" id="fileToUpload" accept=".pdf" required>
+                        </div>
+                        <input id="admin" name="admin" type="hidden" value="<?php echo $_SESSION["id"]; ?>" class="form-control" required="required"/>
+                    </form>
+                    <button onclick="valueInputs();" style="width: 100%" class="btn btn-primary">Enviar</button>
                 </div>
             </div><!-- /.box -->
         </div><!--/.col (left) -->
@@ -71,11 +76,11 @@ include './reusable/Footer.php';
     function valueInputs() {
         var notify = $('#text').val();
         if (notify.length === 0) {
-            alertify.error("Verifique el texto de su notificación");
+            alertify.error("Verifique el texto.");
             return false;
         }
 
-        $("#formNotification").submit();
+        $("#formCircular").submit();
     }
 
 </script>
