@@ -108,9 +108,9 @@ class StudentData extends Connector {
                             $row['studentyearout'], 
                             $row['studentlocation'], 
                             "", 
-                            $row['studentmanager'], 
-                            $row['userusername'], 
-                            $row['useruserpass']);
+                            "", 
+                            "", 
+                            "");
                     array_push($array, $currentStudent);
                 }
             }
