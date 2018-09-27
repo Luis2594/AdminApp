@@ -21,9 +21,9 @@ class NotificationBusiness
         return $this->notificationData->insertAdminNotification($notification);
     }
 
-    public function deteleAdminNotification($id)
+    public function deleteAdminNotification($id)
     {
-        return $this->notificationData->deteleAdminNotification($id);
+        return $this->notificationData->deleteAdminNotification($id);
     }
 
     public function getAllAdminsNotifications($id)
@@ -45,9 +45,9 @@ class NotificationBusiness
         return $this->notificationData->insertProfessorNotification($notification);
     }
 
-    public function deteleProfessorNotification($id)
+    public function deleteProfessorNotification($id)
     {
-        return $this->notificationData->deteleProfessorNotification($id);
+        return $this->notificationData->deleteProfessorNotification($id);
     }
 
     public function getAllProfessorsNotifications($id)
@@ -69,9 +69,9 @@ class NotificationBusiness
         return $this->notificationData->insertStudentNotification($notification);
     }
 
-    public function deteleStudentNotification($id)
+    public function deleteStudentNotification($id)
     {
-        return $this->notificationData->deteleStudentNotification($id);
+        return $this->notificationData->deleteStudentNotification($id);
     }
 
     public function getAllStudentsNotifications($id)

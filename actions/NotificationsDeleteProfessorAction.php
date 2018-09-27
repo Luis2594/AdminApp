@@ -6,7 +6,7 @@ $id = $_GET['id'];
 
 if (isset($id)) {
     $notificationBusiness = new NotificationBusiness();
-    if ($notificationBusiness->deteleProfessorNotification($id)) {
+    if ($notificationBusiness->deleteProfessorNotification($id)) {
         header("location: ../view/NotificationsShowProfessors.php?action=1&msg=Registro_eliminado_correctamente");
     } else {
         header("location: ../view/NotificationsShowProfessors.php?action=0&msg=Error_al_eliminar_registro");
