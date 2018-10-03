@@ -1,0 +1,66 @@
+<?php
+// required headers
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+
+// include database and object files
+include_once '../config/core.php';
+include_once '../shared/utilities.php';
+include_once '../config/database.php';
+include_once '../objects/circular.php';
+
+// utilities
+$utilities = new Utilities();
+
+// instantiate database and entity object
+$database = new Database();
+$db = $database->getConnection();
+
+// initialize object
+$entity = new Circular($db);
+
+// query products
+$stmt = $entity->readPaging($from_record_num, $records_per_page);
+$num = $stmt->rowCount();
+
+// check if more than 0 record found
+if ($num > 0) {
+
+    // products array
+    $entities_arr = array();
+    $entities_arr["records"] = array();
+    $entities_arr["paging"] = array();
+
+    // retrieve our table contents
+    // fetch() is faster than fetchAll()
+    // http://stackoverflow.com/questions/2770630/pdofetchall-vs-pdofetch-in-a-loop
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        // extract row
+        // this will make $row['name'] to
+        // just $name only
+        extract($row);
+
+        $entity_item = array(
+            "id" => $circularid,
+            "date" => $circulardate,
+            "text" => html_entity_decode($circulartext),
+            "sender" => $circularsender,
+            "guid" => $circularGUID,
+        );
+
+        array_push($entities_arr["records"], $product_item);
+    }
+
+    // include paging
+    $total_rows = $entity->count();
+    include_once '../../../resource/Constants.php';
+    $page_url = Constants::USER_ADMIN . "/api/v2/circular/read_paging.php?";
+    $paging = $utilities->getPaging($page, $total_rows, $records_per_page, $page_url);
+    $entities_arr["paging"] = $paging;
+
+    echo json_encode($entities_arr);
+} else {
+    echo json_encode(
+        array("message" => "No entities found.")
+    );
+}
