@@ -5,14 +5,14 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/circular.php';
+include_once '../objects/file.php';
 
 // instantiate database and entity object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$entity = new Circular($db);
+$entity = new File($db);
 
 // query entity
 $stmt = $entity->read();
@@ -36,11 +36,15 @@ if ($num > 0) {
         extract($row);
 
         $entity_item = array(
-            "id" => $circularid,
-            "date" => $circulardate,
-            "text" => html_entity_decode($circulartext),
-            "sender" => $circularsender,
-            "guid" => ($circularGUID.".pdf"),
+            "id" => $fileid,
+            "description" => html_entity_decode($filedescription),
+            "date" => $filedate,
+            "course" => $filecourse,
+            "professor" => $fileprofessor,
+            "year" => $fileyear,
+            "period" => $fileperiod,
+            "group" => $filegroup,
+            "guid" => $fileGUID
         );
 
         array_push($entities_arr["records"], $entity_item);

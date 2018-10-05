@@ -4,19 +4,23 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
+include_once '../config/core.php';
+include_once '../shared/utilities.php';
 include_once '../config/database.php';
-include_once '../objects/circular.php';
+include_once '../objects/file.php';
+
+// utilities
+$utilities = new Utilities();
 
 // instantiate database and entity object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$entity = new Circular($db);
+$entity = new File($db);
 
-// query entity
-$stmt = $entity->read();
-
+// query entities
+$stmt = $entity->readPaging($from_record_num, $records_per_page);
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
@@ -25,6 +29,7 @@ if ($num > 0) {
     // entities array
     $entities_arr = array();
     $entities_arr["records"] = array();
+    $entities_arr["paging"] = array();
 
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -36,19 +41,30 @@ if ($num > 0) {
         extract($row);
 
         $entity_item = array(
-            "id" => $circularid,
-            "date" => $circulardate,
-            "text" => html_entity_decode($circulartext),
-            "sender" => $circularsender,
-            "guid" => ($circularGUID.".pdf"),
+            "id" => $fileid,
+            "description" => html_entity_decode($filedescription),
+            "date" => $filedate,
+            "course" => $filecourse,
+            "professor" => $fileprofessor,
+            "year" => $fileyear,
+            "period" => $fileperiod,
+            "group" => $filegroup,
+            "guid" => $fileGUID
         );
 
         array_push($entities_arr["records"], $entity_item);
     }
 
+    // include paging
+    $total_rows = $entity->count();
+    include_once '../../../resource/Constants.php';
+    $page_url = Constants::HOME_URL_ADMIN . "/api/v2/circular/read_paging.php?";
+    $paging = $utilities->getPaging($page, $total_rows, $records_per_page, $page_url);
+    $entities_arr["paging"] = $paging;
+
     echo json_encode($entities_arr);
 } else {
     echo json_encode(
-        array("message" => "No entitys found.")
+        array("message" => "No entities found.")
     );
 }

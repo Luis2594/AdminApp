@@ -19,14 +19,14 @@ $db = $database->getConnection();
 // initialize object
 $entity = new Circular($db);
 
-// query products
+// query entities
 $stmt = $entity->readPaging($from_record_num, $records_per_page);
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
 if ($num > 0) {
 
-    // products array
+    // entities array
     $entities_arr = array();
     $entities_arr["records"] = array();
     $entities_arr["paging"] = array();
@@ -45,16 +45,16 @@ if ($num > 0) {
             "date" => $circulardate,
             "text" => html_entity_decode($circulartext),
             "sender" => $circularsender,
-            "guid" => $circularGUID,
+            "guid" => ($circularGUID.".pdf")
         );
 
-        array_push($entities_arr["records"], $product_item);
+        array_push($entities_arr["records"], $entity_item);
     }
 
     // include paging
     $total_rows = $entity->count();
     include_once '../../../resource/Constants.php';
-    $page_url = Constants::USER_ADMIN . "/api/v2/circular/read_paging.php?";
+    $page_url = Constants::HOME_URL_ADMIN . "/api/v2/circular/read_paging.php?";
     $paging = $utilities->getPaging($page, $total_rows, $records_per_page, $page_url);
     $entities_arr["paging"] = $paging;
 

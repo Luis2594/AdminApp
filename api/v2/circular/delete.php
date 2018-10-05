@@ -26,16 +26,22 @@ $entity->id = $data->id;
 // read the details of entity to be edited
 $entity->readOne();
 
-// delete the entity
-if ($entity->delete()) {
-    echo '{';
-    echo '"message": "Entity was deleted."';
-    echo '}';
-}
+if ($data->key == Constants::KEY) {
+    // delete the entity
+    if ($entity->delete()) {
+        echo '{';
+        echo '"message": "Entity was deleted."';
+        echo '}';
+    }
 
-// if unable to delete the entity
-else {
+    // if unable to delete the entity
+    else {
+        echo '{';
+        echo '"message": "Unable to delete entity."';
+        echo '}';
+    }
+} else {
     echo '{';
-    echo '"message": "Unable to delete entity."';
+    echo '"message": "KEY error.."';
     echo '}';
 }

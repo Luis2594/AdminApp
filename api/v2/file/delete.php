@@ -6,38 +6,38 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-// include database and object files
+// include database and object file
 include_once '../config/database.php';
-include_once '../objects/circular.php';
+include_once '../objects/file.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
 // prepare entity object
-$entity = new Circular($db);
+$entity = new File($db);
 
-// get posted data
+// get entity id
 $data = json_decode(file_get_contents("php://input"));
 
-// set entity property values
-$entity->guid = $data->guid;
-$entity->text = $data->text;
-$entity->sender = $data->sender;
-$entity->date = date('Y-m-d H:i:s');
+// set entity id to be deleted
+$entity->id = $data->id;
+
+// read the details of entity to be edited
+$entity->readOne();
 
 if ($data->key == Constants::KEY) {
-    // create the entity
-    if ($entity->create()) {
+    // delete the entity
+    if ($entity->delete()) {
         echo '{';
-        echo '"message": "Entity was created."';
+        echo '"message": "Entity was deleted."';
         echo '}';
     }
 
-    // if unable to create the entity, tell the user
+    // if unable to delete the entity
     else {
         echo '{';
-        echo '"message": "Unable to create entity."';
+        echo '"message": "Unable to delete entity."';
         echo '}';
     }
 } else {

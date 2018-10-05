@@ -8,36 +8,38 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/circular.php';
+include_once '../objects/file.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
 // prepare entity object
-$entity = new Circular($db);
+$entity = new File($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
+// set ID property of entity to be edited
+$entity->id = $data->id;
+
 // set entity property values
-$entity->guid = $data->guid;
-$entity->text = $data->text;
-$entity->sender = $data->sender;
-$entity->date = date('Y-m-d H:i:s');
+$entity->description = $data->text;
+
+include_once '../../../resource/Constants.php';
 
 if ($data->key == Constants::KEY) {
-    // create the entity
-    if ($entity->create()) {
+    // update the product
+    if ($entity->update()) {
         echo '{';
-        echo '"message": "Entity was created."';
+        echo '"message": "Entity was updated."';
         echo '}';
     }
 
-    // if unable to create the entity, tell the user
+    // if unable to update the entity, tell the user
     else {
         echo '{';
-        echo '"message": "Unable to create entity."';
+        echo '"message": "Unable to update entity."';
         echo '}';
     }
 } else {

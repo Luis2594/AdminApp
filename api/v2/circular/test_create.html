@@ -1,17 +1,18 @@
 <html>
 <body>
 
-<h1>TEST</h1>
+<h1>TEST CREATE</h1>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	(function() {
 		$.ajax({
 	    "url": "http://127.0.0.1/VisualStudioCode/AdminApp/api/v2/circular/create.php",
 	    'data': JSON.stringify({
-	text:"text",
-	sender:"233",
-	guid:"guid",
-}),
+		text:"text",
+		sender:"233",
+		guid:"guid",
+		key = "Q0lOREVBIFR1cnJpYWxiYQ"
+		}),
 	    'type': 'POST',
 	    'contentType': 'application/json'
 		,

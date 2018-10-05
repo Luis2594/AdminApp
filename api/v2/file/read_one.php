@@ -7,14 +7,14 @@ header('Content-Type: application/json');
 
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/circular.php';
+include_once '../objects/file.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
 // prepare entity object
-$entity = new Circular($db);
+$entity = new File($db);
 
 // set ID property of entity to be edited
 $entity->id = isset($_GET['id']) ? $_GET['id'] : die();
@@ -25,10 +25,14 @@ $entity->readOne();
 // create array
 $entities_arr = array(
     "id" => $entity->id,
-    "text" => $entity->text,
-    "sender" => $entity->sender,
+    "description" => html_entity_decode($entity->description),
     "date" => $entity->date,
-    "guid" => ($entity->guid.".pdf"),
+    "course" => $entity->course,
+    "professor" => $entity->professor,
+    "year" => $entity->year,
+    "period" => $entity->period,
+    "group" => $entity->group,
+    "guid" => $entity->guid,
 );
 
 // make it json format

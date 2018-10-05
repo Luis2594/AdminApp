@@ -1,16 +1,21 @@
 <?php
 
-class Circular
+class File
 {
 
     // database connection and table text
     private $conn;
-    private $table_name = "circular";
+    private $table_name = "file";
 
     public $id;
-    public $sender;
-    public $guid;
+    public $description;
     public $date;
+    public $course;
+    public $professor;
+    public $year;
+    public $period;
+    public $group;
+    public $guid;
 
     // constructor with $db as database connection
     public function __construct($db)
@@ -38,21 +43,30 @@ class Circular
     {
         // query to insert record
         $query = "INSERT INTO " . $this->table_name .
-            " SET circulartext=:text, circulardate=:date, circularsender=:sender, circularGUID=:guid";
+            " SET filedescription=:description, filedate=:date, filecourse=:course, fileprofessor=:professor,".
+            "fileyear=:year, fileperiod=:period, filegroup=:group, fileGUID=:guid";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->text = htmlspecialchars(strip_tags($this->text));
-        $this->date = htmlspecialchars(strip_tags($this->date));
-        $this->sender = htmlspecialchars(strip_tags($this->sender));
-        $this->guid = htmlspecialchars(strip_tags($this->guid));
+        $this->description= htmlspecialchars(strip_tags($this->description));
+        $this->date= htmlspecialchars(strip_tags($this->date));
+        $this->course= htmlspecialchars(strip_tags($this->course));
+        $this->professor= htmlspecialchars(strip_tags($this->professor));
+        $this->year= htmlspecialchars(strip_tags($this->year));
+        $this->period= htmlspecialchars(strip_tags($this->period));
+        $this->group= htmlspecialchars(strip_tags($this->group));
+        $this->guid= htmlspecialchars(strip_tags($this->guid));
 
         // bind values
-        $stmt->bindParam(":text", $this->text);
+        $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":date", $this->date);
-        $stmt->bindParam(":sender", $this->sender);
+        $stmt->bindParam(":course", $this->course);
+        $stmt->bindParam(":professor", $this->professor);
+        $stmt->bindParam(":year", $this->year);
+        $stmt->bindParam(":period", $this->period);
+        $stmt->bindParam(":group", $this->group);
         $stmt->bindParam(":guid", $this->guid);
 
         // execute query
@@ -63,7 +77,7 @@ class Circular
     public function readOne()
     {
         // query to read single record
-        $query = "SELECT * FROM " . $this->table_name . " WHERE circularid =:data LIMIT 0,1";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE fileid =:data LIMIT 0,1";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -78,18 +92,22 @@ class Circular
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // set values to object properties
-        $this->text = $row['circulartext'];
-        $this->date = $row['circulardate'];
-        $this->id = $row['circularid'];
-        $this->sender = $row['circularsender'];
-        $this->guid = $row['circularGUID'];
+        $this->id=$row['fileid'];
+        $this->description=$row['filedescription'];
+        $this->date=$row['filedate'];
+        $this->course=$row['filecourse'];
+        $this->professor=$row['fileprofessor'];
+        $this->year=$row['fileyear'];
+        $this->period=$row['filepriod'];
+        $this->group=$row['filegroup'];
+        $this->guid=$row['fileGUID'];
     }
 
     // update the product
     public function update()
     {
         // update query
-        $query = "UPDATE " . $this->table_name . " SET circulartext=:text WHERE circularid=:id";
+        $query = "UPDATE " . $this->table_name . " SET filedescription=:text WHERE fileid=:id";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -110,7 +128,7 @@ class Circular
     public function delete()
     {
         // delete query
-        $query = "DELETE FROM " . $this->table_name . " WHERE circularid =:data";
+        $query = "DELETE FROM " . $this->table_name . " WHERE fileid =:data";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -122,12 +140,7 @@ class Circular
         $stmt->bindParam(':data', $this->id);
 
         // execute query
-        if ($stmt->execute()) {
-            unlink("../../../../documents/circular/" . $this->guid . ".pdf");
-            return true;
-        }
-
-        return false;
+        return $stmt->execute();
     }
 
     // search products
@@ -138,7 +151,7 @@ class Circular
         $keywords = "%{$keywords}%";
 
         // select all query
-        $query = "SELECT * FROM " . $this->table_name . " WHERE circulartext LIKE '" . $keywords . "'";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE filedescription LIKE '" . $keywords . "'";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);

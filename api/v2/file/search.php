@@ -5,24 +5,26 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/circular.php';
+include_once '../objects/file.php';
 
 // instantiate database and entity object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$entity = new Circular($db);
+$entity = new File($db);
 
-// query entity
-$stmt = $entity->read();
+// get keywords
+$keywords = isset($_GET["s"]) ? $_GET["s"] : "";
 
+// query products
+$stmt = $entity->search($keywords);
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
 if ($num > 0) {
 
-    // entities array
+    // products array
     $entities_arr = array();
     $entities_arr["records"] = array();
 
@@ -36,11 +38,15 @@ if ($num > 0) {
         extract($row);
 
         $entity_item = array(
-            "id" => $circularid,
-            "date" => $circulardate,
-            "text" => html_entity_decode($circulartext),
-            "sender" => $circularsender,
-            "guid" => ($circularGUID.".pdf"),
+            "id" => $fileid,
+            "description" => html_entity_decode($filedescription),
+            "date" => $filedate,
+            "course" => $filecourse,
+            "professor" => $fileprofessor,
+            "year" => $fileyear,
+            "period" => $fileperiod,
+            "group" => $filegroup,
+            "guid" => $fileGUID
         );
 
         array_push($entities_arr["records"], $entity_item);
@@ -49,6 +55,6 @@ if ($num > 0) {
     echo json_encode($entities_arr);
 } else {
     echo json_encode(
-        array("message" => "No entitys found.")
+        array("message" => "No entities found.")
     );
 }

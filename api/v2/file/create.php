@@ -8,23 +8,27 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/circular.php';
+include_once '../objects/file.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
 // prepare entity object
-$entity = new Circular($db);
+$entity = new File($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
 // set entity property values
-$entity->guid = $data->guid;
-$entity->text = $data->text;
-$entity->sender = $data->sender;
-$entity->date = date('Y-m-d H:i:s');
+$this->description = $data->description;
+$this->date = date('Y-m-d H:i:s');
+$this->course = $data->course;
+$this->professor = $data->professor;
+$this->year = $data->year;
+$this->period = $data->period;
+$this->group = $data->group;
+$this->guid = $data->guid;
 
 if ($data->key == Constants::KEY) {
     // create the entity

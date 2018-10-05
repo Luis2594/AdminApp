@@ -17,28 +17,33 @@ $db = $database->getConnection();
 // prepare entity object
 $entity = new Circular($db);
 
-// get id of product to be edited
+// get posted data
 $data = json_decode(file_get_contents("php://input"));
 
 // set ID property of entity to be edited
 $entity->id = $data->id;
 
 // set entity property values
-$entity->guid = $data->guid;
-$entity->sender = $data->sender;
-$entity->date = $data->date;
 $entity->text = $data->text;
 
-// update the product
-if ($entity->update()) {
-    echo '{';
-    echo '"message": "Entity was updated."';
-    echo '}';
-}
+include_once '../../../resource/Constants.php';
 
-// if unable to update the entity, tell the user
-else {
+if ($data->key == Constants::KEY) {
+    // update the product
+    if ($entity->update()) {
+        echo '{';
+        echo '"message": "Entity was updated."';
+        echo '}';
+    }
+
+    // if unable to update the entity, tell the user
+    else {
+        echo '{';
+        echo '"message": "Unable to update entity."';
+        echo '}';
+    }
+} else {
     echo '{';
-    echo '"message": "Unable to update entity."';
+    echo '"message": "KEY error.."';
     echo '}';
 }

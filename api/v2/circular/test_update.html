@@ -1,20 +1,22 @@
 <html>
 <body>
 
-<h1>TEST DELETE</h1>
+<h1>TEST UPDATE</h1>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	(function() {
 		$.ajax({
-	    "url": "http://127.0.0.1/VisualStudioCode/AdminApp/api/v2/circular/delete.php",
+	    "url": "http://127.0.0.1/VisualStudioCode/AdminApp/api/v2/circular/update.php",
 	    'data': JSON.stringify({
-		id:"15",key = "Q0lOREVBIFR1cnJpYWxiYQ"
+			id:"16",
+			text:"update",
+			key = "Q0lOREVBIFR1cnJpYWxiYQ"
 }),
 	    'type': 'POST',
 	    'contentType': 'application/json'
 		,
-    function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+    function(data){
+        alert("Data: " + data);
     }
 	});
 })();
