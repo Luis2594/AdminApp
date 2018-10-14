@@ -37,7 +37,7 @@ require '../resource/log/ErrorHandler.php';
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-6">
         <img src="../resource/images/cindeaTurrialba.ico" class="img-responsive img-circle center-block "/>
     </div>
@@ -96,7 +96,7 @@ require '../resource/log/ErrorHandler.php';
                         <div class="col-md-2"></div>
                     </div>
 
-                    <H4 id="students_both_levels">Nota: </H4>
+                <H4 id="students_both_levels" style="margin-left: 20px"></H4>
                 </div>
                 <div class="row center-block text-center">
                     <div class="col-md-6">
@@ -156,7 +156,7 @@ require '../resource/log/ErrorHandler.php';
                         <div class="row">
                             <h3>Estudiantes Tercer Nivel</h3>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="panel panel-success" style="margin-left: 5px">
@@ -210,9 +210,9 @@ require '../resource/log/ErrorHandler.php';
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-6">
-        
+
     </div>
 </div>
 
