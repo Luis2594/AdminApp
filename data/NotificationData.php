@@ -39,9 +39,9 @@ class NotificationData extends Connector
         }
     }
 
-    public function deteleAdminNotification($id)
+    public function deleteAdminNotification($id)
     {
-        $query = 'call deteleAdminNotification(' . $id . ');';
+        $query = 'call deleteAdminNotification(' . $id . ');';
 
         try {
             if ($this->exeQuery($query)) {
@@ -111,9 +111,9 @@ class NotificationData extends Connector
         }
     }
 
-    public function deteleProfessorNotification($id)
+    public function deleteProfessorNotification($id)
     {
-        $query = 'call deteleProfessorNotification(' . $id . ');';
+        $query = 'call deleteProfessorNotification(' . $id . ');';
 
         try {
             if ($this->exeQuery($query)) {
@@ -183,9 +183,9 @@ class NotificationData extends Connector
         }
     }
 
-    public function deteleStudentNotification($id)
+    public function deleteStudentNotification($id)
     {
-        $query = 'call deteleStudentNotification(' . $id . ');';
+        $query = 'call deleteStudentNotification(' . $id . ');';
 
         try {
             if ($this->exeQuery($query)) {

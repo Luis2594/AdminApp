@@ -39,7 +39,7 @@ if (isset($period) && is_int($period) && isset($year) && is_int($year) && isset(
                         <h3 class="box-title row">
                             <b>
                                 <?php
-                                    echo "Grupo: ".$groupEntity[number].".&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Periodo: ".$period.".&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Año: ".$year.".";
+                                    echo "Grupo: ".$groupEntity['number'].".&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Periodo: ".$period.".&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Año: ".$year.".";
                                 ?>
                             </b>
                         </h3>

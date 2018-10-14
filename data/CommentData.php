@@ -35,8 +35,8 @@ class CommentData extends Connector {
         }
     }
 
-    public function deteleComment($id) {
-        $query = 'call deteleComment("' . $id . '");';
+    public function deleteComment($id) {
+        $query = 'call deleteComment("' . $id . '");';
         try {
             if ($this->exeQuery($query)) {
                 return TRUE;

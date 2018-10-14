@@ -6,11 +6,11 @@ include_once '../tools/GUID.php';
 $guid = GUID();
 $target_file = $target_dir . $guid . ".pdf" ;
 
-$fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+$fileType =  end((explode(".", $_FILES["fileToUpload"]["name"])));
 
 // Check if file already exists
 if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
+    header("location: ../view/CircularCreate.php?action=0&msg=El_archivo_ya_existe!");
 }
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {

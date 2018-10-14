@@ -34,8 +34,8 @@ class ConversationData extends Connector {
         }
     }
 
-    public function deteleConversation($id) {
-        $query = 'call deteleConversation(' . $id . ');';
+    public function deleteConversation($id) {
+        $query = 'call deleteConversation(' . $id . ');';
         try {
             if ($this->exeQuery($query)) {
                 return TRUE;

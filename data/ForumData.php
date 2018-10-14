@@ -37,8 +37,8 @@ class ForumData extends Connector {
         }
     }
 
-    public function deteleForum($id) {
-        $query = 'call deteleForum("' . $id . '");';
+    public function deleteForum($id) {
+        $query = 'call deleteForum("' . $id . '");';
         try {
             if ($this->exeQuery($query)) {
                 return TRUE;

@@ -9,4 +9,12 @@ class Constants {
     
     const APP_PROFESSOR = "Professor";
     const APP_ADMIN = "Admin";
+    const APP_STUDENT = "Student";
+
+    const HOME_URL_STUDENT = "http://127.0.0.1/VisualStudioCode/StudentApp";
+    const HOME_URL_ADMIN = "http://127.0.0.1/VisualStudioCode/AdminApp";
+    const HOME_URL_PROFESSOR = "http://127.0.0.1/VisualStudioCode/ProfessorApp";
+
+    const KEY = "Q0lOREVBIFR1cnJpYWxiYQ";
+    
 }
