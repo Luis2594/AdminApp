@@ -9,6 +9,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 // include database and object files
 include_once '../config/database.php';
 include_once '../objects/circular.php';
+include_once '../../../resource/Constants.php';
 
 // get database connection
 $database = new Database();
