@@ -67,4 +67,11 @@ class UserBusiness
         return $this->userData->isStudent($user, $pass);
     }
 
+    /**
+     * Key used to check security state while executing an api v2 request
+     */
+    public function getToken(){
+        return $this->userData->getToken();
+    }
+
 }

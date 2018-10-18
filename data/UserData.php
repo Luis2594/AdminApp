@@ -188,4 +188,18 @@ class UserData extends Connector {
         }
     }
 
+    public function getToken() {
+        $query = "SELECT * FROM institution ;";
+        try {
+            $result = $this->exeQuery($query);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_array($result)) {
+                    return $row['token'];
+                }
+            }
+        } catch (Exception $ex) {
+            ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
+        }
+    }
+
 }

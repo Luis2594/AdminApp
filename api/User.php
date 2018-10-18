@@ -7,6 +7,7 @@
 //credenciales son válidos, nulo si no es valido
 
 include '../business/UserBusiness.php';
+include_once '../resource/Constants.php';
 
 if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
     switch ($_POST['option']) {
@@ -14,8 +15,9 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
         case 'Login':
             $userBusiness = new UserBusiness();
             $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
+            $key = $userBusiness->getKey();
             if ($person != null) {
-                echo json_encode($_POST['username']);
+                echo json_encode( array("key" => $key,"username" => $_POST['username']));
             } else {
                 echo null;
             }
@@ -34,7 +36,7 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
                     if ($userBusiness->updatePassword($person['personid'], $passOld, $passNew) == 1) {
                         $user = $userBusiness->getUserId($person['personid']);
                         echo json_encode(array("username" => $user->getUserUsername()
-                            , "userpassword" => $user->getUserPass()));
+                            , "userpassword" => $user->getUserPass(), "token" => Constants::KEY));
                     } else {
                         echo null;
                     }
