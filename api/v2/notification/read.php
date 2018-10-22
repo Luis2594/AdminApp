@@ -1,11 +1,11 @@
 <?php
 
-include '../business/UserBusiness.php';
+include '../../../business/UserBusiness.php';
 if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
     if ($person != null) {
-        include '../business/NotificationBusiness.php';
+        include '../../../business/NotificationBusiness.php';
         $notificationBusiness = new NotificationBusiness();
         $result = [];
         foreach ($notificationBusiness->getAllNotificationsByStudent($person['personid']) as $current) {

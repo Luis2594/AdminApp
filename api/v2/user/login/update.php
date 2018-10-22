@@ -1,7 +1,7 @@
 <?php
 
-include '../business/UserBusiness.php';
-include_once '../resource/Constants.php';
+include '../../../../business/UserBusiness.php';
+include_once '../../../../resource/Constants.php';
 
 if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     include './UserBusiness.php';
