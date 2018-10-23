@@ -22,5 +22,5 @@ if (isset($id) && is_int($id) && isset($groups) && isset($period) && is_int($per
 
     echo TRUE;
 } else {
-    echo FALSE;
+    echo false;
 }

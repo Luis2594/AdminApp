@@ -125,7 +125,7 @@ class ProfessorData extends Connector {
         if(date("m") > 7){
             $year+=1;
         }
-        
+
         $query = "call insertProfessorCourse('" . $id . "',"
                 . "'" . $group . "',"
                 . "" . $period . ","

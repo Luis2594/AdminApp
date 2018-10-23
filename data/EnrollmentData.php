@@ -14,6 +14,7 @@ class EnrollmentData extends Connector {
                 . "" . $enrollment->getEnrollmentgroup() . ","
                 . "" . $enrollment->getEnrollmentperiod() . ","
                 . "" . $enrollment->getEnrollmentstatus() . ")";
+
         try {
             $year = date("Y");
 
