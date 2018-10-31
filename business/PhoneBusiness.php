@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/PhoneData.php';
+include_once __DIR__.'/../data/PhoneData.php';
 
 class PhoneBusiness
 {

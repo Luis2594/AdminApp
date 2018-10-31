@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 ?>
 
 <!-- Content Header (Page header) -->
@@ -32,7 +32,7 @@ include './reusable/Header.php';
                         </thead>
                         <tbody>
                             <?php
-                            include '../business/AreasBusiness.php';
+                            include_once __DIR__.'/../business/AreasBusiness.php';
                             $business = new AreasBusiness();
 
                             $all = $business->getAll();
@@ -69,7 +69,7 @@ include './reusable/Header.php';
 </section><!-- /.content -->
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <!-- page script -->

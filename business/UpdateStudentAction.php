@@ -1,9 +1,9 @@
 <?php
 
 //includes
-include_once './PersonBusiness.php';
-include_once './StudentBusiness.php';
-include_once './UserBusiness.php';
+include_once __DIR__.'/./PersonBusiness.php';
+include_once __DIR__.'/./StudentBusiness.php';
+include_once __DIR__.'/./UserBusiness.php';
 
 $id = $_POST['id'];
 $dni = $_POST['dni'];

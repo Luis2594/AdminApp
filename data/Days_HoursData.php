@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/ConnectorEmergent.php';
-include '../domain/Area.php';
+include_once __DIR__.'/../domain/Area.php';
 
 /**
  * Description of AreaData

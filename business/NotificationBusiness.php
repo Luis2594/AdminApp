@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/NotificationData.php';
+include_once __DIR__.'/../data/NotificationData.php';
 
 class NotificationBusiness
 {

@@ -1,6 +1,6 @@
 <?php
 
-include_once './GroupBusiness.php';
+include_once __DIR__.'/./GroupBusiness.php';
 
 $groupBusiness = new GroupBusiness();
 $result = $groupBusiness->getAll();

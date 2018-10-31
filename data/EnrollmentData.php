@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Enrollment.php';
+include_once __DIR__.'/../domain/Enrollment.php';
 date_default_timezone_set('America/Costa_Rica');
 
 //require_once '../resource/log/ErrorHandler.php';

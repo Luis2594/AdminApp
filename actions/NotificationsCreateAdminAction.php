@@ -1,6 +1,6 @@
 <?php
 
-include_once '../business/NotificationBusiness.php';
+include_once __DIR__.'/../business/NotificationBusiness.php';
 
 $text = $_POST['text'];
 $admin = $_POST['admin'];

@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 $id = (int) $_GET['id'];
 if (isset($id) && is_int($id)) {
     ?>
@@ -24,7 +24,7 @@ if (isset($id) && is_int($id)) {
                 <div class="box box-primary">
                     <div class="box-header">
                         <?php
-                        include '../business/CourseBusiness.php';
+                        include_once __DIR__.'/../business/CourseBusiness.php';
 
                         $courseBusiness = new CourseBusiness();
 
@@ -44,7 +44,7 @@ if (isset($id) && is_int($id)) {
                         <div class="box-body">
 
                             <?php
-                            include '../business/PeriodBusiness.php';
+                            include_once __DIR__.'/../business/PeriodBusiness.php';
 
                             $periodBusiness = new PeriodBusiness();
 
@@ -110,7 +110,7 @@ if (isset($id) && is_int($id)) {
 
     <?php
 }
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <script type="text/javascript">

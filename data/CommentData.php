@@ -1,8 +1,8 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Comment.php';
-include_once '../business/PersonBusiness.php';
+include_once __DIR__.'/../domain/Comment.php';
+include_once __DIR__.'/../business/PersonBusiness.php';
 //require_once './resource/log/ErrorHandler.php';
 
 
@@ -92,7 +92,7 @@ class CommentData extends Connector {
             $all = $this->exeQuery($query);
             $array = [];
             if (mysqli_num_rows($all) > 0) {
-                include_once '../business/PersonBusiness.php';
+                include_once __DIR__.'/../business/PersonBusiness.php';
                 $business = new PersonBusiness();
                 while ($row = mysqli_fetch_array($all)) {
                     $person = $business->getPersonId($row['forumcommentperson']);

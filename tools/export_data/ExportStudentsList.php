@@ -1,8 +1,8 @@
 <?php
 
-include_once '../../libs/ExportData.php';
-include_once '../../libs/GUID.php';
-include_once '../../business/StudentEmergentBusiness.php';
+include_once __DIR__.'/../../libs/ExportData.php';
+include_once __DIR__.'/../../libs/GUID.php';
+include_once __DIR__.'/../../business/StudentEmergentBusiness.php';
 
 //capture required IDs
 $course = (int)$_GET['course'];

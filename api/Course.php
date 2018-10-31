@@ -5,7 +5,7 @@
 //Sin parametros
 //Retorna todos los cursos
 
-include '../business/CourseBusiness.php';
+include_once __DIR__.'/../business/CourseBusiness.php';
 $business = new CourseBusiness();
 
 $result = [];

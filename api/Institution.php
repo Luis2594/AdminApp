@@ -5,7 +5,7 @@
 //sin parametros
 //retorna la institución
 
-include '../business/InstitutionBusiness.php';
+include_once __DIR__.'/../business/InstitutionBusiness.php';
 $business = new InstitutionBusiness();
 
 echo json_encode($business->getInstitutionAPI());

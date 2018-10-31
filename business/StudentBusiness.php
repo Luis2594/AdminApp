@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/StudentData.php';
+include_once __DIR__.'/../data/StudentData.php';
 
 class StudentBusiness
 {

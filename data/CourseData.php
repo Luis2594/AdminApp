@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Course.php';
+include_once __DIR__.'/../domain/Course.php';
 
 //require_once './resource/log/ErrorHandler.php';
 
@@ -456,7 +456,7 @@ class CourseData extends Connector
             $data = $this->exeQuery($query);
             $array = [];
             if (mysqli_num_rows($data) > 0) {
-                include_once '../domain/Student.php';
+                include_once __DIR__.'/../domain/Student.php';
                 while ($row = mysqli_fetch_array($data)) {
                     $current = array($row['fullName'], $row['persondni'], $row['phoneNumber'], $row['personid']);
                     array_push($array, $current);
@@ -478,14 +478,14 @@ class CourseData extends Connector
             //add excel headers
             array_push($array, array("Nombre", "Cédula", "Teléfono"));
             if (mysqli_num_rows($data) > 0) {
-                //include_once '../domain/Student.php';
+                //include_once __DIR__.'/../domain/Student.php';
                 while ($row = mysqli_fetch_array($data)) {
                     array_push($array, array($row['fullName'], $row['persondni'], $row['phoneNumber']));
                 }
             }
             //include required tools
-            include_once '../tools/ExportData.php';
-            include_once '../tools/GUID.php';
+            include_once __DIR__.'/../tools/ExportData.php';
+            include_once __DIR__.'/../tools/GUID.php';
             //new instances of data management lib
             $excel = new ExportDataExcel('browser'); //browser-file-string
             $excel->filename = GUID() . ".xlsx"; //configure name

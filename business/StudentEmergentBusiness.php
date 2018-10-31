@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/StudentEmergentData.php';
+include_once __DIR__.'/../data/StudentEmergentData.php';
 
 /**
  * Description of StudentEmergentBusiness

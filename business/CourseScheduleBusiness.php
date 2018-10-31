@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/CourseScheduleData.php';
+include_once __DIR__.'/../data/CourseScheduleData.php';
 
 /**
  * Description of CourseScheduleBusiness

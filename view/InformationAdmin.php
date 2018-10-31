@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 ?>
 
 <!-- Content Header (Page header) -->
@@ -25,8 +25,8 @@ include './reusable/Header.php';
                 </div><!-- /.box-header -->
 
                 <?php
-                include_once '../business/PersonBusiness.php';
-                include_once '../business/PhoneBusiness.php';
+                include_once __DIR__.'/../business/PersonBusiness.php';
+                include_once __DIR__.'/../business/PhoneBusiness.php';
 
                 $PersonBusiness = new PersonBusiness();
 
@@ -130,7 +130,7 @@ include './reusable/Header.php';
 </section><!-- /.content -->
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <script type="text/javascript">

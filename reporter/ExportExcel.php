@@ -1,8 +1,8 @@
 <?php
 
 require '../resource/excel/PHPExcel.php';
-include_once '../business/StudentEmergentBusiness.php';
-include_once '../business/FreeCourseBusiness.php';
+include_once __DIR__.'/../business/StudentEmergentBusiness.php';
+include_once __DIR__.'/../business/FreeCourseBusiness.php';
 date_default_timezone_set('America/Costa_Rica');
 
 //capture required IDs

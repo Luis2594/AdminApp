@@ -3,7 +3,7 @@
 if (isset($_POST['option'])) {
     switch ($_POST['option']) {
         case "all":
-            include '../../../business/CurriculumBusiness.php';
+            include_once __DIR__.'/../../../business/CurriculumBusiness.php';
             $business = new CurriculumBusiness();
 
             $result = [];
@@ -18,7 +18,7 @@ if (isset($_POST['option'])) {
             echo json_encode($result);
             break;
         case "relation":
-            include '../../../business/CurriculumBusiness.php';
+            include_once __DIR__.'/../../../business/CurriculumBusiness.php';
             $business = new CurriculumBusiness();
 
             $result = [];

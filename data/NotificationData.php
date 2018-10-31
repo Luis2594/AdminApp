@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Notification.php';
+include_once __DIR__.'/../domain/Notification.php';
 
 class NotificationData extends Connector
 {
@@ -61,7 +61,7 @@ class NotificationData extends Connector
         try {
             $allNotifications = $this->exeQuery($query);
             $array = [];
-            include_once '../business/PersonBusiness.php';
+            include_once __DIR__.'/../business/PersonBusiness.php';
             $personBusiness = new PersonBusiness();
 
             if (mysqli_num_rows($allNotifications) > 0) {
@@ -133,7 +133,7 @@ class NotificationData extends Connector
         try {
             $allNotifications = $this->exeQuery($query);
             $array = [];
-            include_once '../business/PersonBusiness.php';
+            include_once __DIR__.'/../business/PersonBusiness.php';
             $personBusiness = new PersonBusiness();
 
             if (mysqli_num_rows($allNotifications) > 0) {
@@ -205,7 +205,7 @@ class NotificationData extends Connector
         try {
             $allNotifications = $this->exeQuery($query);
             $array = [];
-            include_once '../business/PersonBusiness.php';
+            include_once __DIR__.'/../business/PersonBusiness.php';
             $personBusiness = new PersonBusiness();
 
             if (mysqli_num_rows($allNotifications) > 0) {

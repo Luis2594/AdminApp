@@ -1,6 +1,6 @@
 <?php
 
-include_once './EnrollmentEmergentBusiness.php';
+include_once __DIR__.'/./EnrollmentEmergentBusiness.php';
 
 $id = $_POST['id'];
 

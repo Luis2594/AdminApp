@@ -6,8 +6,8 @@ header("Access-Control-Allow-Credentials: true");
 header('Content-Type: application/json');
 
 // include database and object files
-include_once '../config/database.php';
-include_once '../objects/circular.php';
+include_once __DIR__.'/../config/database.php';
+include_once __DIR__.'/../objects/circular.php';
 
 // get database connection
 $database = new Database();

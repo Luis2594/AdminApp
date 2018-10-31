@@ -1,6 +1,6 @@
 <?php
 
-include_once './Days_HoursBusiness.php';
+include_once __DIR__.'/./Days_HoursBusiness.php';
 
 $hourBusiness = new Days_HoursBusiness();
 $result = $hourBusiness->getHours();

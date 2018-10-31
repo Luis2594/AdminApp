@@ -1,6 +1,6 @@
 <?php
 
-include_once './ProfessorBusiness.php';
+include_once __DIR__.'/./ProfessorBusiness.php';
 
 $id = (int) $_POST['id'];
 $groups = $_POST['groups'];

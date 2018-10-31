@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include_once '../resource/Constants.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/../resource/Constants.php';
 error_reporting(1);
 ini_set('display_errors', 1);
 ?>
@@ -79,8 +79,8 @@ ini_set('display_errors', 1);
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <?php
                                     if (isset($_SESSION['id'])) {
-                                        include '../business/PersonBusiness.php';
-                                        include_once '../domain/Person.php';
+                                        include_once __DIR__.'/../business/PersonBusiness.php';
+                                        include_once __DIR__.'/../domain/Person.php';
 
                                         $personBusiness = new PersonBusiness();
                                         $person = $personBusiness->getPersonId((int) $_SESSION['id'])[0];

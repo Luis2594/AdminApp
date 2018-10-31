@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include_once '../domain/Course.php';
+include_once __DIR__.'/../domain/Course.php';
 
 class FiltersData extends Connector {
 

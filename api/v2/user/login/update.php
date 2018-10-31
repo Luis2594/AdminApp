@@ -1,10 +1,10 @@
 <?php
 
-include '../../../../business/UserBusiness.php';
-include_once '../../../../resource/Constants.php';
+include_once __DIR__.'/../../../../business/UserBusiness.php';
+include_once __DIR__.'/../../../../resource/Constants.php';
 
 if (isset($_POST['username']) && isset($_POST['userpassword'])) {
-    include './UserBusiness.php';
+    include_once __DIR__.'/./UserBusiness.php';
 
     $user = $_POST['username'];
     $passOld = $_POST['userpassword'];

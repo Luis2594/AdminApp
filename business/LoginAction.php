@@ -1,6 +1,6 @@
 <?php
 
-include_once './UserBusiness.php';
+include_once __DIR__.'/./UserBusiness.php';
 
 $user = $_POST['user'];
 $pass = $_POST['pass'];

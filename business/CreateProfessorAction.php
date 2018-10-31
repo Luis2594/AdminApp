@@ -1,9 +1,9 @@
 <?php
 
-include_once './PersonBusiness.php';
-include_once './ProfessorBusiness.php';
-include_once './UserBusiness.php';
-include_once './PhoneBusiness.php';
+include_once __DIR__.'/./PersonBusiness.php';
+include_once __DIR__.'/./ProfessorBusiness.php';
+include_once __DIR__.'/./UserBusiness.php';
+include_once __DIR__.'/./PhoneBusiness.php';
 
 //Capture data from POST method
 //First the generic data for person model

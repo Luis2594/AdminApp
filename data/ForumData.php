@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Forum.php';
+include_once __DIR__.'/../domain/Forum.php';
 //require_once './resource/log/ErrorHandler.php';
 
 
@@ -94,7 +94,7 @@ class ForumData extends Connector {
             $all = $this->exeQuery($query);
             $array = [];
             if (mysqli_num_rows($all) > 0) {
-                include_once '../business/PersonBusiness.php';
+                include_once __DIR__.'/../business/PersonBusiness.php';
                 $businessPerson = new PersonBusiness();
                 while ($row = mysqli_fetch_array($all)) {
                     $person = $businessPerson->getPersonId($row['forumprofessor']);

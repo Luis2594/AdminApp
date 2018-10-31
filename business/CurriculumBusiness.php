@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/CurriculumData.php';
+include_once __DIR__.'/../data/CurriculumData.php';
 
 /**
  * Description of CurriculumBusiness

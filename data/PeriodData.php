@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Period.php';
+include_once __DIR__.'/../domain/Period.php';
 //require_once './resource/log/ErrorHandler.php';
 
 class PeriodData extends Connector {

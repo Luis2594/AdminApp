@@ -18,8 +18,8 @@
 //Retorna los teléfonos de ese usuario si los
 //credenciales son válidos, nulo si no es valido
 
-include '../business/PhoneBusiness.php';
-include '../business/UserBusiness.php';
+include_once __DIR__.'/../business/PhoneBusiness.php';
+include_once __DIR__.'/../business/UserBusiness.php';
 
 if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
 

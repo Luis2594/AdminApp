@@ -6,7 +6,7 @@ $year = $_GET['year'];
 $group = $_GET['group'];
 
 if (isset($course) && isset($professor)) {
-    include_once '../business/CourseBusiness.php';
+    include_once __DIR__.'/../business/CourseBusiness.php';
     $business = new CourseBusiness();
     $business->exportStudentsListByCourseAndProfessor($course, $professor, $period, $year, $group);
 } else {

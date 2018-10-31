@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Speciality.php';
+include_once __DIR__.'/../domain/Speciality.php';
 //require_once './resource/log/ErrorHandler.php';
 
 class SpecialityData extends Connector {

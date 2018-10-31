@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 
 if(isset($_GET['enrollment']))$enrollment = $_GET['enrollment']; 
    
@@ -77,7 +77,7 @@ if(isset($_GET['delete']))$delete = $_GET['delete'];
                             </thead>
                             <tbody>
                                 <?php
-                                include '../business/StudentEmergentBusiness.php';
+                                include_once __DIR__.'/../business/StudentEmergentBusiness.php';
                                 $studentEmergentBusiness = new StudentEmergentBusiness();
 
                                 $students = $studentEmergentBusiness->getAll();
@@ -170,7 +170,7 @@ if(isset($_GET['delete']))$delete = $_GET['delete'];
 </section><!-- /.content -->
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <!-- page script -->

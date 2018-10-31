@@ -1,6 +1,6 @@
 <?php
 
-include_once './CurriculumBusiness.php';
+include_once __DIR__.'/./CurriculumBusiness.php';
 
 $id = $_GET['id'];
 

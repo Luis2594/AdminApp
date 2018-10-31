@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/ForumData.php';
+include_once __DIR__.'/../data/ForumData.php';
 
 /**
  * Description of ForumBusiness

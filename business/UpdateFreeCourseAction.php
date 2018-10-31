@@ -1,6 +1,6 @@
 <?php
 
-include_once './FreeCourseBusiness.php';
+include_once __DIR__.'/./FreeCourseBusiness.php';
 
 $id = $_GET['id'];
 $code = $_POST['code'];

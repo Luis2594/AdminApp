@@ -8,8 +8,8 @@
 //post
 //Recibe username, userpassword, idforumconversation y nuevo comentario
 //Retorna los comentarios de esa conversacion si los credenciales son válidos, nulo si no es valido
-include '../business/CommentBusiness.php';
-include '../business/UserBusiness.php';
+include_once __DIR__.'/../business/CommentBusiness.php';
+include_once __DIR__.'/../business/UserBusiness.php';
 if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
 
     $userBusiness = new UserBusiness();

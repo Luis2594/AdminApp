@@ -1,6 +1,6 @@
 <?php
-include_once './reusable/Session.php';
-include_once './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 
 $admin = $_GET['admin'];
 ?>
@@ -41,7 +41,7 @@ $admin = $_GET['admin'];
 </section><!-- /.content -->
 
 <?php
-include_once './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <script type="text/javascript">

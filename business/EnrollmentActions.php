@@ -1,6 +1,6 @@
 <?php
 
-include './EnrollmentBusiness.php';
+include_once __DIR__.'/./EnrollmentBusiness.php';
 
 $enrollment = (int) $_POST['enrollment'];
 $value = (int) $_POST['value'];

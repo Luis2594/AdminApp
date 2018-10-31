@@ -1,9 +1,9 @@
 <?php
 
 require_once '../data/Connector.php';
-include_once '../domain/Curriculum.php';
-include_once '../domain/CurriculumCourse.php';
-include_once '../domain/Course.php';
+include_once __DIR__.'/../domain/Curriculum.php';
+include_once __DIR__.'/../domain/CurriculumCourse.php';
+include_once __DIR__.'/../domain/Course.php';
 //require_once './resource/log/ErrorHandler.php';
 
 class CurriculumData extends Connector {
