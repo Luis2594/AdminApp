@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/ConversationData.php';
+include_once __DIR__.'/../data/ConversationData.php';
 
 /**
  * Description of ConversationBusiness

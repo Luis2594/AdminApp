@@ -1,6 +1,6 @@
 <?php
 
-include_once './ScheduleBusiness.php';
+include_once __DIR__.'/./ScheduleBusiness.php';
 
 $id = (int) $_POST['schedule'];
 

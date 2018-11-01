@@ -1,6 +1,6 @@
 <?php
 
-include_once './AreasBusiness.php';
+include_once __DIR__.'/./AreasBusiness.php';
 
 $pk = $_GET['pk'];
 $description = $_POST['description'];

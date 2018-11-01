@@ -4,7 +4,7 @@
 //sin parametros
 //retorna todas las mallas
 
-include '../business/CurriculumBusiness.php';
+include_once __DIR__.'/../business/CurriculumBusiness.php';
 $business = new CurriculumBusiness();
 
 $result = [];

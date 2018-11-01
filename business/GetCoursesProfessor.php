@@ -1,6 +1,6 @@
 <?php
 
-include_once './CourseBusiness.php';
+include_once __DIR__.'/./CourseBusiness.php';
 
 $id = (int)$_POST['id'];
 

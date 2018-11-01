@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 
 if (isset($_GET['update']))
     $update = $_GET['update'];
@@ -77,7 +77,7 @@ if (isset($_GET['export']))
                         </thead>
                         <tbody>
                             <?php
-                            include '../business/FreeCourseBusiness.php';
+                            include_once __DIR__.'/../business/FreeCourseBusiness.php';
                             $coursesBusiness = new FreeCourseBusiness();
 
                             $courses = $coursesBusiness->getAll();
@@ -145,7 +145,7 @@ if (isset($_GET['export']))
 </section><!-- /.content -->
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <!-- page script -->

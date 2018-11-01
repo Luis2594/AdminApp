@@ -1,6 +1,6 @@
 <?php
 
-include_once '../business/SpecialityBusiness.php';
+include_once __DIR__.'/../business/SpecialityBusiness.php';
 
 $name = $_POST['name'];
 

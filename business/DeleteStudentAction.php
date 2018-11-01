@@ -1,6 +1,6 @@
 <?php
 
-include_once './PersonBusiness.php';
+include_once __DIR__.'/./PersonBusiness.php';
 
 $id = $_GET['id'];
 

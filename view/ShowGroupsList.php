@@ -1,6 +1,6 @@
 <?php
-include_once './reusable/Session.php';
-include_once './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 ?>
 
 <!-- Content Header (Page header) -->
@@ -37,7 +37,7 @@ include_once './reusable/Header.php';
                                 <select class="btn btn-info btn-sm" style="width: 100%" id="filterYear">
                                     <option value="0">Año</option>
                                     <?php
-                                        include_once '../business/FiltersBusiness.php';
+                                        include_once __DIR__.'/../business/FiltersBusiness.php';
                                         $filtersBusiness = new FiltersBusiness();
                                         $years = $filtersBusiness->getCoursesYears();
 
@@ -84,7 +84,7 @@ include_once './reusable/Header.php';
     </section><!-- /.content -->
     <?php
 
-include_once './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <!-- page script -->

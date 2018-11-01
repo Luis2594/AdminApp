@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 ?>
 
 <!-- Content Header (Page header) -->
@@ -27,7 +27,7 @@ include './reusable/Header.php';
                     <div class="box-body">
                         <div class="form-group">
                             <?php
-                            include '../business/InstitutionBusiness.php';
+                            include_once __DIR__.'/../business/InstitutionBusiness.php';
                             $institutionBusiness = new InstitutionBusiness();
                             $institutions = $institutionBusiness->getInstitution();
                             $found = false;
@@ -87,7 +87,7 @@ include './reusable/Header.php';
 </section><!-- /.content -->
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <script type="text/javascript">

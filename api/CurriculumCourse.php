@@ -5,7 +5,7 @@
 //Sin Parametros
 //Retorna todas las realciones de cursos y malla
 
-include '../business/CurriculumBusiness.php';
+include_once __DIR__.'/../business/CurriculumBusiness.php';
 $business = new CurriculumBusiness();
 
 $result = [];

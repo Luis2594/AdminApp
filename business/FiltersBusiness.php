@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/FiltersData.php';
+include_once __DIR__.'/../data/FiltersData.php';
 
 class FiltersBusiness {
 

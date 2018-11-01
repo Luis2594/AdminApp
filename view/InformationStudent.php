@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 date_default_timezone_set('America/Costa_Rica');
 ?>
 
@@ -26,14 +26,14 @@ date_default_timezone_set('America/Costa_Rica');
                 </div><!-- /.box-header -->
 
                 <?php
-                include '../business/StudentBusiness.php';
+                include_once __DIR__.'/../business/StudentBusiness.php';
 
                 $studentBusiness = new StudentBusiness();
                 $id = (int) $_GET['id'];
                 $students = $studentBusiness->getStudentId($id);
                 $bool = false;
                 foreach ($students as $student) {
-                    include '../business/PhoneBusiness.php';
+                    include_once __DIR__.'/../business/PhoneBusiness.php';
                     $phoneBusiness = new PhoneBusiness();
                     $phones = $phoneBusiness->getAllPhone($id);
                     ?>
@@ -189,7 +189,7 @@ date_default_timezone_set('America/Costa_Rica');
 </section><!-- /.content -->
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <script type="text/javascript">

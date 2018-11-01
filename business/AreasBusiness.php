@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/AreasData.php';
+include_once __DIR__.'/../data/AreasData.php';
 
 /**
  * Description of AreaBusiness

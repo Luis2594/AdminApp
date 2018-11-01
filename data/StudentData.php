@@ -1,8 +1,8 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Student.php';
-include '../domain/StudentAll.php';
+include_once __DIR__.'/../domain/Student.php';
+include_once __DIR__.'/../domain/StudentAll.php';
 //require_once './resource/log/ErrorHandler.php';
 
 class StudentData extends Connector {

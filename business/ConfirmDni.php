@@ -1,6 +1,6 @@
 <?php
 
-include './PersonBusiness.php';
+include_once __DIR__.'/./PersonBusiness.php';
 
 $dni = $_GET['dni'];
 

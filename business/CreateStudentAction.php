@@ -1,10 +1,10 @@
 <?php
 
-include './PersonBusiness.php';
-include './StudentBusiness.php';
-include './UserBusiness.php';
-include './PhoneBusiness.php';
-include './GroupBusiness.php';
+include_once __DIR__.'/./PersonBusiness.php';
+include_once __DIR__.'/./StudentBusiness.php';
+include_once __DIR__.'/./UserBusiness.php';
+include_once __DIR__.'/./PhoneBusiness.php';
+include_once __DIR__.'/./GroupBusiness.php';
 
 $dni = $_POST['dni'];
 $name = $_POST['name'];

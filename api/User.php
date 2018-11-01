@@ -6,8 +6,8 @@
 //Retorna la contraseña de ese usuario si los
 //credenciales son válidos, nulo si no es valido
 
-include '../business/UserBusiness.php';
-include_once '../resource/Constants.php';
+include_once __DIR__.'/../business/UserBusiness.php';
+include_once __DIR__.'/../resource/Constants.php';
 
 if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
     switch ($_POST['option']) {
@@ -23,7 +23,7 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
             }
             break;
         case 'Change':
-            include './UserBusiness.php';
+            include_once __DIR__.'/./UserBusiness.php';
 
             $user = $_POST['username'];
             $passOld = $_POST['userpassword'];

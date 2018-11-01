@@ -6,8 +6,8 @@ header("Access-Control-Allow-Credentials: true");
 header('Content-Type: application/json');
 
 // include database and object files
-include_once '../config/database.php';
-include_once '../objects/file.php';
+include_once __DIR__.'/../config/database.php';
+include_once __DIR__.'/../objects/file.php';
 
 // get database connection
 $database = new Database();

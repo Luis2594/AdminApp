@@ -1,6 +1,6 @@
 <?php
 
-include_once '../business/GroupBusiness.php';
+include_once __DIR__.'/../business/GroupBusiness.php';
 
 $period = (int)$_POST['period'];
 $year = (int)$_POST['year'];

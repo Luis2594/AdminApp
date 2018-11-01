@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 $id = (int) $_GET['id'];
 ?>
 
@@ -28,7 +28,7 @@ if (isset($id) && $id != '' && is_int($id)) {
                         <h3 class="box-title">Información de Malla Curricular</h3>
                     </div><!-- /.box-header -->
                     <?php
-                    include '../business/CurriculumBusiness.php';
+                    include_once __DIR__.'/../business/CurriculumBusiness.php';
 
                     $curriculumBusiness = new CurriculumBusiness();
 
@@ -61,7 +61,7 @@ if (isset($id) && $id != '' && is_int($id)) {
 
     <?php
 }
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <script type="text/javascript">

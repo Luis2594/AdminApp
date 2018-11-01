@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/EnrollmentEmergentData.php';
+include_once __DIR__.'/../data/EnrollmentEmergentData.php';
 
 /**
  * Description of EnrollmentEmergentBusiness

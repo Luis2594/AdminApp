@@ -3,7 +3,7 @@
 require('../resource/fpdf/fpdf.php');
 require_once '../business/StudentEmergentBusiness.php';
 require_once '../business/PhoneEmergentBusiness.php';
-include_once '../business/EnrollmentEmergentBusiness.php';
+include_once __DIR__.'/../business/EnrollmentEmergentBusiness.php';
 date_default_timezone_set('America/Costa_Rica');
 
 class PDF extends FPDF {

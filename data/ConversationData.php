@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Conversation.php';
+include_once __DIR__.'/../domain/Conversation.php';
 //require_once './resource/log/ErrorHandler.php';
 
 

@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/InstitutionData.php';
+include_once __DIR__.'/../data/InstitutionData.php';
 
 /**
  * Description of InstitutionBusiness

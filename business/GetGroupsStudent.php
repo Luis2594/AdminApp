@@ -1,6 +1,6 @@
 <?php
 
-include './GroupBusiness.php';
+include_once __DIR__.'/./GroupBusiness.php';
 
 $id = $_POST['id'];
 

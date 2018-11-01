@@ -4,13 +4,13 @@
 //post
 //Recibe username y userpassword
 //Retorna el historial del estudiante
-include '../business/UserBusiness.php';
+include_once __DIR__.'/../business/UserBusiness.php';
 if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
     if ($person != null) {
 
-        include_once '../business/EnrollmentBusiness.php';
+        include_once __DIR__.'/../business/EnrollmentBusiness.php';
 
         $id = $person["personid"];
 

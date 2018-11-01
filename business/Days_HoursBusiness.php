@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/Days_HoursData.php';
+include_once __DIR__.'/../data/Days_HoursData.php';
 
 /**
  * Description of Days_HoursBusiness

@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include_once '../domain/Group.php';
+include_once __DIR__.'/../domain/Group.php';
 
 /**
  * Description of GroupData

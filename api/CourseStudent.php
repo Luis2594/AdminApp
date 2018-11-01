@@ -1,12 +1,12 @@
 <?php
 
-include_once '../business/UserBusiness.php';
+include_once __DIR__.'/../business/UserBusiness.php';
 
 if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
     if ($person != null) {
-        include_once '../business/CourseBusiness.php';
+        include_once __DIR__.'/../business/CourseBusiness.php';
         $courseBusiness = new CourseBusiness();
 
         $result = [];

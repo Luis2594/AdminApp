@@ -4,7 +4,7 @@ if (isset($_SESSION['id'])) {
     header("location: ./Home.php");
 }
 
-include_once '../business/InstitutionBusiness.php';
+include_once __DIR__.'/../business/InstitutionBusiness.php';
 $institutionBusiness = new InstitutionBusiness();
 $institution = $institutionBusiness->getInstitutionObject();
 if ($institution == NULL) {

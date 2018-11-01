@@ -1,6 +1,6 @@
 <?php
 
-include '../business/UserBusiness.php';
+include_once __DIR__.'/../business/UserBusiness.php';
 
 //Cargar
 //post

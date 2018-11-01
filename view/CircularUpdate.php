@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 $id = (int) $_GET['id'];
 ?>
 
@@ -30,7 +30,7 @@ $id = (int) $_GET['id'];
                         <div class="form-group">
                             <label>Descripción</label>
                             <?php 
-                                include_once '../business/CircularBusiness.php';
+                                include_once __DIR__.'/../business/CircularBusiness.php';
                                 $business = new CircularBusiness();
                                 $entity = $business->get($id);
                             ?>
@@ -48,7 +48,7 @@ $id = (int) $_GET['id'];
 </section><!-- /.content -->
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <script type="text/javascript">

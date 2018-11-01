@@ -1,5 +1,5 @@
 <?php
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Header.php';
 require '../resource/log/ErrorHandler.php';
 ?>
 
@@ -221,7 +221,7 @@ require '../resource/log/ErrorHandler.php';
 </div>
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <script>

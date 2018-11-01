@@ -1,7 +1,7 @@
 <?php
 
-include './StudentEmergentBusiness.php';
-include './PhoneEmergentBusiness.php';
+include_once __DIR__.'/./StudentEmergentBusiness.php';
+include_once __DIR__.'/./PhoneEmergentBusiness.php';
 
 $dni = $_POST['dni'];
 $name = $_POST['name'];

@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 
 if (isset($_GET['assign']))
     $assign = $_GET['assign'];
@@ -46,7 +46,7 @@ if (isset($_GET['delete']))
                             </thead>
                             <tbody>
                                 <?php
-                                include '../business/ProfessorBusiness.php';
+                                include_once __DIR__.'/../business/ProfessorBusiness.php';
                                 $professorBusiness = new ProfessorBusiness();
                                 //capture all professor as instances of ProfessorAll
                                 $professors = $professorBusiness->getAll();
@@ -86,7 +86,7 @@ if (isset($_GET['delete']))
 </section><!-- /.content -->
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <!-- page script -->

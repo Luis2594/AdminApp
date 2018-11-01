@@ -1,6 +1,6 @@
 <?php
 
-include './EnrollmentBusiness.php';
+include_once __DIR__.'/./EnrollmentBusiness.php';
 
 $dateStart = $_GET['dateStart'];
 $dateEnd = $_GET['dateEnd'];

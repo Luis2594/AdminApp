@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include_once '../domain/Circular.php';
+include_once __DIR__.'/../domain/Circular.php';
 
 /**
  * Description of CircularData

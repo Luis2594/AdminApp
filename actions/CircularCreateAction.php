@@ -1,7 +1,7 @@
 <?php
 
 $target_dir = "../../documents/circular/";
-include_once '../tools/GUID.php';
+include_once __DIR__.'/../tools/GUID.php';
 
 $guid = GUID();
 $target_file = $target_dir . $guid . ".pdf" ;
@@ -22,7 +22,7 @@ if ($fileType != "pdf") {
 }
 
 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    include_once '../business/CircularBusiness.php';
+    include_once __DIR__.'/../business/CircularBusiness.php';
     $text = $_POST['text'];
     $admin = $_POST['admin'];
 

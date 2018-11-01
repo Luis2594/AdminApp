@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/CircularData.php';
+include_once __DIR__.'/../data/CircularData.php';
 
 /**
  * Description of CircularBusiness

@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 
 if (isset($_GET['update']))
     $update = $_GET['update'];
@@ -38,7 +38,7 @@ if (isset($_GET['delete']))
                         </thead>
                         <tbody>
                             <?php
-                            include '../business/SpecialityBusiness.php';
+                            include_once __DIR__.'/../business/SpecialityBusiness.php';
                             $specialityBusiness = new SpecialityBusiness();
 
                             $specialities = $specialityBusiness->getAll();
@@ -69,7 +69,7 @@ if (isset($_GET['delete']))
 </section><!-- /.content -->
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <!-- page script -->

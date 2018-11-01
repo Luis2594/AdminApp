@@ -1,7 +1,7 @@
 <?php
 
 require_once '../data/Connector.php';
-include '../domain/Schedule.php';
+include_once __DIR__.'/../domain/Schedule.php';
 
 class ScheduleData extends Connector {
 

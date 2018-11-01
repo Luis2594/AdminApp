@@ -1,6 +1,6 @@
 <?php
 
-include_once './SpecialityBusiness.php';
+include_once __DIR__.'/./SpecialityBusiness.php';
 
 $id = (int) $_GET['id'];
 $name = $_POST['name'];

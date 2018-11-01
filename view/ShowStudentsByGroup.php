@@ -1,6 +1,6 @@
 <?php
-include_once './reusable/Session.php';
-include_once './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 
 $year = (int) $_GET['year'];
 $period = (int) $_GET['period'];
@@ -30,7 +30,7 @@ if (isset($period) && is_int($period) && isset($year) && is_int($year) && isset(
                 <div class="box">
                     <div class="box-header">
                         <?php
-                        include_once '../business/GroupBusiness.php';
+                        include_once __DIR__.'/../business/GroupBusiness.php';
 
                         $business = new GroupBusiness();
                         $groupEntity = $business->getGroup($group);
@@ -58,7 +58,7 @@ if (isset($period) && is_int($period) && isset($year) && is_int($year) && isset(
                                 </thead>
                                 <tbody>
                                 <?php
-                                include '../business/StudentBusiness.php';
+                                include_once __DIR__.'/../business/StudentBusiness.php';
                                 $studentBusiness = new StudentBusiness();
 
                                 $students = $studentBusiness->getStudentByGroupByFilter($group, $period, $year);
@@ -122,7 +122,7 @@ if (isset($period) && is_int($period) && isset($year) && is_int($year) && isset(
 
     <?php
 }
-include_once './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <!-- page script -->

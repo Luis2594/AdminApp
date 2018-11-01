@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/GroupData.php';
+include_once __DIR__.'/../data/GroupData.php';
 
 /**
  * Description of GroupBusiness

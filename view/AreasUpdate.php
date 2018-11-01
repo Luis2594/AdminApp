@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 $pk = (int) $_GET['pk'];
 ?>
 
@@ -29,7 +29,7 @@ if (isset($pk) && $pk != '' && is_int($pk)) {
                         <h3 class="box-title">Información de Área</h3>
                     </div><!-- /.box-header -->
                     <?php
-                    include '../business/AreasBusiness.php';
+                    include_once __DIR__.'/../business/AreasBusiness.php';
 
                     $business = new AreasBusiness();
 
@@ -55,7 +55,7 @@ if (isset($pk) && $pk != '' && is_int($pk)) {
 
     <?php
 }
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <script type="text/javascript">

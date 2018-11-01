@@ -1,6 +1,6 @@
 <?php
 
-include_once '../business/CircularBusiness.php';
+include_once __DIR__.'/../business/CircularBusiness.php';
 
 $id = $_GET['id'];
 

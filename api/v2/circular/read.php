@@ -4,8 +4,8 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
-include_once '../config/database.php';
-include_once '../objects/circular.php';
+include_once __DIR__.'/../config/database.php';
+include_once __DIR__.'/../objects/circular.php';
 
 // instantiate database and entity object
 $database = new Database();
@@ -49,6 +49,6 @@ if ($num > 0) {
     echo json_encode($entities_arr);
 } else {
     echo json_encode(
-        array("message" => "No entitys found.")
+        array("message" => "Sorry. No entitys found.")
     );
 }

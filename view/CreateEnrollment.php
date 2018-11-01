@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 
 //if(isset($_GET['id']) && isset($_GET['name'])){
 //    header("location: ShowStudentsEnrollment.php");
@@ -42,7 +42,7 @@ include './reusable/Header.php';
                 </tr>
                 <!--Codigo PHP-->
                 <?php
-                include '../business/CourseBusiness.php';
+                include_once __DIR__.'/../business/CourseBusiness.php';
                 $id = $_GET['id'];
                 $coursesBusiness = new CourseBusiness();
 
@@ -109,7 +109,7 @@ include './reusable/Header.php';
 </section><!-- /.content -->
 <br>
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <!-- page script -->

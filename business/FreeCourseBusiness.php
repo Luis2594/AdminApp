@@ -1,6 +1,6 @@
 <?php
 
-include_once '../data/FreeCourseData.php';
+include_once __DIR__.'/../data/FreeCourseData.php';
 
 /**
  * Description of FreeCourseBusiness

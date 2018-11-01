@@ -1,6 +1,6 @@
 <?php
-include './reusable/Session.php';
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Session.php';
+include_once __DIR__.'/./reusable/Header.php';
 date_default_timezone_set('America/Costa_Rica');
 ?>
 
@@ -26,7 +26,7 @@ date_default_timezone_set('America/Costa_Rica');
                 </div><!-- /.box-header -->
 
                 <?php
-                include '../business/StudentEmergentBusiness.php';
+                include_once __DIR__.'/../business/StudentEmergentBusiness.php';
 
                 $studentEmergentBusiness = new StudentEmergentBusiness();
                 $id = (int) $_GET['id'];
@@ -34,7 +34,7 @@ date_default_timezone_set('America/Costa_Rica');
 
                 $bool = false;
 
-                include '../business/PhoneEmergentBusiness.php';
+                include_once __DIR__.'/../business/PhoneEmergentBusiness.php';
                 $phoneEmergentBusiness = new PhoneEmergentBusiness();
                 $phones = $phoneEmergentBusiness->phoneByPerson($id);
                 ?>
@@ -145,7 +145,7 @@ date_default_timezone_set('America/Costa_Rica');
 </section><!-- /.content -->
 
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
 
 <script type="text/javascript">

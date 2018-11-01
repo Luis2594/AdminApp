@@ -1,6 +1,6 @@
 <?php
 
-include './reusable/Header.php';
+include_once __DIR__.'/./reusable/Header.php';
 ?>
 
 <div class="row center-block text-center">
@@ -106,5 +106,5 @@ include './reusable/Header.php';
     </div>
 </div>
 <?php
-include './reusable/Footer.php';
+include_once __DIR__.'/./reusable/Footer.php';
 ?>
