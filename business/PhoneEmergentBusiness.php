@@ -1,6 +1,6 @@
 <?php
 
-require_once '../data/PhoneEmergentData.php';
+include_once __DIR__.'/../data/PhoneEmergentData.php';
 
 /**
  * Description of AreaBusiness

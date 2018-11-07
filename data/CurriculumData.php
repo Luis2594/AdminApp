@@ -1,10 +1,10 @@
 <?php
 
-require_once '../data/Connector.php';
+include_once __DIR__.'/../data/Connector.php';
 include_once __DIR__.'/../domain/Curriculum.php';
 include_once __DIR__.'/../domain/CurriculumCourse.php';
 include_once __DIR__.'/../domain/Course.php';
-//require_once './resource/log/ErrorHandler.php';
+//include_once __DIR__.'/./resource/log/ErrorHandler.php';
 
 class CurriculumData extends Connector {
 
