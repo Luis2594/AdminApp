@@ -1,18 +1,20 @@
 <?php
 
 require_once '../data/Connector.php';
-include_once __DIR__.'/../domain/Professor.php';
-include_once __DIR__.'/../domain/ProfessorAll.php';
+include_once __DIR__ . '/../domain/Professor.php';
+include_once __DIR__ . '/../domain/ProfessorAll.php';
 date_default_timezone_set('America/Costa_Rica');
 
 //require_once './resource/log/ErrorHandler.php';
 
-class ProfessorData extends Connector {
+class ProfessorData extends Connector
+{
 
-    public function insertProfessorWithCredentials($professor, $pass) {
+    public function insertProfessorWithCredentials($professor, $pass)
+    {
         $query = "call insertProfessorWithCredentials("
-                . "" . $professor->getProfessorPerson() . ","
-                . "'" . $pass . "')";
+        . "" . $professor->getProfessorPerson() . ","
+            . "'" . $pass . "')";
         try {
             return $this->exeQuery($query);
         } catch (Exception $ex) {
@@ -20,9 +22,10 @@ class ProfessorData extends Connector {
         }
     }
 
-    public function update($professor) {
+    public function update($professor)
+    {
         $query = "call updateProfessor(" . $professor->getProfessorId() . ","
-                . "" . $professor->getProfessorPerson() . ")";
+        . "" . $professor->getProfessorPerson() . ")";
         try {
             return $this->exeQuery($query);
         } catch (Exception $ex) {
@@ -30,20 +33,22 @@ class ProfessorData extends Connector {
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $query = 'call delete("' . $id . '");';
         try {
             if ($this->exeQuery($query)) {
-                return TRUE;
+                return true;
             } else {
-                return FALSE;
+                return false;
             }
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $query = "call getAllProfessor()";
         try {
             $allProfessors = $this->exeQuery($query);
@@ -59,8 +64,9 @@ class ProfessorData extends Connector {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
-    
-    public function getAllSchedule() {
+
+    public function getAllSchedule()
+    {
         $query = "call getAllProfessor()";
         try {
             $allProfessors = $this->exeQuery($query);
@@ -74,20 +80,21 @@ class ProfessorData extends Connector {
                         "personsecondlastname" => $row['personsecondlastname']);
                 }
             }
-            
+
             foreach ($array as $key => $row) {
                 $aux[$key] = $row['personfirstname'];
             }
-            
+
             array_multisort($aux, SORT_ASC, $array);
-            
+
             return $array;
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);
         }
     }
 
-    public function getProfessor($id) {
+    public function getProfessor($id)
+    {
         $query = 'call getProfessor("' . $id . '");';
         try {
             $allProfessor = $this->exeQuery($query);
@@ -95,7 +102,7 @@ class ProfessorData extends Connector {
             if (mysqli_num_rows($allProfessor) > 0) {
                 while ($row = mysqli_fetch_array($allProfessor)) {
                     $currentProfessor = new ProfessorAll(
-                            $row['professorid'], $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['persongender'], $row['personnationality'], $row['userusername'], $row['useruserpass']);
+                        $row['professorid'], $row['personid'], $row['persondni'], $row['personfirstname'], $row['personfirstlastname'], $row['personsecondlastname'], $row['personemail'], $row['persongender'], $row['personnationality'], $row['userusername'], $row['useruserpass']);
                     array_push($array, $currentProfessor);
                 }
             }
@@ -105,7 +112,8 @@ class ProfessorData extends Connector {
         }
     }
 
-    public function getLastId() {
+    public function getLastId()
+    {
         $query = 'call getProfessorLastId();';
         try {
             $value = $this->exeQuery($query);
@@ -119,18 +127,19 @@ class ProfessorData extends Connector {
         }
     }
 
-    public function insertCourseToProfessor($id, $group, $period, $course) {
+    public function insertCourseToProfessor($id, $group, $period, $course)
+    {
         $year = date("Y");
-        
-        if(date("m") > 7){
-            $year+=1;
+
+        if (date("m") > 7) {
+            $year += 1;
         }
 
         $query = "call insertProfessorCourse('" . $id . "',"
-                . "'" . $group . "',"
-                . "" . $period . ","
-                . "" . $course . ","
-                . "" . $year . ")";
+            . "'" . $group . "',"
+            . "" . $period . ","
+            . "" . $course . ","
+            . "" . $year . ")";
         try {
             return $this->exeQuery($query);
         } catch (Exception $ex) {
@@ -138,13 +147,14 @@ class ProfessorData extends Connector {
         }
     }
 
-    public function deleteProfessorCourse($id) {
+    public function deleteProfessorCourse($id)
+    {
         $query = 'call deleteProfessorCourse(' . $id . ');';
         try {
             if ($this->exeQuery($query)) {
-                return TRUE;
+                return true;
             } else {
-                return FALSE;
+                return false;
             }
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);

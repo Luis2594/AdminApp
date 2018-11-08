@@ -1,9 +1,9 @@
 <?php
-include_once __DIR__ . '/./reusable/Session.php';
-include_once __DIR__ . '/../resource/Constants.php';
+error_reporting(0);
+ini_set('display_errors', 0);
 
-error_reporting(1);
-ini_set('display_errors', 1);
+include './reusable/Session.php';
+include_once '../resource/Constants.php';
 ?>
 <html>
     <head>
@@ -80,8 +80,8 @@ ini_set('display_errors', 1);
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <?php
 if (isset($_SESSION['id'])) {
-    include_once __DIR__ . '/../business/PersonBusiness.php';
-    include_once __DIR__ . '/../domain/Person.php';
+    include '../business/PersonBusiness.php';
+    include_once '../domain/Person.php';
 
     $personBusiness = new PersonBusiness();
     $person = $personBusiness->getPersonId((int) $_SESSION['id'])[0];

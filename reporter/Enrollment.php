@@ -460,24 +460,24 @@ foreach ($students as $student) {
     $pdf->AddPage();
     $pdf->SetFont('Arial', 'B', 12);
 
+    
     switch ($period) {
         case 1:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - II NIVEL  2018"));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - II NIVEL  2019"));
             break;
         case 2:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  2018"));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  2019"));
             break;
         case 3:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - III NIVEL  2018"));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - III NIVEL  2019"));
             break;
         case 4:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - III NIVEL  2018"));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - III NIVEL  2019"));
             break;
         default:
             break;
     }
-
-    $pdf->Ln();
+    $pdf->Ln(5);
     $pdf->SetFont('Arial', 'B', 10);
     $pdf->Cell(0, 10, utf8_decode("TIPO DE MATRÍCULA: ( ) Ordinaria ( ) Extraordinaria          FECHA DE MATRÍCULA: " . date("d") . "-" . date("m") . "-" . date("Y")), 0, 1);
     $pdf->Cell(0, 5, utf8_decode("DATOS PERSONALES DEL ESTUDIANTE"), 0, 1);
@@ -539,7 +539,7 @@ foreach ($students as $student) {
     $pdf->SetFont('Arial', 'B', 10);
 
 
-    $pdf->Cell(0, 15, utf8_decode("EN CASO DE EMERGENCIA O ALGUNA SITUACIÓN ESPECIAL CONTACTAR"), 0, 1);
+    $pdf->Cell(0, 10, utf8_decode("EN CASO DE EMERGENCIA O ALGUNA SITUACIÓN ESPECIAL CONTACTAR"), 0, 1);
     $pdf->SetFont('Arial', '', 10);
     $pdf->Cell(0, 0, utf8_decode("Nombre: " . $student->getStudentManager() . "            Parentesco: __________"), 0, 1);
     $pdf->Cell(0, 0, $pdf->Image('../resource/images/cuadro.png', 7, 80, 200), 0, 0, 'L', false);

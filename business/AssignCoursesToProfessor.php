@@ -16,7 +16,7 @@ if (isset($id) && is_int($id) && isset($groups) && isset($period) && is_int($per
 
     foreach ($arrayGroups as $idGroup) {
         foreach ($arrayModules as $idCourse) {
-            $professorBusiness->insertCourseToProfessor($id, $idGroup, $period, $idCourse);
+           echo $professorBusiness->insertCourseToProfessor($id, $idGroup, $period, $idCourse);
         }
     }
 

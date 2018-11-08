@@ -300,6 +300,7 @@ include_once __DIR__.'/./reusable/Footer.php';
             data: parameters,
             success: function (data)
             {
+                alert(data)
                 if (data == true) {
                     coursesToProfessor();
                 } else {
