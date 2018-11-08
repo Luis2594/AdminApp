@@ -1,8 +1,8 @@
 <?php
 
-require_once '../data/Connector.php';
-require_once '../domain/User.php';
-require_once '../business/PersonBusiness.php';
+include_once __DIR__.'/../data/Connector.php';
+include_once __DIR__.'/../domain/User.php';
+include_once __DIR__.'/../business/PersonBusiness.php';
 
 class UserData extends Connector {
 

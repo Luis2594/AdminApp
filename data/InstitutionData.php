@@ -1,8 +1,7 @@
 <?php
 
-require_once '../data/Connector.php';
+include_once __DIR__.'/../data/Connector.php';
 include_once __DIR__.'/../domain/Institution.php';
-//require_once './resource/log/ErrorHandler.php';
 
 class InstitutionData extends Connector {
 

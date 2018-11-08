@@ -1,6 +1,6 @@
 <?php
 
-require_once '../data/AdminData.php';
+include_once __DIR__.'/../data/AdminData.php';
 
 /**
  * Description of AdminBusiness

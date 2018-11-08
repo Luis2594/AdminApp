@@ -1,7 +1,7 @@
 <?php
 
-require_once '../data/ConnectorEmergent.php';
-require_once '../domain/EnrollmentEmergent.php';
+include_once __DIR__.'/../data/ConnectorEmergent.php';
+include_once __DIR__.'/../domain/EnrollmentEmergent.php';
 date_default_timezone_set('America/Costa_Rica');
 
 /**

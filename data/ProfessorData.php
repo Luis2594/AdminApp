@@ -1,11 +1,12 @@
 <?php
 
-require_once '../data/Connector.php';
-include_once __DIR__ . '/../domain/Professor.php';
-include_once __DIR__ . '/../domain/ProfessorAll.php';
+include_once __DIR__.'/../data/Connector.php';
+include_once __DIR__.'/../domain/Professor.php';
+include_once __DIR__.'/../domain/ProfessorAll.php';
+
 date_default_timezone_set('America/Costa_Rica');
 
-//require_once './resource/log/ErrorHandler.php';
+//include_once __DIR__.'/./resource/log/ErrorHandler.php';
 
 class ProfessorData extends Connector
 {

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../data/Connector.php';
+include_once __DIR__.'/../data/Connector.php';
 include_once __DIR__.'/../domain/Group.php';
 
 /**

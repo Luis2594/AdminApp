@@ -1,8 +1,8 @@
 <?php
 
-require_once '../data/ConnectorEmergent.php';
+include_once __DIR__.'/../data/ConnectorEmergent.php';
 include_once __DIR__.'/../domain/PhoneEmergent.php';
-//require_once './resource/log/ErrorHandler.php';
+//include_once __DIR__.'/./resource/log/ErrorHandler.php';
 
 class PhoneEmergentData extends ConnectorEmergent {
 

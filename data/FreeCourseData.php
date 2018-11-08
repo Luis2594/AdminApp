@@ -1,7 +1,7 @@
 <?php
 
-require_once '../data/ConnectorEmergent.php';
-require_once '../domain/FreeCourse.php';
+include_once __DIR__.'/../data/ConnectorEmergent.php';
+include_once __DIR__.'/../domain/FreeCourse.php';
 
 /**
  * Description of FreeCourseData

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../data/ScheduleData.php';
+include_once __DIR__.'/../data/ScheduleData.php';
 
 class ScheduleBusiness
 {

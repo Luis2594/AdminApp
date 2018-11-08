@@ -1,6 +1,6 @@
 <?php
 
-require_once '../data/UserData.php';
+include_once __DIR__.'/../data/UserData.php';
 
 class UserBusiness
 {

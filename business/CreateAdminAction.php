@@ -1,8 +1,8 @@
 <?php
-require_once 'PhoneBusiness.php';
-require_once 'PersonBusiness.php';
-require_once 'UserBusiness.php';
-require_once 'AdminBusiness.php';
+include_once __DIR__.'/PhoneBusiness.php';
+include_once __DIR__.'/PersonBusiness.php';
+include_once __DIR__.'/UserBusiness.php';
+include_once __DIR__.'/AdminBusiness.php';
 
 //Capture data from POST method
 //First the generic data for person model

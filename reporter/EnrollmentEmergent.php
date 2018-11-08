@@ -1,8 +1,8 @@
 <?php
 
 require('../resource/fpdf/fpdf.php');
-require_once '../business/StudentEmergentBusiness.php';
-require_once '../business/PhoneEmergentBusiness.php';
+include_once __DIR__.'/../business/StudentEmergentBusiness.php';
+include_once __DIR__.'/../business/PhoneEmergentBusiness.php';
 include_once __DIR__.'/../business/EnrollmentEmergentBusiness.php';
 date_default_timezone_set('America/Costa_Rica');
 

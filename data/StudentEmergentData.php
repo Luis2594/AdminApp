@@ -1,7 +1,7 @@
 <?php
 
-require_once '../data/ConnectorEmergent.php';
-require_once '../domain/StudentEmergent.php';
+include_once __DIR__.'/../data/ConnectorEmergent.php';
+include_once __DIR__.'/../domain/StudentEmergent.php';
 
 /**
  * Description of StudentEmergentData
