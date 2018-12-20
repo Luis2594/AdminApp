@@ -1,7 +1,7 @@
 <?php
 
-include_once __DIR__.'/../../../../business/PhoneBusiness.php';
-include_once __DIR__.'/../../../../business/UserBusiness.php';
+include_once __DIR__ . '/../../../../business/PhoneBusiness.php';
+include_once __DIR__ . '/../../../../business/UserBusiness.php';
 
 if (isset($_POST['username']) && isset($_POST['userpassword'])) {
 
@@ -10,7 +10,7 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
 
     if ($person == null) {
-        echo json_encode(null);
+        echo json_encode("User Error");
         return;
     }
 
@@ -22,5 +22,5 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     }
     echo json_encode($result);
 } else {
-    echo json_encode(null);
+    echo json_encode("User Error");
 }
