@@ -1,16 +1,15 @@
 <?php
 
-include_once __DIR__ . '/../../../business/UserBusiness.php';
-include_once __DIR__ . '/../../../resource/Constants.php';
+include_once __DIR__ . '/../../../../business/UserBusiness.php';
+include_once __DIR__ . '/../../../../resource/Constants.php';
 
-if (isset($_POST['username']) && isset($_POST['userpassword'])) {
+if (isset($_POST['username']) && isset($_POST['userpassword']) && isset($_POST['passupdate'])) {
     $user = $_POST['username'];
     $passOld = $_POST['userpassword'];
-    $passNew = $_POST['passUpdate'];
-
+    $passNew = $_POST['passupdate'];
     if (isset($user) && isset($passOld) && isset($passNew) && $user != "" && $passOld != "" && $passOld != "") {
         $userBusiness = new UserBusiness();
-        $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
+        $person = $userBusiness->isStudent($user, $passOld);
         if ($person != null) {
             if ($userBusiness->updatePassword($person['personid'], $passOld, $passNew) == 1) {
                 $user = $userBusiness->getUserId($person['personid']);

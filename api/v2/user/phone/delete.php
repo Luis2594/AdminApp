@@ -3,7 +3,7 @@
 include_once __DIR__ . '/../../../../business/PhoneBusiness.php';
 include_once __DIR__ . '/../../../../business/UserBusiness.php';
 
-if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpassword'])) {
+if (isset($_POST['username']) && isset($_POST['userpassword'])) {
 
     $userBusiness = new UserBusiness();
 
@@ -32,5 +32,4 @@ if (isset($_POST['option']) && isset($_POST['username']) && isset($_POST['userpa
     }
 } else {
     echo json_encode("User Error");
-
 }
