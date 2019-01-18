@@ -16,6 +16,7 @@ if (isset($_POST['option'])) {
                     "coursepdf" => $current->getCoursePdf(),
                     "coursespeciality" => $current->getCourseSpeciality(),
                     "coursetype" => $current->getCourseType(),
+                    "coursetoken" => $current->geToken(),
                 );
                 array_push($result, $array);
             }
@@ -43,6 +44,7 @@ if (isset($_POST['option'])) {
                             "coursepdf" => $current->getCoursePdf(),
                             "coursespeciality" => $current->getCourseSpeciality(),
                             "coursetype" => $current->getCourseType(),
+                            "coursetoken" => $current->geToken(),
                         );
                         array_push($result, $array);
                     }

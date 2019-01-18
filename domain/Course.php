@@ -1,7 +1,7 @@
 <?php
 
-class Course {
-
+class Course
+{
     private $courseId;
     private $courseCode;
     private $courseName;
@@ -12,8 +12,10 @@ class Course {
     private $courseType;
     private $specialityname;
     private $period;
+    private $token;
 
-    function Course($courseId, $courseCode, $courseName, $courseCredits, $courseLesson, $coursePdf, $courseSpeciality, $courseType) {
+    public function Course($courseId, $courseCode, $courseName, $courseCredits, $courseLesson, $coursePdf, $courseSpeciality, $courseType)
+    {
         $this->courseId = $courseId;
         $this->courseCode = $courseCode;
         $this->courseName = $courseName;
@@ -24,84 +26,114 @@ class Course {
         $this->courseType = $courseType;
     }
 
-    function getCourseId() {
+    public function getCourseId()
+    {
         return $this->courseId;
     }
 
-    function getCourseCode() {
+    public function getCourseCode()
+    {
         return $this->courseCode;
     }
 
-    function getCourseName() {
+    public function getCourseName()
+    {
         return $this->courseName;
     }
 
-    function getCourseCredits() {
+    public function getCourseCredits()
+    {
         return $this->courseCredits;
     }
 
-    function getCourseLesson() {
+    public function getCourseLesson()
+    {
         return $this->courseLesson;
     }
 
-    function getCoursePdf() {
+    public function getCoursePdf()
+    {
         return $this->coursePdf;
     }
 
-    function getCourseSpeciality() {
+    public function getCourseSpeciality()
+    {
         return $this->courseSpeciality;
     }
 
-    function getCourseType() {
+    public function getCourseType()
+    {
         return $this->courseType;
     }
 
-    function setCourseId($courseId) {
+    public function setCourseId($courseId)
+    {
         $this->courseId = $courseId;
     }
 
-    function setCourseCode($courseCode) {
+    public function setCourseCode($courseCode)
+    {
         $this->courseCode = $courseCode;
     }
 
-    function setCourseName($courseName) {
+    public function setCourseName($courseName)
+    {
         $this->courseName = $courseName;
     }
 
-    function setCourseCredits($courseCredits) {
+    public function setCourseCredits($courseCredits)
+    {
         $this->courseCredits = $courseCredits;
     }
 
-    function setCourseLesson($courseLesson) {
+    public function setCourseLesson($courseLesson)
+    {
         $this->courseLesson = $courseLesson;
     }
 
-    function setCoursePdf($coursePdf) {
+    public function setCoursePdf($coursePdf)
+    {
         $this->coursePdf = $coursePdf;
     }
 
-    function setCourseSpeciality($courseSpeciality) {
+    public function setCourseSpeciality($courseSpeciality)
+    {
         $this->courseSpeciality = $courseSpeciality;
     }
 
-    function setCourseType($courseType) {
+    public function setCourseType($courseType)
+    {
         $this->courseType = $courseType;
     }
 
-    function getSpecialityname() {
+    public function getSpecialityname()
+    {
         return $this->specialityname;
     }
 
-    function getPeriod() {
-        return $this->period;
-    }
-
-    function setSpecialityname($specialityname) {
+    public function setSpecialityname($specialityname)
+    {
         $this->specialityname = $specialityname;
     }
 
-    function setPeriod($period) {
+    public function setPeriod($period)
+    {
         $this->period = $period;
+    }
+
+    public function getPeriod()
+    {
+        return $this->period;
+    }
+
+    public function setToken($token)
+    {
+        $this->token = $token;
+    }
+
+    public function getToken()
+    {
+        return $this->token;
     }
 
 }

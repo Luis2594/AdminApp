@@ -1,7 +1,7 @@
 <?php
 
-include_once __DIR__.'/../data/Connector.php';
-include_once __DIR__.'/../domain/Course.php';
+include_once __DIR__ . '/../data/Connector.php';
+include_once __DIR__ . '/../domain/Course.php';
 
 //include_once __DIR__.'/./resource/log/ErrorHandler.php';
 
@@ -165,6 +165,8 @@ class CourseData extends Connector
                         $row['courseid'], $row['coursecode'], $row['coursename'],
                         $row['coursecredits'], $row['courselesson'], $row['coursepdf'],
                         $row['specialityname'], $row['coursetype']);
+
+                    $currentCourse->setToken($row['coursetoken']);
 
                     array_push($array, $currentCourse);
                 }
@@ -456,7 +458,7 @@ class CourseData extends Connector
             $data = $this->exeQuery($query);
             $array = [];
             if (mysqli_num_rows($data) > 0) {
-                include_once __DIR__.'/../domain/Student.php';
+                include_once __DIR__ . '/../domain/Student.php';
                 while ($row = mysqli_fetch_array($data)) {
                     $current = array($row['fullName'], $row['persondni'], $row['phoneNumber'], $row['personid']);
                     array_push($array, $current);
@@ -484,8 +486,8 @@ class CourseData extends Connector
                 }
             }
             //include required tools
-            include_once __DIR__.'/../tools/ExportData.php';
-            include_once __DIR__.'/../tools/GUID.php';
+            include_once __DIR__ . '/../tools/ExportData.php';
+            include_once __DIR__ . '/../tools/GUID.php';
             //new instances of data management lib
             $excel = new ExportDataExcel('browser'); //browser-file-string
             $excel->filename = GUID() . ".xlsx"; //configure name
