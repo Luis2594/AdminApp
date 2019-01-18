@@ -17,7 +17,12 @@ class Connector {
 
 //        ********   LOCAL    ********
         $this->db = 'institution';
-        $this->password = '1234';
+        if ("#46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018" == php_uname("v")){
+            $this->password = '12345678';
+        }else{
+            $this->password = '1234';
+        }
+        
 
 //        ********   DEVELOP  ********
 //        $this->password = 'cindea2017@';
