@@ -730,7 +730,7 @@ INSERT INTO `person` (`personid`, `persondni`, `personfirstname`, `personfirstla
 (232, '305380595', 'Wendy JazmÃ­n ', 'Vargas ', 'Picado', '', '2002-04-06', 15, '2', 'Costarricense ', '1.png'),
 (233, '111030498', 'Marlene', 'FernÃ¡ndez ', 'Mora ', 'fernandez.marlene@hotmail.com', '2017-07-31', 0, '1', 'Costarricense ', 'profile_default.png'),
 (234, '602920402', 'Julio Cesar', 'Contreras ', 'Monge ', 'jcesarcontreras1@gmail.com', '2017-10-02', 0, '1', 'Costarricense ', 'profile_default.png'),
-(235, '304040053', 'Rosa ', 'AyÃ³n ', 'Esquivel ', 'rosa.ayon.esquivel@mep.go.cr', '2018-02-09', 0, '2', 'Costarricense ', 'profile_default.png'),
+(235, '304040053', 'Rosa ', 'AyÃ³n ', 'Esquivel ', 'rosa.ayon.Esquivel@mep.go.cr', '2018-02-09', 0, '2', 'Costarricense ', 'profile_default.png'),
 (236, '303500651', 'Yogebeth ', 'Brenes ', 'Dittel ', 'yogebeth.brenes.dittel@mep.go.cr', '2018-02-09', 0, '2', 'Costarricense ', 'profile_default.png'),
 (237, '304130958', 'Gustavo ', 'Chavarria ', 'Chaves ', 'gustavo.chavarria.chaves@mep.go.cr', '2017-08-01', 0, '1', 'Costarricense ', 'profile_default.png'),
 (238, '303600261', 'Sergio ', 'Contreras ', 'Mendez', 'sergiocm2005@yahoo.com', '2017-10-02', 0, '1', 'Costarricense ', 'profile_default.png'),

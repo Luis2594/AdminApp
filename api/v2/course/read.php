@@ -24,17 +24,16 @@ if (isset($_POST['option'])) {
             break;
         case "student":
             include_once __DIR__.'/../../../business/UserBusiness.php';
-
             if (isset($_POST['username']) && isset($_POST['userpassword'])) {
                 $userBusiness = new UserBusiness();
                 $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
                 if ($person != null) {
                     include_once __DIR__.'/../../../business/CourseBusiness.php';
                     $courseBusiness = new CourseBusiness();
-
                     $result = [];
-
-                    foreach ($courseBusiness->getCourseByStudentParsed($person['personid']) as $current) {
+                    $data = $courseBusiness->getCourseByStudentParsed($person['personid']);
+                    
+                    foreach ($data as $current) {
                         $array = array(
                             "courseid" => $current->getCourseId(),
                             "coursecode" => $current->getCourseCode(),
@@ -44,7 +43,7 @@ if (isset($_POST['option'])) {
                             "coursepdf" => $current->getCoursePdf(),
                             "coursespeciality" => $current->getCourseSpeciality(),
                             "coursetype" => $current->getCourseType(),
-                            "coursetoken" => $current->geToken(),
+                            "coursetoken" => $current->getToken(),
                         );
                         array_push($result, $array);
                     }
@@ -57,15 +56,15 @@ if (isset($_POST['option'])) {
 
                     echo json_encode($result);
                 } else {
-                    echo json_encode(null);
+                    echo json_encode(NULL);
                 }
             } else {
-                echo json_encode(null);
+                echo json_encode(NULL);
             }
 
             break;
         default:
-            echo json_encode(null);
+            echo json_encode(NULL);
             break;
     }
 }

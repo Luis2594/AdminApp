@@ -5,7 +5,7 @@ include_once __DIR__.'/../data/AdminData.php';
 /**
  * Description of AdminBusiness
  *
- * @author Kevin ESquivel Marín <kevinesquivel21@gmail.com>
+ * @author Kevin Esquivel Marín <kevinEsquivel21@gmail.com>
  */
 class AdminBusiness
 {

@@ -6,7 +6,7 @@ include_once __DIR__.'/../domain/Circular.php';
 /**
  * Description of CircularData
  *
- * @author Kevin Esquivel Marín <kevinesquivel21@gmail.com>
+ * @author Kevin Esquivel Marín <kevinEsquivel21@gmail.com>
  */
 class CircularData extends Connector
 {

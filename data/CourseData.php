@@ -166,12 +166,11 @@ class CourseData extends Connector
                         $row['coursecredits'], $row['courselesson'], $row['coursepdf'],
                         $row['specialityname'], $row['coursetype']);
 
-                    $currentCourse->setToken($row['coursetoken']);
-
+                    $currentCourse->setToken($row['token']);
+                    
                     array_push($array, $currentCourse);
                 }
             }
-
             return $array;
         } catch (Exception $ex) {
             ErrorHandler::Log(__METHOD__, $query, $_SESSION["id"]);

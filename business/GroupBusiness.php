@@ -5,7 +5,7 @@ include_once __DIR__.'/../data/GroupData.php';
 /**
  * Description of GroupBusiness
  *
- * @author Kevin Esquivel Marín <kevinesquivel21@gmail.com>
+ * @author Kevin Esquivel Marín <kevinEsquivel21@gmail.com>
  */
 class GroupBusiness
 {

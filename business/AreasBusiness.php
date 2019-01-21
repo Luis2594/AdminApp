@@ -5,7 +5,7 @@ include_once __DIR__.'/../data/AreasData.php';
 /**
  * Description of AreaBusiness
  *
- * @author Kevin ESquivel Marín <kevinesquivel21@gmail.com>
+ * @author Kevin Esquivel Marín <kevinEsquivel21@gmail.com>
  */
 class AreasBusiness
 {

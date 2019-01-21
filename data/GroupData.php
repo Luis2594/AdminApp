@@ -6,7 +6,7 @@ include_once __DIR__.'/../domain/Group.php';
 /**
  * Description of GroupData
  *
- * @author Kevin Esquivel Marín <kevinesquivel21@gmail.com>
+ * @author Kevin Esquivel Marín <kevinEsquivel21@gmail.com>
  */
 class GroupData extends Connector
 {

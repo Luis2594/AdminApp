@@ -51,7 +51,7 @@ include_once __DIR__.'/./reusable/Header.php';
             Desarrollador.
         </p>
         <br/>
-        <a href="https://www.fb.com/kevinesquivel21" class="fa fa-facebook" style="width: 30px;height: 30px;"></a>
+        <a href="https://www.fb.com/kevinEsquivel21" class="fa fa-facebook" style="width: 30px;height: 30px;"></a>
         <!--<a href="#" class="fa fa-twitter"></a>-->
         <a href="https://plus.google.com/+KevinEsquivel" class="fa fa-google" style="width: 30px;height: 30px;"></a>
         <!--<a href="#" class="fa fa-linkedin" style="width: 30px;height: 30px;"></a>-->
@@ -59,7 +59,7 @@ include_once __DIR__.'/./reusable/Header.php';
         <!--<a href="#" class="fa fa-instagram" style="width: 30px;height: 30px;"></a>-->
         <!--<a href="#" class="fa fa-pinterest" style="width: 30px;height: 30px;"></a>-->
         <!--<a href="#" class="fa fa-snapchat-ghost" style="width: 30px;height: 30px;"></a>-->
-        <a href="skype:kevin.esquivel.21?userinfo" class="fa fa-skype" style="width: 30px;height: 30px;"></a>
+        <a href="skype:kevin.Esquivel.21?userinfo" class="fa fa-skype" style="width: 30px;height: 30px;"></a>
         <!--<a href="#" class="fa fa-android" style="width: 30px;height: 30px;"></a>-->
         <!--<a href="#" class="fa fa-dribbble" style="width: 30px;height: 30px;"></a>-->
         <!--<a href="#" class="fa fa-vimeo" style="width: 30px;height: 30px;"></a>-->
