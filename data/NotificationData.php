@@ -211,7 +211,8 @@ class NotificationData extends Connector
             if (mysqli_num_rows($allNotifications) > 0) {
                 while ($row = mysqli_fetch_array($allNotifications)) {
                     $person = $personBusiness->getPersonId($row['notificationsender'])[0];
-                    $currentNotification = new Notification($person->getPersonFirstName() . " " . $person->getPersonFirstlastname(), $row['notificationtext'], $row['notificationdate']);
+                    $currentNotification = new Notification($row['notificationid'], $row['notificationtext'], $row['notificationdate']);
+                    $currentNotification->setNotificationSender($person->getPersonFirstName() . " " . $person->getPersonFirstlastname());
                     array_push($array, $currentNotification);
                 }
             }

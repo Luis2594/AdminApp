@@ -6,6 +6,7 @@ class Notification
     private $notificationId;
     private $notificationText;
     private $notificationDate;
+    private $notificationSender;
 
     public function Notification($notificationId, $notificationText, $notificationDate)
     {
@@ -44,6 +45,17 @@ class Notification
     public function setNotificationDate($notificationDate)
     {
         $this->notificationDate = $notificationDate;
+        return $this;
+    }
+
+    public function getNotificationSender()
+    {
+        return $this->notificationSender;
+    }
+
+    public function setNotificationSender($notificationSender)
+    {
+        $this->notificationSender = $notificationSender;
         return $this;
     }
 }

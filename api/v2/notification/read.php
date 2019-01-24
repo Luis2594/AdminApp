@@ -12,6 +12,7 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
             $array = array("notificationid" => $current->getNotificationId(),
                 "notificationtext" => $current->getNotificationText(),
                 "notificationdate" => $current->getNotificationDate(),
+                "notificationsender" => $current->getNotificationSender(),
             );
             array_push($result, $array);
         }
