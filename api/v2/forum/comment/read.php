@@ -2,7 +2,7 @@
 
 include_once __DIR__.'/../../../../business/CommentBusiness.php';
 include_once __DIR__.'/../../../../business/UserBusiness.php';
-if (isset($_POST['username']) && isset($_POST['userpassword'])) {
+if (isset($_POST['username']) && isset($_POST['userpassword']) && isset($_POST['conversation'])) {
 
     $userBusiness = new UserBusiness();
     $person = $userBusiness->isStudent($_POST['username'], $_POST['userpassword']);
@@ -13,13 +13,16 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     $business = new CommentBusiness();
 
     $result = [];
+    $idConversation = $_POST['conversation'];
     foreach ($business->getCommentsByUser($person['personid']) as $current) {
-        $array = array("forumcommentid" => $current->getId(),
+        if ($idConversation == $current->getConversation()){
+            $array = array("forumcommentid" => $current->getId(),
             "forumcommentcomment" => $current->getComment(),
             "forumcommentforumconversation" => $current->getConversation(),
             "person" => $current->getPerson(),
-        );
-        array_push($result, $array);
+            );
+            array_push($result, $array);
+        }
     }
     echo json_encode($result);
 
