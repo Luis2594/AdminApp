@@ -9,17 +9,19 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
         $notificationBusiness = new NotificationBusiness();
         $result = [];
         foreach ($notificationBusiness->getAllStudentsIncomingNotifications($person['personid']) as $current) {
+            $time = strtotime($current->getNotificationDate());
+            $newformat = date('Y-m-d',$time);
             $array = array("notificationid" => $current->getNotificationId(),
                 "notificationtext" => $current->getNotificationText(),
-                "notificationdate" => $current->getNotificationDate(),
+                "notificationdate" => $newformat,
                 "notificationsender" => $current->getNotificationSender(),
             );
             array_push($result, $array);
         }
         echo json_encode($result);
     } else {
-        echo json_encode(null);
+        echo json_encode("Student not found.");
     }
 } else {
-    echo json_encode(null);
+    echo json_encode("Credentials Error.");
 }
