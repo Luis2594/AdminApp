@@ -469,28 +469,27 @@ foreach ($students as $student) {
 
     switch ($period) {
         case 1:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - II NIVEL  2018"));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - II NIVEL  2019"));
             break;
         case 2:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  2018"));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  2019"));
             break;
         case 3:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - III NIVEL  2018"));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA I SEMESTRE - III NIVEL  2019"));
             break;
         case 4:
-            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  2018"));
+            $pdf->Cell(0, 0, utf8_decode("                                       MATRÍCULA II SEMESTRE - II NIVEL  2019"));
             break;
         default:
             break;
     }
-
-    $pdf->Ln(5);
+    $pdf->Ln(3);
     $pdf->SetFont('Arial', '', 10);
     $pdf->Cell(0, 5, utf8_decode("Nombre Completo:"), 0, 0);
     $pdf->SetFont('Arial', 'B', 10);
     
     $name = $student->getPersonFirstName() . " " . $student->getPersonFirstlastname() . " " . $student->getPersonSecondlastname();
-    
+
     if (strlen($name) >= 20 && strlen($name) < 25) {
         $pdf->Cell(-110, 5, utf8_decode($name), 0, 0, 0);
     }

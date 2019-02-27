@@ -1,8 +1,12 @@
 <?php
-include_once __DIR__.'/./reusable/Header.php';
+include_once __DIR__ . '/./reusable/Header.php';
 require '../resource/log/ErrorHandler.php';
 ?>
 
+
+<?php
+if ($_SESSION['dni'] != "999999999") {
+    ?>
 <div class="row">
     <div class="col-md-6 center-block text-center" style="margin-top:30px;">
         <H2 style="margin-left: 10px; text-aling:center;">Totalidad de Estudiantes</H2>
@@ -37,7 +41,7 @@ require '../resource/log/ErrorHandler.php';
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-6">
         <img src="../resource/images/cindeaTurrialba.ico" class="img-responsive img-circle center-block "/>
     </div>
@@ -68,7 +72,7 @@ require '../resource/log/ErrorHandler.php';
                             <label></label>
                             <button onclick="sendConsult();" class="btn btn-primary" style="width:100%;margin-top:5px;">Consultar</button>
                         </div>
-                    </div>                   
+                    </div>
                 </div>
                 <hr/>
             </div>
@@ -96,7 +100,7 @@ require '../resource/log/ErrorHandler.php';
                         <div class="col-md-2"></div>
                     </div>
 
-                    <H4 id="students_both_levels">Nota: </H4>
+                <H4 id="students_both_levels" style="margin-left: 20px"></H4>
                 </div>
                 <div class="row center-block text-center">
                     <div class="col-md-6">
@@ -156,7 +160,7 @@ require '../resource/log/ErrorHandler.php';
                         <div class="row">
                             <h3>Estudiantes Tercer Nivel</h3>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="panel panel-success" style="margin-left: 5px">
@@ -210,18 +214,18 @@ require '../resource/log/ErrorHandler.php';
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-6">
-        
+
     </div>
 </div>
-
+<?php }?>
 <div class="row special v-m" style="height:100vh; display:table; width:100%; margin-right:auto; vertical-align:middle">
     <!--<img src="../resource/images/cindeaTurrialba.ico" class="img-responsive img-circle center-block "/>-->
 </div>
 
 <?php
-include_once __DIR__.'/./reusable/Footer.php';
+include_once __DIR__ . '/./reusable/Footer.php';
 ?>
 
 <script>

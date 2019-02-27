@@ -1,8 +1,9 @@
 <?php
-include_once __DIR__.'/./reusable/Session.php';
-include_once __DIR__.'/../resource/Constants.php';
-error_reporting(1);
-ini_set('display_errors', 1);
+error_reporting(0);
+ini_set('display_errors', 0);
+
+include './reusable/Session.php';
+include_once '../resource/Constants.php';
 ?>
 <html>
     <head>
@@ -13,14 +14,14 @@ ini_set('display_errors', 1);
         <link rel="icon" type="image/png" href="./../resource/images/favicon-16x16.png" sizes="16x16" />
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
-        <link href="./../resource/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
+        <link href="./../resource/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- FontAwesome 4.3.0 -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons 2.0.0 -->
-        <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />    
+        <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="./../resource/css/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-        <!-- AdminLTE Skins. Choose a skin from the css/skins 
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link href="./../resource/css/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
         <!-- iCheck -->
@@ -39,7 +40,7 @@ ini_set('display_errors', 1);
         <link href="./../resource/css/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="./../resource/css/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-        <!-- AdminLTE Skins. Choose a skin from the css/skins 
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link href="./../resource/css/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
         <!-- daterange picker -->
@@ -78,58 +79,58 @@ ini_set('display_errors', 1);
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <?php
-                                    if (isset($_SESSION['id'])) {
-                                        include_once __DIR__.'/../business/PersonBusiness.php';
-                                        include_once __DIR__.'/../domain/Person.php';
+if (isset($_SESSION['id'])) {
+    include '../business/PersonBusiness.php';
+    include_once '../domain/Person.php';
 
-                                        $personBusiness = new PersonBusiness();
-                                        $person = $personBusiness->getPersonId((int) $_SESSION['id'])[0];
-                                        ?>
+    $personBusiness = new PersonBusiness();
+    $person = $personBusiness->getPersonId((int) $_SESSION['id'])[0];
+    ?>
                                         <img id="imageProfile3" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="user-image" alt="User Image" />
                                         <span class="hidden-xs"><?php echo $person->getPersonFirstName() . " " . $person->getPersonFirstlastname(); ?></span>
                                         <?php
-                                    } else {
-                                        ?>
+} else {
+    ?>
                                         <img id="imageProfile3" src="./../resource/images/profile_default.png" width="24" height="24" class="user-image" alt="User Image" />
                                         <span class="hidden-xs">Usuario</span>
                                         <?php
-                                    }
-                                    ?>
+}
+?>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
                                         <?php
-                                        if (isset($_SESSION['type']) && $person != NULL) {
-                                            ?>
+if (isset($_SESSION['type']) && $person != null) {
+    ?>
                                             <img id="imageProfile1"src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="img-circle" alt="User Image" />
                                             <?php
-                                        } else {
-                                            ?>
+} else {
+    ?>
                                             <img id="imageProfile1"src="./../resource/images/profile_default.png" class="img-circle" alt="User Image" />
                                             <?php
-                                        }
-                                        ?>
+}
+?>
 
-                                        <p>                                            
+                                        <p>
                                             <?php
-                                            if (isset($_SESSION['type'])) {
-                                                echo $person->getPersonFirstName();
-                                                switch ((int) $_SESSION['type']) {
-                                                    case Constants::USER_ADMIN:
-                                                        echo '<small>Administrador</small>';
-                                                        break;
-                                                    default:
-                                                        session_start(); //to ensure you are using same session
-                                                        session_unset(); // remove all session variables
-                                                        session_destroy(); //destroy the session
-                                                        header("location: ./Login.php");
-                                                        break;
-                                                }
-                                            } else {
-                                                echo 'Usuario';
-                                            }
-                                            ?>
+if (isset($_SESSION['type'])) {
+    echo $person->getPersonFirstName();
+    switch ((int) $_SESSION['type']) {
+        case Constants::USER_ADMIN:
+            echo '<small>Administrador</small>';
+            break;
+        default:
+            session_start(); //to ensure you are using same session
+            session_unset(); // remove all session variables
+            session_destroy(); //destroy the session
+            header("location: ./Login.php");
+            break;
+    }
+} else {
+    echo 'Usuario';
+}
+?>
 
                                         </p>
                                     </li>
@@ -158,29 +159,29 @@ ini_set('display_errors', 1);
                     <div class="user-panel">
                         <div class="pull-left image">
                             <?php
-                            if (isset($_SESSION['id'])) {
-                                ?>
+if (isset($_SESSION['id'])) {
+    ?>
                                 <img id="imageProfile2" src="./../resource/images/<?php echo $person->getPersonimage(); ?>" class="img-circle" alt="User Image" />
                                 <?php
-                                //echo $person->getPersonFirstName() . " " . $person->getPersonFirstlastname();
-                            } else {
-                                ?>
+//echo $person->getPersonFirstName() . " " . $person->getPersonFirstlastname();
+} else {
+    ?>
                                 <img id="imageProfile2" src="./../resource/images/profile_default.png" class="img-circle" alt="User Image" />
                                 <?php
-                            }
-                            ?>
+}
+?>
                         </div>
                         <div class="pull-left info">
                             <p>
                                 <?php
-                                if (isset($_SESSION['id'])) {
-                                    echo "<br/>" . $person->getPersonFirstName() . " " . $person->getPersonFirstlastname();
-                                } else {
-                                    ?>
+if (isset($_SESSION['id'])) {
+    echo "<br/>" . $person->getPersonFirstName() . " " . $person->getPersonFirstlastname();
+} else {
+    ?>
                                     Usuario
                                     <?php
-                                }
-                                ?>
+}
+?>
                             </p>
                         </div>
                     </div>
@@ -190,8 +191,8 @@ ini_set('display_errors', 1);
                         <li class="header">MENÚ</li>
 
                         <?php
-                        if ($_SESSION['dni'] != "999999999") {
-                            ?>
+if ($_SESSION['dni'] != "999999999") {
+    ?>
 
                             <!--PROFILE-->
                             <li class="treeview">
@@ -332,7 +333,7 @@ ini_set('display_errors', 1);
                                 </ul>
                             </li>
 
-                        <?php } ?>
+                        <?php }?>
 
                         <!--EMERGIN ENROLLMENT-->
                         <li class="treeview">
