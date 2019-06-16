@@ -136,7 +136,7 @@ class StudentData extends Connector {
                             $row['personsecondlastname'], 
                             $row['personemail'], 
                             $row['personbirthdate'], 
-                            $row['personage'], 
+                            $row['currentage'], 
                             $row['persongender'], 
                             $row['personnationality'], 
                             $row['studentadecuacy'], 

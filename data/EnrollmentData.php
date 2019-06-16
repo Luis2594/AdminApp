@@ -210,7 +210,7 @@ class EnrollmentData extends Connector {
         try {
             $value = $this->exeQuery($query);
             if ((mysqli_num_rows($value) > 0)) {
-                return mysqli_fetch_array($value)[0];
+                return mysqli_fetch_array($value)['Total'];
             } else {
                 return 0;
             }
@@ -224,7 +224,7 @@ class EnrollmentData extends Connector {
         try {
             $value = $this->exeQuery($query);
             if ((mysqli_num_rows($value) > 0)) {
-                return mysqli_fetch_array($value)[0];
+                return mysqli_fetch_array($value)['Total'];
             } else {
                 return 0;
             }
@@ -238,7 +238,7 @@ class EnrollmentData extends Connector {
         try {
             $value = $this->exeQuery($query);
             if ((mysqli_num_rows($value) > 0)) {
-                return mysqli_fetch_array($value)[0];
+                return mysqli_fetch_array($value)['Total_Students_Enrollment_By_Date'];
             } else {
                 return 0;
             }
@@ -252,7 +252,7 @@ class EnrollmentData extends Connector {
         try {
             $value = $this->exeQuery($query);
             if ((mysqli_num_rows($value) > 0)) {
-                return mysqli_fetch_array($value)[0];
+                return mysqli_fetch_array($value)['Total_Students_Second_Level'];
             } else {
                 return 0;
             }
@@ -266,7 +266,7 @@ class EnrollmentData extends Connector {
         try {
             $value = $this->exeQuery($query);
             if ((mysqli_num_rows($value) > 0)) {
-                return mysqli_fetch_array($value)[0];
+                return mysqli_fetch_array($value)['Total_Students_Second_Level_Woman'];
             } else {
                 return 0;
             }
@@ -280,7 +280,7 @@ class EnrollmentData extends Connector {
         try {
             $value = $this->exeQuery($query);
             if ((mysqli_num_rows($value) > 0)) {
-                return mysqli_fetch_array($value)[0];
+                return mysqli_fetch_array($value)['Total_Students_Second_Level_Men'];
             } else {
                 return 0;
             }
@@ -294,7 +294,7 @@ class EnrollmentData extends Connector {
         try {
             $value = $this->exeQuery($query);
             if ((mysqli_num_rows($value) > 0)) {
-                return mysqli_fetch_array($value)[0];
+                return mysqli_fetch_array($value)['Total_Students_Third_Level'];
             } else {
                 return 0;
             }
@@ -308,7 +308,7 @@ class EnrollmentData extends Connector {
         try {
             $value = $this->exeQuery($query);
             if ((mysqli_num_rows($value) > 0)) {
-                return mysqli_fetch_array($value)[0];
+                return mysqli_fetch_array($value)['Total_Students_Third_Level_Woman'];
             } else {
                 return 0;
             }
@@ -322,7 +322,7 @@ class EnrollmentData extends Connector {
         try {
             $value = $this->exeQuery($query);
             if ((mysqli_num_rows($value) > 0)) {
-                return mysqli_fetch_array($value)[0];
+                return mysqli_fetch_array($value)['Total_Students_Third_Level_Men'];
             } else {
                 return 0;
             }
