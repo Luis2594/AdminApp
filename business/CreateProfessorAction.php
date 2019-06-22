@@ -1,9 +1,9 @@
 <?php
 
-include_once __DIR__.'/./PersonBusiness.php';
-include_once __DIR__.'/./ProfessorBusiness.php';
-include_once __DIR__.'/./UserBusiness.php';
-include_once __DIR__.'/./PhoneBusiness.php';
+include_once __DIR__ . '/./PersonBusiness.php';
+include_once __DIR__ . '/./ProfessorBusiness.php';
+include_once __DIR__ . '/./UserBusiness.php';
+include_once __DIR__ . '/./PhoneBusiness.php';
 
 //Capture data from POST method
 //First the generic data for person model
@@ -24,13 +24,16 @@ if (isset($dni) &&
     isset($secondlastname) &&
     isset($genderTemp)) {
 
-    $name = ucwords(strtolower($name));
-    $firstlastname = ucwords(strtolower($firstlastname));
-    $secondlastname = ucwords(strtolower($secondlastname));
+    // $name = ucwords(strtolower($name));
+    // $firstlastname = strtolower($firstlastname);
+    // $secondlastname = strtolower($secondlastname);
     $personBusiness = new PersonBusiness();
 
     $person = new Person(
-        NULL, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), null, $genderTemp, $nationality, "profile_default.png");
+        null, $dni, $name, $firstlastname, $secondlastname, $email, date("Y-m-d"), null, $genderTemp, $nationality, "profile_default.png");
+
+    $firstlastname = clearStr($firstlastname);  
+    $secondlastname = clearStr($secondlastname);   
 
     $id_last = $personBusiness->insert($person);
 
@@ -43,7 +46,7 @@ if (isset($dni) &&
             $adecuacy = 1;
         }
 
-        $professor = new Professor(NULL, $id_last);
+        $professor = new Professor(null, $id_last);
         $pass = strtoupper(substr($firstlastname, 0, 2)) . strtoupper(substr($secondlastname, 0, 2)) . substr($dni, -3);
         if ($professorBusiness->insertProfessorWithCredentials($professor, $pass)) {
             if (isset($quantityPhones)) {
@@ -51,7 +54,7 @@ if (isset($dni) &&
                 for ($i = 0; $i <= $quantityPhones; $i++) {
                     $number = $_POST['phone' . $i];
                     if (isset($number) && $number != "") {
-                        $phone = new Phone(NULL, $number, $id_last);
+                        $phone = new Phone(null, $number, $id_last);
                         $phoneBusiness->insert($phone);
                     }
                 }
@@ -67,4 +70,11 @@ if (isset($dni) &&
     }
 } else {
     header("location: ../view/CreateProfessor.php?action=0&msg=Datos_erroneos");
+}
+
+function clearStr($str)
+{
+    $not_allows = array("á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "ñ", "À", "Ã", "Ì", "Ò", "Ù", "Ã™", "Ã ", "Ã¨", "Ã¬", "Ã²", "Ã¹", "ç", "Ç", "Ã¢", "ê", "Ã®", "Ã´", "Ã»", "Ã‚", "ÃŠ", "ÃŽ", "Ã”", "Ã›", "ü", "Ã¶", "Ã–", "Ã¯", "Ã¤", "«", "Ò", "Ã", "Ã„", "Ã‹");
+    $allows = array("a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "n", "N", "A", "E", "I", "O", "U", "a", "e", "i", "o", "u", "c", "C", "a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "u", "o", "O", "i", "a", "e", "U", "I", "A", "E");
+    return  str_replace($not_allows, $allows, $str);
 }

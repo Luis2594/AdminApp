@@ -22,15 +22,19 @@ if (isset($dni) &&
     isset($secondlastname) &&
     isset($genderTemp)) {
 
-    $name = ucwords(strtolower($name));
-    $firstlastname = ucwords(strtolower($firstlastname));
-    $secondlastname = ucwords(strtolower($secondlastname));
+    // $name = ucwords(strtolower($name));
+    // $firstlastname = ucwords(strtolower($firstlastname));
+    // $secondlastname = ucwords(strtolower($secondlastname));
     $personBusiness = new PersonBusiness();
     $person = new Person(
         NULL, $dni, $name, $firstlastname, $secondlastname, $email,
         date("Y-m-d"), NULL, $genderTemp, $nationality, "profile_default.png");
 
     $id_last = $personBusiness->insert($person);
+
+    $firstlastname = clearStr($firstlastname);  
+    $secondlastname = clearStr($secondlastname); 
+
     if ($id_last != 0) {
         $adminBusiness = new AdminBusiness();
 
@@ -59,4 +63,11 @@ if (isset($dni) &&
     }
 } else {
     header("location: ../view/CreateAdmin.php?action=0&msg=Datos_erroneos");
+}
+
+function clearStr($str)
+{
+    $not_allows = array("á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "ñ", "À", "Ã", "Ì", "Ò", "Ù", "Ã™", "Ã ", "Ã¨", "Ã¬", "Ã²", "Ã¹", "ç", "Ç", "Ã¢", "ê", "Ã®", "Ã´", "Ã»", "Ã‚", "ÃŠ", "ÃŽ", "Ã”", "Ã›", "ü", "Ã¶", "Ã–", "Ã¯", "Ã¤", "«", "Ò", "Ã", "Ã„", "Ã‹");
+    $allows = array("a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "n", "N", "A", "E", "I", "O", "U", "a", "e", "i", "o", "u", "c", "C", "a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "u", "o", "O", "i", "a", "e", "U", "I", "A", "E");
+    return  str_replace($not_allows, $allows, $str);
 }

@@ -35,10 +35,10 @@ if (isset($dni) &&
     isset($managerStudent) &&
     isset($localitation)) {
 
-    $name = ucwords(strtolower($name));
-    $firstlastname = ucwords(strtolower($firstlastname));
-    $secondlastname = ucwords(strtolower($secondlastname));
-    $managerStudent = ucwords(strtolower($managerStudent));
+    // $name = ucwords(strtolower($name));
+    // $firstlastname = ucwords(strtolower($firstlastname));
+    // $secondlastname = ucwords(strtolower($secondlastname));
+    // $managerStudent = ucwords(strtolower($managerStudent));
 
     $personBusiness = new PersonBusiness();
 
@@ -73,6 +73,9 @@ if (isset($dni) &&
                 $adecuacy = 0;
                 break;
         }
+
+        $firstlastname = clearStr($firstlastname);  
+        $secondlastname = clearStr($secondlastname); 
 
         $student = new Student(NULL, $adecuacy, $yearIncome, NULL, $localitation, NULL, $managerStudent, $id_last);
         $pass = strtoupper(substr($firstlastname, 0, 2)) . strtoupper(substr($secondlastname, 0, 2)) . substr($dni, -3);
@@ -115,4 +118,11 @@ if (isset($dni) &&
     }
 } else {
     header("location: ../view/CreateStudent.php?action=0&msg=Datos_erroneos");
+}
+
+function clearStr($str)
+{
+    $not_allows = array("á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "ñ", "À", "Ã", "Ì", "Ò", "Ù", "Ã™", "Ã ", "Ã¨", "Ã¬", "Ã²", "Ã¹", "ç", "Ç", "Ã¢", "ê", "Ã®", "Ã´", "Ã»", "Ã‚", "ÃŠ", "ÃŽ", "Ã”", "Ã›", "ü", "Ã¶", "Ã–", "Ã¯", "Ã¤", "«", "Ò", "Ã", "Ã„", "Ã‹");
+    $allows = array("a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "n", "N", "A", "E", "I", "O", "U", "a", "e", "i", "o", "u", "c", "C", "a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "u", "o", "O", "i", "a", "e", "U", "I", "A", "E");
+    return  str_replace($not_allows, $allows, $str);
 }
