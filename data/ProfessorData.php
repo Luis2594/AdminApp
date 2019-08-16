@@ -1,8 +1,8 @@
 <?php
 
-include_once __DIR__.'/../data/Connector.php';
-include_once __DIR__.'/../domain/Professor.php';
-include_once __DIR__.'/../domain/ProfessorAll.php';
+include_once __DIR__ . '/../data/Connector.php';
+include_once __DIR__ . '/../domain/Professor.php';
+include_once __DIR__ . '/../domain/ProfessorAll.php';
 
 date_default_timezone_set('America/Costa_Rica');
 
@@ -132,7 +132,7 @@ class ProfessorData extends Connector
     {
         $year = date("Y");
 
-        if (date("m") > 7) {
+        if (date("m") > 9) {
             $year += 1;
         }
 
@@ -141,6 +141,7 @@ class ProfessorData extends Connector
             . "" . $period . ","
             . "" . $course . ","
             . "" . $year . ")";
+
         try {
             return $this->exeQuery($query);
         } catch (Exception $ex) {

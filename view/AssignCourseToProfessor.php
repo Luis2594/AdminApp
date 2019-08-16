@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__.'/./reusable/Session.php';
-include_once __DIR__.'/./reusable/Header.php';
+include_once __DIR__ . '/./reusable/Session.php';
+include_once __DIR__ . '/./reusable/Header.php';
 $id = (int) $_GET['id'];
 ?>
 
@@ -27,20 +27,20 @@ if (isset($id) && is_int($id)) {
                 <div class="box box-primary">
                     <div class="box-header">
                         <?php
-                        include_once __DIR__.'/../business/ProfessorBusiness.php';
+include_once __DIR__ . '/../business/ProfessorBusiness.php';
 
-                        $professorBusiness = new ProfessorBusiness();
+    $professorBusiness = new ProfessorBusiness();
 
-                        $professors = $professorBusiness->getProfessor($id);
+    $professors = $professorBusiness->getProfessor($id);
 
-                        foreach ($professors as $professor) {
-                            ?>
+    foreach ($professors as $professor) {
+        ?>
                             <h3 class="box-title">Asignar módulos a: <?php
-                                echo $professor->getPersonFirstName()
-                                . " " . $professor->getPersonFirstlastname()
-                                . " " . $professor->getPersonSecondlastname();
-                                ?> </h3>
-                        <?php } ?>
+echo $professor->getPersonFirstName()
+        . " " . $professor->getPersonFirstlastname()
+        . " " . $professor->getPersonSecondlastname();
+        ?> </h3>
+                        <?php }?>
                     </div><!-- /.box-header -->
                     <!-- form start -->
                     <form role="form">
@@ -50,7 +50,7 @@ if (isset($id) && is_int($id)) {
                                 <div class="table-responsive">
                                     <table id="group" border="4" style="border-collapse: separate; border-spacing:  5px 15px;">
                                     </table>
-                                </div> 
+                                </div>
                             </div>
                             <div class="form-group" id="divPeriod">
                                 <label>Periodo</label>
@@ -67,14 +67,14 @@ if (isset($id) && is_int($id)) {
                 <div class="box">
                     <div class="box-header">
                         <?php
-                        foreach ($professors as $professor) {
-                            ?>
+foreach ($professors as $professor) {
+        ?>
                             <h3 id="h3Info" class="box-title">Asignar modulos a: <?php
-                                echo $professor->getPersonFirstName()
-                                . " " . $professor->getPersonFirstlastname()
-                                . " " . $professor->getPersonSecondlastname();
-                                ?> </h3>
-                        <?php } ?>
+echo $professor->getPersonFirstName()
+        . " " . $professor->getPersonFirstlastname()
+        . " " . $professor->getPersonSecondlastname();
+        ?> </h3>
+                        <?php }?>
                     </div>
                     <div class="box-body">
                         <div class="box-footer" style="text-align: center">
@@ -94,13 +94,13 @@ if (isset($id) && is_int($id)) {
                             </thead>
                             <tbody>
                                 <?php
-                                include_once __DIR__.'/../business/CourseBusiness.php';
-                                $coursesBusiness = new CourseBusiness();
+include_once __DIR__ . '/../business/CourseBusiness.php';
+    $coursesBusiness = new CourseBusiness();
 
-                                $courses = $coursesBusiness->getAll();
+    $courses = $coursesBusiness->getAll();
 
-                                foreach ($courses as $course) {
-                                    ?>
+    foreach ($courses as $course) {
+        ?>
                                     <tr>
                                         <td>
                                             <input value="<?php echo $course->getCourseId() ?>" type="checkbox" name="check" style="width: 20px; height: 20px; text-align: center" />
@@ -113,8 +113,8 @@ if (isset($id) && is_int($id)) {
                                         <td><?php echo $course->getSpecialityname(); ?></td>
                                     </tr>
                                     <?php
-                                }
-                                ?> 
+}
+    ?>
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -137,14 +137,14 @@ if (isset($id) && is_int($id)) {
                 <div class="box">
                     <div class="box-header">
                         <?php
-                        foreach ($professors as $professor) {
-                            ?>
+foreach ($professors as $professor) {
+        ?>
                             <h3 class="box-title">Módulos asignados a: <?php
-                                echo $professor->getPersonFirstName()
-                                . " " . $professor->getPersonFirstlastname()
-                                . " " . $professor->getPersonSecondlastname();
-                                ?> </h3>
-                        <?php } ?>
+echo $professor->getPersonFirstName()
+        . " " . $professor->getPersonFirstlastname()
+        . " " . $professor->getPersonSecondlastname();
+        ?> </h3>
+                        <?php }?>
                     </div>
                     <div class="box-body">
                         <table id="example2" class="table table-bordered table-striped">
@@ -188,7 +188,7 @@ if (isset($id) && is_int($id)) {
 
     <?php
 }
-include_once __DIR__.'/./reusable/Footer.php';
+include_once __DIR__ . '/./reusable/Footer.php';
 ?>
 
 <!-- page script -->
@@ -303,6 +303,7 @@ include_once __DIR__.'/./reusable/Footer.php';
                 if (data == true) {
                     coursesToProfessor();
                 } else {
+                    console.log("RES: ", data)
                     alertify.error("Upps! Ha ocurrido un error!");
                 }
             },
@@ -369,6 +370,7 @@ include_once __DIR__.'/./reusable/Footer.php';
     }
 
     function coursesToProfessor() {
+        $("#tbody").html('');
         $.ajax({
             type: 'POST',
             url: "../business/GetCoursesProfessor.php",
@@ -409,8 +411,8 @@ include_once __DIR__.'/./reusable/Footer.php';
                 success: function (data)
                 {
                     if (data == true) {
-                        alertify.success("Módulo eliminado de la lista del profesor");
                         coursesToProfessor();
+                        alertify.success("Módulo eliminado de la lista del profesor");
                     } else {
                         alertify.error("Upps! Ha ocurrido un error al eliminar el módulo!");
                     }

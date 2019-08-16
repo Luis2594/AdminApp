@@ -1,6 +1,6 @@
 <?php
 
-include_once __DIR__.'/./ProfessorBusiness.php';
+include_once __DIR__ . '/./ProfessorBusiness.php';
 
 $id = (int) $_POST['id'];
 $groups = $_POST['groups'];
@@ -16,10 +16,10 @@ if (isset($id) && is_int($id) && isset($groups) && isset($period) && is_int($per
 
     foreach ($arrayGroups as $idGroup) {
         foreach ($arrayModules as $idCourse) {
-         $professorBusiness->insertCourseToProfessor($id, $idGroup, $period, $idCourse);
+            $professorBusiness->insertCourseToProfessor($id, $idGroup, $period, $idCourse);
         }
     }
-    echo TRUE;
+    echo true;
 } else {
     echo false;
 }
